@@ -1,0 +1,59 @@
+# vim: set syn=zsh
+
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+
+alias which=/usr/bin/which -s
+
+which wget || alias wget="curl -O"
+which mdfind && alias locate="mdfind -name"
+which enscript && alias print="enscript -2rG -DDuplex:true -DTumble:true"
+
+# use colors for BSD ls
+export CLICOLOR=1
+export LSCOLORS="ExGxFxdxCxDxDxhbadExEx"
+alias la="ls -AF"
+alias lh="ls -alhF"
+
+# MacPorts
+function do_setup_port {
+	local PREFIX=$1
+	export PATH=$PREFIX/bin:$PREFIX/sbin:$PATH
+	export MANPATH=$PREFIX/share/man:$MANPATH
+}
+[ -x "$HOME/macports/bin/port" ] && do_setup_port "$HOME/macports"
+unfunction do_setup_port
+hash -d ports=~/macports/var/macports/sources/git.macports.org/ports
+
+# Configure ccache
+which ccache &&
+	export CC="ccache gcc" &&
+	export CXX="ccache g++" &&
+
+export GNUTERM='aqua'
+
+export PIP_REQUIRE_VIRTUALENV=true
+VIRTUAL_ENV_DISABLE_PROMPT=true
+#[ -f "${HOME}/Library/virtualenv2.7/bin/activate" ] &&
+#  source "${HOME}/Library/virtualenv2.7/bin/activate"
+#unset VIRTUAL_ENV_DISABLE_PROMPT
+
+# MacVim
+function do_setup_vim {
+	local VI=$1
+	alias ex="$VI -ve"
+	alias vim="$VI -v"
+	alias view="$VI -Rv"
+	alias gvim="$VI -g"
+	alias gview="$VI -Rg"
+}
+
+which mvim &>/dev/null &&
+	do_setup_vim mvim &&
+	export VISUAL="mvim -f"
+unfunction do_setup_vim
+
+# clean-up
+unalias which
+
+# vim: set tabstop=2 shiftwidth=2 noet textwidth=78:
