@@ -188,6 +188,9 @@ endif
 " Date in printheader
 set printheader=%<%f%h%m\ \ %{strftime('%m/%d/%y\ %X')}%=Page\ %N
 
+" Fix common typo
+cnoreabbrev Set set
+
 " Escape insert mode with caps lock
 nnoremap <Tab> <Esc>
 vnoremap <Tab> <Esc>gV
