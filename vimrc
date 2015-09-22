@@ -101,6 +101,23 @@ set softtabstop=4
 set shiftwidth=4
 set shiftround
 
+" Split creation
+nmap <leader>H :topleft vnew<cr>
+nmap <leader>J :botright new<cr>
+nmap <leader>K :topleft new<cr>
+nmap <leader>L :botright vnew<cr>
+
+nmap <leader>h :leftabove vnew<cr>
+nmap <leader>j :rightbelow new<cr>
+nmap <leader>k :leftabove new<cr>
+nmap <leader>l :rightbelow vnew<cr>
+
+" Split navigation
+nnoremap <C-H> <C-W><C-H>
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+
 " setlocal spell spelllang=en,fr
 " runtime ftplugin/man.vim
 
