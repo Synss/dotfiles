@@ -11,6 +11,9 @@ if filereadable("/Applications/MacVim.app/Contents/Resources/vim/vimrc") && vers
 	source /Applications/MacVim.app/Contents/Resources/vim/vimrc
 endif
 
+" Space as leader (let mapleader="<Space>")
+map <Space> \
+
 " Load pathogen
 filetype off
 call pathogen#infect()
@@ -216,8 +219,6 @@ inoremap <Tab> <Esc>`^
 inoremap <Leader><Tab> <Tab>
 
 " ReST structure
-let mapleader=","
-noremap \ ,
 nnoremap <leader>0 yypv$r=yykP
 nnoremap <leader>1 yypv$r=
 nnoremap <leader>2 yypv$r-
