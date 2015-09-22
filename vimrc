@@ -1,16 +1,3 @@
-if filereadable("/usr/share/vim/vimrc")
-	source /usr/share/vim/vimrc
-endif
-if filereadable("/usr/share/vim/vimcurrent/debian.vim")
-	source /usr/share/vim/vimcurrent/debian.vim
-endif
-if filereadable("/Applications/MacPorts/Vim.app/vimrc")
-	source /Applications/MacPorts/Vim.app/vimrc
-endif
-if filereadable("/Applications/MacVim.app/Contents/Resources/vim/vimrc") && version >= 740
-	source /Applications/MacVim.app/Contents/Resources/vim/vimrc
-endif
-
 " Space as leader (let mapleader="<Space>")
 map <Space> \
 
