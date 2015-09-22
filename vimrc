@@ -152,6 +152,10 @@ inoremap <down> <nop>
 inoremap <left> <nop>
 inoremap <right> <nop>
 
+" Scroll faster
+nnoremap <C-e> 3<C-e>
+nnoremap <C-y> 3<C-y>
+
 " vim 7 tabs - force use of tabs
 nnoremap gf <C-W>gf
 cab      e  tabe
