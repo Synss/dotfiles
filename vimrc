@@ -186,7 +186,7 @@ endif
 "set infercase
 
 " do not expandtab in makefile
-:autocmd FileType make set noexpandtab
+autocmd FileType make set noexpandtab
 
 
 if exists('+colorcolumn')
