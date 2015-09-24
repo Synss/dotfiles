@@ -16,17 +16,16 @@ let g:syntastic_cpp_include_dirs = [
 			\ ]
 let g:syntastic_rst_checkers = ['rstcheck']
 
-syntax on
-
 " Set highlight on search
 set hlsearch
 hi search guibg=LightBlue
 
-" If using a dark background within the editing area and syntax highlighting
-" turn on this option as well
-"colorscheme koehler
-colorscheme desert
+" Colorscheme
+set t_Co=256
+let g:solarized_termcolors=256
+syntax enable
 set background=dark
+colorscheme solarized
 
 if has("autocmd")
 	" Uncomment the following to have Vim jump to the last position when
