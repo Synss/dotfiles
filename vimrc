@@ -15,6 +15,7 @@ let g:syntastic_cpp_include_dirs = [
 			\ '/Users/laurin/macports/include/QtSvg',
 			\ ]
 let g:syntastic_rst_checkers = ['rstcheck']
+let g:syntastic_python_python_exec = '/usr/bin/python3'
 
 " Set highlight on search
 set hlsearch
