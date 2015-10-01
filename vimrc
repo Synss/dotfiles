@@ -162,18 +162,6 @@ nmap <cr> o<esc>
 if has('macunix')
 	" get rid of the highlighted text
 	map <silent> <D-/> :let @/=""<CR>  :echo "Highlights Cleared"<CR>
-else
-	" A few more intuitive mappings
-	" " copy paste to clipboard YES!
-	nmap <C-x> "+d'>
-	imap <C-x> <esc>"+d'>i
-	nmap <C-c> "+y'>
-	imap <C-c> <esc>"+y'>i
-	nmap <C-v> "+P
-	imap <C-v> <esc>"+Pi
-	" Switch mode with ^space (^c works just as well)
-	" map <C-space> i
-	" imap <C-space> <C-c>
 endif
 
 " try to avoid misspelling words in the first place -- have the insert mode
