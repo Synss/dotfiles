@@ -102,11 +102,18 @@ nmap <leader>j :rightbelow new<cr>
 nmap <leader>k :leftabove new<cr>
 nmap <leader>l :rightbelow vnew<cr>
 
-" Split navigation
+" Split navigation (normal mode)
 nnoremap <C-H> <C-W><C-H>
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
+" Split navigation (terminal)
+if has('nvim')
+	tnoremap <C-H> <C-W><C-H>
+	tnoremap <C-J> <C-W><C-J>
+	tnoremap <C-K> <C-W><C-K>
+	tnoremap <C-L> <C-W><C-L>
+endif
 
 " setlocal spell spelllang=en,fr
 " runtime ftplugin/man.vim
