@@ -108,10 +108,11 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 " Split navigation (terminal)
 if has('nvim')
-	tnoremap <C-H> <C-W><C-H>
-	tnoremap <C-J> <C-W><C-J>
-	tnoremap <C-K> <C-W><C-K>
-	tnoremap <C-L> <C-W><C-L>
+	tnoremap <C-\><C-\> <C-\><C-N>
+	tnoremap <C-H> <C-\><C-N><C-W><C-H>
+	tnoremap <C-J> <C-\><C-N><C-W><C-J>
+	tnoremap <C-K> <C-\><C-N><C-W><C-K>
+	tnoremap <C-L> <C-\><C-N><C-W><C-L>
 endif
 
 " setlocal spell spelllang=en,fr
