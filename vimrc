@@ -114,6 +114,8 @@ if has('nvim')
 	tnoremap <C-K> <C-\><C-N><C-W><C-K>
 	tnoremap <C-L> <C-\><C-N><C-W><C-L>
 endif
+" Delete buffer with bbye
+nnoremap <leader>bd :Bdelete<CR>
 
 " setlocal spell spelllang=en,fr
 " runtime ftplugin/man.vim
