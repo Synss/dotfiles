@@ -152,13 +152,8 @@ inoremap <right> <nop>
 nnoremap <C-e> 3<C-e>
 nnoremap <C-y> 3<C-y>
 
-" vim 7 tabs - force use of tabs
-nnoremap gf <C-W>gf
-cab      e  tabe
-
 " Use the visual bell instead of the audible one
 set vb
-
 
 " Mappings
 " Insert a blank line after the current line
