@@ -3,7 +3,7 @@ map <Space> \
 
 " Load pathogen
 filetype off
-call pathogen#infect()
+call pathogen#infect('~/.vim/bundle/{}')
 call pathogen#helptags()
 
 " syntastic
