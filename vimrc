@@ -27,7 +27,7 @@ hi search guibg=LightBlue
 set t_Co=256
 let g:solarized_termcolors=256
 syntax enable
-set background=dark
+" set background=dark
 colorscheme solarized
 
 if has("autocmd")
