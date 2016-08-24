@@ -8,76 +8,11 @@ alias -g N='&> /dev/null'
 alias -g P='| open -fa Preview'
 alias -g T='| tail'
 
-function x16 {
-	echo "-obase=16;$1" | bc
-}
-
-alias winpdb="screen winpdb -s"
-
-alias akmerge='ACCEPT_KEYWORDS="~amd64" emerge'
-alias sa="sudo aptitude"
-function calc() { echo $(( ${@} )) }
-#function hh() {grep "$@" "$HISTFILE" | tail -n 50}
-alias la="ls -a"
-function dhcp {sudo dhclient3 ${1:-eth0}}
-#function hh 
-#{
-#	[ $# -eq 0 ] &&
-#	tail -n 50 $HISTFILE ||
-#	grep "$@"  $HISTFILE | tail -n 50
-#}
-for keymap in v a; do
-	bindkey -$keymap ^f history-incremental-search-backward
-done
 if [ -x "$(which xdg-open)" ]; then
 	alias open="xdg-open"
 else
 	[ -x "$(which gnome-open)" ] &&
 	alias open="gnome-open"
 fi
-alias grep="grep --color=auto"
-alias la="ls -aF"
-alias lh="ls -alhF"
-alias ll="ls -alhF"
-#alias ls="ls --color=auto"
-alias ls="ls -G"
-alias mkdir="mkdir -p"
-alias more="less"
-alias octave="octave --silent"
-alias r="fc"
-
-alias flac="flac --ogg --best"
-alias lame="lame -v --preset medium"
-alias clamscan="clamscan --recursive --infected"
-
-#if [ -x "$(which ipython)" ]; then
-#	alias python="ipython --no-confirm-exit"
-#fi
-
-if [ -x "$(which libreoffice)" ]; then
-	alias writer="libreoffice --nologo --writer"
-	alias calc="libreoffice --nologo --calc"
-fi
 
 function s { [ $# = 0 ] && sudo -s || sudo "$@" }
-
-if [ -x "$(which xev)" ]; then
-function xevgrep
-{
-	xev | grep -A2 --line-buffered '^KeyRelease' | sed -n '/keycode /s/^.*keycode \([0-9]*\).* (.*, \(.*\)).*$/\1 \2/p'
-}
-fi
-
-alias reboot="sudo reboot"
-alias halt="sudo shutdown -hP now"
-
-case "$HOST" in
-	vaio)
-	alias s2ram="sudo s2ram -f"
-	alias s2disk="sudo s2disk -f"
-	alias s2both="sudo s2both -f"
-	;;
-	*)
-	;;
-esac
-
