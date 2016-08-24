@@ -1,7 +1,7 @@
 # vim: syn=zsh
 
 # setup environment
-[ -x "$(which vim)" ] && export EDITOR=vim
+[ -x "$(which nvim)" ] && export EDITOR=nvim || export EDITOR=vi
 [ -d "$HOME/bin" ] && export PATH=$HOME/bin:$PATH
 [ -d "/usr/local/lib" ] && export LD_LIBRARY_PATH="/usr/local/lib"
 
