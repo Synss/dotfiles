@@ -24,8 +24,12 @@ hi search guibg=LightBlue
 set t_Co=256
 let g:solarized_termcolors=256
 syntax enable
-set background=dark
-colorscheme solarized
+if has('macunix')
+	" Terminal with the "Pro" theme has a black background
+	set background=dark
+else
+	colorscheme solarized
+endif
 
 if has("autocmd")
 	" Uncomment the following to have Vim jump to the last position when
