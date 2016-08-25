@@ -9,11 +9,13 @@ call pathogen#helptags()
 " syntastic
 let g:syntastic_check_on_open = 1
 let g:syntastic_cpp_check_header = 1
-let g:syntastic_cpp_include_dirs = [
-			\ '/Users/laurin/macports/include/QtGui',
-			\ '/Users/laurin/macports/include/QtCore',
-			\ '/Users/laurin/macports/include/QtSvg',
-			\ ]
+if has('macunix')
+	let g:syntastic_cpp_include_dirs = [
+				\ '/Users/laurin/macports/include/QtGui',
+				\ '/Users/laurin/macports/include/QtCore',
+				\ '/Users/laurin/macports/include/QtSvg',
+				\ ]
+endif
 let g:syntastic_rst_checkers = ['rstcheck']
 
 " Set highlight on search
