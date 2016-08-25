@@ -9,6 +9,16 @@ call pathogen#helptags()
 " syntastic
 let g:syntastic_check_on_open = 1
 let g:syntastic_cpp_check_header = 1
+let g:syntastic_cpp_compiler = 'clang++'
+let g:syntastic_cpp_compiler_options =
+			\ ' -std=c++14
+			\   -Werror -Weverything
+			\   -Wno-c++98-compat -Wno-c++98-compat-pedantic
+			\   -Wno-missing-prototypes
+			\   -Wno-old-style-cast
+			\   -Wno-unused-macros
+			\   -Wno-weak-vtables
+			\ '
 if has('macunix')
 	let g:syntastic_cpp_include_dirs = [
 				\ '/Users/laurin/macports/include/QtGui',
