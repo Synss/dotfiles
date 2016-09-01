@@ -1,1 +1,1 @@
-/home/laurin/.vimrc
+vimrc

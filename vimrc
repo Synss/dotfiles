@@ -3,19 +3,29 @@ map <Space> \
 
 " Load pathogen
 filetype off
-call pathogen#infect('~/.vim/bundle/{}')
+call pathogen#infect('~/etc/vim.git/bundle/{}')
 call pathogen#helptags()
 
 " syntastic
 let g:syntastic_check_on_open = 1
 let g:syntastic_cpp_check_header = 1
 let g:syntastic_cpp_compiler = 'clang++'
-let g:syntastic_cpp_compiler_options = ' -std=c++14'
-let g:syntastic_cpp_include_dirs = [
-			\ '/Users/laurin/macports/include/QtGui',
-			\ '/Users/laurin/macports/include/QtCore',
-			\ '/Users/laurin/macports/include/QtSvg',
-			\ ]
+let g:syntastic_cpp_compiler_options =
+			\ ' -std=c++14
+			\   -Werror -Weverything
+			\   -Wno-c++98-compat -Wno-c++98-compat-pedantic
+			\   -Wno-missing-prototypes
+			\   -Wno-old-style-cast
+			\   -Wno-unused-macros
+			\   -Wno-weak-vtables
+			\ '
+if has('macunix')
+	let g:syntastic_cpp_include_dirs = [
+				\ '/Users/laurin/macports/include/QtGui',
+				\ '/Users/laurin/macports/include/QtCore',
+				\ '/Users/laurin/macports/include/QtSvg',
+				\ ]
+endif
 let g:syntastic_rst_checkers = ['rstcheck']
 let g:syntastic_python_checkers = ['python', 'pylint']
 
@@ -27,8 +37,12 @@ hi search guibg=LightBlue
 set t_Co=256
 let g:solarized_termcolors=256
 syntax enable
-" set background=dark
-colorscheme solarized
+if has('macunix')
+	" Terminal with the "Pro" theme has a black background
+	set background=dark
+else
+	colorscheme solarized
+endif
 
 if has("autocmd")
 	" Uncomment the following to have Vim jump to the last position when
