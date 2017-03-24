@@ -16,3 +16,6 @@
 [submodule "bundle/vim-bbye.git"]
 	path = bundle/vim-bbye.git
 	url = https://github.com/moll/vim-bbye.git
+[submodule "bundle/vim-airline-themes.git"]
+	path = bundle/vim-airline-themes.git
+	url = https://github.com/vim-airline/vim-airline-themes
