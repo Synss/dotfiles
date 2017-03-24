@@ -211,6 +211,9 @@ set printheader=%<%f%h%m\ \ %{strftime('%m/%d/%y\ %X')}%=Page\ %N
 " Fix common typo
 cnoreabbrev Set set
 
+" Disable `Entering Ex mode`
+nnoremap Q <Nop>
+
 " ReST structure
 nnoremap <leader>0 yypv$r=yykP
 nnoremap <leader>1 yypv$r=
