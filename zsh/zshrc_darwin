@@ -1,0 +1,13 @@
+# vim: set syn=zsh
+
+# use colors for BSD ls
+export CLICOLOR=1
+export LSCOLORS="ExGxFxdxCxDxDxhbadExEx"
+
+# MacPorts
+[ -d "$HOME/macports" ] &&
+	export PATH="$HOME/macports/bin:$PATH" &&
+	export MANPATH="$HOME/macports/share/man:$MANPATH" &&
+	hash -d ports="$HOME/macports/var/macports/sources/git.macports.org/ports"
+
+# vim: set tabstop=2 shiftwidth=2 noet textwidth=78:

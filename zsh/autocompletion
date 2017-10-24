@@ -1,0 +1,19 @@
+# vim: syn=zsh
+
+autoload -U compinit
+compinit
+zstyle ':completion:*:descriptions' format '%U%B%d%b%u'
+zstyle ':completion:*:warnings' format '%BSorry, no matches for: %d%b'
+# cache
+zstyle ':completion::complete:*' use-cache 1
+
+# SSH Completion (http://dotfiles.org/~Ryuzaki/.zshrc)
+zstyle ':completion:*:scp:*' tag-order \
+   files users 'hosts:-host hosts:-domain:domain hosts:-ipaddr"IP\ Address *'
+zstyle ':completion:*:scp:*' group-order \
+   files all-files users hosts-domain hosts-host hosts-ipaddr
+zstyle ':completion:*:ssh:*' tag-order \
+   users 'hosts:-host hosts:-domain:domain hosts:-ipaddr"IP\ Address *'
+zstyle ':completion:*:ssh:*' group-order \
+   hosts-domain hosts-host users hosts-ipaddr
+zstyle '*' single-ignored show
