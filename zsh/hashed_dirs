@@ -1,6 +1,0 @@
-# vim: syn=zsh
-
-hash -d src=~/Dropbox/src
-hash -d zsh=~/Dropbox/etc/zsh
-hash -d cv=~/Dropbox/Curriculum\ Vitae/_Search\ 2013–2015
-hash -d funcos=~/Dropbox/Projects/2013-11\ funCOS/Public/
