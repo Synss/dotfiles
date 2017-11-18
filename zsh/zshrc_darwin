@@ -8,6 +8,6 @@ export LSCOLORS="ExGxFxdxCxDxDxhbadExEx"
 [ -d "$HOME/macports" ] &&
 	export PATH="$HOME/macports/bin:$PATH" &&
 	export MANPATH="$HOME/macports/share/man:$MANPATH" &&
-	hash -d ports="$HOME/macports/var/macports/sources/git.macports.org/ports"
+	hash -d ports="$HOME/macports/var/macports/sources/rsync.macports.org/release/tarballs/ports"
 
 # vim: set tabstop=2 shiftwidth=2 noet textwidth=78:
