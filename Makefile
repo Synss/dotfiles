@@ -22,6 +22,7 @@ etc-tmux:
 .PHONY: etc-zsh
 etc-zsh:
 	echo "export ZDOTDIR=\"$(zsh_dir)\"" > $(HOME)/.zshenv
+	$(mkdir) $(zsh_dir)/hashed_dirs
 
 .PHONY: install
 install: etc-vi etc-tmux etc-zsh
