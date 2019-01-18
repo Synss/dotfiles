@@ -11,7 +11,8 @@ zsh_dir := $(current_dir)zsh
 
 .PHONY: etc-vi
 etc-vi:
-	$(mkdir) $(HOME)/.config && $(ln) $(vim_dir) $(HOME)/.config/nvim
+	$(mkdir) $(HOME)/.config
+	$(ln) $(vim_dir) $(HOME)/.config/nvim
 	$(ln) $(vim_dir) $(HOME)/.vim
 
 .PHONY: etc-tmux
