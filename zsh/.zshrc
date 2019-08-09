@@ -22,3 +22,4 @@ autoload zkbd
   source /etc/zsh/newuser.zshrc.recommended
 
 [ $(uname) = "Darwin" ] && . $ZDOTDIR/zshrc_darwin
+[ -f "$HOME/.config/zsh/zshrc.local" ] && . "$HOME/.config/zsh/zshrc.local"
