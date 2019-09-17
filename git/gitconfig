@@ -1,0 +1,15 @@
+[pull]
+	rebase = true
+[alias]
+	branch-name = rev-parse --abbrev-ref HEAD
+	au = add -u
+	ap = add -p
+	co = checkout
+	ci = commit
+	amend = commit --amend
+	cane = commit --amend --no-edit
+	fixup = commit --fixup
+	ri = rebase -i
+	unstage = reset HEAD --
+[push]
+	default = upstream

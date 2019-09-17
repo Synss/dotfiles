@@ -4,10 +4,15 @@ ln = ln -nsf
 mkdir = mkdir -p
 
 current_dir := $(dir $(abspath $(lastword $(MAKEFILE_LIST))))
+git_dir := $(current_dir)git
 vim_dir := $(current_dir)vim
 tmux_dir := $(current_dir)tmux
 zsh_dir := $(current_dir)zsh
 
+
+.PHONY: etc-git
+etc-git:
+	$(ln) $(git_dir)/gitconfig $(HOME)/.gitconfig
 
 .PHONY: etc-vi
 etc-vi:
@@ -32,6 +37,7 @@ all: install
 
 .PHONY: uninstall
 uninstall:
+	-unlink $(HOME)/.gitconfig
 	-unlink $(HOME)/.config/nvim
 	-unlink $(HOME)/.vim
 	-unlink $(HOME)/.tmux.conf
