@@ -1,5 +1,15 @@
 # vim: syn=zsh
 
+if [ -x "$(which xclip)" ]; then
+	alias -g C='| xclip -in -selection clipboard'
+elif [ -x "$(which pbcopy)" ]; then
+	alias -g C='| pbcopy'
+fi
+
+if [ -x "$(which ag)" ]; then
+	alias ack=ag
+fi
+
 alias -g D='| dot -Tpdf'
 alias -g G='| grep'
 alias -g H='| head'
