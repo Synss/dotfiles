@@ -30,7 +30,7 @@ etc-zsh:
 	$(mkdir) $(zsh_dir)/hashed_dirs
 
 .PHONY: install
-install: etc-vi etc-tmux etc-zsh
+install: etc-git etc-vi etc-tmux etc-zsh
 
 .PHONY: all
 all: install
