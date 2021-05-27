@@ -11,5 +11,12 @@
 	fixup = commit --fixup
 	ri = rebase -i
 	unstage = reset HEAD --
+	retop = "!git pull origin ${1:-master}:${1:-master}"
+[commit]
+	verbose = true
 [push]
 	default = upstream
+[user]
+	name = Mathias Laurin
+[rebase]
+	autosquash = true
