@@ -40,6 +40,7 @@ if has('macunix')
 	set background=dark
 else
 	colorscheme solarized
+	set background=light
 endif
 
 if has("autocmd")
