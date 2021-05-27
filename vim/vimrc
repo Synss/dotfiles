@@ -85,18 +85,6 @@ else
 	set modelines=0
 endif
 
-" Number lines
-set number
-if version >= 703
-	" relative number in normal mode
-	autocmd InsertEnter * :set number
-	autocmd InsertLeave * :set relativenumber
-	" relative number is window has focus
-	autocmd FocusLost * :set number
-	autocmd FocusGained * :set relativenumber
-endif
-
-
 " Clever grep
 set grepprg=grep\ -nH\ $*
 
