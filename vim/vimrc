@@ -6,27 +6,6 @@ filetype off
 call pathogen#infect('bundle/{}')
 call pathogen#helptags()
 
-" syntastic
-let g:syntastic_check_on_open = 1
-let g:syntastic_cpp_check_header = 1
-let g:syntastic_cpp_compiler = 'clang++'
-let g:syntastic_cpp_compiler_options =
-			\ ' -std=c++17
-			\   -Werror -Weverything
-			\   -Wno-c++98-compat -Wno-c++98-compat-pedantic
-			\   -Wno-missing-prototypes
-			\   -Wno-weak-vtables
-			\ '
-if has('macunix')
-	let g:syntastic_cpp_include_dirs = [
-				\ '/Users/laurin/macports/include/QtGui',
-				\ '/Users/laurin/macports/include/QtCore',
-				\ '/Users/laurin/macports/include/QtSvg',
-				\ ]
-endif
-let g:syntastic_rst_checkers = ['rstcheck']
-let g:syntastic_python_checkers = ['python', 'pylint']
-
 " Set highlight on search
 set hlsearch
 hi search guibg=LightBlue
