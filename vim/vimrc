@@ -128,18 +128,6 @@ nmap # #mzz.`z
 nmap g* g*mzz.`z
 nmap g# g#mzz.`z
 
-" http://stevelosh.com/blog/2010/09/coming-home-to-vim/
-" Force hjkl
-nnoremap <up> <nop>
-nnoremap <down> <nop>
-nnoremap <left> <nop>
-nnoremap <right> <nop>
-" Force normal mode to move in file
-inoremap <up> <nop>
-inoremap <down> <nop>
-inoremap <left> <nop>
-inoremap <right> <nop>
-
 " Scroll faster
 nnoremap <C-e> 3<C-e>
 nnoremap <C-y> 3<C-y>
