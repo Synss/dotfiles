@@ -6,15 +6,6 @@ filetype off
 call pathogen#infect('bundle/{}')
 call pathogen#helptags()
 
-" ALE
-let g:ale_completion_enabled = 1
-let g:ale_set_balloons = 1
-let g:ale_linters = {
-  \ 'python': ['python3', 'pylint'],
-  \ 'cpp': ['clangd'],
-  \ 'c': ['clangd']
-\}
-
 " Set highlight on search
 set hlsearch
 hi search guibg=LightBlue
