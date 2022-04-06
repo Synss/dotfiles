@@ -12,6 +12,7 @@
 	ri = rebase -i
 	unstage = reset HEAD --
 	retop = "!git pull origin ${1:-master}:${1:-master}"
+	names = diff --name-only
 [commit]
 	verbose = true
 [push]
