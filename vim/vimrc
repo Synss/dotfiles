@@ -1,11 +1,6 @@
 " Space as leader (let mapleader="<Space>")
 map <Space> \
 
-" Load pathogen
-filetype off
-call pathogen#infect('bundle/{}')
-call pathogen#helptags()
-
 " Set highlight on search
 set hlsearch
 hi search guibg=LightBlue
