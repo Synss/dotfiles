@@ -16,3 +16,6 @@
 [submodule "vim/pack/plugins/start/smart-term-esc.nvim.git"]
 	path = vim/pack/plugins/start/smart-term-esc.nvim.git
 	url = https://github.com/sychen52/smart-term-esc.nvim.git
+[submodule "vim/pack/plugins/start/vim-sensible.git"]
+	path = vim/pack/plugins/start/vim-sensible.git
+	url = https://github.com/tpope/vim-sensible.git
