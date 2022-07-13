@@ -19,5 +19,6 @@
 	default = upstream
 [user]
 	name = Mathias Laurin
+	email = Mathias.Laurin+github.com@gmail.com
 [rebase]
 	autosquash = true
