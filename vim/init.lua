@@ -73,12 +73,6 @@ nnoremap("<leader>bd", ":Bdelete<CR>")
 nnoremap("<leader>q", "gq")
 nnoremap("<leader>Q", "{gq}")
 
--- Let Esc to normal mode in terminal
-require('smart-term-esc').setup{
-  key="<ESC>",
-  except={'nvim'}
-}
-
 -- LSP config
 -- Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
