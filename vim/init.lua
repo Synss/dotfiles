@@ -105,6 +105,10 @@ local on_attach = function(client, bufnr)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
 end
 
+-- Make sure both plugins are loaded in the correct order.
+require("mason").setup()
+require("mason-lspconfig").setup()
+
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
 local servers = { 'clangd', 'pylsp', 'pyright' }
