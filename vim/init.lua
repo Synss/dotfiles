@@ -31,6 +31,12 @@ end
 nnoremap("<Space>", "<Nop>")
 nnoremap("<Space>", "<Leader>")
 
+-- Make a few whitespace characters visible
+-- nbsp: <C-k> <space> <space>
+-- vim.opt.listchars = { nbsp = "␣", tab = "↹·" }
+vim.opt.listchars = { nbsp = "␣", tab = "⇥ " }
+vim.opt.list = true
+
 -- Tab behavior
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
