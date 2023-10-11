@@ -73,7 +73,7 @@ nnoremap("<C-K>", "<C-W><C-K>")
 nnoremap("<C-L>", "<C-W><C-L>")
 
 -- Delete buffer with bbye
-nnoremap("<leader>bd", ":Bdelete<CR>")
+nnoremap("<leader>bd", ":Bdelete this<CR>")
 
 -- Reformat paragraph
 nnoremap("<leader>q", "gq")
