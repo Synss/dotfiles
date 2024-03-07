@@ -6,14 +6,6 @@ colors
 
 # current dir only: ${PWD##*/}
 
-# Now set it
-if [ ${EUID} -eq 0 ]; then
-	PROMPT="%{$fg[red]%}%T %d [%j]%{$fg[yellow]%} %?  %#%_ %{$reset_color%}"
-else
-	PROMPT="%{$fg[green]%}%T %d [%j]%{$fg[yellow]%} %?
-%#%_ %{$reset_color%}"
-fi
-
 #
 # git branch in right prompt
 # http://www.jukie.net/bart/blog/20080404105620
@@ -56,10 +48,16 @@ zsh_git_preexec_update_vars() {
 
 get_git_prompt_info() {
 	test -n "$__CURRENT_GIT_VARS_INVALID" && zsh_git_compute_vars
-	echo $__CURRENT_GIT_BRANCH
+	test -n "$__CURRENT_GIT_BRANCH" && echo " [$__CURRENT_GIT_BRANCH]"
 }
 
-RPROMPT='$(get_git_prompt_info)'
+# Now set it
+if [ ${EUID} -eq 0 ]; then
+	PROMPT="%{$fg[red]%}%T %d [%j]%{$fg[yellow]%} %?  %#%_ %{$reset_color%}"
+else
+	PROMPT="%T %{$fg[green]%}%d%{$fg[yellow]%}"'$(get_git_prompt_info)'" %{$reset_color%}%?
+%#%_ "
+fi
 
 unset __CURRENT_GIT_BRANCH
 unset __CURRENT_GIT_VARS_INVALID
