@@ -26,8 +26,8 @@ typeset -ga chpwd_functions
 # expansions in prompt
 setopt prompt_subst
 
-export __CURRENT_GIT_BRANCH=
-export __CURRENT_GIT_VARS_INVALID=1
+__CURRENT_GIT_BRANCH=
+__CURRENT_GIT_VARS_INVALID=1
 
 parse_git_branch() {
 	if [ -x $(which git) ] &&
@@ -35,11 +35,11 @@ parse_git_branch() {
 }
 
 zsh_git_invalidate_vars() {
-	export __CURRENT_GIT_VARS_INVALID=1
+	__CURRENT_GIT_VARS_INVALID=1
 }
 zsh_git_compute_vars() {
-	export __CURRENT_GIT_BRANCH="$(parse_git_branch)"
-	export __CURRENT_GIT_VARS_INVALID=
+	__CURRENT_GIT_BRANCH="$(parse_git_branch)"
+	__CURRENT_GIT_VARS_INVALID=
 }
 
 chpwd_functions+='zsh_git_chpwd_update_vars'
@@ -60,3 +60,6 @@ get_git_prompt_info() {
 }
 
 RPROMPT='$(get_git_prompt_info)'
+
+unset __CURRENT_GIT_BRANCH
+unset __CURRENT_GIT_VARS_INVALID
