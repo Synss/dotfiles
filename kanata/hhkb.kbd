@@ -1,0 +1,54 @@
+#|
+
+HHKB
+
+SW2 ON
+swapped ESC and `
+
+|#
+
+(defcfg
+  process-unmapped-keys yes
+  concurrent-tap-hold yes
+)
+
+(defsrc
+  grv  1    2    3    4    5    6    7    8    9    0    -    =    \    esc
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]    bspc
+  lctl a    s    d    f    g    h    j    k    l    ;    '    ret
+  lsft z    x    c    v    b    n    m    ,    .    /    rsft
+       lalt lmet           spc            rmet ralt
+)
+
+(defvar
+  tap-time 200
+  hold-time 200
+)
+
+(deflayermap (base)
+  lctl (tap-hold $tap-time $hold-time esc lctrl)
+  f    (tap-hold-release $tap-time $hold-time f   (layer-while-held fnav))
+  d    (tap-hold-release $tap-time $hold-time d   (layer-while-held dnav))
+  s    (tap-hold-release $tap-time $hold-time s   (layer-while-held snav))
+)
+
+(deflayermap (fnav)
+  h left
+  j down
+  k up
+  l right
+)
+
+(deflayermap (dnav)
+  h C-left
+  j C-down
+  k C-up
+  l C-right
+)
+
+(deflayermap (snav)
+  h home
+  j pgdn
+  k pgup
+  l end
+)
