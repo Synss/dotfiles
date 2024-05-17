@@ -9,7 +9,6 @@ swapped ESC and `
 
 (defcfg
   process-unmapped-keys yes
-  concurrent-tap-hold yes
 )
 
 (defsrc
@@ -30,7 +29,7 @@ swapped ESC and `
   tab  q    w    e    r    t    y    u    i    o    p    [    ]    bspc
   @ec  a    s    d    f    g    h    j    k    l    ;    '    ret
   lsft z    x    c    v    b    n    m    ,    .    /    rsft
-       lalt lmet           @sp            rmet ralt
+       @alt lmet           spc            rmet ralt
 )
 
 (deflayer hjkl
@@ -38,10 +37,10 @@ swapped ESC and `
   tab  q    w    e    r    t    y    u    i    o    p    [    ]    bspc
   @ec  a    s    d    f    g    lft  down up   rght ;    '    ret
   lsft z    x    c    v    b    n    home pgdn pgup end    rsft
-       lalt lmet           @sp            rmet ralt
+       @alt lmet           spc            rmet ralt
 )
 
 (defalias
   ec  (tap-hold $tap-time $hold-time esc lctrl)
-  sp  (tap-hold $tap-time $hold-time spc (layer-toggle hjkl))
+  alt (tap-hold $tap-time $hold-time lalt (layer-toggle hjkl))
 )
