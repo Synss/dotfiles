@@ -22,3 +22,6 @@
 [submodule "vim/pack/plugins/start/close-buffers.vim.git"]
 	path = vim/pack/plugins/start/close-buffers.vim.git
 	url = https://github.com/Asheq/close-buffers.vim.git
+[submodule "vim/pack/plugins/start/neosolarized.git"]
+	path = vim/pack/plugins/start/neosolarized.git
+	url = https://github.com/Tsuzat/NeoSolarized.nvim
