@@ -51,7 +51,7 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
 -- Color scheme
-vim.cmd 'colorscheme NeoSolarized'
+-- vim.cmd 'colorscheme NeoSolarized'
 
 -- Split creation
 nmap("<leader>H", ":topleft vnew<cr>")
