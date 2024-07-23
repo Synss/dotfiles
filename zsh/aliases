@@ -1,12 +1,12 @@
 # vim: syn=zsh
 
-if [ -x "$(which xclip)" ]; then
+if [ -x "$(command -v xclip)" ]; then
 	alias -g C='| xclip -in -selection clipboard'
-elif [ -x "$(which pbcopy)" ]; then
+elif [ -x "$(command -v pbcopy)" ]; then
 	alias -g C='| pbcopy'
 fi
 
-if [ -x "$(which ag)" ]; then
+if [ -x "$(command -v ag)" ]; then
 	alias ack=ag
 fi
 
@@ -22,10 +22,10 @@ alias -g N='&> /dev/null'
 alias -g P='| open -fa Preview'
 alias -g T='| tail'
 
-if [ -x "$(which xdg-open)" ]; then
+if [ -x "$(command -v xdg-open)" ]; then
 	alias open="xdg-open"
 else
-	[ -x "$(which gnome-open)" ] &&
+	[ -x "$(command -v gnome-open)" ] &&
 	alias open="gnome-open"
 fi
 
