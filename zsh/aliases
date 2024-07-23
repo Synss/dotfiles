@@ -10,6 +10,10 @@ if [ -x "$(which ag)" ]; then
 	alias ack=ag
 fi
 
+if [ -s "$(command -v libtree)" ]; then
+    alias ldd=libtree
+fi
+
 alias -g D='| dot -Tpdf'
 alias -g G='| grep'
 alias -g H='| head'
