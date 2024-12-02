@@ -6,17 +6,9 @@ elif [ -x "$(command -v pbcopy)" ]; then
 	alias -g C='| pbcopy'
 fi
 
-if [ -x "$(command -v ag)" ]; then
-	alias ack=ag
-fi
-
-if [ -x "$(command -v libtree)" ]; then
-	alias ldt=libtree
-fi
-
-if [ -x "$(command -v bazel)" ]; then
-	alias bzlock="bazel mod deps --lockfile_mode=update"
-fi
+test -x "$(command -v ag)" && alias ack=ag
+test -x "$(command -v libtree)" && alias ldt=libtree
+test -x "$(command -v bazel)" && alias bzlock="bazel mod deps --lockfile_mode=update"
 
 alias -g D='| dot -Tpdf'
 alias -g G='| grep'
