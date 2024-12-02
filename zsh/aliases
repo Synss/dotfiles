@@ -10,8 +10,8 @@ if [ -x "$(command -v ag)" ]; then
 	alias ack=ag
 fi
 
-if [ -s "$(command -v libtree)" ]; then
-    alias ldd=libtree
+if [ -x "$(command -v libtree)" ]; then
+	alias ldt=libtree
 fi
 
 alias -g D='| dot -Tpdf'
