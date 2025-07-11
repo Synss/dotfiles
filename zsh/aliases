@@ -8,7 +8,7 @@ fi
 
 test -x "$(command -v ag)" && alias ack=ag
 test -x "$(command -v libtree)" && alias ldt=libtree
-test -x "$(command -v bazel)" && alias bzlock="bazel mod deps --lockfile_mode=update"
+test -x "$(command -v bazel)" && alias bzllock="bazel mod deps --lockfile_mode=update"
 
 alias -g D='| dot -Tpdf'
 alias -g G='| grep'
