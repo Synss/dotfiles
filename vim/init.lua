@@ -50,6 +50,8 @@ vim.opt.incsearch = true
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
+vim.opt.wrap = false
+
 -- Color scheme
 -- vim.cmd 'colorscheme NeoSolarized'
 
