@@ -24,6 +24,9 @@ alias -g P='| open -fa Preview'
 alias -g T='| tail'
 alias -g XB="':(exclude)MODULE.bazel.lock'"
 
+bindkey "^P" history-incremental-search-backward
+bindkey "^N" history-incremental-search-forward
+
 if [ -x "$(command -v xdg-open)" ]; then
 	alias open="xdg-open"
 else
