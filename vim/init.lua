@@ -116,21 +116,17 @@ local on_attach = function(client, bufnr)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
 end
 
+-- LSP
+local servers = { 'clangd', 'pylsp', 'pyright' }
+
 -- Make sure both plugins are loaded in the correct order.
 require("mason").setup()
 require("mason-lspconfig").setup({
-    ensure_installed = {"clangd", "pylsp", "pyright"}
+    ensure_installed = servers
 })
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = { 'clangd', 'pylsp', 'pyright' }
 for _, lsp in pairs(servers) do
-  require('lspconfig')[lsp].setup {
-    on_attach = on_attach,
-    flags = {
-      -- This will be the default in neovim 0.7+
-      debounce_text_changes = 150,
-    }
-  }
+  vim.lsp.enable(lsp)
 end
