@@ -25,3 +25,6 @@
 [submodule "vim/pack/plugins/start/neosolarized.git"]
 	path = vim/pack/plugins/start/neosolarized.git
 	url = https://github.com/Tsuzat/NeoSolarized.nvim
+[submodule "vim/pack/plugins/start/fzf.git"]
+	path = vim/pack/plugins/start/fzf.git
+	url = https://github.com/junegunn/fzf.git
