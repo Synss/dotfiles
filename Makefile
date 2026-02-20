@@ -8,11 +8,17 @@ git_dir := $(current_dir)git
 tmux_dir := $(current_dir)tmux
 vim_dir := $(current_dir)vim
 zsh_dir := $(current_dir)zsh
+claude_dir := $(current_dir)claude
 
 
 .PHONY: etc-git
 etc-git:
 	$(ln) $(git_dir)/gitconfig $(HOME)/.gitconfig
+
+.PHONY: etc-claude
+etc-claude:
+	$(mkdir) $(HOME)/.claude
+	$(ln) $(claude_dir)/CLAUDE.md $(HOME)/.claude
 
 .PHONY: etc-tmux
 etc-tmux:
@@ -30,7 +36,7 @@ etc-zsh:
 	$(mkdir) $(zsh_dir)/hashed_dirs
 
 .PHONY: install
-install: etc-git etc-tmux etc-vi etc-zsh
+install: etc-claude etc-git etc-tmux etc-vi etc-zsh
 
 .PHONY: all
 all: install
