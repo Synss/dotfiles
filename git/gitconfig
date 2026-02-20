@@ -22,5 +22,3 @@
 	email = Mathias.Laurin+github.com@gmail.com
 [rebase]
 	autosquash = true
-[merge]
-	conflictStyle = diff3
