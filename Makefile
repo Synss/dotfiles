@@ -19,6 +19,7 @@ etc-git:
 etc-claude:
 	$(mkdir) $(HOME)/.claude
 	$(ln) $(claude_dir)/CLAUDE.md $(HOME)/.claude
+	$(ln) $(claude_dir)/settings.json $(HOME)/.claude
 
 .PHONY: etc-tmux
 etc-tmux:
