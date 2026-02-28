@@ -14,7 +14,7 @@
     ],
     "deny": [
       "Bash(curl *)",
-      "Read(./.env)",
+      "Read(./.env)"
     ]
-  },
+  }
 }
