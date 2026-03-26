@@ -2,15 +2,23 @@
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
   "permissions": {
     "allow": [
+      "Bash(file *)",
+      "Bash(find *)",
       "Bash(git commit *)",
       "Bash(git diff)",
       "Bash(git diff *)",
+      "Bash(git find *)",
       "Bash(git grep *)",
       "Bash(git log *)",
       "Bash(git show *)",
       "Bash(git status)",
       "Bash(git status && git diff)",
-      "Bash(shuf *)"
+      "Bash(ls *)",
+      "Bash(nm *)",
+      "Bash(sed *)",
+      "Bash(shuf *)",
+      "Bash(wc *)",
+      "Bash(which *)"
     ],
     "deny": [
       "Bash(curl *)",
