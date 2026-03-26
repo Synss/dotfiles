@@ -21,6 +21,7 @@ fi
 . $ZDOTDIR/history
 . $ZDOTDIR/options
 . $ZDOTDIR/autocompletion
+. $ZDOTDIR/autocompletion.bazel.zsh
 . $ZDOTDIR/prompt
 
 # Keyboard bindings (doc in zshcontrib(1) )
