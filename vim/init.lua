@@ -77,6 +77,9 @@ tnoremap("<C-J>", "<C-\\><C-n><C-W><C-J>")
 tnoremap("<C-K>", "<C-\\><C-n><C-W><C-K>")
 tnoremap("<C-L>", "<C-\\><C-n><C-W><C-L>")
 
+-- fzf
+nmap("<leader>f", ":FZF<CR>")
+
 -- Delete buffer with bbye
 nnoremap("<leader>bd", ":Bdelete this<CR>")
 
