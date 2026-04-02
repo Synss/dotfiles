@@ -1,0 +1,7 @@
+---
+- name: Configure localhost
+  hosts: localhost
+  roles:
+    - dotfiles
+    - packages
+    - binaries
