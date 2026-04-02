@@ -2,6 +2,26 @@
 
 Configuration for
 
+- claude
 - neovim
 - tmux
 - zsh
+
+## Installation
+
+Ansible playbooks for localhost in `ansible`.
+
+### Usage
+
+```bash
+cd ansible
+uv sync
+uv run ansible-galaxy collection install -r requirements.yml
+uv run ansible-playbook site.yml -i inventory/localhost.yml
+```
+
+Lint:
+```bash
+cd ansible
+uv run ansible-lint
+```
