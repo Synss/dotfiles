@@ -3,6 +3,7 @@ packages_apt:
   - ack
   - geany
   - git
+  - jq
   - python3.13
   - python3.14
   - ripgrep
@@ -16,6 +17,7 @@ packages_brew:
   - ack
   - fzf
   - git
+  - jq
   - neovim
   - python@3.13
   - python@3.14
