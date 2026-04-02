@@ -19,11 +19,3 @@ zstyle ':completion:*:ssh:*' tag-order \
 zstyle ':completion:*:ssh:*' group-order \
    hosts-domain hosts-host users hosts-ipaddr
 zstyle '*' single-ignored show
-
-# Bazel completion via bash compatibility layer
-# bashcompinit provides: complete, compgen, COMPREPLY
-# BASH_REMATCH provides bash-compatible regex match array indexing
-setopt BASH_REMATCH
-autoload -U bashcompinit
-bashcompinit
-source "$ZDOTDIR/completions/bazel.bash"
