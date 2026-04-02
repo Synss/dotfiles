@@ -3,7 +3,7 @@
 # setup environment
 export LANG=en_US.UTF-8
 [ -x "$(which direnv)" ] && eval "$(direnv hook zsh)"
-[ -x "$(which nvim)" ] && export EDITOR=nvim || export EDITOR=vi
+if [ -x "$(which nvim)" ]; then export EDITOR=nvim; else export EDITOR=vi; fi
 [ -d "/usr/local/lib" ] && export LD_LIBRARY_PATH="/usr/local/lib"
 
 if [ -d "$HOME/.local/bin" ]; then
@@ -16,7 +16,7 @@ if [ -d "$HOME/go/bin" ]; then
 	export PATH="$PATH:$HOME/go/bin"
 fi
 
-for f in $ZDOTDIR/conf.d/*.zsh; do source $f; done
+for f in $ZDOTDIR/conf.d/*.zsh; do source "$f"; done
 
 [ -f /etc/zsh/newuser.zshrc.recommended ] && \
   source /etc/zsh/newuser.zshrc.recommended
