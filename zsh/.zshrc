@@ -16,23 +16,11 @@ if [ -d "$HOME/go/bin" ]; then
 	export PATH="$PATH:$HOME/go/bin"
 fi
 
-. $ZDOTDIR/aliases
-. $ZDOTDIR/hashed_dirs
-. $ZDOTDIR/history
-. $ZDOTDIR/options
-. $ZDOTDIR/autocompletion
-. $ZDOTDIR/autocompletion.bazel.zsh
-. $ZDOTDIR/prompt
-
-# Keyboard bindings (doc in zshcontrib(1) )
-autoload zkbd
-
-# Mime setup - associate extensions
+for f in $ZDOTDIR/conf.d/*.zsh; do source $f; done
 
 [ -f /etc/zsh/newuser.zshrc.recommended ] && \
   source /etc/zsh/newuser.zshrc.recommended
 
-[ $(uname) = "Darwin" ] && . $ZDOTDIR/zshrc_darwin
 [ -f "$HOME/.config/zsh/zshrc.local" ] && . "$HOME/.config/zsh/zshrc.local"
 
 # pnpm

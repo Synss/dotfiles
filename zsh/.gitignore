@@ -1,4 +1,4 @@
-/*.local
+/conf.d/*.local
 /.zcompcache/
 /.zcompdump
 /.zshenv

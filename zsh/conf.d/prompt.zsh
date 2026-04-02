@@ -41,7 +41,7 @@ zsh_git_chpwd_update_vars() {
 
 preexec_functions+='zsh_git_preexec_update_vars'
 zsh_git_preexec_update_vars() {
-	case "$(history $HISTCMD)" in 
+	case "$(history $HISTCMD)" in
 		*git*) zsh_git_invalidate_vars ;;
 	esac
 }

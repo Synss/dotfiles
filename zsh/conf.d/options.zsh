@@ -4,14 +4,14 @@
 setopt auto_cd					# imply cd <cmd>
 #setopt cdable_vars				# imply cd ~/<cmd>
 #setopt chase_links				# resolve symlinks
- 
+
 # Completion
 #setopt auto_param_slash		# add / to directories
 setopt complete_in_word
 
 # Expansion and Globbing
 setopt numeric_glob_sort		# real count when globbing numbered files
- 
+
 # History
 setopt append_history			# append to hist upon exit
 setopt extended_history			# timestamp hist
@@ -23,7 +23,7 @@ setopt inc_append_history		# append on write
 setopt hist_save_no_dups
 alias h="fc -RI"				# import history from other ttys with "fc -RI"
 #setopt share_history			# share hist btw tty
- 
+
 # initialization
 # input/output
 setopt correct					# spell check commands only
@@ -35,11 +35,11 @@ setopt no_beep
 setopt auto_continue			# true disown
 
 # Prompting
- 
+
 # Scripts and functions
- 
+
 # Shell emu
- 
+
 # Shell State
- 
+
 # Zle
