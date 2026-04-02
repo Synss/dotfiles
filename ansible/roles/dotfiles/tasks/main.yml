@@ -1,1 +1,54 @@
 ---
+- name: Create ~/.claude
+  ansible.builtin.file:
+    path: "{{ lookup('env', 'HOME') }}/.claude"
+    state: directory
+    mode: "0755"
+
+- name: Create ~/.config
+  ansible.builtin.file:
+    path: "{{ lookup('env', 'HOME') }}/.config"
+    state: directory
+    mode: "0755"
+
+- name: Symlink ~/.gitconfig
+  ansible.builtin.file:
+    src: "{{ dotfiles_dir }}/git/gitconfig"
+    dest: "{{ lookup('env', 'HOME') }}/.gitconfig"
+    state: link
+
+- name: Symlink ~/.claude/CLAUDE.md
+  ansible.builtin.file:
+    src: "{{ dotfiles_dir }}/claude/CLAUDE.md"
+    dest: "{{ lookup('env', 'HOME') }}/.claude/CLAUDE.md"
+    state: link
+
+- name: Symlink ~/.claude/settings.json
+  ansible.builtin.file:
+    src: "{{ dotfiles_dir }}/claude/settings.json"
+    dest: "{{ lookup('env', 'HOME') }}/.claude/settings.json"
+    state: link
+
+- name: Symlink ~/.tmux.conf
+  ansible.builtin.file:
+    src: "{{ dotfiles_dir }}/tmux/tmux.conf"
+    dest: "{{ lookup('env', 'HOME') }}/.tmux.conf"
+    state: link
+
+- name: Symlink ~/.config/nvim
+  ansible.builtin.file:
+    src: "{{ dotfiles_dir }}/vim"
+    dest: "{{ lookup('env', 'HOME') }}/.config/nvim"
+    state: link
+
+- name: Symlink ~/.vim
+  ansible.builtin.file:
+    src: "{{ dotfiles_dir }}/vim"
+    dest: "{{ lookup('env', 'HOME') }}/.vim"
+    state: link
+
+- name: Generate ~/.zshenv
+  ansible.builtin.copy:
+    content: "export ZDOTDIR=\"{{ dotfiles_dir }}/zsh\"\n"
+    dest: "{{ lookup('env', 'HOME') }}/.zshenv"
+    mode: "0644"
