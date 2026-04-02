@@ -1,3 +1,5 @@
+![Build Status](https://github.com/Synss/dotfiles/actions/workflows/lint.yml/badge.svg?branch=master)
+
 # dotfiles
 
 Configuration for
