@@ -93,7 +93,18 @@ _bazel_get_options() {
   if _cache_invalid BAZEL_${lcmd}_options || _cache_invalid BAZEL_${lcmd}_args \
     || ! _bazel_safe_retrieve_cache BAZEL_${lcmd}_options ${_bazel_cmd_options} \
     || ! _retrieve_cache BAZEL_${lcmd}_args ${_bazel_cmd_args}; then
-    if ! eval "$(_bazel_b help completion)"; then
+    local _comp_out
+    _comp_out=$(_bazel_b help completion) 2>/dev/null
+    if [[ "$_comp_out" == BAZEL_* ]]; then
+      eval "$_comp_out" 2>/dev/null
+    else
+      # Fallback for wrappers (e.g. Aspect CLI) that don't emit BAZEL_* vars:
+      # provide target completion only, skip flag completion.
+      case $lcmd in
+        test|build) typeset -g "${_bazel_cmd_args}"="*::label:_bazel_complete_target_label" ;;
+        run)        typeset -g "${_bazel_cmd_args}"="*::label:_bazel_complete_target_label_bin" ;;
+        *)          typeset -g "${_bazel_cmd_args}"="*::target:_bazel_complete_target" ;;
+      esac
       return
     fi
     local opts_var
