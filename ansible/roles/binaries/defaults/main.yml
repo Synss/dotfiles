@@ -1,2 +1,38 @@
 ---
-binaries_list: []
+binaries_list:
+  - name: uv
+    version: "0.11.3"
+    url_linux_amd64: "https://github.com/astral-sh/uv/releases/download/0.11.3/uv-x86_64-unknown-linux-musl.tar.gz"
+    url_darwin_arm64: "https://github.com/astral-sh/uv/releases/download/0.11.3/uv-aarch64-apple-darwin.tar.gz"
+    checksum_linux_amd64: "sha256:8b40cf16b849634b81a530a3d0a0bcae5f24996ef9ae782976fd69b6266d3b8e"
+    checksum_darwin_arm64: "sha256:2bc3d0c7bf2bd08325b1e170abac6f7e5b3346e1d4eab3370d17cefec934996f"
+    archive: true
+    archive_binary_linux_amd64: "uv-x86_64-unknown-linux-musl/uv"
+    archive_binary_darwin_arm64: "uv-aarch64-apple-darwin/uv"
+
+  - name: uvx
+    version: "0.11.3"
+    url_linux_amd64: "https://github.com/astral-sh/uv/releases/download/0.11.3/uv-x86_64-unknown-linux-musl.tar.gz"
+    url_darwin_arm64: "https://github.com/astral-sh/uv/releases/download/0.11.3/uv-aarch64-apple-darwin.tar.gz"
+    checksum_linux_amd64: "sha256:8b40cf16b849634b81a530a3d0a0bcae5f24996ef9ae782976fd69b6266d3b8e"
+    checksum_darwin_arm64: "sha256:2bc3d0c7bf2bd08325b1e170abac6f7e5b3346e1d4eab3370d17cefec934996f"
+    archive: true
+    archive_binary_linux_amd64: "uv-x86_64-unknown-linux-musl/uvx"
+    archive_binary_darwin_arm64: "uv-aarch64-apple-darwin/uvx"
+
+  - name: pnpm
+    version: "10.33.0"
+    url_linux_amd64: "https://github.com/pnpm/pnpm/releases/download/v10.33.0/pnpm-linux-x64"
+    url_darwin_arm64: "https://github.com/pnpm/pnpm/releases/download/v10.33.0/pnpm-macos-arm64"
+    checksum_linux_amd64: "sha256:8d4e8f7d778e8ac482022e2577011706a872542f6f6f233e795a4d9f978ea8b5"
+    checksum_darwin_arm64: "sha256:ed8a1f140f4de457b01ebe0be3ae28e9a7e28863315dcd53d22ff1e5a32d63ae"
+    archive: false
+
+  - name: fzf
+    version: "0.70.0"
+    url_linux_amd64: "https://github.com/junegunn/fzf/releases/download/v0.70.0/fzf-0.70.0-linux_amd64.tar.gz"
+    checksum_linux_amd64: "sha256:8fd0e0b93bdf64ba90081ffb6658d77ea5a024c122b36852b1de30f9d2733754"
+    archive: true
+    archive_binary: "fzf"
+    platforms:
+      - linux_amd64
