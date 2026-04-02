@@ -1,4 +1,22 @@
 ---
-packages_apt: []
-packages_snap: []
-packages_brew: []
+packages_apt:
+  - ack
+  - geany
+  - git
+  - python3.13
+  - python3.14
+  - ripgrep
+  - zsh
+
+packages_snap:
+  - nvim
+  - pinta
+
+packages_brew:
+  - ack
+  - fzf
+  - git
+  - neovim
+  - python@3.13
+  - python@3.14
+  - ripgrep

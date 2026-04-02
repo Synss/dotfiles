@@ -1,1 +1,6 @@
 ---
+- name: Install snap packages
+  community.general.snap:
+    name: "{{ packages_snap }}"
+    state: present
+  become: true
