@@ -11,7 +11,7 @@
 	fixup = commit --fixup
 	ri = rebase -i
 	unstage = reset HEAD --
-	retop = "!git pull origin ${1:-master}:${1:-master}"
+	retop = "!f() { branch=${1:-master}; git fetch origin $branch:$branch && git rebase $branch; }; f"
 	names = diff --name-only
 [commit]
 	verbose = true
