@@ -1,3 +1,4 @@
 # vim: syn=zsh
 
-[ -x "$(command -v direnv)" ] && eval "$(direnv hook zsh)"
+command -v direnv >/dev/null || return 0
+eval "$(direnv hook zsh)"
