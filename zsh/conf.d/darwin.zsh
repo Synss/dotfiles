@@ -1,6 +1,6 @@
 # vim: set syn=zsh
 
-[[ $OSTYPE == darwin* ]] || return
+[[ $OSTYPE == darwin* ]] || return 0
 
 # use colors for BSD ls
 export CLICOLOR=1

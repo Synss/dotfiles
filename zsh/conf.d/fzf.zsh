@@ -1,12 +1,12 @@
 # vim: syn=zsh
 
-# Use fd if available.
-if [ -x "$(command -v fd)" ]; then
+command -v fzf >/dev/null || return 0
+
+if command -v fd >/dev/null; then
 	FD=fd
-elif [ -x "$(command -v fdfind)" ]; then
-	# Ubuntu/Debian renames fd -> fdfind
+elif command -v fdfind >/dev/null; then
 	FD=fdfind
 fi
 [[ -v FD ]] && export FZF_DEFAULT_COMMAND="$FD --hidden --exclude .venv"
 
-command -v fzf >/dev/null && source <(fzf --zsh)
+source <(fzf --zsh)
