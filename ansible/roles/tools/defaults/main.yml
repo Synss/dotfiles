@@ -1,0 +1,92 @@
+---
+tools_list:
+  - name: ack
+    apt: ack
+    brew: ack
+
+  - name: aptitude
+    apt: aptitude
+
+  - name: direnv
+    apt: direnv
+    brew: direnv
+
+  - name: fzf
+    brew: fzf
+    binary:
+      version: "0.70.0"
+      linux_amd64:
+        url: "https://github.com/junegunn/fzf/releases/download/v0.70.0/fzf-0.70.0-linux_amd64.tar.gz"
+        checksum: "sha256:8fd0e0b93bdf64ba90081ffb6658d77ea5a024c122b36852b1de30f9d2733754"
+        archive: true
+        archive_binary: "fzf"
+
+  - name: geany
+    apt: geany
+
+  - name: git
+    apt: git
+    brew: git
+
+  - name: jq
+    apt: jq
+    brew: jq
+
+  - name: neovim
+    snap:
+      package: nvim
+      channel: latest/edge
+    brew: neovim
+
+  - name: photoflare
+    apt: photoflare
+
+  - name: pnpm
+    binary:
+      version: "10.33.0"
+      linux_amd64:
+        url: "https://github.com/pnpm/pnpm/releases/download/v10.33.0/pnpm-linux-x64"
+        checksum: "sha256:8d4e8f7d778e8ac482022e2577011706a872542f6f6f233e795a4d9f978ea8b5"
+        archive: false
+
+  - name: python3.13
+    apt: python3.13
+    brew: python@3.13
+
+  - name: python3.14
+    apt: python3.14
+    brew: python@3.14
+
+  - name: ripgrep
+    apt: ripgrep
+    brew: ripgrep
+
+  - name: shellcheck
+    apt: shellcheck
+    brew: shellcheck
+
+  - name: tmux
+    apt: tmux
+    brew: tmux
+
+  - name: uv
+    brew: uv
+    binary:
+      version: "0.11.3"
+      linux_amd64:
+        url: "https://github.com/astral-sh/uv/releases/download/0.11.3/uv-x86_64-unknown-linux-musl.tar.gz"
+        checksum: "sha256:8b40cf16b849634b81a530a3d0a0bcae5f24996ef9ae782976fd69b6266d3b8e"
+        archive: true
+        archive_binary: "uv-x86_64-unknown-linux-musl/uv"
+
+  - name: uvx
+    binary:
+      version: "0.11.3"
+      linux_amd64:
+        url: "https://github.com/astral-sh/uv/releases/download/0.11.3/uv-x86_64-unknown-linux-musl.tar.gz"
+        checksum: "sha256:8b40cf16b849634b81a530a3d0a0bcae5f24996ef9ae782976fd69b6266d3b8e"
+        archive: true
+        archive_binary: "uv-x86_64-unknown-linux-musl/uvx"
+
+  - name: zsh
+    apt: zsh

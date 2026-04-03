@@ -4,9 +4,7 @@
   roles:
     - role: dotfiles
       tags: dotfiles
-    - role: packages
-      tags: packages
-    - role: binaries
-      tags: binaries
+    - role: tools
+      tags: tools
     - role: vim
       tags: vim
