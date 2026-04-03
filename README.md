@@ -15,16 +15,25 @@ Ansible playbooks for localhost in `ansible`.
 
 ### Usage
 
+Allow `direnv` in the `ansible` directory.  `direnv` is configured
+to remove the need to prefix ansible commands with `uv run`.
+```bash
+cd ansible
+direnv allow
+```
+
+Update `uv` and run the playbooks:
+
 ```bash
 cd ansible
 uv sync
-uv run ansible-galaxy collection install -r requirements.yml
-uv run ansible-playbook site.yml
+ansible-galaxy collection install -r requirements.yml
+ansible-playbook site.yml
 ```
 
 Or run a single role
 ```
-uv run ansible-playbook site.yml --tags vim
+ansible-playbook site.yml --tags vim
 ```
 
 Test:
@@ -36,5 +45,5 @@ cd ansible
 Lint:
 ```bash
 cd ansible
-uv run ansible-lint
+ansible-lint
 ```

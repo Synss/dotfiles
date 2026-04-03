@@ -2,6 +2,7 @@
 packages_apt:
   - ack
   - aptitude
+  - direnv
   - geany
   - git
   - jq
@@ -18,6 +19,7 @@ packages_snap:
 
 packages_brew:
   - ack
+  - direnv
   - fzf
   - git
   - jq
