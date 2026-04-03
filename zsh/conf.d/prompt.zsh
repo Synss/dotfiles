@@ -20,7 +20,7 @@ __CURRENT_GIT_BRANCH=
 __CURRENT_GIT_VARS_INVALID=1
 
 parse_git_branch() {
-	if [ -x $(which git) ] &&
+	command -v git >/dev/null &&
 	git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'
 }
 
