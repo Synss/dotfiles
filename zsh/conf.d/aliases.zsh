@@ -49,5 +49,3 @@ else
 fi
 
 function s { [ $# = 0 ] && sudo -s || sudo "$@" }
-
-[ -f $ZDOTDIR/conf.d/aliases.local ] && . $ZDOTDIR/conf.d/aliases.local
