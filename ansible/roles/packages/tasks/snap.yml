@@ -1,6 +1,8 @@
 ---
 - name: Install snap packages
   community.general.snap:
-    name: "{{ packages_snap }}"
+    name: "{{ item.name }}"
+    channel: "{{ item.channel }}"
     state: present
   become: true
+  loop: "{{ packages_snap }}"

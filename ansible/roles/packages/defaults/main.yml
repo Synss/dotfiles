@@ -11,8 +11,10 @@ packages_apt:
   - zsh
 
 packages_snap:
-  - nvim
-  - pinta
+  - name: nvim
+    channel: latest/edge
+  - name: pinta
+    channel: latest/stable
 
 packages_brew:
   - ack
