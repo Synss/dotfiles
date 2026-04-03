@@ -11,6 +11,10 @@ tools_list:
     apt: direnv
     brew: direnv
 
+  - name: eza
+    apt: eza
+    brew: eza
+
   - name: fzf
     brew: fzf
     binary:
