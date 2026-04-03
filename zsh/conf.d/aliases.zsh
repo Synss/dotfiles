@@ -22,6 +22,10 @@ if [ -x "$(command -v jq)" ]; then
 	alias jqresults="jq '.. | objects | select(has(\"results\") and (.results | length > 0)) | .results'"
 fi
 
+if [ -x "$(command -v eza)" ]; then
+	alias tree="eza -T"
+fi
+
 test -x "$(command -v libtree)" && alias ldt=libtree
 test -x "$(command -v bazel)" && alias bzllock="bazel mod deps --lockfile_mode=update"
 
