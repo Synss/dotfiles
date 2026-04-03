@@ -96,5 +96,9 @@ tools_list:
         archive: true
         archive_binary: "uv-x86_64-unknown-linux-musl/uvx"
 
+  - name: vivid
+    apt: vivid
+    brew: vivid
+
   - name: zsh
     apt: zsh
