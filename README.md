@@ -22,6 +22,11 @@ uv run ansible-galaxy collection install -r requirements.yml
 uv run ansible-playbook site.yml -i inventory/localhost.yml
 ```
 
+Or run a single role
+```
+uv run ansible-playbook site.yml --tags vim
+```
+
 Lint:
 ```bash
 cd ansible
