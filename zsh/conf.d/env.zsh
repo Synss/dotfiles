@@ -1,5 +1,3 @@
-# vim: syn=zsh
-
 export LANG=en_US.UTF-8
 
 [ -d "/usr/local/lib" ] && export LD_LIBRARY_PATH="/usr/local/lib"

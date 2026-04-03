@@ -1,5 +1,3 @@
-# vim: syn=zsh
-
 # easy color management
 autoload -U colors
 colors

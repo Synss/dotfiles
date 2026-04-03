@@ -1,5 +1,3 @@
-# vim: syn=zsh
-
 # Changing directories
 setopt auto_cd					# imply cd <cmd>
 #setopt cdable_vars				# imply cd ~/<cmd>

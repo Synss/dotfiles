@@ -1,5 +1,3 @@
-# vim: syn=zsh
-
 command -v fzf >/dev/null || return 0
 
 if command -v fd >/dev/null; then

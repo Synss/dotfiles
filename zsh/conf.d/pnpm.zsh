@@ -1,4 +1,3 @@
-# vim: syn=zsh
 [ -d "$HOME/.local/share/pnpm" ] || return 0
 
 export PNPM_HOME="$HOME/.local/share/pnpm"
