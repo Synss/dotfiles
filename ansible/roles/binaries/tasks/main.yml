@@ -30,6 +30,7 @@
   when:
     - (item.platforms is not defined) or (platform_key in item.platforms)
     - item.archive | default(false)
+    - not (bin_dir + '/' + item.name + '-' + item.version) is file
 
 - name: Create extract directory
   ansible.builtin.file:
@@ -42,6 +43,7 @@
   when:
     - (item.platforms is not defined) or (platform_key in item.platforms)
     - item.archive | default(false)
+    - not (bin_dir + '/' + item.name + '-' + item.version) is file
 
 - name: Extract archive
   ansible.builtin.unarchive:
@@ -54,6 +56,7 @@
   when:
     - (item.platforms is not defined) or (platform_key in item.platforms)
     - item.archive | default(false)
+    - not (bin_dir + '/' + item.name + '-' + item.version) is file
 
 - name: Install binary from archive
   ansible.builtin.copy:
@@ -67,6 +70,7 @@
   when:
     - (item.platforms is not defined) or (platform_key in item.platforms)
     - item.archive | default(false)
+    - not (bin_dir + '/' + item.name + '-' + item.version) is file
 
 - name: Remove archive
   ansible.builtin.file:
@@ -78,6 +82,7 @@
   when:
     - (item.platforms is not defined) or (platform_key in item.platforms)
     - item.archive | default(false)
+    - not (bin_dir + '/' + item.name + '-' + item.version) is file
 
 - name: Remove extract directory
   ansible.builtin.file:
@@ -89,6 +94,7 @@
   when:
     - (item.platforms is not defined) or (platform_key in item.platforms)
     - item.archive | default(false)
+    - not (bin_dir + '/' + item.name + '-' + item.version) is file
 
 - name: Symlink binary
   ansible.builtin.file:
