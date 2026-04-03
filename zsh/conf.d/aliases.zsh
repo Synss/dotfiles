@@ -1,9 +1,6 @@
 function s { [ $# = 0 ] && sudo -s || sudo "$@" }
 
 # Aliases
-
-command -v bazel >/dev/null   && alias bzllock="bazel mod deps --lockfile_mode=update"
-command -v jq >/dev/null      && alias jqresults="jq '.. | objects | select(has(\"results\") and (.results | length > 0)) | .results'"
 command -v libtree >/dev/null && alias ldt=libtree
 
 if command -v xdg-open >/dev/null; then
@@ -33,4 +30,3 @@ alias -g L='| less'
 alias -g N='&> /dev/null'
 alias -g P='| open -fa Preview'
 alias -g T='| tail'
-alias -g XB="':(exclude)MODULE.bazel.lock'"
