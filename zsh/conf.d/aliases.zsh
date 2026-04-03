@@ -2,12 +2,6 @@ function s { [ $# = 0 ] && sudo -s || sudo "$@" }
 
 # Aliases
 
-if command -v rg >/dev/null; then
-	alias ack=rg
-elif command -v ag >/dev/null; then
-	alias ack=ag
-fi
-
 command -v bazel >/dev/null   && alias bzllock="bazel mod deps --lockfile_mode=update"
 command -v jq >/dev/null      && alias jqresults="jq '.. | objects | select(has(\"results\") and (.results | length > 0)) | .results'"
 command -v libtree >/dev/null && alias ldt=libtree
