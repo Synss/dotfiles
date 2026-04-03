@@ -7,6 +7,14 @@ tools_list:
   - name: aptitude
     apt: aptitude
 
+  - name: bat
+    apt: bat
+    brew: bat
+
+  - name: delta
+    apt: git-delta
+    brew: git-delta
+
   - name: direnv
     apt: direnv
     brew: direnv
