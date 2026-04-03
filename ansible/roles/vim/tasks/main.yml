@@ -1,0 +1,7 @@
+---
+- name: Update vim plugin submodules
+  ansible.builtin.command: # noqa: command-instead-of-module
+    cmd: git submodule update --init --remote vim/pack/plugins/start
+    chdir: "{{ dotfiles_dir }}"
+  register: vim_result
+  changed_when: vim_result.stdout != ""
