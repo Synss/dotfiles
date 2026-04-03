@@ -1,5 +1,3 @@
-# vim: syn=zsh
-
 if [ -x "$(command -v xclip)" ]; then
 	alias -g C='| xclip -in -selection clipboard'
 elif [ -x "$(command -v pbcopy)" ]; then

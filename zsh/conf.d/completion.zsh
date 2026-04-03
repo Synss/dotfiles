@@ -1,5 +1,3 @@
-# vim: syn=zsh
-
 fpath=($ZDOTDIR/completions $fpath)
 
 autoload -U compinit

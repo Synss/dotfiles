@@ -1,5 +1,3 @@
-# vim: syn=zsh
-
 HISTSIZE=999
 HISTFILE="$HOME/.history"
 HISTFILE="$HISTFILE-$(whoami)"
