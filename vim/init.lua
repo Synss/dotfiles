@@ -53,7 +53,17 @@ vim.opt.smartcase = true
 vim.opt.wrap = false
 
 -- Color scheme
+-- 24-bit true-color support
+if (vim.env.TMUX == nil or vim.env.TMUX == "") and vim.env.TERM_PROGRAM ~= "Apple_Terminal" then
+  if vim.fn.has("termguicolors") == 1 then
+    vim.opt.termguicolors = true
+  end
+end
+
 -- vim.cmd 'colorscheme NeoSolarized'
+vim.g.gruvbox_italic=1
+vim.g.airline_theme='gruvbox'
+vim.cmd 'colorscheme gruvbox'
 
 -- Split creation
 nmap("<leader>H", ":topleft vnew<cr>")
