@@ -1,6 +1,5 @@
 # easy color management
-autoload -U colors
-colors
+autoload -U colors && colors
 
 # current dir only: ${PWD##*/}
 
