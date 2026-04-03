@@ -60,9 +60,22 @@ if (vim.env.TMUX == nil or vim.env.TMUX == "") and vim.env.TERM_PROGRAM ~= "Appl
   end
 end
 
--- vim.cmd 'colorscheme NeoSolarized'
 vim.g.gruvbox_italic=1
+
+vim.o.background='light'
 vim.g.airline_theme='gruvbox'
+-- airline_term defaults to hardcoded cyan (#9cffd3) when not defined by the theme.
+-- Patch it to use the same colors as airline_c (the generic content section).
+vim.g.airline_theme_patch_func = 'AirlineThemePatch'
+vim.cmd([[
+  function! AirlineThemePatch(palette)
+    for mode in keys(a:palette)
+      if has_key(a:palette[mode], 'airline_c')
+        let a:palette[mode]['airline_term'] = a:palette[mode]['airline_c']
+      endif
+    endfor
+  endfunction
+]])
 vim.cmd 'colorscheme gruvbox'
 
 -- Split creation
