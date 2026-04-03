@@ -4,6 +4,7 @@ packages_apt:
   - geany
   - git
   - jq
+  - photoflare
   - python3.13
   - python3.14
   - ripgrep
@@ -13,8 +14,6 @@ packages_apt:
 packages_snap:
   - name: nvim
     channel: latest/edge
-  - name: pinta
-    channel: latest/stable
 
 packages_brew:
   - ack

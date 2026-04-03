@@ -6,6 +6,12 @@ elif [ -x "$(command -v pbcopy)" ]; then
 	alias -g C='| pbcopy'
 fi
 
+if [ -x "$(command -v photoflare)" ]; then
+    alias paint="photoflare &>/dev/null"
+elif [ -x "$(command -v pinta)" ]; then
+    alias paint=pinta
+fi
+
 if [ -x "$(command -v rg)" ]; then
 	alias ack=rg
 elif [ -x "$(command -v ag)" ]; then
