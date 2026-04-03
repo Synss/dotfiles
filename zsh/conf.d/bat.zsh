@@ -6,6 +6,7 @@ if [[ -n "$COLORFGBG" ]] && [[ ${COLORFGBG##*;} -lt 8 ]]; then
 else
 	export BAT_THEME="gruvbox-light"
 fi
+export BAT_STYLE="header-filename,header-filesize,rule"
 
 __BAT=bat
 if command -v batcat >/dev/null; then
@@ -15,6 +16,7 @@ if command -v batcat >/dev/null; then
 fi
 
 alias cat="$__BAT --paging=never"
+alias nl="$__BAT --number"
 
 alias -g -- -h="-h 2>&1 | $__BAT --language=help --style=plain"
 alias -g -- --help="--help 2>&1 | $__BAT --language=help --style=plain"
