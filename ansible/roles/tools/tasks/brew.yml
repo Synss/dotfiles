@@ -2,4 +2,4 @@
 - name: Install brew packages
   community.general.homebrew:
     name: "{{ tools_list | selectattr('brew', 'defined') | map(attribute='brew') | list }}"
-    state: present
+    state: latest
