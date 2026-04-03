@@ -1,9 +1,5 @@
 ---
 tools_list:
-  - name: ack
-    apt: ack
-    brew: ack
-
   - name: aptitude
     apt: aptitude
 
