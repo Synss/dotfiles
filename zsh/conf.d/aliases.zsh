@@ -25,5 +25,4 @@ fi
 alias -g G='| grep'
 alias -g H='| head'
 alias -g L='| less'
-alias -g P='| open -fa Preview'
 alias -g T='| tail'
