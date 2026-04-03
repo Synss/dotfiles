@@ -1,6 +1,7 @@
 ---
 packages_apt:
   - ack
+  - aptitude
   - geany
   - git
   - jq
