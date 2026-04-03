@@ -100,5 +100,9 @@ tools_list:
     apt: vivid
     brew: vivid
 
+  - name: zoxide
+    apt: zoxide
+    brew: zoxide
+
   - name: zsh
     apt: zsh
