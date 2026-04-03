@@ -1,7 +1,6 @@
 function s { [ $# = 0 ] && sudo -s || sudo "$@" }
 
 # Aliases
-command -v libtree >/dev/null && alias ldt=libtree
 
 if command -v xdg-open >/dev/null; then
 	alias open="xdg-open"
@@ -27,6 +26,5 @@ alias -g D='| dot -Tpdf'
 alias -g G='| grep'
 alias -g H='| head'
 alias -g L='| less'
-alias -g N='&> /dev/null'
 alias -g P='| open -fa Preview'
 alias -g T='| tail'
