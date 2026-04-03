@@ -22,7 +22,6 @@ elif command -v pbcopy >/dev/null; then
 	alias -g C='| pbcopy'
 fi
 
-alias -g D='| dot -Tpdf'
 alias -g G='| grep'
 alias -g H='| head'
 alias -g L='| less'
