@@ -19,7 +19,7 @@ Ansible playbooks for localhost in `ansible`.
 cd ansible
 uv sync
 uv run ansible-galaxy collection install -r requirements.yml
-uv run ansible-playbook site.yml -i inventory/localhost.yml
+uv run ansible-playbook site.yml
 ```
 
 Or run a single role
