@@ -27,6 +27,12 @@ Or run a single role
 uv run ansible-playbook site.yml --tags vim
 ```
 
+Test:
+```bash
+cd ansible
+./test-idempotency.sh
+```
+
 Lint:
 ```bash
 cd ansible
