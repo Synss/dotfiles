@@ -1,5 +1,3 @@
-[pull]
-	rebase = true
 [alias]
 	branch-name = rev-parse --abbrev-ref HEAD
 	au = add -u
@@ -13,12 +11,28 @@
 	unstage = reset HEAD --
 	retop = "!f() { branch=${1:-master}; git fetch origin $branch:$branch && git rebase $branch; }; f"
 	names = diff --name-only
+[core]
+	pager = delta
 [commit]
 	verbose = true
+[delta]
+	navigate = true  # use n and N to move between diff sections
+[delta "dark"]
+	dark = true
+	syntax-theme = gruvbox-dark
+[delta "light"]
+	light = true
+	syntax-theme = gruvbox-light
+[interactive]
+	diffFilter = delta --color-only
+[merge]
+	conflictStyle = zdiff3
+[pull]
+	rebase = true
 [push]
 	default = upstream
+[rebase]
+	autosquash = true
 [user]
 	name = Mathias Laurin
 	email = Mathias.Laurin+github.com@gmail.com
-[rebase]
-	autosquash = true
