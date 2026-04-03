@@ -10,3 +10,6 @@
 - name: Install brew packages
   ansible.builtin.include_tasks: brew.yml
   when: ansible_facts['os_family'] == "Darwin"
+
+- name: Install binary tools
+  ansible.builtin.include_tasks: binary.yml

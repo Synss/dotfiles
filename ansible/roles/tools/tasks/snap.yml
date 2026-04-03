@@ -1,0 +1,10 @@
+---
+- name: Install snap packages
+  community.general.snap:
+    name: "{{ item.snap.package | default(item.name) }}"
+    channel: "{{ item.snap.channel }}"
+    state: present
+  become: true
+  loop: "{{ tools_list | selectattr('snap', 'defined') | list }}"
+  loop_control:
+    label: "{{ item.name }}"

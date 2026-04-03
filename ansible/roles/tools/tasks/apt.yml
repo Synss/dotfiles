@@ -15,6 +15,6 @@
 
 - name: Install apt packages
   ansible.builtin.apt:
-    name: "{{ packages_apt }}"
+    name: "{{ tools_list | selectattr('apt', 'defined') | map(attribute='apt') | list }}"
     state: present
   become: true
