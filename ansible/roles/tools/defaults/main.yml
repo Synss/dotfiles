@@ -15,6 +15,10 @@ tools_list:
     apt: eza
     brew: eza
 
+  - name: fd
+    apt: fd-find
+    brew: fd
+
   - name: fzf
     brew: fzf
     binary:
