@@ -10,6 +10,7 @@ packages_apt:
   - python3.13
   - python3.14
   - ripgrep
+  - shellcheck
   - tmux
   - zsh
 
@@ -27,4 +28,5 @@ packages_brew:
   - python@3.13
   - python@3.14
   - ripgrep
+  - shellcheck
   - tmux
