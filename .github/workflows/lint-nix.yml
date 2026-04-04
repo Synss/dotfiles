@@ -1,0 +1,45 @@
+---
+name: lint-nix
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  nixfmt:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: DeterminateSystems/nix-installer-action@main
+      - name: Format check
+        run: nix develop ./nix --command nixfmt --check nix/
+
+  statix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: DeterminateSystems/nix-installer-action@main
+      - name: Lint (statix)
+        run: nix develop ./nix --command statix check nix/
+
+  deadnix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: DeterminateSystems/nix-installer-action@main
+      - name: Dead code (deadnix)
+        run: nix develop ./nix --command deadnix --fail nix/
+
+  all-checks:
+    if: ${{ !cancelled() }}
+    needs:
+      - nixfmt
+      - statix
+      - deadnix
+    runs-on: ubuntu-latest
+    permissions: {}
+    steps:
+      - if: >-
+          ${{ contains(needs.*.result, 'failure')
+          || contains(needs.*.result, 'cancelled') }}
+        run: exit 1
