@@ -78,6 +78,10 @@ vim.cmd([[
 ]])
 vim.cmd 'colorscheme gruvbox'
 
+-- Shortcut for switching between light and dark mode
+vim.api.nvim_create_user_command('Dark', 'set background=dark', {})
+vim.api.nvim_create_user_command('Light', 'set background=light', {})
+
 -- Split creation
 nmap("<leader>H", ":topleft vnew<cr>")
 nmap("<leader>J", ":botright new<cr>")
