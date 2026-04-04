@@ -1,5 +1,5 @@
 ---
-name: lint
+name: lint-ansible
 
 on:
   push:
@@ -24,3 +24,15 @@ jobs:
 
       - name: Lint
         run: cd ansible && uv run ansible-lint
+
+  all-checks:
+    if: ${{ !cancelled() }}
+    needs:
+      - ansible-lint
+    runs-on: ubuntu-latest
+    permissions: {}
+    steps:
+      - if: >-
+          ${{ contains(needs.*.result, 'failure')
+          || contains(needs.*.result, 'cancelled') }}
+        run: exit 1

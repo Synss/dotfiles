@@ -1,0 +1,3 @@
+_: {
+  # Linux-specific configuration
+}

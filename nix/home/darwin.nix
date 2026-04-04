@@ -1,0 +1,3 @@
+_: {
+  # macOS-specific configuration
+}
