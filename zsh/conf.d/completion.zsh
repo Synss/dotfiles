@@ -1,4 +1,4 @@
-fpath=($ZDOTDIR/completions $fpath)
+fpath=($ZDOTDIR/completions $HOME/.nix-profile/share/zsh/site-functions $fpath)
 
 autoload -U compinit
 compinit
