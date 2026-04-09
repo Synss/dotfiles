@@ -34,7 +34,6 @@
         pnpm
         ripgrep
         shellcheck
-        tmux
         uv
         vivid
         zoxide
@@ -80,6 +79,28 @@
         push.default = "upstream";
         rebase.autosquash = true;
       };
+    };
+
+    tmux = {
+      enable = true;
+      prefix = "C-a";
+      mouse = true;
+      terminal = "screen-256color";
+      keyMode = "vi";
+      escapeTime = 0;
+      extraConfig = ''
+        bind C-a send-prefix
+        bind | split-window -h
+        bind - split-window -v
+        bind h select-pane -L
+        bind j select-pane -D
+        bind k select-pane -U
+        bind l select-pane -R
+        bind -r H resize-pane -L 5
+        bind -r J resize-pane -D 5
+        bind -r K resize-pane -U 5
+        bind -r L resize-pane -R 5
+      '';
     };
 
     delta = {
