@@ -1,5 +1,5 @@
 switch:
-    nix run home-manager -- switch --impure --flake "./nix#$(hostname)"
+    DOTFILES_DIR=$(git rev-parse --show-toplevel) nix run home-manager -- switch --impure --flake "./nix#$(hostname)"
     just update-vim
 
 update-vim:

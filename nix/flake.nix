@@ -19,6 +19,9 @@
         home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.${system};
           modules = [ ./home/default.nix ];
+          extraSpecialArgs = {
+            dotfilesDir = builtins.getEnv "DOTFILES_DIR";
+          };
         };
     in
     {
