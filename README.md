@@ -11,39 +11,8 @@ Configuration for
 
 ## Installation
 
-Ansible playbooks for localhost in `ansible`.
+Nix flake + Home Manager in `nix/`. See [`nix/README.md`](nix/README.md).
 
-### Usage
-
-Allow `direnv` in the `ansible` directory.  `direnv` is configured
-to remove the need to prefix ansible commands with `uv run`.
-```bash
-cd ansible
-direnv allow
-```
-
-Update `uv` and run the playbooks:
-
-```bash
-cd ansible
-uv sync
-ansible-galaxy collection install -r requirements.yml
-ansible-playbook site.yml
-```
-
-Or run a single role
-```
-ansible-playbook site.yml --tags vim
-```
-
-Test:
-```bash
-cd ansible
-./test-idempotency.sh
-```
-
-Lint:
-```bash
-cd ansible
-ansible-lint
+```sh
+just switch
 ```
