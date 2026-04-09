@@ -16,6 +16,7 @@
       [
         # nix tooling
         deadnix
+        home-manager
         nixfmt-tree
         statix
 
