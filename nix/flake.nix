@@ -39,7 +39,7 @@
           default = pkgs.mkShell {
             packages = with pkgs; [
               deadnix
-              nixfmt
+              nixfmt-tree
               statix
             ];
           };

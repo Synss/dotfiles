@@ -27,7 +27,7 @@ jobs:
       - uses: actions/checkout@v6
       - uses: DeterminateSystems/nix-installer-action@main
       - name: Format check
-        run: nix develop ./nix --command nixfmt --check nix/
+        run: nix develop ./nix --command treefmt --ci nix/
 
   statix:
     runs-on: ubuntu-latest
