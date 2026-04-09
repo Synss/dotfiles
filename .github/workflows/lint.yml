@@ -1,11 +1,26 @@
 ---
-name: lint-nix
+name: lint
 
 on:
   push:
   pull_request:
 
 jobs:
+  ansible-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: astral-sh/setup-uv@v7
+        with:
+          enable-cache: true
+          python-version: "3.12"
+      - name: Install dependencies
+        run: cd ansible && uv sync
+      - name: Install collections
+        run: cd ansible && uv run ansible-galaxy collection install -r requirements.yml
+      - name: Lint
+        run: cd ansible && uv run ansible-lint
+
   nixfmt:
     runs-on: ubuntu-latest
     steps:
@@ -30,12 +45,22 @@ jobs:
       - name: Dead code (deadnix)
         run: nix develop ./nix --command deadnix --fail nix/
 
+  just-fmt:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: extractions/setup-just@v2
+      - name: Format check
+        run: just --fmt --check --unstable
+
   all-checks:
     if: ${{ !cancelled() }}
     needs:
+      - ansible-lint
       - nixfmt
       - statix
       - deadnix
+      - just-fmt
     runs-on: ubuntu-latest
     permissions: {}
     steps:
