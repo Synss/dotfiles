@@ -16,7 +16,7 @@
       [
         # nix tooling
         deadnix
-        nixfmt
+        nixfmt-tree
         statix
 
         # terminal tools
