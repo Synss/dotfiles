@@ -5,6 +5,7 @@ Nix flake + Home Manager (standalone) managing terminal tools and configs.
 ## Usage
 
 ```sh
+just build         # build without activating — catches evaluation errors before switching
 just switch        # home-manager switch (requires DOTFILES_DIR, set by just)
 just update-vim    # update vim submodules
 ```
