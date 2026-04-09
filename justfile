@@ -6,6 +6,11 @@ bootstrap:
     DOTFILES_DIR=$(git rev-parse --show-toplevel) nix run home-manager -- switch --impure --flake "./nix#$(hostname)"
     just update-vim
 
+update:
+    nix flake update ./nix
+    just build
+    just switch
+
 build:
     DOTFILES_DIR=$(git rev-parse --show-toplevel) home-manager build --impure --flake "./nix#$(hostname)"
 
