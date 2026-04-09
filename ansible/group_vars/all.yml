@@ -1,4 +1,0 @@
----
-dotfiles_dir: "{{ playbook_dir | dirname }}"
-bin_dir: "{{ lookup('env', 'HOME') }}/.local/bin"
-platform_key: "{{ 'linux_amd64' if ansible_facts['system'] == 'Linux' else 'darwin_arm64' }}"
