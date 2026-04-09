@@ -6,8 +6,6 @@ if [[ -n "$COLORFGBG" ]] && [[ ${COLORFGBG##*;} -lt 8 ]]; then
 else
 	export BAT_THEME="gruvbox-light"
 fi
-export BAT_STYLE="header-filename,header-filesize,rule"
-
 __BAT=bat
 if command -v batcat >/dev/null; then
 	# Ubuntu/Debian renames bat -> batcat
