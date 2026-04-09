@@ -24,7 +24,6 @@
         delta
         eza
         fd
-        fzf
         jq
         just
         yq-go
@@ -34,7 +33,6 @@
         shellcheck
         uv
         vivid
-        zoxide
         zsh
       ]
       ++ lib.optionals stdenv.isLinux [ ]
@@ -110,6 +108,12 @@
         bind -r L resize-pane -R 5
       '';
     };
+
+    # Shell integration for fzf lives in zsh/conf.d/.
+    fzf.enable = true;
+
+    # Shell integration for zoxide lives in zsh/conf.d/.
+    zoxide.enable = true;
 
     delta = {
       enable = true;
