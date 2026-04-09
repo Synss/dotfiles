@@ -1,5 +1,13 @@
-switch:
+# Login shell so /etc/profile.d/nix.sh is sourced and ~/.nix-profile/bin is on PATH.
+
+set shell := ["sh", "-l", "-c"]
+
+bootstrap:
     DOTFILES_DIR=$(git rev-parse --show-toplevel) nix run home-manager -- switch --impure --flake "./nix#$(hostname)"
+    just update-vim
+
+switch:
+    DOTFILES_DIR=$(git rev-parse --show-toplevel) home-manager switch --impure --flake "./nix#$(hostname)"
     just update-vim
 
 update-vim:
