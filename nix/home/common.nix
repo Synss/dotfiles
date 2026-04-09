@@ -1,4 +1,10 @@
-{ pkgs, lib, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  dotfilesDir,
+  ...
+}:
 {
   home = {
     username = builtins.getEnv "USER";
@@ -37,5 +43,13 @@
       ]
       ++ lib.optionals stdenv.isLinux [ ]
       ++ lib.optionals stdenv.isDarwin [ ];
+
+    file = {
+      ".config/nvim".source = config.lib.file.mkOutOfStoreSymlink "${dotfilesDir}/vim";
+      ".vim".source = config.lib.file.mkOutOfStoreSymlink "${dotfilesDir}/vim";
+      ".zshenv".text = ''
+        export ZDOTDIR="${dotfilesDir}/zsh"
+      '';
+    };
   };
 }
