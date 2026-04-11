@@ -35,6 +35,9 @@
         uv
         vivid
         zsh
+
+        # programming languages
+        rustup
       ]
       ++ lib.optionals stdenv.isLinux [ ]
       ++ lib.optionals stdenv.isDarwin [ ];
