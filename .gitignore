@@ -1,5 +1,6 @@
 .DS_Store
 *.swp
+.direnv/
 .vim_submodule_updated
 
 packages_apt.txt
