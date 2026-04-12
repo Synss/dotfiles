@@ -31,6 +31,7 @@
         yq-go
         neovim
         pnpm
+        pre-commit
         ripgrep
         shellcheck
         uv
