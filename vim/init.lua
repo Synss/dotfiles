@@ -167,6 +167,16 @@ end
 -- LSP
 local servers = { 'clangd', 'pylsp', 'pyright' }
 
+-- Point pyright at the uv-managed venv (.venv in project root).
+vim.lsp.config('pyright', {
+    settings = {
+        python = {
+            venvPath = ".",
+            venv = ".venv",
+        }
+    }
+})
+
 -- Make sure both plugins are loaded in the correct order.
 require("mason").setup()
 require("mason-lspconfig").setup({
