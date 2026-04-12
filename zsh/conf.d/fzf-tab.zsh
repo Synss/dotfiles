@@ -1,6 +1,5 @@
 command -v fzf >/dev/null || test -d "$ZDOTDIR/plugins/fzf-tab.plugins.zsh" || return 0
 
-autoload -U compinit; compinit
 source "$ZDOTDIR/plugins/fzf-tab.git/fzf-tab.plugin.zsh"
 
 # preview directory's content with eza when completing cd
