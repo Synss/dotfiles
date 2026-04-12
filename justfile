@@ -32,3 +32,11 @@ update-vim:
         git submodule update --init --remote vim/pack/plugins/start
         touch "$stamp"
     fi
+
+update-zsh:
+    #!/usr/bin/env bash
+    stamp="$(git rev-parse --show-toplevel)/.zsh_submodule_updated"
+    if [ ! -f "$stamp" ] || [ -n "$(find "$stamp" -mmin +1440 2>/dev/null)" ]; then
+        git submodule update --init --remote zsh/plugins
+        touch "$stamp"
+    fi
