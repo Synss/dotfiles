@@ -91,8 +91,6 @@ if (vim.env.TMUX == nil or vim.env.TMUX == "") and vim.env.TERM_PROGRAM ~= "Appl
   end
 end
 
-vim.g.gruvbox_italic=1
-
 vim.o.background='light'
 vim.cmd 'colorscheme gruvbox'
 
