@@ -3,7 +3,7 @@
 set shell := ["sh", "-l", "-c"]
 
 bootstrap:
-    DOTFILES_DIR=$(git rev-parse --show-toplevel) nix run home-manager -- switch --impure --flake "./nix#$(hostname)"
+    nix run home-manager -- switch --flake "./nix#$(hostname)"
     just update-vim
 
 update:
@@ -12,10 +12,10 @@ update:
     just switch
 
 build:
-    DOTFILES_DIR=$(git rev-parse --show-toplevel) home-manager build --impure --flake "./nix#$(hostname)"
+    home-manager build --flake "./nix#$(hostname)"
 
 switch:
-    DOTFILES_DIR=$(git rev-parse --show-toplevel) home-manager switch --impure --flake "./nix#$(hostname)"
+    home-manager switch --flake "./nix#$(hostname)"
     just update-vim
 
 update-vim:

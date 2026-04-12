@@ -2,13 +2,14 @@
   pkgs,
   lib,
   config,
+  username,
+  homeDirectory,
   dotfilesDir,
   ...
 }:
 {
   home = {
-    username = builtins.getEnv "USER";
-    homeDirectory = builtins.getEnv "HOME";
+    inherit username homeDirectory;
     stateVersion = "25.11";
 
     packages =
