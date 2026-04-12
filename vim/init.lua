@@ -94,19 +94,6 @@ end
 vim.g.gruvbox_italic=1
 
 vim.o.background='light'
-vim.g.airline_theme='gruvbox'
--- airline_term defaults to hardcoded cyan (#9cffd3) when not defined by the theme.
--- Patch it to use the same colors as airline_c (the generic content section).
-vim.g.airline_theme_patch_func = 'AirlineThemePatch'
-vim.cmd([[
-  function! AirlineThemePatch(palette)
-    for mode in keys(a:palette)
-      if has_key(a:palette[mode], 'airline_c')
-        let a:palette[mode]['airline_term'] = a:palette[mode]['airline_c']
-      endif
-    endfor
-  endfunction
-]])
 vim.cmd 'colorscheme gruvbox'
 
 -- Shortcut for switching between light and dark mode
@@ -191,3 +178,6 @@ require("mason-lspconfig").setup({
 for _, lsp in pairs(servers) do
   vim.lsp.enable(lsp)
 end
+
+--
+require('lualine').setup()
