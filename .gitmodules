@@ -34,3 +34,6 @@
 [submodule "zsh/plugins/fzf-tab.git"]
 	path = zsh/plugins/fzf-tab.git
 	url = git@github.com:Aloxaf/fzf-tab.git
+[submodule "zsh/plugins/zsh-autosuggestions.git"]
+	path = zsh/plugins/zsh-autosuggestions.git
+	url = git@github.com:zsh-users/zsh-autosuggestions.git
