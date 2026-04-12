@@ -1,6 +1,17 @@
 ---
 version: 2
 updates:
+  - package-ecosystem: pre-commit
+    directory: /
+    schedule:
+      interval: monthly
+    open-pull-requests-limit: 5
+    groups:
+      all-dependencies:
+        update-types: [minor, patch]
+    cooldown:
+      default-days: 7
+
   - package-ecosystem: nix
     directory: /
     schedule:
