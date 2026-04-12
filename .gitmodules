@@ -4,9 +4,6 @@
 [submodule "vim/pack/plugins/start/nvim-lspconfig.git"]
 	path = vim/pack/plugins/start/nvim-lspconfig.git
 	url = https://github.com/neovim/nvim-lspconfig.git
-[submodule "vim/pack/plugins/start/vim-sensible.git"]
-	path = vim/pack/plugins/start/vim-sensible.git
-	url = https://github.com/tpope/vim-sensible.git
 [submodule "vim/pack/plugins/start/mason.nvim"]
 	path = vim/pack/plugins/start/mason.nvim
 	url = https://github.com/williamboman/mason.nvim
