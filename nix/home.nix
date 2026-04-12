@@ -94,13 +94,13 @@
 
     tmux = {
       enable = true;
-      prefix = "C-a";
+      prefix = "C-Space";
       mouse = true;
       terminal = "screen-256color";
       keyMode = "vi";
       escapeTime = 0;
       extraConfig = ''
-        bind C-a send-prefix
+        bind C-Space send-prefix
         bind | split-window -h
         bind - split-window -v
         bind h select-pane -L
