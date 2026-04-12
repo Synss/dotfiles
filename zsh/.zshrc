@@ -8,3 +8,6 @@ source "$ZDOTDIR/core.d/prompt.zsh"
 # Tool integrations — alphabetical order is fine
 for f in $ZDOTDIR/conf.d/*.zsh; do source "$f"; done
 () { for f; do source "$f"; done } $ZDOTDIR/conf.d/*.local(N)
+
+# Keybindings — after plugins are loaded
+source "$ZDOTDIR/core.d/keybindings.zsh"
