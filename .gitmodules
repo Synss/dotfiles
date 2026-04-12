@@ -1,12 +1,6 @@
 [submodule "bundle/vim-colors-solarized.git"]
 	path = vim/pack/plugins/start/vim-colors-solarized.git
 	url = https://github.com/altercation/vim-colors-solarized.git
-[submodule "bundle/vim-airline.git"]
-	path = vim/pack/plugins/start/vim-airline.git
-	url = https://github.com/bling/vim-airline.git
-[submodule "bundle/vim-airline-themes.git"]
-	path = vim/pack/plugins/start/vim-airline-themes.git
-	url = https://github.com/vim-airline/vim-airline-themes
 [submodule "vim/pack/plugins/start/nvim-lspconfig.git"]
 	path = vim/pack/plugins/start/nvim-lspconfig.git
 	url = https://github.com/neovim/nvim-lspconfig.git
@@ -40,3 +34,6 @@
 [submodule "vim/pack/plugins/start/vim-nix.git"]
 	path = vim/pack/plugins/start/vim-nix.git
 	url = git@github.com:LnL7/vim-nix.git
+[submodule "vim/pack/plugins/start/lualine.nvim.git"]
+	path = vim/pack/plugins/start/lualine.nvim.git
+	url = git@github.com:nvim-lualine/lualine.nvim.git
