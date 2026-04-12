@@ -96,10 +96,11 @@
       enable = true;
       prefix = "C-Space";
       mouse = true;
-      terminal = "screen-256color";
+      terminal = "tmux-256color";
       keyMode = "vi";
       escapeTime = 0;
       extraConfig = ''
+        set -ga terminal-overrides ",*:Tc"
         bind C-Space send-prefix
         bind | split-window -h
         bind - split-window -v
