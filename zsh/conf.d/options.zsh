@@ -41,3 +41,4 @@ setopt auto_continue			# true disown
 # Shell State
 
 # Zle
+bindkey -v
