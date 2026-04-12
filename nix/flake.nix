@@ -14,25 +14,35 @@
         "x86_64-linux"
         "aarch64-darwin"
       ];
+      machines = {
+        klapp-0672 = {
+          system = "x86_64-linux";
+          username = "mathiaslaurin";
+        };
+      };
       mkHome =
-        system:
-        home-manager.lib.homeManagerConfiguration {
+        _:
+        { system, username }:
+        let
           pkgs = nixpkgs.legacyPackages.${system};
+          homeDirectory =
+            if pkgs.stdenv.hostPlatform.isDarwin then "/Users/${username}" else "/home/${username}";
+        in
+        home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
           modules = [
             ./home.nix
             ./linux.nix
             ./darwin.nix
           ];
           extraSpecialArgs = {
-            dotfilesDir = builtins.getEnv "DOTFILES_DIR";
+            inherit username homeDirectory;
+            dotfilesDir = "${homeDirectory}/src/dotfiles.git";
           };
         };
     in
     {
-      homeConfigurations = {
-        # hostname = mkHome arch;
-        klapp-0672 = mkHome "x86_64-linux";
-      };
+      homeConfigurations = nixpkgs.lib.mapAttrs mkHome machines;
 
       devShells = forAllSystems (
         system:
