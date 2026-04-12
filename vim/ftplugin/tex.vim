@@ -1,5 +1,5 @@
-set makeprg=pdflatex\ \-file\-line\-error\ \-interaction=nonstopmode\ $*\\\|\ grep\ \-E\ '\\w+:[0-9]{1,4}:\\\ ' 
-set errorformat=%f:%l:\ %m 
+set makeprg=pdflatex\ \-file\-line\-error\ \-interaction=nonstopmode\ $*\\\|\ grep\ \-E\ '\\w+:[0-9]{1,4}:\\\ '
+set errorformat=%f:%l:\ %m
 
 map <buffer> ,p :w<CR>:make %<<CR>
 map <buffer> ,b :!bibtex % &
@@ -23,4 +23,3 @@ set spelllang=en_us
 " Enable Conceal
 set cole=2
 hi Conceal guibg=White guifg=Brown
-

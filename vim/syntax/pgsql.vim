@@ -16,7 +16,7 @@ elseif exists("b:current_syntax")
   finish
 endif
 
-" Always ignore case 
+" Always ignore case
 syn case ignore
 
 " General keywords which don't fall into other categories
@@ -30,10 +30,10 @@ syn keyword pgsqlKeyword	 deferrable deferred defaults do diagnostics
 syn keyword pgsqlKeyword	 explain elsif end exists execute exclusion found exception except each exit
 syn keyword pgsqlKeyword	 function foreign from full fetch force for
 syn keyword pgsqlKeyword	 group grant global get
-syn keyword pgsqlKeyword	 having 
+syn keyword pgsqlKeyword	 having
 syn keyword pgsqlKeyword	 index into immutable inner initially immediate inherits instead insert in if
 syn keyword pgsqlKeyword	 join
-syn keyword pgsqlKeyword	 key 
+syn keyword pgsqlKeyword	 key
 syn keyword pgsqlKeyword	 language lock local limit left load loop
 syn keyword pgsqlKeyword	 max min move match
 syn keyword pgsqlKeyword	 notify no new null next
@@ -41,7 +41,7 @@ syn keyword pgsqlKeyword	 or operator outer order old on out open
 syn keyword pgsqlKeyword	 prepare plpgsql primary password primary privilege procedure partial prepared
 syn keyword pgsqlKeyword	 partition preserve perform
 syn keyword pgsqlKeyword	 role replace reindex release reset revoke rollback references row rows rowtype rule restrict
-syn keyword pgsqlKeyword	 returns return 
+syn keyword pgsqlKeyword	 returns return
 syn keyword pgsqlKeyword	 select set strict schema sequence savepoint simple system stable setof
 syn keyword pgsqlKeyword	 truncate to tranaction trigger table tables temp temporary tablespace type
 syn keyword pgsqlKeyword	 update unique unlisten using
@@ -77,8 +77,8 @@ syn sync ccomment pgsqlComment
 syn keyword pgsqlType		 anyarray anyelement abstime anyenum
 syn keyword pgsqlType		 anynonarray any aclitem bytea bigserial
 syn keyword pgsqlType		 bit boolean bigint box cidr cstring char
-syn keyword pgsqlType		 character cid circle decimal double date 
-syn keyword pgsqlType		 enum gtsvector hstore inet interval 
+syn keyword pgsqlType		 character cid circle decimal double date
+syn keyword pgsqlType		 enum gtsvector hstore inet interval
 syn keyword pgsqlType		 internal int2vector int integer line lseg
 syn keyword pgsqlType		 language_handler macaddr money numeric
 syn keyword pgsqlType		 name opaque oidvector oid polygon point
@@ -86,10 +86,10 @@ syn keyword pgsqlType		 path period precision regclass real
 syn keyword pgsqlType		 regtype refcursor regoperator reltime
 syn keyword pgsqlType		 record regproc regdictionary regoper
 syn keyword pgsqlType		 regprocedure regconfig smgr smallint
-syn keyword pgsqlType		 serial smallserial time tsquery tinterval 
-syn keyword pgsqlType		 trigger tid timestamp timestamptz text 
-syn keyword pgsqlType		 tsvector txid_snapshot unknown uuid void 
-syn keyword pgsqlType		 varchar varying with without xml xid 
+syn keyword pgsqlType		 serial smallserial time tsquery tinterval
+syn keyword pgsqlType		 trigger tid timestamp timestamptz text
+syn keyword pgsqlType		 tsvector txid_snapshot unknown uuid void
+syn keyword pgsqlType		 varchar varying with without xml xid
 syn keyword pgsqlType		 zone
 
 syn region pgsqlType		 start="float\W" end="."me=s-1

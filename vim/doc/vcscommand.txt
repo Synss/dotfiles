@@ -44,7 +44,7 @@ The vcscommand plugin comprises five files: vcscommand.vim, vcssvn.vim,
 vcscvs.vim, vcssvk.vim and vcscommand.txt (this file).  In order to install
 the plugin, place the vcscommand.vim, vcssvn.vim, vcssvk.vim, and vcscvs.vim
 files into a plugin directory in your runtime path (please see
-|add-global-plugin| and |'runtimepath'|. 
+|add-global-plugin| and |'runtimepath'|.
 
 This help file can be included in the VIM help system by copying it into a
 'doc' directory in your runtime path and then executing the |:helptags|
@@ -203,7 +203,7 @@ buffers associated with the original file.
 :VCSInfo						*:VCSInfo*
 
 This command displays extended information about the current file in a new
-scratch buffer. 
+scratch buffer.
 
 :VCSLock						*:VCSLock*
 
@@ -257,15 +257,15 @@ If no revision is specified, the most recent version of the file on the
 current branch is used.  With one argument, that argument is used as the
 revision as above.  With two arguments, the differences between the two
 revisions is displayed using vimdiff.
-                                                            
+
 With either zero or one argument, the original buffer is used to perform the
 vimdiff.  When the scratch buffer is closed, the original buffer will be
 returned to normal mode.
-                                                            
+
 Once vimdiff mode is started using the above methods, additional vimdiff
 buffers may be added by passing a single version argument to the command.
 There may be up to 4 vimdiff buffers total.
-                                                            
+
 Using the 2-argument form of the command resets the vimdiff to only those 2
 versions.  Additionally, invoking the command on a different file will close
 the previous vimdiff buffers.
@@ -442,7 +442,7 @@ created with |:VCSVimDiff|.
 VCSCommandDisableMappings			*VCSCommandDisableMappings*
 
 This variable, if set to a non-zero value, prevents the default command
-mappings from being set.  This supercedes 
+mappings from being set.  This supercedes
 |VCSCommandDisableExtensionMappings|.
 
 VCSCommandDisableExtensionMappings	*VCSCommandDisableExtensionMappings*
@@ -477,11 +477,11 @@ will be passed the following arguments:
 
   command - name of the VCS command being executed (such as 'Log' or
   'Diff').
-  
+
   originalBuffer - buffer number of the source file.
-  
+
   vcsType - type of VCS controlling this file (such as 'CVS' or 'SVN').
-  
+
   statusText - extra text associated with the VCS action (such as version
   numbers).
 

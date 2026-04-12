@@ -20,5 +20,3 @@ syn match pythonComparison "<\|>\|<=\|>=\|==\|!=\|<>"
 hi link pythonAssignment Operator
 hi link pythonArithmetic Operator
 hi link pythonComparison Operator
-
-
