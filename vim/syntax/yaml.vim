@@ -59,4 +59,3 @@ hi link yamlOperator	Operator
 hi link yamlDelimiter	Delimiter
 hi link yamlString	String
 hi link yamlEscape	Special
-
