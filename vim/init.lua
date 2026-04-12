@@ -177,5 +177,9 @@ for _, lsp in pairs(servers) do
   vim.lsp.enable(lsp)
 end
 
+-- Oil mapping to `-`, like vim-vinegar
+require('oil').setup()
+vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
+
 --
 require('lualine').setup()

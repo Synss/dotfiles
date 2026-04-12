@@ -22,9 +22,6 @@
 [submodule "vim/pack/plugins/start/vim-fugitive.git"]
 	path = vim/pack/plugins/start/vim-fugitive.git
 	url = git@github.com:tpope/vim-fugitive.git
-[submodule "vim/pack/plugins/start/vim-vinegar.git"]
-	path = vim/pack/plugins/start/vim-vinegar.git
-	url = https://github.com/tpope/vim-vinegar.git
 [submodule "vim/pack/plugins/start/vim-nix.git"]
 	path = vim/pack/plugins/start/vim-nix.git
 	url = git@github.com:LnL7/vim-nix.git
@@ -34,3 +31,6 @@
 [submodule "vim/pack/plugins/start/gruvbox.nvim.git"]
 	path = vim/pack/plugins/start/gruvbox.nvim.git
 	url = https://github.com/ellisonleao/gruvbox.nvim
+[submodule "vim/pack/plugins/start/oil.nvim.git"]
+	path = vim/pack/plugins/start/oil.nvim.git
+	url = git@github.com:stevearc/oil.nvim.git
