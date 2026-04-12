@@ -1,3 +1,3 @@
 _: {
-  # macOS-specific configuration
+  programs.alacritty.enable = true;
 }
