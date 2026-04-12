@@ -15,6 +15,9 @@ update:
 build:
     nix flake check ./nix
 
+gc:
+    nix-collect-garbage -d
+
 news:
     home-manager news --flake "./nix#$(hostname)"
 
