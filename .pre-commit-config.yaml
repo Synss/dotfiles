@@ -1,0 +1,44 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-yaml
+      - id: check-merge-conflict
+
+  - repo: local
+    hooks:
+      - id: nixfmt
+        name: nixfmt
+        entry: treefmt nix/
+        language: system
+        files: \.nix$
+        pass_filenames: false
+
+      - id: statix
+        name: statix
+        entry: statix check nix/
+        language: system
+        files: \.nix$
+        pass_filenames: false
+
+      - id: deadnix
+        name: deadnix
+        entry: deadnix --fail nix/
+        language: system
+        files: \.nix$
+        pass_filenames: false
+
+      - id: just-fmt
+        name: just --fmt
+        entry: just --fmt --unstable
+        language: system
+        files: ^justfile$
+        pass_filenames: false
+
+      - id: shellcheck
+        name: shellcheck
+        entry: shellcheck
+        language: system
+        files: \.sh$

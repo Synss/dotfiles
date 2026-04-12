@@ -4,6 +4,7 @@ set shell := ["sh", "-l", "-c"]
 
 bootstrap:
     nix run home-manager -- switch --flake "./nix#$(hostname)"
+    pre-commit install
     just update-vim
 
 update:
