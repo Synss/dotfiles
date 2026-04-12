@@ -20,13 +20,11 @@ nix run nixpkgs#just -- switch
 ## Layout
 
 ```
-flake.nix          # inputs, homeConfigurations keyed by hostname, devShell
-flake.lock         # pinned nixpkgs + home-manager
-home/
-  default.nix      # imports common + linux/darwin
-  common.nix       # packages and config (all platforms)
-  linux.nix        # platform-specific config
-  darwin.nix       # platform-specific config
+flake.nix     # inputs, machines registry, homeConfigurations, devShell
+flake.lock    # pinned nixpkgs + home-manager
+home.nix      # packages and config (all platforms)
+linux.nix     # platform-specific config
+darwin.nix    # platform-specific config
 ```
 
 ## Linting
