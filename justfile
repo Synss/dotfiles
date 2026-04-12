@@ -10,6 +10,7 @@ update:
     nix flake update ./nix
     just build
     just switch
+    just update-vim
 
 build:
     nix flake check ./nix
@@ -19,7 +20,6 @@ news:
 
 switch:
     home-manager switch --flake "./nix#$(hostname)"
-    just update-vim
 
 update-vim:
     #!/usr/bin/env bash
