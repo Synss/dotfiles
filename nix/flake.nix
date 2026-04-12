@@ -5,10 +5,19 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixgl = {
+      url = "github:nix-community/nixGL";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
-    { nixpkgs, home-manager, ... }:
+    {
+      nixpkgs,
+      home-manager,
+      nixgl,
+      ...
+    }:
     let
       forAllSystems = nixpkgs.lib.genAttrs [
         "x86_64-linux"
@@ -36,7 +45,7 @@
             ./darwin.nix
           ];
           extraSpecialArgs = {
-            inherit username homeDirectory;
+            inherit username homeDirectory nixgl;
             dotfilesDir = "${homeDirectory}/src/dotfiles.git";
           };
         };
