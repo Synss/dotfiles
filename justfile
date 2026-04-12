@@ -14,6 +14,9 @@ update:
 build:
     nix flake check ./nix
 
+news:
+    home-manager news --flake "./nix#$(hostname)"
+
 switch:
     home-manager switch --flake "./nix#$(hostname)"
     just update-vim
