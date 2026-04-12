@@ -6,7 +6,7 @@ Nix flake + Home Manager (standalone) managing terminal tools and configs.
 
 ```sh
 just update        # flake update + build + switch (full upgrade)
-just build         # build without activating — catches evaluation errors before switching
+just build         # nix flake check — evaluates all outputs without building
 just switch        # home-manager switch
 just update-vim    # update vim submodules
 ```

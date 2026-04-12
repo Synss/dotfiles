@@ -12,7 +12,7 @@ update:
     just switch
 
 build:
-    home-manager build --flake "./nix#$(hostname)"
+    nix flake check ./nix
 
 switch:
     home-manager switch --flake "./nix#$(hostname)"
