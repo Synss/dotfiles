@@ -9,12 +9,15 @@ bootstrap:
     nix run home-manager -- switch --flake "./nix#$(hostname)"
     pre-commit install
     just update-vim
+    just update-zsh
 
 update:
     nix flake update ./nix
     just build
     just switch
     just update-vim
+    just update-zsh
+    just update-linters
 
 build:
     nix flake check ./nix
