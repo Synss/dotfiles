@@ -6,7 +6,7 @@
 }:
 {
   targets.genericLinux.nixGL = {
-    packages = nixgl.packages.${pkgs.system};
+    packages = nixgl.packages.${pkgs.stdenv.hostPlatform.system};
     defaultWrapper = "mesa";
   };
 
