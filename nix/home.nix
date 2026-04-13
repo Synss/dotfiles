@@ -104,6 +104,15 @@
         set -ga terminal-overrides ",*:Tc"
         bind C-Space send-prefix
       '';
+      plugins = with pkgs.tmuxPlugins; [
+        resurrect
+        {
+          plugin = continuum;
+          extraConfig = ''
+            set -g @continuum-restore 'on'
+          '';
+        }
+      ];
     };
 
     # Shell integration for fzf lives in zsh/conf.d/.
