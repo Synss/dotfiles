@@ -30,6 +30,13 @@ repos:
         files: \.nix$
         pass_filenames: false
 
+      - id: nix-flake
+        name: nix flake
+        entry: nix flake check nix/
+        language: system
+        files: \.nix$
+        pass_filenames: false
+
       - id: just-fmt
         name: just --fmt
         entry: just --fmt --unstable

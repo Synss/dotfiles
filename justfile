@@ -43,3 +43,12 @@ update-zsh:
         git submodule update --init --remote zsh/plugins
         touch "$stamp"
     fi
+
+lint:
+    pre-commit run
+
+lint-all:
+    pre-commit run --all-files
+
+update-linters:
+    pre-commit autoupdate
