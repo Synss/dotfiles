@@ -19,6 +19,7 @@
           x = 1;
           y = 1;
         };
+        decorations = "None";
         startup_mode = "Fullscreen";
       };
     };
