@@ -2,11 +2,13 @@
 
 set shell := ["sh", "-l", "-c"]
 
+hostname := `hostname -s`
+
 default:
     @just --list
 
 bootstrap: check-nix
-    nix run home-manager -- switch --flake "./nix#$(hostname)"
+    nix run home-manager -- switch --flake "./nix#{{ hostname }}"
     pre-commit install
     just update-vim
     just update-zsh
@@ -38,10 +40,10 @@ gc:
     nix-collect-garbage -d
 
 news:
-    home-manager news --flake "./nix#$(hostname)"
+    home-manager news --flake "./nix#{{ hostname }}"
 
 switch:
-    home-manager switch --flake "./nix#$(hostname)"
+    home-manager switch --flake "./nix#{{ hostname }}"
 
 update-vim:
     #!/usr/bin/env bash
