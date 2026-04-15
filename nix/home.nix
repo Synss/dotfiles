@@ -4,10 +4,12 @@
   config,
   username,
   homeDirectory,
+  nix-index-database,
   dotfilesDir,
   ...
 }:
 {
+  imports = [ nix-index-database.hmModules.nix-index ];
   home = {
     inherit username homeDirectory;
     stateVersion = "25.11";
@@ -92,6 +94,13 @@
         rebase.autosquash = true;
       };
     };
+
+    nix-index = {
+      enable = true;
+      enableZshIntegration = true;
+    };
+
+    nix-index-database.comma.enable = true;
 
     tmux = {
       enable = true;
