@@ -31,6 +31,9 @@ end
 nnoremap("<Space>", "<Nop>")
 nnoremap("<Space>", "<Leader>")
 
+-- Terminal
+vim.g.shell = "zsh"
+
 -- Make a few whitespace characters visible
 -- nbsp: <C-k> <space> <space>
 -- vim.opt.listchars = { nbsp = "␣", tab = "↹·" }
