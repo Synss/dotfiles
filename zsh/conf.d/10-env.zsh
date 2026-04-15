@@ -1,4 +1,5 @@
 export LANG=en_US.UTF-8
+export SHELL=zsh
 
 [ -d "/usr/local/lib" ] && export LD_LIBRARY_PATH="/usr/local/lib"
 
