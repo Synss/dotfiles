@@ -5,6 +5,10 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-index-database = {
+      url = "github:nix-community/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nixgl = {
       url = "github:nix-community/nixGL";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -15,6 +19,7 @@
     {
       nixpkgs,
       home-manager,
+      nix-index-database,
       nixgl,
       ...
     }:
@@ -49,7 +54,12 @@
           ++ nixpkgs.lib.optional pkgs.stdenv.isLinux ./linux.nix
           ++ nixpkgs.lib.optional pkgs.stdenv.isDarwin ./darwin.nix;
           extraSpecialArgs = {
-            inherit username homeDirectory nixgl;
+            inherit
+              username
+              homeDirectory
+              nix-index-database
+              nixgl
+              ;
             dotfilesDir = "${homeDirectory}/src/dotfiles.git";
           };
         };
