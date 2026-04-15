@@ -41,9 +41,9 @@
           inherit pkgs;
           modules = [
             ./home.nix
-            ./linux.nix
-            ./darwin.nix
-          ];
+          ]
+          ++ nixpkgs.lib.optional pkgs.stdenv.isLinux ./linux.nix
+          ++ nixpkgs.lib.optional pkgs.stdenv.isDarwin ./darwin.nix;
           extraSpecialArgs = {
             inherit username homeDirectory nixgl;
             dotfilesDir = "${homeDirectory}/src/dotfiles.git";
