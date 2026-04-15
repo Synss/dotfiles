@@ -5,11 +5,23 @@ set shell := ["sh", "-l", "-c"]
 default:
     @just --list
 
-bootstrap:
+bootstrap: check-nix
     nix run home-manager -- switch --flake "./nix#$(hostname)"
     pre-commit install
     just update-vim
     just update-zsh
+
+[private]
+check-nix:
+    #!/usr/bin/env bash
+    set -euo pipefail
+
+    if ! command -v nix >/dev/null 2>&1; then
+        echo "--- Installing Nix via Determinate Systems..."
+        curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
+        echo '--- Nix installed.  Restart your shell with "exec $SHELL -l".'
+        exit 1
+    fi
 
 update:
     nix flake update ./nix
