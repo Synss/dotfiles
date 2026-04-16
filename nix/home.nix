@@ -30,10 +30,13 @@
         delta
         eza
         fd
+        glow
+        graphviz
         jq
         just
         yq-go
         neovim
+        nodejs
         pnpm
         pre-commit
         ripgrep
