@@ -26,12 +26,11 @@ check-nix:
     fi
 
 update:
-    nix flake update ./nix
+    nix flake update --flake ./nix
     just build
     just switch
-    just update-vim
-    just update-zsh
-    just update-linters
+    @just update-vim & just update-zsh & just update-linters
+    git add --update && git commit -m "nix: update flake and tools"
 
 build:
     nix flake check ./nix
