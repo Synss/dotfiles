@@ -71,10 +71,28 @@
       config.style = "header-filename,header-filesize,rule";
     };
 
+    delta = {
+      enable = true;
+      enableGitIntegration = true;
+      options = {
+        navigate = true;
+        dark = {
+          dark = true;
+          syntax-theme = "gruvbox-dark";
+        };
+        light = {
+          light = true;
+          syntax-theme = "gruvbox-light";
+        };
+      };
+    };
+
     direnv = {
       enable = true;
       nix-direnv.enable = true;
     };
+
+    fzf.enable = true;
 
     git = {
       enable = true;
@@ -134,26 +152,6 @@
       ];
     };
 
-    # Shell integration for fzf lives in zsh/conf.d/.
-    fzf.enable = true;
-
-    # Shell integration for zoxide lives in zsh/conf.d/.
     zoxide.enable = true;
-
-    delta = {
-      enable = true;
-      enableGitIntegration = true;
-      options = {
-        navigate = true;
-        dark = {
-          dark = true;
-          syntax-theme = "gruvbox-dark";
-        };
-        light = {
-          light = true;
-          syntax-theme = "gruvbox-light";
-        };
-      };
-    };
   };
 }
