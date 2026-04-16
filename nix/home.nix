@@ -14,6 +14,8 @@
     inherit username homeDirectory;
     stateVersion = "25.11";
 
+    sessionVariables.SHELL = "${pkgs.zsh}/bin/zsh";
+
     packages =
       with pkgs;
       [
