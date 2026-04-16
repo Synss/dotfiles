@@ -56,6 +56,14 @@
   };
 
   programs = {
+    alacritty = {
+      enable = true;
+      settings.terminal.shell = {
+        program = "zsh";
+        args = [ "-l" ];
+      };
+    };
+
     bat = {
       enable = true;
       config.style = "header-filename,header-filesize,rule";
