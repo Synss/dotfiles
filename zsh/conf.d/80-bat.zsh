@@ -1,24 +1,18 @@
 command -v bat >/dev/null || command -v batcat >/dev/null || return 0
 
-# Help bat picking light or dark themes
-if [[ -n "$COLORFGBG" ]] && [[ ${COLORFGBG##*;} -lt 8 ]]; then
-	export BAT_THEME="gruvbox-dark"
-else
-	export BAT_THEME="gruvbox-light"
-fi
-__BAT=bat
-if command -v batcat >/dev/null; then
-	# Ubuntu/Debian renames bat -> batcat
-	__BAT=batcat
-	alias bat=batcat
-fi
+bat() {
+  local theme="${DARK_THEME}"
+  if [[ -n "${NVIM}" && -f "${NVIM}.theme" ]]; then
+    [[ "$(< "${NVIM}.theme")" == "light" ]] && theme="${LIGHT_THEME}"
+  fi
+  local cmd
+  if command -v bat >/dev/null 2>&1; then cmd=bat; else cmd=batcat; fi
+  command "$cmd" --theme="$theme" "$@"
+}
 
-alias cat="$__BAT --paging=never"
-alias nl="$__BAT --number"
+alias cat="bat --paging=never"
+alias nl="bat --number"
+alias -g -- -h="-h 2>&1 | bat --language=help --style=plain"
+alias -g -- --help="--help 2>&1 | bat --language=help --style=plain"
 
-alias -g -- -h="-h 2>&1 | $__BAT --language=help --style=plain"
-alias -g -- --help="--help 2>&1 | $__BAT --language=help --style=plain"
-
-export MANPAGER="$__BAT -plman"
-
-unset __BAT
+export MANPAGER="$(command -v bat) -plman"
