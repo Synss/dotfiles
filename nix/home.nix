@@ -28,7 +28,6 @@
         # terminal tools
         bazelisk
         delta
-        eza
         fd
         glow
         graphviz
@@ -80,6 +79,11 @@
     direnv = {
       enable = true;
       nix-direnv.enable = true;
+      enableZshIntegration = true;
+    };
+
+    eza = {
+      enable = true;
       enableZshIntegration = true;
     };
 
