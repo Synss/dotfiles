@@ -1,3 +1,5 @@
+bindkey -v
+
 # History navigation
 bindkey "^P" history-incremental-search-backward
 bindkey "^N" history-incremental-search-forward
