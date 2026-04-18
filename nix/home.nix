@@ -126,21 +126,6 @@
           names = "diff --name-only";
           retop = "!f() { branch=\${1:-master}; git fetch origin $branch:$branch && git rebase $branch; }; f";
           ri = "rebase -i";
-          sweep =
-            "!f() { "
-            + "base=\${1:-main}; "
-            + "git for-each-ref --format='%(refname:short)' refs/heads/ "
-            + "| grep -v \"^$base$\" "
-            + "| while read branch; do "
-            + "  if git merge-base --is-ancestor \"$branch\" \"$base\" 2>/dev/null; then "
-            + "    git branch -D \"$branch\" && echo \"deleted: $branch\"; "
-            + "  elif [ $(git rev-list --count \"$base..$branch\" 2>/dev/null) -le 30 ] "
-            + "    && cherry=$(git cherry \"$base\" \"$branch\" 2>/dev/null) "
-            + "    && ! echo \"$cherry\" | grep -q '^+'; then "
-            + "    git branch -D \"$branch\" && echo \"deleted: $branch\"; "
-            + "  fi; "
-            + "done; "
-            + "}; f";
           sweep-dry =
             "!f() { "
             + "base=\${1:-main}; "
@@ -148,11 +133,11 @@
             + "| grep -v \"^$base$\" "
             + "| while read branch; do "
             + "  if git merge-base --is-ancestor \"$branch\" \"$base\" 2>/dev/null; then "
-            + "    echo \"would delete: $branch\"; "
+            + "    echo \"$branch\"; "
             + "  elif [ $(git rev-list --count \"$base..$branch\" 2>/dev/null) -le 30 ] "
             + "    && cherry=$(git cherry \"$base\" \"$branch\" 2>/dev/null) "
             + "    && ! echo \"$cherry\" | grep -q '^+'; then "
-            + "    echo \"would delete: $branch\"; "
+            + "    echo \"$branch\"; "
             + "  fi; "
             + "done; "
             + "}; f";
