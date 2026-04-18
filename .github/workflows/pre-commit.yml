@@ -16,4 +16,4 @@ jobs:
         with:
           use-flakehub: false
       - name: Run pre-commit
-        run: nix develop ./nix --command pre-commit run --all-files
+        run: nix develop --command pre-commit run --all-files

@@ -49,10 +49,10 @@
         home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
           modules = [
-            ./home.nix
+            ./nix/home.nix
           ]
-          ++ nixpkgs.lib.optional pkgs.stdenv.isLinux ./linux.nix
-          ++ nixpkgs.lib.optional pkgs.stdenv.isDarwin ./darwin.nix;
+          ++ nixpkgs.lib.optional pkgs.stdenv.isLinux ./nix/linux.nix
+          ++ nixpkgs.lib.optional pkgs.stdenv.isDarwin ./nix/darwin.nix;
           extraSpecialArgs = {
             inherit
               username

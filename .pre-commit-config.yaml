@@ -11,30 +11,30 @@ repos:
     hooks:
       - id: nixfmt
         name: nixfmt
-        entry: treefmt nix/
+        entry: treefmt flake.nix nix/
         language: system
-        files: \.nix$
+        files: ^(flake\.nix|nix/)
         pass_filenames: false
 
       - id: statix
         name: statix
-        entry: statix check nix/
+        entry: statix check --ignore 'vim/**' .
         language: system
-        files: \.nix$
+        files: ^(flake\.nix|nix/)
         pass_filenames: false
 
       - id: deadnix
         name: deadnix
-        entry: deadnix --fail nix/
+        entry: deadnix --fail flake.nix nix/
         language: system
-        files: \.nix$
+        files: ^(flake\.nix|nix/)
         pass_filenames: false
 
       - id: nix-flake
         name: nix flake
-        entry: nix flake check nix/
+        entry: nix flake check
         language: system
-        files: \.nix$
+        files: ^(flake\.nix|nix/)
         pass_filenames: false
 
       - id: just-fmt
