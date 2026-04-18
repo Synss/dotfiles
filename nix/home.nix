@@ -80,9 +80,14 @@
     direnv = {
       enable = true;
       nix-direnv.enable = true;
+      enableZshIntegration = true;
     };
 
-    fzf.enable = true;
+    fzf = {
+      enable = true;
+      enableZshIntegration = true;
+      defaultCommand = "fd --hidden --exclude .venv";
+    };
 
     zsh = {
       enable = true;
@@ -158,6 +163,9 @@
       ];
     };
 
-    zoxide.enable = true;
+    zoxide = {
+      enable = true;
+      enableZshIntegration = true;
+    };
   };
 }
