@@ -2,6 +2,8 @@
 --   * `set` -> `vim.opt`
 --   * `let` -> `vim.g`
 
+vim.g.mapleader = " "
+
 -- Helper functions for mapping
 function noremap(mode, shortcut, command)
   vim.api.nvim_set_keymap(mode, shortcut, command, { noremap = false })
@@ -25,11 +27,6 @@ function tnoremap(shortcut, command)
   -- terminal mode
   noremap("t", shortcut, command)
 end
-
--- Space as leader (let mapleader="<Space>")
---vim.g.mapleader = "<Space>"
-nnoremap("<Space>", "<Nop>")
-nnoremap("<Space>", "<Leader>")
 
 -- Make a few whitespace characters visible
 -- nbsp: <C-k> <space> <space>
