@@ -11,7 +11,6 @@ bootstrap: check-nix
     nix run home-manager -- switch --flake "./nix#{{ hostname }}"
     pre-commit install
     just update-vim
-    just update-zsh
 
 [private]
 check-nix:
@@ -29,7 +28,7 @@ update:
     nix flake update --flake ./nix
     just build
     just switch
-    @just update-vim & just update-zsh & just update-linters
+    @just update-vim & just update-linters
     git add --update && git commit -m "nix: update flake and tools"
 
 build:
@@ -49,14 +48,6 @@ update-vim:
     stamp="$(git rev-parse --show-toplevel)/.vim_submodule_updated"
     if [ ! -f "$stamp" ] || [ -n "$(find "$stamp" -mmin +1440 2>/dev/null)" ]; then
         git submodule update --init --remote vim/pack/plugins/start
-        touch "$stamp"
-    fi
-
-update-zsh:
-    #!/usr/bin/env bash
-    stamp="$(git rev-parse --show-toplevel)/.zsh_submodule_updated"
-    if [ ! -f "$stamp" ] || [ -n "$(find "$stamp" -mmin +1440 2>/dev/null)" ]; then
-        git submodule update --init --remote zsh/plugins
         touch "$stamp"
     fi
 
