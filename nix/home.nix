@@ -54,9 +54,6 @@
     file = {
       ".config/nvim".source = config.lib.file.mkOutOfStoreSymlink "${dotfilesDir}/vim";
       ".vim".source = config.lib.file.mkOutOfStoreSymlink "${dotfilesDir}/vim";
-      ".zshenv".text = ''
-        export ZDOTDIR="${dotfilesDir}/zsh"
-      '';
     };
   };
 
@@ -86,6 +83,22 @@
     };
 
     fzf.enable = true;
+
+    zsh = {
+      enable = true;
+      autosuggestion.enable = true;
+      syntaxHighlighting.enable = true;
+      initExtraFirst = ''
+        DOTFILES_ZSH="${dotfilesDir}/zsh"
+      '';
+      initExtraBeforeCompInit = ''
+        fpath+=(${dotfilesDir}/zsh/completions)
+      '';
+      initExtra = ''
+        for f in ${dotfilesDir}/zsh/conf.d/*.zsh; do source "$f"; done
+        () { for f; do source "$f"; done } ${dotfilesDir}/zsh/conf.d/*.local(N)
+      '';
+    };
 
     git = {
       enable = true;
