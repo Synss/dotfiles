@@ -11,16 +11,8 @@ setopt complete_in_word
 setopt numeric_glob_sort		# real count when globbing numbered files
 
 # History
-setopt append_history			# append to hist upon exit
-setopt extended_history			# timestamp hist
-#setopt hist_find_no_dups		# do not report dups
-setopt hist_ignore_all_dups		# no dups saved
-setopt hist_ignore_space		# line starting w space not in hist
-setopt hist_no_store			# history cmd itself not saved
-setopt inc_append_history		# append on write
-setopt hist_save_no_dups
-alias h="fc -RI"				# import history from other ttys with "fc -RI"
-#setopt share_history			# share hist btw tty
+setopt hist_no_store
+alias h="fc -RI"				# manual cross-session import; use instead of share_history
 
 # initialization
 # input/output
