@@ -219,7 +219,34 @@ local on_attach = function(client, bufnr)
 end
 
 -- LSP
-local servers = { 'clangd', 'pylsp', 'pyright' }
+local servers = {
+    'ansiblels',
+    'bazelrc_lsp',
+    'clangd',
+    'cssls',
+    'nil_ls',
+    'pyright',
+    'starlark_rust'
+}
+
+-- Not every yaml file is an ansible file.
+vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
+    pattern = { 'roles/**/*.yml' },
+    callback = function() vim.bo.filetype = 'yaml.ansible' end,
+})
+
+vim.lsp.config('ansiblels', {
+    filetypes = { 'yaml.ansible' },
+})
+
+-- Run `nixfmt` on save
+vim.lsp.config('nil_ls', {
+    settings = {
+        ['nil'] = {
+            formatting = { command = { "nixfmt" } },
+        }
+    }
+})
 
 -- Point pyright at the uv-managed venv (.venv in project root).
 vim.lsp.config('pyright', {
