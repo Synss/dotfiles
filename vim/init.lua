@@ -163,31 +163,32 @@ require('fzf-lua').setup({
 -- Delete buffer with bbye
 vim.keymap.set("n", "<leader>bd", ":Bdelete this<CR>")
 
--- Reformat paragraph (<leader>q is reserved for LSP setloclist below)
+-- Reformat paragraph
 vim.keymap.set("n", "<leader>Q", "{gq}")
 
--- LSP diagnostics
-vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float, { silent = true })
-vim.keymap.set("n", "[d",        vim.diagnostic.goto_prev,  { silent = true })
-vim.keymap.set("n", "]d",        vim.diagnostic.goto_next,  { silent = true })
-vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { silent = true })
+-- LSP diagnostics (<leader>l* namespace; [d/]d are standard bracket navigation)
+vim.keymap.set("n", "<leader>ld", vim.diagnostic.open_float, { silent = true })
+vim.keymap.set("n", "[d",         vim.diagnostic.goto_prev,  { silent = true })
+vim.keymap.set("n", "]d",         vim.diagnostic.goto_next,  { silent = true })
+vim.keymap.set("n", "<leader>lq", vim.diagnostic.setloclist, { silent = true })
 
 local on_attach = function(client, bufnr)
   vim.api.nvim_set_option_value('omnifunc', 'v:lua.vim.lsp.omnifunc', { buf = bufnr })
 
+  -- gd/gD/gi/gr/K are standard vim navigation conventions — not namespaced
   local map = function(key, fn) vim.keymap.set('n', key, fn, { buffer = bufnr, silent = true }) end
-  map('gD',         vim.lsp.buf.declaration)
-  map('gd',         vim.lsp.buf.definition)
-  map('K',          vim.lsp.buf.hover)
-  map('gi',         vim.lsp.buf.implementation)
-  map('<leader>wa', vim.lsp.buf.add_workspace_folder)
-  map('<leader>wr', vim.lsp.buf.remove_workspace_folder)
-  map('<leader>wl', function() print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end)
-  map('<leader>D',  vim.lsp.buf.type_definition)
-  map('<leader>rn', vim.lsp.buf.rename)
-  map('<leader>ca', vim.lsp.buf.code_action)
-  map('gr',         vim.lsp.buf.references)
-  map('<leader>lf', function() vim.lsp.buf.format({ async = true }) end)
+  map('gD',          vim.lsp.buf.declaration)
+  map('gd',          vim.lsp.buf.definition)
+  map('K',           vim.lsp.buf.hover)
+  map('gi',          vim.lsp.buf.implementation)
+  map('gr',          vim.lsp.buf.references)
+  map('<leader>lD',  vim.lsp.buf.type_definition)
+  map('<leader>lr',  vim.lsp.buf.rename)
+  map('<leader>la',  vim.lsp.buf.code_action)
+  map('<leader>lf',  function() vim.lsp.buf.format({ async = true }) end)
+  map('<leader>lwa', vim.lsp.buf.add_workspace_folder)
+  map('<leader>lwr', vim.lsp.buf.remove_workspace_folder)
+  map('<leader>lwl', function() print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end)
 end
 
 vim.lsp.config('*', { on_attach = on_attach })
