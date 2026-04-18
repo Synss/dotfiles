@@ -93,16 +93,18 @@
       enable = true;
       autosuggestion.enable = true;
       syntaxHighlighting.enable = true;
-      initExtraFirst = ''
-        DOTFILES_ZSH="${dotfilesDir}/zsh"
-      '';
-      initExtraBeforeCompInit = ''
-        fpath+=(${dotfilesDir}/zsh/completions)
-      '';
-      initExtra = ''
-        for f in ${dotfilesDir}/zsh/conf.d/*.zsh; do source "$f"; done
-        () { for f; do source "$f"; done } ${dotfilesDir}/zsh/conf.d/*.local(N)
-      '';
+      initContent = lib.mkMerge [
+        (lib.mkBefore ''
+          DOTFILES_ZSH="${dotfilesDir}/zsh"
+        '')
+        (lib.mkOrder 550 ''
+          fpath+=(${dotfilesDir}/zsh/completions)
+        '')
+        ''
+          for f in ${dotfilesDir}/zsh/conf.d/*.zsh; do source "$f"; done
+          () { for f; do source "$f"; done } ${dotfilesDir}/zsh/conf.d/*.local(N)
+        ''
+      ];
     };
 
     git = {
