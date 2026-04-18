@@ -1,36 +1,22 @@
 # Changing directories
-setopt auto_cd					# imply cd <cmd>
-#setopt cdable_vars				# imply cd ~/<cmd>
-#setopt chase_links				# resolve symlinks
+setopt auto_cd				# bare path = cd
 
 # Completion
-#setopt auto_param_slash		# add / to directories
-setopt complete_in_word
+setopt complete_in_word		# complete from cursor position, not just end of word
 
 # Expansion and Globbing
-setopt numeric_glob_sort		# real count when globbing numbered files
+setopt numeric_glob_sort	# sort globs numerically (file2 before file10)
+setopt glob_dots			# * matches dotfiles too
+setopt multios				# redirect to multiple targets without explicit tee
 
 # History
-setopt hist_no_store
-alias h="fc -RI"				# manual cross-session import; use instead of share_history
+setopt hist_no_store		# don't save the `history` command itself
+alias h="fc -RI"			# manual cross-session import; use instead of share_history
 
-# initialization
-# input/output
-setopt correct					# spell check commands only
-setopt interactive_comments		# quiet on #
-setopt hash_dirs				# make correct right
+# Input/Output
+setopt interactive_comments	# allow # comments in interactive shell
 setopt no_beep
+setopt pipe_fail			# pipeline exit code = first failure, not last command
 
 # Job control
-setopt auto_continue			# true disown
-
-# Prompting
-
-# Scripts and functions
-
-# Shell emu
-
-# Shell State
-
-# Zle
-bindkey -v
+setopt long_list_jobs		# show PID in job listings
