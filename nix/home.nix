@@ -9,7 +9,7 @@
   ...
 }:
 {
-  imports = [ nix-index-database.hmModules.nix-index ];
+  imports = [ nix-index-database.homeModules.nix-index ];
   home = {
     inherit username homeDirectory;
     stateVersion = "25.11";
