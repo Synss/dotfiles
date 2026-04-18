@@ -199,6 +199,7 @@ local servers = {
     'bazelrc_lsp',
     'clangd',
     'cssls',
+    'lua_ls',
     'nil_ls',
     'pyright',
     'starlark_rust'
@@ -219,6 +220,18 @@ vim.lsp.config('nil_ls', {
     settings = {
         ['nil'] = {
             formatting = { command = { "nixfmt" } },
+        }
+    }
+})
+
+vim.lsp.config('lua_ls', {
+    settings = {
+        Lua = {
+            runtime = { version = 'LuaJIT' },
+            workspace = {
+                library = vim.api.nvim_get_runtime_file("", true),
+                checkThirdParty = false,
+            },
         }
     }
 })
