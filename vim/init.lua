@@ -4,30 +4,6 @@
 
 vim.g.mapleader = " "
 
--- Helper functions for mapping
-function noremap(mode, shortcut, command)
-  vim.api.nvim_set_keymap(mode, shortcut, command, { noremap = false })
-end
-
-function map(mode, shortcut, command)
-  vim.api.nvim_set_keymap(mode, shortcut, command, { noremap = true })
-end
-
-function nmap(shortcut, command)
-  -- normal mode
-  map("n", shortcut, command)
-end
-
-function nnoremap(shortcut, command)
-  -- normal mode
-  noremap("n", shortcut, command)
-end
-
-function tnoremap(shortcut, command)
-  -- terminal mode
-  noremap("t", shortcut, command)
-end
-
 -- Make a few whitespace characters visible
 -- nbsp: <C-k> <space> <space>
 -- vim.opt.listchars = { nbsp = "␣", tab = "↹·" }
@@ -150,33 +126,33 @@ vim.api.nvim_create_autocmd("VimLeave", {
 })
 
 -- Split creation
-nmap("<leader>H", ":topleft vnew<cr>")
-nmap("<leader>J", ":botright new<cr>")
-nmap("<leader>K", ":topleft new<cr>")
-nmap("<leader>L", ":botright vnew<cr>")
+vim.keymap.set("n", "<leader>H", ":topleft vnew<cr>")
+vim.keymap.set("n", "<leader>J", ":botright new<cr>")
+vim.keymap.set("n", "<leader>K", ":topleft new<cr>")
+vim.keymap.set("n", "<leader>L", ":botright vnew<cr>")
 
-nmap("<leader>h", ":leftabove vnew<cr>")
-nmap("<leader>j", ":rightbelow new<cr>")
-nmap("<leader>k", ":leftabove new<cr>")
-nmap("<leader>l", ":rightbelow vnew<cr>")
+vim.keymap.set("n", "<leader>h", ":leftabove vnew<cr>")
+vim.keymap.set("n", "<leader>j", ":rightbelow new<cr>")
+vim.keymap.set("n", "<leader>k", ":leftabove new<cr>")
+vim.keymap.set("n", "<leader>l", ":rightbelow vnew<cr>")
 
 -- Split navigation
-nnoremap("<C-H>", "<C-W><C-H>")
-nnoremap("<C-J>", "<C-W><C-J>")
-nnoremap("<C-K>", "<C-W><C-K>")
-nnoremap("<C-L>", "<C-W><C-L>")
+vim.keymap.set("n", "<C-H>", "<C-W><C-H>")
+vim.keymap.set("n", "<C-J>", "<C-W><C-J>")
+vim.keymap.set("n", "<C-K>", "<C-W><C-K>")
+vim.keymap.set("n", "<C-L>", "<C-W><C-L>")
 
-tnoremap("<C-H>", "<C-\\><C-n><C-W><C-H>")
-tnoremap("<C-J>", "<C-\\><C-n><C-W><C-J>")
-tnoremap("<C-K>", "<C-\\><C-n><C-W><C-K>")
-tnoremap("<C-L>", "<C-\\><C-n><C-W><C-L>")
+vim.keymap.set("t", "<C-H>", "<C-\\><C-n><C-W><C-H>")
+vim.keymap.set("t", "<C-J>", "<C-\\><C-n><C-W><C-J>")
+vim.keymap.set("t", "<C-K>", "<C-\\><C-n><C-W><C-K>")
+vim.keymap.set("t", "<C-L>", "<C-\\><C-n><C-W><C-L>")
 
 -- fzf - `files` and `live_grep` now, `buffers` and `lsp_references`
 --       might be useful as well.
-nmap("<leader>b", ":FzfLua buffers<CR>")
-nmap("<leader>f", ":FzfLua files<CR>")
-nmap("<leader>ff", ":FzfLua oldfiles<CR>")
-nmap("<leader>g", ":FzfLua live_grep<CR>")
+vim.keymap.set("n", "<leader>b", ":FzfLua buffers<CR>")
+vim.keymap.set("n", "<leader>f", ":FzfLua files<CR>")
+vim.keymap.set("n", "<leader>ff", ":FzfLua oldfiles<CR>")
+vim.keymap.set("n", "<leader>g", ":FzfLua live_grep<CR>")
 
 require('fzf-lua').setup({
     files = {
@@ -188,29 +164,24 @@ require('fzf-lua').setup({
 })
 
 -- Delete buffer with bbye
-nnoremap("<leader>bd", ":Bdelete this<CR>")
+vim.keymap.set("n", "<leader>bd", ":Bdelete this<CR>")
 
 -- Reformat paragraph
-nnoremap("<leader>q", "gq")
-nnoremap("<leader>Q", "{gq}")
+vim.keymap.set("n", "<leader>q", "gq")
+vim.keymap.set("n", "<leader>Q", "{gq}")
 
--- LSP config
--- Mappings.
--- See `:help vim.diagnostic.*` for documentation on any of the below functions
-local opts = { noremap=true, silent=true }
-vim.api.nvim_set_keymap('n', '<leader>d', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
-vim.api.nvim_set_keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
-vim.api.nvim_set_keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
-vim.api.nvim_set_keymap('n', '<leader>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
+-- LSP diagnostics
+vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float, { silent = true })
+vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { silent = true })
+vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { silent = true })
+vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { silent = true })
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
+local opts = { noremap = true, silent = true }
 local on_attach = function(client, bufnr)
-  -- Enable completion triggered by <c-x><c-o>
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
-  -- Mappings.
-  -- See `:help vim.lsp.*` for documentation on any of the below functions
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
@@ -272,8 +243,6 @@ require("mason-lspconfig").setup({
     ensure_installed = servers
 })
 
--- Use a loop to conveniently call 'setup' on multiple servers and
--- map buffer local keybindings when the language server attaches
 for _, lsp in pairs(servers) do
   vim.lsp.enable(lsp)
 end
@@ -282,7 +251,6 @@ end
 require('oil').setup()
 vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
 
---
 require('lualine').setup({
   sections = {
     lualine_c = { { 'filename', path = 1 } }
