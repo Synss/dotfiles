@@ -168,11 +168,11 @@ vim.keymap.set("n", "<leader>Q", "{gq}")
 
 -- LSP diagnostics (<leader>l* namespace; [d/]d are standard bracket navigation)
 vim.keymap.set("n", "<leader>ld", vim.diagnostic.open_float, { silent = true })
-vim.keymap.set("n", "[d",         vim.diagnostic.goto_prev,  { silent = true })
-vim.keymap.set("n", "]d",         vim.diagnostic.goto_next,  { silent = true })
+vim.keymap.set("n", "[d", function() vim.diagnostic.jump({ count = -1 }) end, { silent = true })
+vim.keymap.set("n", "]d", function() vim.diagnostic.jump({ count =  1 }) end, { silent = true })
 vim.keymap.set("n", "<leader>lq", vim.diagnostic.setloclist, { silent = true })
 
-local on_attach = function(client, bufnr)
+local on_attach = function(_client, bufnr)
   vim.api.nvim_set_option_value('omnifunc', 'v:lua.vim.lsp.omnifunc', { buf = bufnr })
 
   -- gd/gD/gi/gr/K are standard vim navigation conventions — not namespaced
