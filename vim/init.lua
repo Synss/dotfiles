@@ -176,8 +176,19 @@ tnoremap("<C-L>", "<C-\\><C-n><C-W><C-L>")
 
 -- fzf - `files` and `live_grep` now, `buffers` and `lsp_references`
 --       might be useful as well.
+nmap("<leader>b", ":FzfLua buffers<CR>")
 nmap("<leader>f", ":FzfLua files<CR>")
+nmap("<leader>ff", ":FzfLua oldfiles<CR>")
 nmap("<leader>g", ":FzfLua live_grep<CR>")
+
+require('fzf-lua').setup({
+    files = {
+        cmd = "fd --type f --hidden --exclude .git --exclude .gitmodules",
+    },
+    grep = {
+        rg_opts = "--hidden --glob '!.git' --glob '!.gitmodules'",
+    }
+})
 
 -- Delete buffer with bbye
 nnoremap("<leader>bd", ":Bdelete this<CR>")
