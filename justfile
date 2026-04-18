@@ -8,7 +8,7 @@ default:
     @just --list
 
 bootstrap: check-nix
-    nix run home-manager -- switch --flake "./nix#{{ hostname }}"
+    nix run home-manager -- switch --flake ".#{{ hostname }}"
     pre-commit install
     just update-vim
 
@@ -25,23 +25,23 @@ check-nix:
     fi
 
 update:
-    nix flake update --flake ./nix
+    nix flake update
     just build
     just switch
     @just update-vim & just update-linters
     git add --update && git commit -m "nix: update flake and tools"
 
 build:
-    nix flake check ./nix
+    nix flake check
 
 gc:
     nix-collect-garbage -d
 
 news:
-    home-manager news --flake "./nix#{{ hostname }}"
+    home-manager news --flake ".#{{ hostname }}"
 
 switch:
-    home-manager switch --flake "./nix#{{ hostname }}"
+    home-manager switch --flake ".#{{ hostname }}"
 
 update-vim:
     #!/usr/bin/env bash
