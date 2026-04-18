@@ -249,7 +249,8 @@ vim.lsp.config('pyright', {
 -- Make sure both plugins are loaded in the correct order.
 require("mason").setup()
 require("mason-lspconfig").setup({
-    ensure_installed = servers
+    ensure_installed = servers,
+    automatic_enable = false,
 })
 
 for _, lsp in pairs(servers) do
