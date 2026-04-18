@@ -5,6 +5,6 @@ glow() {
   if [[ -n "${NVIM}" && -f "${NVIM}.theme" ]]; then
     [[ "$(< "${NVIM}.theme")" == "light" ]] && theme="${LIGHT_THEME}"
   fi
-  local style="${ZDOTDIR}/../_config/glow/styles/${theme}.json"
+  local style="${DOTFILES_ZSH}/../_config/glow/styles/${theme}.json"
   command glow --style "$style" --pager "$@"
 }
