@@ -57,11 +57,8 @@ vim.opt.smartcase = true
 vim.opt.wrap = false
 
 -- Color scheme
--- 24-bit true-color support
-if (vim.env.TMUX == nil or vim.env.TMUX == "") and vim.env.TERM_PROGRAM ~= "Apple_Terminal" then
-  if vim.fn.has("termguicolors") == 1 then
-    vim.opt.termguicolors = true
-  end
+if vim.env.COLORTERM == "truecolor" or vim.env.COLORTERM == "24bit" then
+  vim.opt.termguicolors = true
 end
 
 local function read_theme_config(path)
