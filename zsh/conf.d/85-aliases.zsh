@@ -9,3 +9,7 @@ if command -v photoflare >/dev/null; then
 elif command -v pinta >/dev/null; then
 	alias paint=pinta
 fi
+
+if command -v rg >/dev/null; then
+    alias ack=rg
+fi
