@@ -1,3 +1,8 @@
+if command -v eza >/dev/null; then
+    # Note: There's already an `lt` alias.
+    alias tree="eza -T"
+fi
+
 if command -v photoflare >/dev/null; then
 	alias paint="photoflare &>/dev/null"
 elif command -v pinta >/dev/null; then
