@@ -37,7 +37,7 @@ main() {
     if [ "$dry_run" -eq 1 ]; then
       echo "$branch"
     else
-      git branch -d "$branch"
+      git branch -D "$branch"
     fi
   done < "$tmp"
 }
