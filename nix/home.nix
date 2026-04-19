@@ -9,7 +9,7 @@
   ...
 }:
 let
-  mkLink = path: { source = config.lib.file.mkOutOfStoreSymmkLink "${dotfilesDir}/${path}"; };
+  mkLink = path: { source = config.lib.file.mkOutOfStoreSymlink "${dotfilesDir}/${path}"; };
 in
 {
   imports = [ nix-index-database.homeModules.nix-index ];
