@@ -54,6 +54,7 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
 vim.opt.wrap = false
+vim.opt.swapfile = false
 
 -- Color scheme
 if vim.env.COLORTERM == "truecolor" or vim.env.COLORTERM == "24bit" then
