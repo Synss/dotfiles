@@ -1,6 +1,6 @@
-vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
-	pattern = { "roles/**/*.yml" },
-	callback = function()
-		vim.bo.filetype = "yaml.ansible"
-	end,
+vim.filetype.add({
+	pattern = {
+		["roles/.+%.ya?ml"] = "yaml.ansible",
+		[".*/%.github[%w/]+workflows[%w/]+.*%.ya?ml"] = "yaml.github",
+	},
 })
