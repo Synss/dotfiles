@@ -168,11 +168,15 @@
           name = "Mathias Laurin";
           email = "Mathias.Laurin+github.com@gmail.com";
         };
+        branch.sort = "-committerdate";
         commit.verbose = true;
+        diff.algorithm = "histogram";
+        fetch.prune = true;
         merge.conflictStyle = "zdiff3";
         pull.rebase = true;
         push.default = "upstream";
         rebase.autosquash = true;
+        rerere.enabled = true;
       };
     };
 
