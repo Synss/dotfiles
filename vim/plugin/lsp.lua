@@ -35,6 +35,12 @@ local on_attach = function(_client, bufnr)
 	end, "List workspace folders")
 end
 
+vim.api.nvim_create_autocmd("BufWritePre", {
+	callback = function()
+		vim.lsp.buf.format({ async = false }) -- must complete before the write
+	end,
+})
+
 vim.lsp.config("*", {
 	on_attach = on_attach,
 	capabilities = {
