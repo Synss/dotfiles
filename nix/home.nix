@@ -29,6 +29,7 @@ in
         statix
 
         # fonts
+        nerd-fonts.hack
         nerd-fonts.jetbrains-mono
 
         # LSP servers
@@ -115,7 +116,7 @@ in
           args = [ "-l" ];
         };
         font = {
-          normal.family = "JetBrainsMono Nerd Font Mono";
+          normal.family = "Hack Nerd Font Mono";
           size = 12.0;
         };
       };
