@@ -11,7 +11,7 @@ stdenv.mkDerivation rec {
 
   src = fetchurl {
     url = "https://registry.npmjs.org/@actions/languageserver/-/languageserver-${version}.tgz";
-    hash = lib.fakeHash;
+    hash = "sha256-lW/3N3zymeRRYmwSisoYO6j9XrPXEcnJjo5UNNDNNnY=";
   };
 
   nativeBuildInputs = [ makeWrapper ];
