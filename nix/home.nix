@@ -32,6 +32,7 @@
         actions-languageserver
         ansible-language-server
         clang-tools
+        groovy-language-server
         lua-language-server
         nil
         pyright
