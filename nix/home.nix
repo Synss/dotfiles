@@ -73,8 +73,20 @@
       ".claude/settings.json".source =
         config.lib.file.mkOutOfStoreSymlink "${dotfilesDir}/claude/settings.json";
       ".claude/CLAUDE.md".source = config.lib.file.mkOutOfStoreSymlink "${dotfilesDir}/claude/CLAUDE.md";
-      # blink.cmp has a compiled Rust component — install via nix, not a git submodule
       ".local/share/nvim/site/pack/nix/start/blink-cmp".source = pkgs.vimPlugins.blink-cmp;
+      ".local/share/nvim/site/pack/nix/start/close-buffers-vim".source =
+        pkgs.vimPlugins.close-buffers-vim;
+      ".local/share/nvim/site/pack/nix/start/fzf-lua".source = pkgs.vimPlugins.fzf-lua;
+      ".local/share/nvim/site/pack/nix/start/gruvbox-nvim".source = pkgs.vimPlugins.gruvbox-nvim;
+      ".local/share/nvim/site/pack/nix/start/lualine-nvim".source = pkgs.vimPlugins.lualine-nvim;
+      ".local/share/nvim/site/pack/nix/start/nvim-lspconfig".source = pkgs.vimPlugins.nvim-lspconfig;
+      ".local/share/nvim/site/pack/nix/start/nvim-web-devicons".source =
+        pkgs.vimPlugins.nvim-web-devicons;
+      ".local/share/nvim/site/pack/nix/start/oil-nvim".source = pkgs.vimPlugins.oil-nvim;
+      ".local/share/nvim/site/pack/nix/start/vim-fugitive".source = pkgs.vimPlugins.vim-fugitive;
+      ".local/share/nvim/site/pack/nix/start/vim-nix".source = pkgs.vimPlugins.vim-nix;
+      ".local/share/nvim/site/pack/nix/start/which-key-nvim".source = pkgs.vimPlugins.which-key-nvim;
+      ".local/share/nvim/site/pack/nix/start/zoxide-vim".source = pkgs.vimPlugins.zoxide-vim;
     };
   };
 
