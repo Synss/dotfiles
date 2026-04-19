@@ -1,7 +1,7 @@
-vim.keymap.set("n", "<leader>b", ":FzfLua buffers<CR>")
-vim.keymap.set("n", "<leader>f", ":FzfLua files<CR>")
-vim.keymap.set("n", "<leader>ff", ":FzfLua oldfiles<CR>")
-vim.keymap.set("n", "<leader>g", ":FzfLua live_grep<CR>")
+vim.keymap.set("n", "<leader>fb", ":FzfLua buffers<CR>")
+vim.keymap.set("n", "<leader>ff", ":FzfLua files<CR>")
+vim.keymap.set("n", "<leader>fr", ":FzfLua oldfiles<CR>") -- r = recent
+vim.keymap.set("n", "<leader>fg", ":FzfLua live_grep<CR>")
 
 require("fzf-lua").setup({
 	files = {
