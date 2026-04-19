@@ -2,27 +2,34 @@
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
   "permissions": {
     "allow": [
+      "Bash(git:*)",
+      "Bash(just:*)",
+      "Bash(nix:*)",
+      "Bash(bat *)",
+      "Bash(deadnix *)",
       "Bash(file *)",
       "Bash(find *)",
-      "Bash(git commit *)",
-      "Bash(git diff)",
-      "Bash(git diff *)",
-      "Bash(git find *)",
-      "Bash(git grep *)",
-      "Bash(git log *)",
-      "Bash(git show *)",
-      "Bash(git status)",
-      "Bash(git status && git diff)",
+      "Bash(grep *)",
       "Bash(ls *)",
-      "Bash(nm *)",
+      "Bash(nixfmt *)",
+      "Bash(pre-commit *)",
       "Bash(sed *)",
+      "Bash(shellcheck *)",
       "Bash(shuf *)",
+      "Bash(statix *)",
+      "Bash(stylua *)",
       "Bash(wc *)",
-      "Bash(which *)"
+      "Bash(which *)",
+      "Bash(zsh *)",
+      "WebSearch",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:nix-community.github.io)",
+      "WebFetch(domain:mynixos.com)"
     ],
     "deny": [
       "Bash(curl *)",
       "Read(./.env)"
-    ]
+    ],
+    "defaultMode": "default"
   }
 }

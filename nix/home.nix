@@ -69,6 +69,9 @@
     file = {
       ".config/nvim".source = config.lib.file.mkOutOfStoreSymlink "${dotfilesDir}/vim";
       ".vim".source = config.lib.file.mkOutOfStoreSymlink "${dotfilesDir}/vim";
+      ".claude/settings.json".source =
+        config.lib.file.mkOutOfStoreSymlink "${dotfilesDir}/claude/settings.json";
+      ".claude/CLAUDE.md".source = config.lib.file.mkOutOfStoreSymlink "${dotfilesDir}/claude/CLAUDE.md";
     };
   };
 
