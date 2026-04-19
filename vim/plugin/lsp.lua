@@ -47,6 +47,7 @@ vim.lsp.config("*", {
 local servers = {
 	"ansiblels",
 	"clangd",
+	"groovyls",
 	"cssls",
 	"gh_actions_ls",
 	"lua_ls",
