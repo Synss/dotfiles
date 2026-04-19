@@ -16,7 +16,6 @@ vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.shiftround = true
 vim.opt.expandtab = true
-vim.cmd("autocmd FileType make set noexpandtab")
 
 -- Session management
 vim.opt.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
