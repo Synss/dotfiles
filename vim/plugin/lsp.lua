@@ -59,6 +59,10 @@ vim.lsp.config("ansiblels", {
 	filetypes = { "yaml.ansible" },
 })
 
+vim.lsp.config("starlark_rust", {
+	filetypes = { "bzl" },
+})
+
 vim.lsp.config("gh_actions_ls", {
 	filetypes = { "yaml.github" },
 	root_markers = { ".github" },
