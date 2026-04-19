@@ -10,6 +10,9 @@
 }:
 let
   mkLink = path: { source = config.lib.file.mkOutOfStoreSymlink "${dotfilesDir}/${path}"; };
+
+  retop = pkgs.writeShellScript "git-retop" (builtins.readFile ./scripts/git-retop.sh);
+  sweep = pkgs.writeShellScript "git-sweep" (builtins.readFile ./scripts/git-sweep.sh);
 in
 {
   imports = [ nix-index-database.homeModules.nix-index ];
@@ -191,27 +194,9 @@ in
           co = "checkout";
           fixup = "commit --fixup";
           names = "diff --name-only";
-          retop =
-            "!f() { "
-            + "branch=\${1:-$(git symbolic-ref --short refs/remotes/origin/HEAD | sed 's|origin/||')}; "
-            + "git fetch origin $branch:$branch && git rebase $branch; "
-            + "}; f";
+          retop = "!${retop}";
           ri = "rebase -i";
-          sweep-dry =
-            "!f() { "
-            + "base=\${1:-$(git symbolic-ref --short refs/remotes/origin/HEAD | sed 's|origin/||')}; "
-            + "git for-each-ref --format='%(refname:short)' refs/heads/ "
-            + "| grep -v \"^$base$\" "
-            + "| while read branch; do "
-            + "  if git merge-base --is-ancestor \"$branch\" \"$base\" 2>/dev/null; then "
-            + "    echo \"$branch\"; "
-            + "  elif [ $(git rev-list --count \"$base..$branch\" 2>/dev/null || echo 0) -le 30 ] "
-            + "    && cherry=$(git cherry \"$base\" \"$branch\" 2>/dev/null) "
-            + "    && ! echo \"$cherry\" | grep -q '^+'; then "
-            + "    echo \"$branch\"; "
-            + "  fi; "
-            + "done; "
-            + "}; f";
+          sweep = "!${sweep}";
           unstage = "reset HEAD --";
         };
         user = {
