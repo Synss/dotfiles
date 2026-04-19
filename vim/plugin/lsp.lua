@@ -1,4 +1,4 @@
-vim.lsp.set_log_level("error")
+vim.lsp.log.set_level("error")
 
 -- LSP diagnostics (<leader>l* namespace; [d/]d are standard bracket navigation)
 vim.keymap.set("n", "<leader>ld", vim.diagnostic.open_float, { silent = true, desc = "Show diagnostic" })
