@@ -191,11 +191,15 @@ in
           co = "checkout";
           fixup = "commit --fixup";
           names = "diff --name-only";
-          retop = "!f() { branch=\${1:-master}; git fetch origin $branch:$branch && git rebase $branch; }; f";
+          retop =
+            "!f() { "
+            + "branch=\${1:-$(git symbolic-ref --short refs/remotes/origin/HEAD | sed 's|origin/||')}; "
+            + "git fetch origin $branch:$branch && git rebase $branch; "
+            + "}; f";
           ri = "rebase -i";
           sweep-dry =
             "!f() { "
-            + "base=\${1:-main}; "
+            + "base=\${1:-$(git symbolic-ref --short refs/remotes/origin/HEAD | sed 's|origin/||')}; "
             + "git for-each-ref --format='%(refname:short)' refs/heads/ "
             + "| grep -v \"^$base$\" "
             + "| while read branch; do "
