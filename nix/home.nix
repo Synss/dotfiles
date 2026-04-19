@@ -8,6 +8,9 @@
   dotfilesDir,
   ...
 }:
+let
+  mkLink = path: { source = config.lib.file.mkOutOfStoreSymmkLink "${dotfilesDir}/${path}"; };
+in
 {
   imports = [ nix-index-database.homeModules.nix-index ];
   home = {
@@ -68,11 +71,10 @@
       ++ lib.optionals stdenv.isDarwin [ ];
 
     file = {
-      ".config/nvim".source = config.lib.file.mkOutOfStoreSymlink "${dotfilesDir}/vim";
-      ".vim".source = config.lib.file.mkOutOfStoreSymlink "${dotfilesDir}/vim";
-      ".claude/settings.json".source =
-        config.lib.file.mkOutOfStoreSymlink "${dotfilesDir}/claude/settings.json";
-      ".claude/CLAUDE.md".source = config.lib.file.mkOutOfStoreSymlink "${dotfilesDir}/claude/CLAUDE.md";
+      ".config/nvim" = mkLink "vim";
+      ".vim" = mkLink "vim";
+      ".claude/settings.json" = mkLink "claude/settings.json";
+      ".claude/CLAUDE.md" = mkLink "claude/CLAUDE.md";
     };
 
   };
