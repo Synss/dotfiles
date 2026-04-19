@@ -116,7 +116,7 @@ in
           args = [ "-l" ];
         };
         font = {
-          normal.family = "Hack Nerd Font Mono";
+          normal.family = "JetBrainsMono Nerd Font Mono";
           size = 12.0;
         };
       };
