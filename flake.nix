@@ -73,17 +73,7 @@
           pkgs = nixpkgs.legacyPackages.${system};
         in
         {
-          default = pkgs.mkShell {
-            packages = with pkgs; [
-              deadnix
-              just
-              nixfmt-tree
-              pre-commit
-              shellcheck
-              statix
-              stylua
-            ];
-          };
+          default = import ./nix/dev.nix { inherit pkgs; };
         }
       );
     };
