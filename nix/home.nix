@@ -25,6 +25,9 @@
         nixfmt-tree
         statix
 
+        # fonts
+        nerd-fonts.jetbrains-mono
+
         # terminal tools
         bazelisk
         delta
@@ -61,9 +64,15 @@
   programs = {
     alacritty = {
       enable = true;
-      settings.terminal.shell = {
-        program = "zsh";
-        args = [ "-l" ];
+      settings = {
+        terminal.shell = {
+          program = "zsh";
+          args = [ "-l" ];
+        };
+        font = {
+          normal.family = "JetBrainsMono Nerd Font Mono";
+          size = 12.0;
+        };
       };
     };
 
