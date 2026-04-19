@@ -40,3 +40,6 @@
 [submodule "vim/pack/plugins/start/which-key.nvim"]
 	path = vim/pack/plugins/start/which-key.nvim
 	url = https://github.com/folke/which-key.nvim
+[submodule "vim/pack/plugins/start/nvim-web-devicons.git"]
+	path = vim/pack/plugins/start/nvim-web-devicons.git
+	url = git@github.com:nvim-tree/nvim-web-devicons.git
