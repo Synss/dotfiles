@@ -46,7 +46,6 @@ vim.lsp.config("*", {
 
 local servers = {
 	"ansiblels",
-	"bazelrc_lsp",
 	"clangd",
 	"cssls",
 	"gh_actions_ls",
@@ -66,6 +65,7 @@ vim.lsp.config("starlark_rust", {
 })
 
 vim.lsp.config("gh_actions_ls", {
+	cmd = { "actions-languageserver", "--stdio" },
 	filetypes = { "yaml.github" },
 	root_markers = { ".github" },
 })
@@ -99,13 +99,6 @@ vim.lsp.config("pyright", {
 			venv = ".venv",
 		},
 	},
-})
-
--- Make sure both plugins are loaded in the correct order.
-require("mason").setup()
-require("mason-lspconfig").setup({
-	ensure_installed = servers,
-	automatic_enable = false,
 })
 
 for _, lsp in pairs(servers) do
