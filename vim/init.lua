@@ -63,16 +63,16 @@ end
 
 require("theme")
 
--- Split creation
-vim.keymap.set("n", "<leader>H", ":topleft vnew<cr>", { desc = "Split far left" })
-vim.keymap.set("n", "<leader>J", ":botright new<cr>", { desc = "Split far bottom" })
-vim.keymap.set("n", "<leader>K", ":topleft new<cr>", { desc = "Split far top" })
-vim.keymap.set("n", "<leader>L", ":botright vnew<cr>", { desc = "Split far right" })
+-- Split creation (<leader>w* namespace; uppercase = full-edge split)
+vim.keymap.set("n", "<leader>wh", ":leftabove vnew<cr>", { desc = "Split left" })
+vim.keymap.set("n", "<leader>wj", ":rightbelow new<cr>", { desc = "Split below" })
+vim.keymap.set("n", "<leader>wk", ":leftabove new<cr>", { desc = "Split above" })
+vim.keymap.set("n", "<leader>wl", ":rightbelow vnew<cr>", { desc = "Split right" })
 
-vim.keymap.set("n", "<leader>h", ":leftabove vnew<cr>", { desc = "Split left" })
-vim.keymap.set("n", "<leader>j", ":rightbelow new<cr>", { desc = "Split below" })
-vim.keymap.set("n", "<leader>k", ":leftabove new<cr>", { desc = "Split above" })
-vim.keymap.set("n", "<leader>l", ":rightbelow vnew<cr>", { desc = "Split right" })
+vim.keymap.set("n", "<leader>wH", ":topleft vnew<cr>", { desc = "Split far left" })
+vim.keymap.set("n", "<leader>wJ", ":botright new<cr>", { desc = "Split far bottom" })
+vim.keymap.set("n", "<leader>wK", ":topleft new<cr>", { desc = "Split far top" })
+vim.keymap.set("n", "<leader>wL", ":botright vnew<cr>", { desc = "Split far right" })
 
 -- Split navigation
 vim.keymap.set("n", "<C-H>", "<C-W><C-H>", { desc = "Go to left window" })
