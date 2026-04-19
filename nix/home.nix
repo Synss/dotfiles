@@ -73,6 +73,8 @@
       ".claude/settings.json".source =
         config.lib.file.mkOutOfStoreSymlink "${dotfilesDir}/claude/settings.json";
       ".claude/CLAUDE.md".source = config.lib.file.mkOutOfStoreSymlink "${dotfilesDir}/claude/CLAUDE.md";
+      # blink.cmp has a compiled Rust component — install via nix, not a git submodule
+      ".local/share/nvim/site/pack/nix/start/blink-cmp".source = pkgs.vimPlugins.blink-cmp;
     };
   };
 
