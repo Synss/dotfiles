@@ -40,6 +40,7 @@
 
         # terminal tools
         bazelisk
+        buildifier
         delta
         fd
         glow
