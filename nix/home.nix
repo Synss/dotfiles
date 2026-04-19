@@ -205,7 +205,7 @@ in
             + "| while read branch; do "
             + "  if git merge-base --is-ancestor \"$branch\" \"$base\" 2>/dev/null; then "
             + "    echo \"$branch\"; "
-            + "  elif [ $(git rev-list --count \"$base..$branch\" 2>/dev/null) -le 30 ] "
+            + "  elif [ $(git rev-list --count \"$base..$branch\" 2>/dev/null || echo 0) -le 30 ] "
             + "    && cherry=$(git cherry \"$base\" \"$branch\" 2>/dev/null) "
             + "    && ! echo \"$cherry\" | grep -q '^+'; then "
             + "    echo \"$branch\"; "
