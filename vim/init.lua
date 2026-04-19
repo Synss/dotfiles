@@ -63,29 +63,29 @@ end
 require("theme")
 
 -- Split creation
-vim.keymap.set("n", "<leader>H", ":topleft vnew<cr>")
-vim.keymap.set("n", "<leader>J", ":botright new<cr>")
-vim.keymap.set("n", "<leader>K", ":topleft new<cr>")
-vim.keymap.set("n", "<leader>L", ":botright vnew<cr>")
+vim.keymap.set("n", "<leader>H", ":topleft vnew<cr>", { desc = "Split far left" })
+vim.keymap.set("n", "<leader>J", ":botright new<cr>", { desc = "Split far bottom" })
+vim.keymap.set("n", "<leader>K", ":topleft new<cr>", { desc = "Split far top" })
+vim.keymap.set("n", "<leader>L", ":botright vnew<cr>", { desc = "Split far right" })
 
-vim.keymap.set("n", "<leader>h", ":leftabove vnew<cr>")
-vim.keymap.set("n", "<leader>j", ":rightbelow new<cr>")
-vim.keymap.set("n", "<leader>k", ":leftabove new<cr>")
-vim.keymap.set("n", "<leader>l", ":rightbelow vnew<cr>")
+vim.keymap.set("n", "<leader>h", ":leftabove vnew<cr>", { desc = "Split left" })
+vim.keymap.set("n", "<leader>j", ":rightbelow new<cr>", { desc = "Split below" })
+vim.keymap.set("n", "<leader>k", ":leftabove new<cr>", { desc = "Split above" })
+vim.keymap.set("n", "<leader>l", ":rightbelow vnew<cr>", { desc = "Split right" })
 
 -- Split navigation
-vim.keymap.set("n", "<C-H>", "<C-W><C-H>")
-vim.keymap.set("n", "<C-J>", "<C-W><C-J>")
-vim.keymap.set("n", "<C-K>", "<C-W><C-K>")
-vim.keymap.set("n", "<C-L>", "<C-W><C-L>")
+vim.keymap.set("n", "<C-H>", "<C-W><C-H>", { desc = "Go to left window" })
+vim.keymap.set("n", "<C-J>", "<C-W><C-J>", { desc = "Go to bottom window" })
+vim.keymap.set("n", "<C-K>", "<C-W><C-K>", { desc = "Go to top window" })
+vim.keymap.set("n", "<C-L>", "<C-W><C-L>", { desc = "Go to right window" })
 
-vim.keymap.set("t", "<C-H>", "<C-\\><C-n><C-W><C-H>")
-vim.keymap.set("t", "<C-J>", "<C-\\><C-n><C-W><C-J>")
-vim.keymap.set("t", "<C-K>", "<C-\\><C-n><C-W><C-K>")
-vim.keymap.set("t", "<C-L>", "<C-\\><C-n><C-W><C-L>")
+vim.keymap.set("t", "<C-H>", "<C-\\><C-n><C-W><C-H>", { desc = "Go to left window" })
+vim.keymap.set("t", "<C-J>", "<C-\\><C-n><C-W><C-J>", { desc = "Go to bottom window" })
+vim.keymap.set("t", "<C-K>", "<C-\\><C-n><C-W><C-K>", { desc = "Go to top window" })
+vim.keymap.set("t", "<C-L>", "<C-\\><C-n><C-W><C-L>", { desc = "Go to right window" })
 
 -- Delete buffer with bbye
-vim.keymap.set("n", "<leader>bd", ":Bdelete this<CR>")
+vim.keymap.set("n", "<leader>bd", ":Bdelete this<CR>", { desc = "Delete buffer" })
 
 -- Reformat paragraph
-vim.keymap.set("n", "<leader>Q", "{gq}")
+vim.keymap.set("n", "<leader>Q", "{gq}", { desc = "Reformat paragraph" })
