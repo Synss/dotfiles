@@ -40,6 +40,7 @@ local servers = {
 	"bazelrc_lsp",
 	"clangd",
 	"cssls",
+	"gh_actions_ls",
 	"lua_ls",
 	"nil_ls",
 	"pyright",
@@ -48,6 +49,11 @@ local servers = {
 
 vim.lsp.config("ansiblels", {
 	filetypes = { "yaml.ansible" },
+})
+
+vim.lsp.config("gh_actions_ls", {
+	filetypes = { "yaml.github" },
+	root_markers = { ".github" },
 })
 
 -- Run `nixfmt` on save
