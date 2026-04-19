@@ -28,6 +28,16 @@
         # fonts
         nerd-fonts.jetbrains-mono
 
+        # LSP servers
+        actions-languageserver
+        ansible-language-server
+        clang-tools
+        lua-language-server
+        nil
+        pyright
+        starlark-rust
+        vscode-langservers-extracted
+
         # terminal tools
         bazelisk
         delta
