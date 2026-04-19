@@ -39,6 +39,7 @@
         pnpm
         pre-commit
         ripgrep
+        ruff
         shellcheck
         stylua
         uv

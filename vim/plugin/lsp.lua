@@ -44,6 +44,7 @@ local servers = {
 	"lua_ls",
 	"nil_ls",
 	"pyright",
+	"ruff",
 	"starlark_rust",
 }
 
