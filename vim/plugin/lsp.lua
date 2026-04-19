@@ -33,7 +33,14 @@ local on_attach = function(_client, bufnr)
 	end, "List workspace folders")
 end
 
-vim.lsp.config("*", { on_attach = on_attach })
+vim.lsp.config("*", {
+	on_attach = on_attach,
+	capabilities = {
+		general = {
+			positionEncodings = { "utf-8" },
+		},
+	},
+})
 
 local servers = {
 	"ansiblels",
