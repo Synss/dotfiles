@@ -81,6 +81,7 @@
               pre-commit
               shellcheck
               statix
+              stylua
             ];
           };
         }

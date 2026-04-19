@@ -40,6 +40,7 @@
         pre-commit
         ripgrep
         shellcheck
+        stylua
         uv
         vivid
         zsh
