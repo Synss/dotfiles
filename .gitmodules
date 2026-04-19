@@ -1,39 +1,6 @@
 [submodule "bundle/vim-colors-solarized.git"]
 	path = vim/pack/plugins/start/vim-colors-solarized.git
 	url = https://github.com/altercation/vim-colors-solarized.git
-[submodule "vim/pack/plugins/start/nvim-lspconfig.git"]
-	path = vim/pack/plugins/start/nvim-lspconfig.git
-	url = https://github.com/neovim/nvim-lspconfig.git
-[submodule "vim/pack/plugins/start/close-buffers.vim.git"]
-	path = vim/pack/plugins/start/close-buffers.vim.git
-	url = https://github.com/Asheq/close-buffers.vim.git
-[submodule "vim/pack/plugins/start/vim-fugitive.git"]
-	path = vim/pack/plugins/start/vim-fugitive.git
-	url = git@github.com:tpope/vim-fugitive.git
-[submodule "vim/pack/plugins/start/vim-nix.git"]
-	path = vim/pack/plugins/start/vim-nix.git
-	url = git@github.com:LnL7/vim-nix.git
-[submodule "vim/pack/plugins/start/lualine.nvim.git"]
-	path = vim/pack/plugins/start/lualine.nvim.git
-	url = git@github.com:nvim-lualine/lualine.nvim.git
-[submodule "vim/pack/plugins/start/gruvbox.nvim.git"]
-	path = vim/pack/plugins/start/gruvbox.nvim.git
-	url = https://github.com/ellisonleao/gruvbox.nvim
-[submodule "vim/pack/plugins/start/oil.nvim.git"]
-	path = vim/pack/plugins/start/oil.nvim.git
-	url = git@github.com:stevearc/oil.nvim.git
-[submodule "vim/pack/plugins/start/fzf-lua.git"]
-	path = vim/pack/plugins/start/fzf-lua.git
-	url = git@github.com:ibhagwan/fzf-lua.git
 [submodule "zsh/plugins/zsh-syntax.highlighting.git"]
 	path = zsh/plugins/zsh-syntax.highlighting.git
 	url = git@github.com:zsh-users/zsh-syntax-highlighting.git
-[submodule "vim/pack/plugins/start/zoxide.vim.git"]
-	path = vim/pack/plugins/start/zoxide.vim.git
-	url = https://github.com/nanotee/zoxide.vim
-[submodule "vim/pack/plugins/start/which-key.nvim"]
-	path = vim/pack/plugins/start/which-key.nvim
-	url = https://github.com/folke/which-key.nvim
-[submodule "vim/pack/plugins/start/nvim-web-devicons.git"]
-	path = vim/pack/plugins/start/nvim-web-devicons.git
-	url = git@github.com:nvim-tree/nvim-web-devicons.git
