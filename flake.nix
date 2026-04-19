@@ -38,11 +38,19 @@
           username = "laurin";
         };
       };
+      overlay = _: prev: {
+        actions-languageserver = prev.callPackage ./nix/packages/actions-languageserver.nix { };
+        ansible-language-server = prev.callPackage ./nix/packages/ansible-language-server.nix { };
+      };
+
       mkHome =
         _:
         { system, username }:
         let
-          pkgs = nixpkgs.legacyPackages.${system};
+          pkgs = import nixpkgs {
+            inherit system;
+            overlays = [ overlay ];
+          };
           homeDirectory =
             if pkgs.stdenv.hostPlatform.isDarwin then "/Users/${username}" else "/home/${username}";
         in
