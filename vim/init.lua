@@ -47,6 +47,17 @@ vim.keymap.set("n", "<leader>wJ", ":botright new<cr>", { desc = "Split far botto
 vim.keymap.set("n", "<leader>wK", ":topleft new<cr>", { desc = "Split far top" })
 vim.keymap.set("n", "<leader>wL", ":botright vnew<cr>", { desc = "Split far right" })
 
+-- Split navigation
+local function map_nav(key, cmd, desc)
+	vim.keymap.set("n", key, cmd, { desc = desc })
+	vim.keymap.set("t", key, "<C-\\><C-n>" .. cmd, { desc = desc })
+end
+
+map_nav("<C-H>", "<C-W><C-H>", "Go to left window")
+map_nav("<C-J>", "<C-W><C-J>", "Go to bottom window")
+map_nav("<C-K>", "<C-W><C-K>", "Go to top window")
+map_nav("<C-L>", "<C-W><C-L>", "Go to right window")
+
 -- Enable C-W navigation from the terminal
 vim.keymap.set("t", "<C-W>", "<C-\\><C-n><C-W>", { desc = "Window command" })
 
