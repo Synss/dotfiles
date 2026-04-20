@@ -29,6 +29,9 @@ vim.opt.smartcase = true
 vim.opt.wrap = false
 vim.opt.swapfile = false
 
+-- Time in ms to wait for mapped sequence to complete
+vim.opt.timeoutlen = 200
+
 -- Color scheme
 if vim.env.COLORTERM == "truecolor" or vim.env.COLORTERM == "24bit" then
 	vim.opt.termguicolors = true
@@ -64,6 +67,9 @@ map_nav("<C-L>", "<C-W><C-L>", "Go to right window")
 
 -- Enable C-W navigation from the terminal
 vim.keymap.set("t", "<C-W>", "<C-\\><C-n><C-W>", { desc = "Window command" })
+
+-- Exit terminal mode
+vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
 
 -- Delete buffer with bbye
 vim.keymap.set("n", "<leader>bd", ":Bdelete this<CR>", { desc = "Delete buffer" })
