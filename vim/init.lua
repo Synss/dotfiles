@@ -36,7 +36,11 @@ end
 
 require("theme")
 
--- Split creation (<leader>w* namespace; uppercase = full-edge split)
+-- Split creation (<leader>| / <leader>- for quick splits; <leader>w* for directional)
+vim.keymap.set("n", "<leader>|", ":rightbelow vnew<cr>", { desc = "Split right" })
+vim.keymap.set("n", "<leader>-", ":rightbelow new<cr>", { desc = "Split below" })
+
+-- (<leader>w* namespace; uppercase = full-edge split)
 vim.keymap.set("n", "<leader>wh", ":leftabove vnew<cr>", { desc = "Split left" })
 vim.keymap.set("n", "<leader>wj", ":rightbelow new<cr>", { desc = "Split below" })
 vim.keymap.set("n", "<leader>wk", ":leftabove new<cr>", { desc = "Split above" })
