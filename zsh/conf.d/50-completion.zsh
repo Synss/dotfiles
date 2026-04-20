@@ -1,15 +1,35 @@
-zstyle ':completion:*:descriptions' format '%U%B%d%b%u'
-zstyle ':completion:*:warnings' format '%BSorry, no matches for: %d%b'
-# cache
-zstyle ':completion::complete:*' use-cache 1
+# Ref https://thevaluable.dev/zsh-completion-guide-examples/
 
-# SSH Completion (http://dotfiles.org/~Ryuzaki/.zshrc)
-zstyle ':completion:*:scp:*' tag-order \
-   files users 'hosts:-host hosts:-domain:domain hosts:-ipaddr"IP\ Address *'
-zstyle ':completion:*:scp:*' group-order \
-   files all-files users hosts-domain hosts-host hosts-ipaddr
-zstyle ':completion:*:ssh:*' tag-order \
-   users 'hosts:-host hosts:-domain:domain hosts:-ipaddr"IP\ Address *'
-zstyle ':completion:*:ssh:*' group-order \
-   hosts-domain hosts-host users hosts-ipaddr
-zstyle '*' single-ignored show
+if [[ $OSTYPE == darwin* ]]; then
+    __CACHE_DIR="$HOME/Library/Caches/zsh"
+else
+    __CACHE_DIR="${XDG_CACHE_HOME:-$HOME/.cache}/zsh"
+fi
+[[ -d "$__CACHE_DIR" ]] || mkdir "$__CACHE_DIR"
+
+
+# --- options ---
+
+zstyle ':completion:*' completer _extensions _complete _approximate
+
+zstyle ':completion:*' verbose true
+
+# Pretty print
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:*:descriptions' format '%F{green}%B-- %d --%b%f'
+zstyle ':completion:*:corrections' format '%F{yellow}!- %d (errors: %e) -!%f'
+zstyle ':completion:*:warnings' format ' %F{red}-- no matches --%f'
+zstyle ':completion:*:messages' format ' %F{purple}%B -- %d --%b%f'
+
+# Group by tag
+zstyle ':completion:*' group-name ''
+
+# Caching
+zstyle ':completion:*' use-cache true
+zstyle ':completion:*' cache-path "${__CACHE_DIR}/.zcompcache"
+
+# Menu after <Tab><Tab>
+zstyle ':completion:*' menu select
+
+
+unset __CACHE_DIR
