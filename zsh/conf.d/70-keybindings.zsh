@@ -9,9 +9,10 @@ bindkey "^N" history-incremental-search-forward
 # ^T: paste a file/directory path from fzf into the command line
 
 # zsh-autosuggestions:
-# ^F: accepts full suggestion
+# Accept with ^y for consistency with ins-completion and blink-cmp
 # Esc+W: vi-forward-word
-bindkey "^f" autosuggest-accept
+
+bindkey "^y" autosuggest-accept
 
 # Unbind C-l (clear-screen)
 bindkey -r "\C-l"
