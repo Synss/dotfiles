@@ -1,5 +1,6 @@
 # Login shell so /etc/profile.d/nix.sh is sourced and ~/.nix-profile/bin is on PATH.
 
+set positional-arguments := true
 set shell := ["sh", "-l", "-c"]
 
 hostname := `hostname -s`
@@ -35,6 +36,9 @@ build:
 
 gc:
     nix-collect-garbage -d
+
+nix-search *args:
+    nix search nixpkgs "$@"
 
 news:
     home-manager news --flake ".#{{ hostname }}"
