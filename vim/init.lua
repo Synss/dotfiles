@@ -74,12 +74,7 @@ vim.keymap.set("n", "<leader>wJ", ":botright new<cr>", { desc = "Split far botto
 vim.keymap.set("n", "<leader>wK", ":topleft new<cr>", { desc = "Split far top" })
 vim.keymap.set("n", "<leader>wL", ":botright vnew<cr>", { desc = "Split far right" })
 
--- Split navigation
-vim.keymap.set("n", "<C-H>", "<C-W><C-H>", { desc = "Go to left window" })
-vim.keymap.set("n", "<C-J>", "<C-W><C-J>", { desc = "Go to bottom window" })
-vim.keymap.set("n", "<C-K>", "<C-W><C-K>", { desc = "Go to top window" })
-vim.keymap.set("n", "<C-L>", "<C-W><C-L>", { desc = "Go to right window" })
-
+-- Enable C-W navigation from the terminal
 vim.keymap.set("t", "<C-W>", "<C-\\><C-n><C-W>", { desc = "Window command" })
 
 -- Delete buffer with bbye
