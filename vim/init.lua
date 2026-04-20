@@ -80,10 +80,7 @@ vim.keymap.set("n", "<C-J>", "<C-W><C-J>", { desc = "Go to bottom window" })
 vim.keymap.set("n", "<C-K>", "<C-W><C-K>", { desc = "Go to top window" })
 vim.keymap.set("n", "<C-L>", "<C-W><C-L>", { desc = "Go to right window" })
 
-vim.keymap.set("t", "<C-H>", "<C-\\><C-n><C-W><C-H>", { desc = "Go to left window" })
-vim.keymap.set("t", "<C-J>", "<C-\\><C-n><C-W><C-J>", { desc = "Go to bottom window" })
-vim.keymap.set("t", "<C-K>", "<C-\\><C-n><C-W><C-K>", { desc = "Go to top window" })
-vim.keymap.set("t", "<C-L>", "<C-\\><C-n><C-W><C-L>", { desc = "Go to right window" })
+vim.keymap.set("t", "<C-W>", "<C-\\><C-n><C-W>", { desc = "Window command" })
 
 -- Delete buffer with bbye
 vim.keymap.set("n", "<leader>bd", ":Bdelete this<CR>", { desc = "Delete buffer" })
