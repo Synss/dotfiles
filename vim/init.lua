@@ -5,10 +5,12 @@
 vim.g.mapleader = " "
 
 -- Make a few whitespace characters visible
--- nbsp: <C-k> <space> <space>
--- vim.opt.listchars = { nbsp = "␣", tab = "↹·" }
-vim.opt.listchars = { nbsp = "␣", tab = "⇥ " }
 vim.opt.list = true
+vim.opt.listchars = {
+	nbsp = "␣",
+	tab = "⇥ ",
+	trail = "·",
+}
 
 -- Tab behavior
 vim.opt.tabstop = 4
