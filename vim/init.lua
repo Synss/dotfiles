@@ -71,6 +71,15 @@ map_nav("<C-J>", "<C-W><C-J>", "Go to bottom window")
 map_nav("<C-K>", "<C-W><C-K>", "Go to top window")
 map_nav("<C-L>", "<C-W><C-L>", "Go to right window")
 
+-- Automatically enter insert mode when a terminal opens
+vim.api.nvim_create_autocmd("TermOpen", {
+	desc = "Auto enter insert mode when opening a terminal",
+	pattern = "term://*",
+	callback = function()
+		vim.cmd("startinsert")
+	end,
+})
+
 -- Enable C-W navigation from the terminal
 vim.keymap.set("t", "<C-W>", "<C-\\><C-n><C-W>", { desc = "Window command" })
 
