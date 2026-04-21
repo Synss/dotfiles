@@ -13,6 +13,7 @@ bindkey "^N" history-incremental-search-forward
 # Esc+W: vi-forward-word
 
 bindkey "^y" autosuggest-accept
+bindkey "^f" autosuggest-accept
 
 # Unbind C-l (clear-screen)
 bindkey -r "\C-l"
