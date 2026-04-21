@@ -105,4 +105,18 @@ require("lualine").setup({
 		lualine_y = { "filetype" },
 		lualine_z = { "progress" },
 	},
+	extensions = {
+		{
+			sections = {
+				lualine_b = {
+					{
+						function()
+							return vim.fs.normalize(require("oil").get_current_dir() or "")
+						end,
+					},
+				},
+			},
+			filetypes = { "oil" },
+		},
+	},
 })
