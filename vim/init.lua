@@ -40,14 +40,14 @@ end
 require("theme")
 
 -- Split creation (<leader>| / <leader>- for quick splits; <leader>w* for directional)
-vim.keymap.set("n", "<leader>|", ":rightbelow vnew<cr>", { desc = "Split right" })
-vim.keymap.set("n", "<leader>-", ":rightbelow new<cr>", { desc = "Split below" })
+vim.keymap.set("n", "<leader>|", "<cmd>rightbelow vnew<cr>", { desc = "Split right" })
+vim.keymap.set("n", "<leader>-", "<cmd>rightbelow new<cr>", { desc = "Split below" })
 
 -- Split and terminal creation
 local function map_split(key, cmd, label)
-	local split = ":" .. cmd .. "<cr>"
+	local split = "<cmd>" .. cmd .. "<cr>"
 	vim.keymap.set("n", "<leader>s" .. key, split, { desc = "Split " .. label })
-	vim.keymap.set("n", "<leader>t" .. key, split .. ":term<cr>", { desc = "Terminal " .. label })
+	vim.keymap.set("n", "<leader>t" .. key, split .. "<cmd>term<cr>", { desc = "Terminal " .. label })
 end
 
 map_split("h", "leftabove vnew", "left")
@@ -87,7 +87,7 @@ vim.keymap.set("t", "<C-W>", "<C-\\><C-n><C-W>", { desc = "Window command" })
 vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
 
 -- Delete buffer with bbye
-vim.keymap.set("n", "<leader>bd", ":Bdelete this<CR>", { desc = "Delete buffer" })
+vim.keymap.set("n", "<leader>bd", "<cmd>Bdelete this<CR>", { desc = "Delete buffer" })
 
 -- Reformat paragraph
 vim.keymap.set("n", "<leader>Q", "{gq}", { desc = "Reformat paragraph" })
