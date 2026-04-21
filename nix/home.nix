@@ -99,6 +99,7 @@ in
           fzf-lua
           gruvbox-nvim
           lualine-nvim
+          nerdy-nvim
           nvim-lspconfig
           nvim-web-devicons
           oil-nvim
