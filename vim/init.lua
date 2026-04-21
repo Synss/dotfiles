@@ -43,16 +43,22 @@ require("theme")
 vim.keymap.set("n", "<leader>|", ":rightbelow vnew<cr>", { desc = "Split right" })
 vim.keymap.set("n", "<leader>-", ":rightbelow new<cr>", { desc = "Split below" })
 
--- (<leader>s* namespace; uppercase = full-edge split)
-vim.keymap.set("n", "<leader>sh", ":leftabove vnew<cr>", { desc = "Split left" })
-vim.keymap.set("n", "<leader>sj", ":rightbelow new<cr>", { desc = "Split below" })
-vim.keymap.set("n", "<leader>sk", ":leftabove new<cr>", { desc = "Split above" })
-vim.keymap.set("n", "<leader>sl", ":rightbelow vnew<cr>", { desc = "Split right" })
+-- Split and terminal creation
+local function map_split(key, cmd, label)
+	local split = ":" .. cmd .. "<cr>"
+	vim.keymap.set("n", "<leader>s" .. key, split, { desc = "Split " .. label })
+	vim.keymap.set("n", "<leader>t" .. key, split .. ":term<cr>", { desc = "Terminal " .. label })
+end
 
-vim.keymap.set("n", "<leader>sH", ":topleft vnew<cr>", { desc = "Split far left" })
-vim.keymap.set("n", "<leader>sJ", ":botright new<cr>", { desc = "Split far bottom" })
-vim.keymap.set("n", "<leader>sK", ":topleft new<cr>", { desc = "Split far top" })
-vim.keymap.set("n", "<leader>sL", ":botright vnew<cr>", { desc = "Split far right" })
+map_split("h", "leftabove vnew", "left")
+map_split("j", "rightbelow new", "below")
+map_split("k", "leftabove new", "above")
+map_split("l", "rightbelow vnew", "right")
+
+map_split("H", "topleft vnew", "far left")
+map_split("J", "botright new", "far bottom")
+map_split("K", "topleft new", "far top")
+map_split("L", "botright vnew", "far right")
 
 -- Split navigation
 local function map_nav(key, cmd, desc)
