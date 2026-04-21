@@ -76,9 +76,10 @@ require("lualine").setup({
 				file_status = true,
 				symbols = filename.symbols,
 			},
+		},
+		lualine_c = {
 			{ "diff", symbols = diff.symbols },
 		},
-		lualine_c = {},
 		lualine_x = {
 			diagnostics,
 		},
@@ -94,9 +95,10 @@ require("lualine").setup({
 				file_status = true,
 				symbols = filename.symbols,
 			},
+		},
+		lualine_c = {
 			{ "diff", symbols = diff.symbols },
 		},
-		lualine_c = {},
 		lualine_x = {
 			diagnostics,
 		},
