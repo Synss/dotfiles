@@ -96,7 +96,6 @@ in
         [
           blink-cmp
           close-buffers-vim
-          focus-nvim
           fzf-lua
           gruvbox-nvim
           lualine-nvim
