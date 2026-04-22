@@ -8,6 +8,5 @@ pkgs.mkShell {
     pre-commit
     shellcheck
     statix
-    stylua
   ];
 }
