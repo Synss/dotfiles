@@ -1,0 +1,14 @@
+{
+  "diagnostics": {
+    "globals": ["vim"],
+    "neededFileStatus": {
+      "codestyle-check": "Any"
+    }
+  },
+  "format": {
+    "defaultConfig": {
+      "indent_style": "tab",
+      "tab_width": "2"
+    }
+  }
+}

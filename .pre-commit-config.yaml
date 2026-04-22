@@ -49,3 +49,10 @@ repos:
         entry: shellcheck
         language: system
         files: \.sh$
+
+      - id: lua-format-check
+        name: lua-language-server format check
+        entry: lua-language-server --check .
+        language: system
+        files: \.lua$
+        pass_filenames: false
