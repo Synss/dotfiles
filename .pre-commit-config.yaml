@@ -49,9 +49,3 @@ repos:
         entry: shellcheck
         language: system
         files: \.sh$
-
-      - id: stylua
-        name: stylua
-        entry: stylua
-        language: system
-        files: \.lua$
