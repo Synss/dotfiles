@@ -32,16 +32,18 @@ in
         nerd-fonts.hack
         nerd-fonts.jetbrains-mono
 
-        # LSP servers
-        actions-languageserver
-        ansible-language-server
-        clang-tools
-        groovy-language-server
-        lua-language-server
-        nil
-        pyright
-        starlark-rust
-        vscode-langservers-extracted
+        # LSP servers | nvim
+        actions-languageserver # -     gh_action_ls
+        ansible-language-server # -    ansiblels
+        clang-tools # -                clangd
+        groovy-language-server # -     groovyls
+        lua-language-server # -        lua_ls
+        marksman # -                   marksman
+        nil # -                        nil_ls
+        pyright # -                    pyright
+        starlark-rust # -              starlark_rust
+        vscode-langservers-extracted # cssls eslint html jsonls
+        yaml-language-server # -       yaml-language-server
 
         # terminal tools
         bazelisk
