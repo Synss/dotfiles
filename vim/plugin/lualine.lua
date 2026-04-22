@@ -3,10 +3,10 @@ local nerdy = require("nerdy.fetcher")
 local mode = {
 	icons = {
 		win = nerdy.get("md-window_maximize"), -- Normal
-		pen = nerdy.get("oct-pencil"), -- Insert
+		pen = nerdy.get("oct-pencil"),       -- Insert
 		sel = nerdy.get("md-selection_drag"), -- Visual/Select
-		cmd = nerdy.get("oct-terminal"), -- Command
-		rep = nerdy.get("md-cached"), -- Replace
+		cmd = nerdy.get("oct-terminal"),     -- Command
+		rep = nerdy.get("md-cached"),        -- Replace
 	},
 }
 
