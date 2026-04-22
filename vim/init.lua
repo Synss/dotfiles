@@ -44,16 +44,18 @@ vim.keymap.set("n", "<leader>|", "<cmd>rightbelow vnew<cr>", { desc = "Split rig
 vim.keymap.set("n", "<leader>-", "<cmd>rightbelow new<cr>", { desc = "Split below" })
 
 -- Split and terminal creation
-local function map_split(key, cmd, label)
+local function map_split(key, cmd, label, terminal)
 	local split = "<cmd>" .. cmd .. "<cr>"
 	vim.keymap.set("n", "<leader>s" .. key, split, { desc = "Split " .. label })
-	vim.keymap.set("n", "<leader>t" .. key, split .. "<cmd>term<cr>", { desc = "Terminal " .. label })
+	if terminal then
+		vim.keymap.set("n", "<leader>t" .. key, split .. "<cmd>term<cr>", { desc = "Terminal " .. label })
+	end
 end
 
-map_split("h", "leftabove vnew", "left")
-map_split("j", "rightbelow new", "below")
-map_split("k", "leftabove new", "above")
-map_split("l", "rightbelow vnew", "right")
+map_split("h", "leftabove vnew", "left", true)
+map_split("j", "rightbelow new", "below", true)
+map_split("k", "leftabove new", "above", true)
+map_split("l", "rightbelow vnew", "right", true)
 
 map_split("H", "topleft vnew", "far left")
 map_split("J", "botright new", "far bottom")
