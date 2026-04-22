@@ -20,6 +20,6 @@ map_fzf_split("l", "rightbelow vnew", "right")
 
 fzf.setup({
 	grep = {
-		rg_opts = "--hidden --glob '!.git' --glob '!.gitmodules'",
+		rg_opts = "--hidden --glob '!.git' --glob '!.gitmodules' --line-number --column",
 	},
 })
