@@ -19,8 +19,6 @@ vim.opt.shiftwidth = 4
 vim.opt.shiftround = true
 vim.opt.expandtab = true
 
-require("session")
-
 -- Case insensitive matching
 vim.opt.incsearch = true
 vim.opt.ignorecase = true
@@ -36,8 +34,6 @@ vim.opt.timeoutlen = 200
 if vim.env.COLORTERM == "truecolor" or vim.env.COLORTERM == "24bit" then
 	vim.opt.termguicolors = true
 end
-
-require("theme")
 
 -- Split creation (<Leader>| / <Leader>- for quick splits; <Leader>w* for directional)
 vim.keymap.set("n", "<Leader>|", "<Cmd>rightbelow vnew<CR>", { desc = "Split right" })
