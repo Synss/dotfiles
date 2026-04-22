@@ -26,10 +26,7 @@ in
       with pkgs;
       [
         # nix tooling
-        deadnix
         home-manager
-        nixfmt-tree
-        statix
 
         # fonts
         nerd-fonts.hack
@@ -63,7 +60,6 @@ in
         ripgrep
         ruff
         shellcheck
-        stylua
         uv
         vivid
         zsh
