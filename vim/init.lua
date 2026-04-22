@@ -39,16 +39,16 @@ end
 
 require("theme")
 
--- Split creation (<leader>| / <leader>- for quick splits; <leader>w* for directional)
-vim.keymap.set("n", "<leader>|", "<cmd>rightbelow vnew<cr>", { desc = "Split right" })
-vim.keymap.set("n", "<leader>-", "<cmd>rightbelow new<cr>", { desc = "Split below" })
+-- Split creation (<Leader>| / <Leader>- for quick splits; <Leader>w* for directional)
+vim.keymap.set("n", "<Leader>|", "<Cmd>rightbelow vnew<CR>", { desc = "Split right" })
+vim.keymap.set("n", "<Leader>-", "<Cmd>rightbelow new<CR>", { desc = "Split below" })
 
 -- Split and terminal creation
 local function map_split(key, cmd, label, terminal)
-	local split = "<cmd>" .. cmd .. "<cr>"
-	vim.keymap.set("n", "<leader>s" .. key, split, { desc = "Split " .. label })
+	local split = "<Cmd>" .. cmd .. "<CR>"
+	vim.keymap.set("n", "<Leader>s" .. key, split, { desc = "Split " .. label })
 	if terminal then
-		vim.keymap.set("n", "<leader>t" .. key, split .. "<cmd>term<cr>", { desc = "Terminal " .. label })
+		vim.keymap.set("n", "<Leader>t" .. key, split .. "<Cmd>term<CR>", { desc = "Terminal " .. label })
 	end
 end
 
@@ -68,10 +68,10 @@ local function map_nav(key, cmd, desc)
 	vim.keymap.set("t", key, "<C-\\><C-n>" .. cmd, { desc = desc })
 end
 
-map_nav("<C-H>", "<C-W><C-H>", "Go to left window")
-map_nav("<C-J>", "<C-W><C-J>", "Go to bottom window")
-map_nav("<C-K>", "<C-W><C-K>", "Go to top window")
-map_nav("<C-L>", "<C-W><C-L>", "Go to right window")
+map_nav("<C-h>", "<C-w><C-h>", "Go to left window")
+map_nav("<C-j>", "<C-w><C-j>", "Go to bottom window")
+map_nav("<C-k>", "<C-w><C-k>", "Go to top window")
+map_nav("<C-l>", "<C-w><C-l>", "Go to right window")
 
 -- Automatically enter insert mode when a terminal opens
 vim.api.nvim_create_autocmd("TermOpen", {
@@ -82,14 +82,14 @@ vim.api.nvim_create_autocmd("TermOpen", {
 	end,
 })
 
--- Enable C-W navigation from the terminal
-vim.keymap.set("t", "<C-W>", "<C-\\><C-n><C-W>", { desc = "Window command" })
+-- Enable C-w navigation from the terminal
+vim.keymap.set("t", "<C-w>", "<C-\\><C-n><C-w>", { desc = "Window command" })
 
 -- Exit terminal mode
 vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
 
 -- Delete buffer with bbye
-vim.keymap.set("n", "<leader>bd", "<cmd>Bdelete this<CR>", { desc = "Delete buffer" })
+vim.keymap.set("n", "<Leader>bd", "<Cmd>Bdelete this<CR>", { desc = "Delete buffer" })
 
 -- Reformat paragraph
-vim.keymap.set("n", "<leader>Q", "{gq}", { desc = "Reformat paragraph" })
+vim.keymap.set("n", "<Leader>Q", "{gq}", { desc = "Reformat paragraph" })

@@ -3,10 +3,10 @@ local oil = require("oil")
 oil.setup({
 	keymaps = {
 		-- Navigation
-		["<C-H>"] = "<C-W><C-H>",
-		["<C-J>"] = "<C-W><C-J>",
-		["<C-K>"] = "<C-W><C-K>",
-		["<C-L>"] = "<C-W><C-L>",
+		["<C-h>"] = "<C-w><C-h>",
+		["<C-j>"] = "<C-w><C-j>",
+		["<C-k>"] = "<C-w><C-k>",
+		["<C-l>"] = "<C-w><C-l>",
 		--
 		["q"] = { "actions.close", mode = "n" },
 	},
