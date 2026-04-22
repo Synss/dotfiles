@@ -51,39 +51,32 @@ vim.lsp.config("*", {
 })
 
 local servers = {
-	"ansiblels",
-	"clangd",
-	"groovyls",
-	"cssls",
-	"gh_actions_ls",
-	"lua_ls",
-	"nil_ls",
-	"pyright",
-	"ruff",
-	"starlark_rust",
+	-- See `:checkhealth vim.lsp`.
+	"ansiblels",           -- ansible-language-server
+	"clangd",              -- clang-tools
+	"groovyls",            -- groovy-language-server
+	"cssls",               -- vscode-langservers-extracted
+	"eslint",              -- vscode-langservers-extracted
+	"gh_actions_ls",       -- actions-languageserver
+	"html",                -- vscode-langservers-extracted
+	"jsonls",              -- vscode-langservers-extracted
+	"lua_ls",              -- lua-language-server
+	"marksman",            -- marksman
+	"nil_ls",              -- nil_ls
+	"pyright",             -- pyright
+	"ruff",                -- ruff
+	"starlark_rust",       -- starlark-rust
+	"yaml-language-server", -- yaml-language-server
 }
 
 vim.lsp.config("ansiblels", {
 	filetypes = { "yaml.ansible" },
 })
 
-vim.lsp.config("starlark_rust", {
-	filetypes = { "bzl" },
-})
-
 vim.lsp.config("gh_actions_ls", {
 	cmd = { "actions-languageserver", "--stdio" },
 	filetypes = { "yaml.github" },
 	root_markers = { ".github" },
-})
-
--- Run `nixfmt` on save
-vim.lsp.config("nil_ls", {
-	settings = {
-		["nil"] = {
-			formatting = { command = { "nixfmt" } },
-		},
-	},
 })
 
 vim.lsp.config("lua_ls", {
@@ -98,6 +91,14 @@ vim.lsp.config("lua_ls", {
 	},
 })
 
+vim.lsp.config("nil_ls", {
+	settings = {
+		["nil"] = {
+			formatting = { command = { "nixfmt" } },
+		},
+	},
+})
+
 -- Point pyright at the uv-managed venv (.venv in project root).
 vim.lsp.config("pyright", {
 	settings = {
@@ -107,6 +108,12 @@ vim.lsp.config("pyright", {
 		},
 	},
 })
+
+vim.lsp.config("starlark_rust", {
+	filetypes = { "bzl" },
+})
+
+vim.lsp.config("yaml-language-server", {})
 
 for _, lsp in pairs(servers) do
 	vim.lsp.enable(lsp)
