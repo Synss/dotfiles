@@ -76,7 +76,7 @@ vim.api.nvim_create_autocmd("TermOpen", {
 	desc = "Auto enter insert mode when opening a terminal",
 	pattern = "term://*",
 	callback = function()
-		vim.cmd("startinsert")
+		vim.cmd.startinsert()
 	end,
 })
 
