@@ -65,6 +65,10 @@ map_nav("<C-j>", "<C-w><C-j>", "Go to bottom window")
 map_nav("<C-k>", "<C-w><C-k>", "Go to top window")
 map_nav("<C-l>", "<C-w><C-l>", "Go to right window")
 
+-- Visual mode text
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move selection up" })
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move selection down" })
+
 -- Automatically enter insert mode when a terminal opens
 vim.api.nvim_create_autocmd("TermOpen", {
 	desc = "Auto enter insert mode when opening a terminal",
