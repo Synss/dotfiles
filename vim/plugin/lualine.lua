@@ -55,7 +55,7 @@ local diagnostics = {
 require("lualine").setup({
 	options = {
 		theme = "auto",
-		icons_enabled = true,
+		icons_enabled = vim.g.have_nerd_font,
 		component_separator = "",
 		section_separator = {
 			left = nerdy.get("pl-left_hard_divider"),
