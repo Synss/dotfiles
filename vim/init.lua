@@ -85,9 +85,8 @@ vim.keymap.set("t", "<C-w>", "<C-\\><C-n><C-w>", { desc = "Window command" })
 vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
 
 -- Buffer handling
-vim.keymap.set("n", "<Leader>bd", "<Cmd>Bdelete this<CR>", { desc = "Delete buffer" })
-vim.keymap.set("n", "<Leader>q", "<Cmd>bprevious|bdelete! #<CR>", { desc = "Delete buffer" })
-vim.keymap.set("n", "<Leader>Q", "<Cmd>bwipeout<CR>", { desc = "Wipeout buffer" })
+vim.keymap.set("n", "<Leader>q", "<Cmd>Bdelete! this<CR>", { desc = "Delete buffer" })
+vim.keymap.set("n", "Q", "<Cmd>Bwipeout! this<CR>", { desc = "Wipeout buffer" })
 
 -- Reformat paragraph
 vim.keymap.set("n", "<Leader>f|", "{gq}", { desc = "Reformat paragraph" })
