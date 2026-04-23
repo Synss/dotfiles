@@ -16,6 +16,7 @@ let
 in
 {
   imports = [ nix-index-database.homeModules.nix-index ];
+  fonts.fontconfig.enable = true;
   home = {
     inherit username homeDirectory;
     stateVersion = "25.11";
