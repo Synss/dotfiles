@@ -66,8 +66,8 @@ map_nav("<C-k>", "<C-w><C-k>", "Go to top window")
 map_nav("<C-l>", "<C-w><C-l>", "Go to right window")
 
 -- Visual mode text
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move selection up" })
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move selection down" })
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { silent = true, desc = "Move selection up" })
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { silent = true, desc = "Move selection down" })
 
 vim.keymap.set("v", "<", "<gv", { desc = "Dedent selection" })
 vim.keymap.set("v", ">", ">gv", { desc = "Indent selection" })
