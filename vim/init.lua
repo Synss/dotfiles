@@ -86,4 +86,4 @@ vim.keymap.set("n", "<Leader>q", "<Cmd>bprevious|bdelete! #<CR>", { desc = "Dele
 vim.keymap.set("n", "<Leader>Q", "<Cmd>bwipeout<CR>", { desc = "Wipeout buffer" })
 
 -- Reformat paragraph
--- vim.keymap.set("n", "<Leader>Q", "{gq}", { desc = "Reformat paragraph" })
+vim.keymap.set("n", "<Leader>f|", "{gq}", { desc = "Reformat paragraph" })
