@@ -1,41 +1,32 @@
--- Memo
---   * `set` -> `vim.opt`
---   * `let` -> `vim.g`
+-- Memo: `set` -> `vim.opt`, `let` -> `vim.g`
 
 vim.g.mapleader = " "
 
--- Make a few whitespace characters visible
-vim.opt.list = true
-vim.opt.listchars = {
-	nbsp = "␣",
-	tab = "⇥ ",
-	trail = "·",
-}
+-- Options
 
--- Tab behavior
+vim.opt.list = true
+vim.opt.listchars = { nbsp = "␣", tab = "⇥ ", trail = "·" }
+
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.shiftround = true
 vim.opt.expandtab = true
 
--- Case insensitive matching
 vim.opt.incsearch = true
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
 vim.opt.wrap = false
 vim.opt.swapfile = false
+vim.opt.timeoutlen = 200 -- ms to wait for mapped sequence to complete
 
--- Time in ms to wait for mapped sequence to complete
-vim.opt.timeoutlen = 200
-
--- Color scheme
 if vim.env.COLORTERM == "truecolor" or vim.env.COLORTERM == "24bit" then
 	vim.opt.termguicolors = true
 end
 
--- Split and terminal creation
+-- Splits
+
 local function map_split(key, cmd, label, terminal)
 	local split = "<Cmd>" .. cmd .. "<CR>"
 	vim.keymap.set("n", "<Leader>s" .. key, split, { desc = "Split " .. label })
@@ -48,13 +39,11 @@ map_split("h", "leftabove vnew", "left", true)
 map_split("j", "rightbelow new", "below", true)
 map_split("k", "leftabove new", "above", true)
 map_split("l", "rightbelow vnew", "right", true)
-
 map_split("H", "topleft vnew", "far left")
 map_split("J", "botright new", "far bottom")
 map_split("K", "topleft new", "far top")
 map_split("L", "botright vnew", "far right")
 
--- Split navigation
 local function map_nav(key, cmd, desc)
 	vim.keymap.set("n", key, cmd, { desc = desc })
 	vim.keymap.set("t", key, "<C-\\><C-n>" .. cmd, { desc = desc })
@@ -65,9 +54,10 @@ map_nav("<C-j>", "<C-w><C-j>", "Go to bottom window")
 map_nav("<C-k>", "<C-w><C-k>", "Go to top window")
 map_nav("<C-l>", "<C-w><C-l>", "Go to right window")
 
--- Visual mode text
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { silent = true, desc = "Move selection up" })
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { silent = true, desc = "Move selection down" })
+-- Visual mode
+
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { silent = true, desc = "Move selection down" })
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { silent = true, desc = "Move selection up" })
 
 vim.keymap.set("v", "<", "<gv", { desc = "Dedent selection" })
 vim.keymap.set("v", ">", ">gv", { desc = "Indent selection" })
@@ -78,24 +68,19 @@ vim.keymap.set("v", "<Leader>W", function()
 	vim.fn.winrestview(view)
 end, { desc = "Remove trailing whitespace" })
 
--- Automatically enter insert mode when a terminal opens
+-- Terminal
+
 vim.api.nvim_create_autocmd("TermOpen", {
 	desc = "Auto enter insert mode when opening a terminal",
 	pattern = "term://*",
-	callback = function()
-		vim.cmd.startinsert()
-	end,
+	callback = function() vim.cmd.startinsert() end,
 })
 
--- Enable C-w navigation from the terminal
 vim.keymap.set("t", "<C-w>", "<C-\\><C-n><C-w>", { desc = "Window command" })
-
--- Exit terminal mode
 vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
 
--- Buffer handling
+-- Buffers
+
 vim.keymap.set("n", "<Leader>q", "<Cmd>Bdelete! this<CR>", { desc = "Delete buffer" })
 vim.keymap.set("n", "Q", "<Cmd>Bwipeout! this<CR>", { desc = "Wipeout buffer" })
-
--- Reformat paragraph
 vim.keymap.set("n", "gQ", "gqip", { desc = "Reformat paragraph" })
