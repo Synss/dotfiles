@@ -93,7 +93,7 @@ require("lualine").setup({
 		lualine_b = {
 			{
 				"filename",
-				path = 1,
+				path = function() return vim.bo.buftype == 'terminal' and 0 or 1 end,
 				file_status = true,
 				symbols = filename.symbols,
 			},
