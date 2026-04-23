@@ -35,10 +35,6 @@ if vim.env.COLORTERM == "truecolor" or vim.env.COLORTERM == "24bit" then
 	vim.opt.termguicolors = true
 end
 
--- Split creation (<Leader>| / <Leader>- for quick splits; <Leader>w* for directional)
-vim.keymap.set("n", "<Leader>|", "<Cmd>rightbelow vnew<CR>", { desc = "Split right" })
-vim.keymap.set("n", "<Leader>-", "<Cmd>rightbelow new<CR>", { desc = "Split below" })
-
 -- Split and terminal creation
 local function map_split(key, cmd, label, terminal)
 	local split = "<Cmd>" .. cmd .. "<CR>"
