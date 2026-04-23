@@ -36,7 +36,8 @@ local filename = {
 	symbols = {
 		modified = nerdy.get("md-content_save_edit"),
 		readonly = nerdy.get("md-lock"),
-		unnamed = "[No Name]",
+		unnamed = nerdy.get("md-file_question"),
+		newfile = nerdy.get("md-file_plus"),
 	},
 }
 
@@ -74,6 +75,7 @@ require("lualine").setup({
 			{
 				"filename",
 				file_status = true,
+				newfile_status = true,
 				symbols = filename.symbols,
 			},
 		},
