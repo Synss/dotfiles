@@ -57,6 +57,7 @@ in
         just
         yq-go
         neovim
+        neovim-remote
         nodejs
         pnpm
         pre-commit
