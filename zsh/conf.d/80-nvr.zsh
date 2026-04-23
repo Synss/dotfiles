@@ -1,4 +1,5 @@
-test -n "${NVIM}" || command -v nvr >/dev/null || return 0
+command -v nvr >/dev/null || return 0
+[[ -z "${NVIM}" ]] && return 0
 
 # Set nvim CD to terminal PWD
 ncd() {
