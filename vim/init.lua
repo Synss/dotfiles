@@ -69,6 +69,12 @@ map_nav("<C-l>", "<C-w><C-l>", "Go to right window")
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move selection up" })
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move selection down" })
 
+vim.keymap.set("v", "<Leader>W", function()
+	local view = vim.fn.winsaveview()
+	vim.cmd([['<,'>s/\s\+$//e]])
+	vim.fn.winrestview(view)
+end, { desc = "Remove trailing whitespace" })
+
 -- Automatically enter insert mode when a terminal opens
 vim.api.nvim_create_autocmd("TermOpen", {
 	desc = "Auto enter insert mode when opening a terminal",
