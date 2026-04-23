@@ -193,8 +193,8 @@ in
           ci = "commit";
           co = "checkout";
           fixup = "commit --fixup";
-          logline = "log --decorate --graph --color --oneline";
-          logall = "log --decorate --graph --color --oneline --all";
+          logline = "log --graph --oneline --decorate --color";
+          logall = "log --graph --oneline --decorate --color --exclude='refs/notes/*' --all";
           logfull = "log --graph --pretty=format:'%C(yellow)%h%Creset %d%s %C(green)(%cr)%Creset %C(bold blue)<%an>%Creset'";
           names = "diff --name-only";
           retop = "!${retop}";
