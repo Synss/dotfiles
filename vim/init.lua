@@ -99,6 +99,10 @@ end, { desc = "Remove trailing whitespace" })
 
 -- Terminal
 
+vim.api.nvim_create_autocmd("TermOpen", {
+	callback = function() vim.wo.scrolloff = 0 end,
+})
+
 vim.keymap.set("t", "<C-w>", "<C-\\><C-n><C-w>", { desc = "Window command" })
 vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
 
