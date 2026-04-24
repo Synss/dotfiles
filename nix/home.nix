@@ -214,7 +214,7 @@ in
         fetch.prune = true;
         merge.conflictStyle = "zdiff3";
         pull.rebase = true;
-        push.default = "upstream";
+        push.autosetupremote = true;
         rebase.autosquash = true;
         rerere.enabled = true;
       };
