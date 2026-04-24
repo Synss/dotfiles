@@ -79,6 +79,9 @@ vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" }
 
 -- Buffers
 
+vim.keymap.set("n", "q:", "<Nop>", { desc = "Disable command-line window" })
+vim.keymap.set("n", "q/", "<Nop>", { desc = "Disable command-line search window (forward)" })
+vim.keymap.set("n", "q?", "<Nop>", { desc = "Disable command-line search window (backward)" })
 vim.keymap.set("n", "<Leader>q", "<Cmd>Bdelete! this<CR>", { desc = "Delete buffer" })
 vim.keymap.set("n", "Q", "<Cmd>Bwipeout! this<CR>", { desc = "Wipeout buffer" })
 vim.keymap.set("n", "gQ", "gqip", { desc = "Reformat paragraph" })
