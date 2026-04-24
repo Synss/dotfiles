@@ -3,7 +3,7 @@ command -v nvr >/dev/null || return 0
 
 # Set nvim CD to terminal PWD
 ncd() {
-    nvr -c ":cd $(realpath -s "${1:-.}")"
+    (nvr -c ":cd $(realpath -s "${1:-.}")" &)
 }
 
 # Prevent nested nvim
