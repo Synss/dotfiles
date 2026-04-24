@@ -15,5 +15,8 @@ bindkey "^N" history-incremental-search-forward
 bindkey "^y" autosuggest-accept
 bindkey "^f" autosuggest-accept
 
+# Unbind <Esc>: (execute-named-cmd)
+bindkey -r "\e:"
+
 # Unbind C-l (clear-screen)
 bindkey -r "\C-l"
