@@ -1,6 +1,7 @@
 local oil = require("oil")
 
 oil.setup({
+	skip_confirm_for_simple_edits = true,
 	keymaps = {
 		-- Navigation
 		["<C-h>"] = "<C-w><C-h>",
