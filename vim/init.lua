@@ -21,6 +21,8 @@ vim.opt.wrap = false
 vim.opt.swapfile = false
 vim.opt.timeoutlen = 200 -- ms to wait for mapped sequence to complete
 
+vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
+
 if vim.env.COLORTERM == "truecolor" or vim.env.COLORTERM == "24bit" then
 	vim.opt.termguicolors = true
 end
