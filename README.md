@@ -1,4 +1,4 @@
-![Build Status](https://github.com/Synss/dotfiles/actions/workflows/lint.yml/badge.svg?branch=master)
+![Build Status](https://github.com/Synss/dotfiles/actions/workflows/pre-commit.yml/badge.svg?branch=main)
 
 # dotfiles
 
@@ -13,6 +13,11 @@ Configuration for
 
 Nix flake + Home Manager in `nix/`. See [`nix/README.md`](nix/README.md).
 
-```sh
-just switch
+Run
 ```
+./bootstrap-just.sh bootstrap
+```
+to setup a new machine.
+
+See [`nix/README.md`](nix/README.md) for more information on the Nix flake and
+Home Manager setup.
