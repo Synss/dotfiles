@@ -12,18 +12,12 @@ local function equalize_heights()
 	return wins, widths
 end
 
-local function column_wins(cur)
-	local col = vim.api.nvim_win_get_position(cur)[2]
-	local wins = {}
-	for _, w in ipairs(vim.api.nvim_tabpage_list_wins(0)) do
-		if vim.api.nvim_win_get_position(w)[2] == col
+local function column_wins(col)
+	return vim.tbl_filter(function(w)
+		return vim.api.nvim_win_get_position(w)[2] == col
 				and vim.api.nvim_win_get_config(w).relative == ""
 				and vim.bo[vim.api.nvim_win_get_buf(w)].buftype ~= "quickfix"
-		then
-			table.insert(wins, w)
-		end
-	end
-	return wins
+	end, vim.api.nvim_tabpage_list_wins(0))
 end
 
 local function resize(cur, wins)
@@ -43,7 +37,7 @@ vim.api.nvim_create_autocmd("WinEnter", {
 		if vim.bo.buftype == "quickfix" then return end
 		local all_wins, widths = equalize_heights()
 		local cur = vim.api.nvim_get_current_win()
-		local wins = column_wins(cur)
+		local wins = column_wins(vim.api.nvim_win_get_position(cur)[2])
 		if #wins > 1 then resize(cur, wins) end
 		for _, w in ipairs(all_wins) do
 			if widths[w] then vim.api.nvim_win_set_width(w, widths[w]) end
