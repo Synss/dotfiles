@@ -62,13 +62,9 @@ map_nav("<C-l>", "<C-w><C-l>", "Go to right window")
 
 -- Windows
 
-local function show_indicators()
-	return vim.bo.buftype ~= "terminal" and vim.bo.filetype ~= "fzf"
-end
-
 vim.api.nvim_create_autocmd({ "WinEnter", "BufWinEnter" }, {
 	callback = function()
-		if show_indicators() then
+		if vim.bo.buftype == "" then
 			vim.wo.relativenumber = true
 			vim.wo.cursorline = true
 			vim.wo.cursorlineopt = "number"
