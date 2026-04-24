@@ -15,6 +15,8 @@ vim.opt.shiftwidth = 4
 vim.opt.shiftround = true
 vim.opt.expandtab = true
 
+vim.opt.scrolloff = 4
+
 vim.opt.incsearch = true
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
