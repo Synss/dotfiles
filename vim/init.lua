@@ -4,7 +4,7 @@ vim.g.mapleader = " "
 
 -- Options
 
-vim.opt.unnamedplus = true
+vim.opt.clipboard = "unnamedplus"
 
 vim.opt.list = true
 vim.opt.listchars = { nbsp = "␣", tab = "⇥ ", trail = "·" }
