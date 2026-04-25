@@ -1,5 +1,4 @@
 local fzf = require("fzf-lua")
-local fzf_actions = require("fzf-lua.actions")
 local fzf_config = require("fzf-lua.config")
 
 local function in_current_win(picker)
