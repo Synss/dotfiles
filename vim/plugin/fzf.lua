@@ -38,8 +38,10 @@ end
 
 vim.keymap.set("n", "<Leader>fb", fzf.buffers, { desc = "Buffers" })
 vim.keymap.set("n", "<Leader>ff", smart_find, { desc = "Find files" })
-vim.keymap.set("n", "<Leader>fr", fzf.oldfiles, { desc = "Recent files" })
 vim.keymap.set("n", "<Leader>fg", in_current_win(fzf.live_grep), { desc = "Live grep" })
+vim.keymap.set("n", "<Leader>fr", fzf.oldfiles, { desc = "Recent files" })
+vim.keymap.set("n", "<Leader>fs", fzf.lsp_document_symbols, { desc = "Document symbols" })
+vim.keymap.set("n", "<Leader>fw", fzf.grep_cword, { desc = "Find word under cursor" })
 
 fzf.setup({
 	files = { fd_opts = "--color=never --type f --hidden --follow --exclude .git" },
