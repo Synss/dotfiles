@@ -52,21 +52,21 @@ vim.lsp.config("*", {
 
 local servers = {
 	-- See `:checkhealth vim.lsp`.
-	"ansiblels",           -- ansible-language-server
-	"clangd",              -- clang-tools
-	"groovyls",            -- groovy-language-server
-	"cssls",               -- vscode-langservers-extracted
-	"eslint",              -- vscode-langservers-extracted
-	"gh_actions_ls",       -- actions-languageserver
-	"html",                -- vscode-langservers-extracted
-	"jsonls",              -- vscode-langservers-extracted
-	"lua_ls",              -- lua-language-server
-	"marksman",            -- marksman
-	"nil_ls",              -- nil_ls
-	"pyright",             -- pyright
-	"ruff",                -- ruff
-	"starlark_rust",       -- starlark-rust
-	"yaml-language-server", -- yaml-language-server
+	"ansiblels",    -- ansible-language-server
+	"clangd",       -- clang-tools
+	"groovyls",     -- groovy-language-server
+	"cssls",        -- vscode-langservers-extracted
+	"eslint",       -- vscode-langservers-extracted
+	"gh_actions_ls", -- actions-languageserver
+	"html",         -- vscode-langservers-extracted
+	"jsonls",       -- vscode-langservers-extracted
+	"lua_ls",       -- lua-language-server
+	"marksman",     -- marksman
+	"nil_ls",       -- nil_ls
+	"pyright",      -- pyright
+	"ruff",         -- ruff
+	"starlark_rust", -- starlark-rust
+	"yamlls",       -- yaml-language-server
 }
 
 vim.lsp.config("ansiblels", {
@@ -113,8 +113,10 @@ vim.lsp.config("starlark_rust", {
 	filetypes = { "bzl" },
 })
 
-vim.lsp.config("yaml-language-server", {})
-
 for _, lsp in pairs(servers) do
 	vim.lsp.enable(lsp)
 end
+
+vim.lsp.config("groovyls", {
+	cmd = { "groovy-language-server" },
+})

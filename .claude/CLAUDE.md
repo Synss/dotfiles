@@ -13,6 +13,10 @@ start.
 `gh_actions_ls` has a `cmd` override in `vim/plugin/lsp.lua` because the Nix package installs
 the binary as `actions-languageserver`, not `gh-actions-language-server`.
 
+`groovyls` has a `cmd` override in `vim/plugin/lsp.lua` because the default expects
+`java -jar groovy-language-server-all.jar` but the Nix package installs a wrapper script
+named `groovy-language-server`.
+
 ## Nix overlay
 
 `ansible-language-server` and `actions-languageserver` are not in nixpkgs. They are packaged as
