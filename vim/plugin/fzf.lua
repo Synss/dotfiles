@@ -37,9 +37,9 @@ local function smart_find()
 	})
 end
 
-vim.keymap.set("n", "<Leader>fb", in_current_win(fzf.buffers), { desc = "Buffers" })
+vim.keymap.set("n", "<Leader>fb", fzf.buffers, { desc = "Buffers" })
 vim.keymap.set("n", "<Leader>ff", smart_find, { desc = "Find files" })
-vim.keymap.set("n", "<Leader>fr", in_current_win(fzf.oldfiles), { desc = "Recent files" })
+vim.keymap.set("n", "<Leader>fr", fzf.oldfiles, { desc = "Recent files" })
 vim.keymap.set("n", "<Leader>fg", in_current_win(fzf.live_grep), { desc = "Live grep" })
 
 fzf.setup({
