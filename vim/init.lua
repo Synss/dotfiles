@@ -50,15 +50,18 @@ map_split("J", "botright new", "far bottom")
 map_split("K", "topleft new", "far top")
 map_split("L", "botright vnew", "far right", true)
 
-local function map_nav(key, cmd, desc)
-	vim.keymap.set("n", key, cmd, { desc = desc })
-	vim.keymap.set("t", key, "<C-\\><C-n>" .. cmd, { desc = desc })
+local function map_nav(key, dir, desc)
+	vim.keymap.set("n", key, function()
+		if vim.api.nvim_win_get_config(0).relative ~= "" then return end
+		vim.cmd.wincmd(dir)
+	end, { desc = desc })
+	vim.keymap.set("t", key, "<C-\\><C-n><C-w><C-" .. dir .. ">", { desc = desc })
 end
 
-map_nav("<C-h>", "<C-w><C-h>", "Go to left window")
-map_nav("<C-j>", "<C-w><C-j>", "Go to bottom window")
-map_nav("<C-k>", "<C-w><C-k>", "Go to top window")
-map_nav("<C-l>", "<C-w><C-l>", "Go to right window")
+map_nav("<C-h>", "h", "Go to left window")
+map_nav("<C-j>", "j", "Go to bottom window")
+map_nav("<C-k>", "k", "Go to top window")
+map_nav("<C-l>", "l", "Go to right window")
 
 -- Windows
 
