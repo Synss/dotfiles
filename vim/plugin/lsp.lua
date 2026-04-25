@@ -3,7 +3,6 @@ vim.lsp.log.set_level("error")
 -- Enable language servers
 
 local servers = {
-	-- See `:checkhealth vim.lsp`.
 	"ansiblels",    -- ansible-language-server
 	"clangd",       -- clang-tools
 	"groovyls",     -- groovy-language-server

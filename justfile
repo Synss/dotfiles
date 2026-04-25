@@ -46,6 +46,9 @@ news:
 switch:
     home-manager switch --flake ".#{{ hostname }}"
 
+check-lsp:
+    nvim --headless -c "checkhealth vim.lsp" -c "qa!"
+
 lint:
     pre-commit run
 
