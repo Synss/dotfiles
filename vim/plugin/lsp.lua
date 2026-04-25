@@ -1,6 +1,32 @@
 vim.lsp.log.set_level("error")
 
--- LSP diagnostics (<Leader>l* namespace; [d/]d are standard bracket navigation)
+-- Enable language servers
+
+local servers = {
+	-- See `:checkhealth vim.lsp`.
+	"ansiblels",    -- ansible-language-server
+	"clangd",       -- clang-tools
+	"groovyls",     -- groovy-language-server
+	"cssls",        -- vscode-langservers-extracted
+	"eslint",       -- vscode-langservers-extracted
+	"gh_actions_ls", -- actions-languageserver
+	"html",         -- vscode-langservers-extracted
+	"jsonls",       -- vscode-langservers-extracted
+	"lua_ls",       -- lua-language-server
+	"marksman",     -- marksman
+	"nil_ls",       -- nil_ls
+	"pyright",      -- pyright
+	"ruff",         -- ruff
+	"starlark_rust", -- starlark-rust
+	"yamlls",       -- yaml-language-server
+}
+
+for _, lsp in pairs(servers) do
+	vim.lsp.enable(lsp)
+end
+
+-- LSP config
+
 vim.keymap.set("n", "<Leader>ld", vim.diagnostic.open_float, { silent = true, desc = "Show diagnostic" })
 vim.keymap.set("n", "[d", function()
 	vim.diagnostic.jump({ count = -1 })
@@ -13,7 +39,6 @@ vim.keymap.set("n", "<Leader>lq", vim.diagnostic.setloclist, { silent = true, de
 local on_attach = function(_client, bufnr)
 	vim.api.nvim_set_option_value("omnifunc", "v:lua.vim.lsp.omnifunc", { buf = bufnr })
 
-	-- gd/gD/gi/gr/K are standard vim navigation conventions — not namespaced
 	local map = function(key, fn, desc)
 		vim.keymap.set("n", key, fn, { buffer = bufnr, silent = true, desc = desc })
 	end
@@ -39,6 +64,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 	callback = function()
 		vim.lsp.buf.format({ async = false }) -- must complete before the write
 	end,
+	desc = "Format on write",
 })
 
 vim.lsp.config("*", {
@@ -50,24 +76,7 @@ vim.lsp.config("*", {
 	},
 })
 
-local servers = {
-	-- See `:checkhealth vim.lsp`.
-	"ansiblels",    -- ansible-language-server
-	"clangd",       -- clang-tools
-	"groovyls",     -- groovy-language-server
-	"cssls",        -- vscode-langservers-extracted
-	"eslint",       -- vscode-langservers-extracted
-	"gh_actions_ls", -- actions-languageserver
-	"html",         -- vscode-langservers-extracted
-	"jsonls",       -- vscode-langservers-extracted
-	"lua_ls",       -- lua-language-server
-	"marksman",     -- marksman
-	"nil_ls",       -- nil_ls
-	"pyright",      -- pyright
-	"ruff",         -- ruff
-	"starlark_rust", -- starlark-rust
-	"yamlls",       -- yaml-language-server
-}
+-- Config overrides
 
 vim.lsp.config("ansiblels", {
 	filetypes = { "yaml.ansible" },
@@ -77,6 +86,10 @@ vim.lsp.config("gh_actions_ls", {
 	cmd = { "actions-languageserver", "--stdio" },
 	filetypes = { "yaml.github" },
 	root_markers = { ".github" },
+})
+
+vim.lsp.config("groovyls", {
+	cmd = { "groovy-language-server" },
 })
 
 vim.lsp.config("lua_ls", {
@@ -99,10 +112,10 @@ vim.lsp.config("nil_ls", {
 	},
 })
 
--- Point pyright at the uv-managed venv (.venv in project root).
 vim.lsp.config("pyright", {
 	settings = {
 		python = {
+			-- Point pyright at the uv-managed venv (.venv in project root).
 			venvPath = ".",
 			venv = ".venv",
 		},
@@ -111,12 +124,4 @@ vim.lsp.config("pyright", {
 
 vim.lsp.config("starlark_rust", {
 	filetypes = { "bzl" },
-})
-
-for _, lsp in pairs(servers) do
-	vim.lsp.enable(lsp)
-end
-
-vim.lsp.config("groovyls", {
-	cmd = { "groovy-language-server" },
 })
