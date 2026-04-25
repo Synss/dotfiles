@@ -9,4 +9,3 @@ require("auto-session").setup({
 		},
 	},
 })
-vim.keymap.set("n", "<Leader>fs", "<Cmd>AutoSession search<CR>", { desc = "Search sessions" })
