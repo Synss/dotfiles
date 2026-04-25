@@ -70,6 +70,9 @@ in
 
         # programming languages
         rustup
+
+        # Dependencies
+        watchman # for jj
       ]
       ++ lib.optionals stdenv.isLinux [ ]
       ++ lib.optionals stdenv.isDarwin [ ];
@@ -135,6 +138,7 @@ in
     delta = {
       enable = true;
       enableGitIntegration = true;
+      enableJujutsuIntegration = true;
       options.navigate = true;
     };
 
@@ -153,6 +157,18 @@ in
       enable = true;
       enableZshIntegration = true;
       defaultCommand = "fd --hidden --exclude .venv";
+    };
+
+    jujutsu = {
+      enable = true;
+      settings = {
+        user = {
+          name = "Mathias Laurin";
+          email = "Mathias.Laurin+github.com@gmail.com";
+        };
+        aliases.l = [ "log" ];
+        core.watchman.register_snapshot_trigger = true; # requires watchman daemon
+      };
     };
 
     zsh = {
