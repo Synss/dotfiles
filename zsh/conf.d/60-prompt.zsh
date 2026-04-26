@@ -59,7 +59,7 @@ get_vcs_prompt_info() {
 if [ ${EUID} -eq 0 ]; then
 	PROMPT="%{$fg[red]%}%T %d [%j]%{$fg[yellow]%} %?  %#%_ %{$reset_color%}"
 else
-	PROMPT="%T %{$fg[green]%}%d%{$fg[yellow]%}"'$(get_vcs_prompt_info)'" %{$reset_color%}%?
+	PROMPT="%T %{$fg[green]%}%~%{$fg[yellow]%}"'$(get_vcs_prompt_info)'" %{$reset_color%}%?
 %#%_ "
 fi
 
