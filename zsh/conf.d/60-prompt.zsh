@@ -1,12 +1,4 @@
-# easy color management
 autoload -U colors && colors
-
-# current dir only: ${PWD##*/}
-
-#
-# git branch in right prompt
-# http://www.jukie.net/bart/blog/20080404105620
-#
 
 typeset -ga preexec_functions
 typeset -ga precmd_functions
@@ -15,46 +7,61 @@ typeset -ga chpwd_functions
 # expansions in prompt
 setopt prompt_subst
 
-__CURRENT_GIT_BRANCH=
-__CURRENT_GIT_VARS_INVALID=1
+__CURRENT_VCS_INFO=
+__CURRENT_VCS_VARS_INVALID=1
 
-parse_git_branch() {
-	command -v git >/dev/null &&
-	git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'
+_parse_git_branch() {
+	local branch
+	branch=$(git branch --no-color 2>/dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/')
+	[[ -n "$branch" ]] && echo "git:$branch"
 }
 
-zsh_git_invalidate_vars() {
-	__CURRENT_GIT_VARS_INVALID=1
-}
-zsh_git_compute_vars() {
-	__CURRENT_GIT_BRANCH="$(parse_git_branch)"
-	__CURRENT_GIT_VARS_INVALID=
+_parse_jj_info() {
+	local bookmark target info
+	bookmark=$(jj log -r @ --no-graph -T 'local_bookmarks' 2>/dev/null)
+	target=$(jj config get gerrit.default-remote-branch 2>/dev/null)
+
+	info="jj"
+	[[ -n "$bookmark" ]] && info="jj:$bookmark"
+	[[ -n "$target" ]] && info="${info}→$target"
+	echo "$info"
 }
 
-chpwd_functions+='zsh_git_chpwd_update_vars'
-zsh_git_chpwd_update_vars() {
-	zsh_git_invalidate_vars
+_compute_vcs_vars() {
+	if command -v jj >/dev/null && jj root >/dev/null 2>&1; then
+		__CURRENT_VCS_INFO="$(_parse_jj_info)"
+	elif command -v git >/dev/null; then
+		__CURRENT_VCS_INFO="$(_parse_git_branch)"
+	else
+		__CURRENT_VCS_INFO=
+	fi
+	__CURRENT_VCS_VARS_INVALID=
 }
 
-preexec_functions+='zsh_git_preexec_update_vars'
-zsh_git_preexec_update_vars() {
+chpwd_functions+='_vcs_chpwd_update'
+_vcs_chpwd_update() {
+	__CURRENT_VCS_VARS_INVALID=1
+}
+
+preexec_functions+='_vcs_preexec_update'
+_vcs_preexec_update() {
 	case "$(history $HISTCMD)" in
-		*git*) zsh_git_invalidate_vars ;;
+		*git*|*jj*) __CURRENT_VCS_VARS_INVALID=1 ;;
 	esac
 }
 
-get_git_prompt_info() {
-	test -n "$__CURRENT_GIT_VARS_INVALID" && zsh_git_compute_vars
-	test -n "$__CURRENT_GIT_BRANCH" && echo " [$__CURRENT_GIT_BRANCH]"
+get_vcs_prompt_info() {
+	test -n "$__CURRENT_VCS_VARS_INVALID" && _compute_vcs_vars
+	test -n "$__CURRENT_VCS_INFO" && echo " [$__CURRENT_VCS_INFO]"
 }
 
 # Now set it
 if [ ${EUID} -eq 0 ]; then
 	PROMPT="%{$fg[red]%}%T %d [%j]%{$fg[yellow]%} %?  %#%_ %{$reset_color%}"
 else
-	PROMPT="%T %{$fg[green]%}%d%{$fg[yellow]%}"'$(get_git_prompt_info)'" %{$reset_color%}%?
+	PROMPT="%T %{$fg[green]%}%d%{$fg[yellow]%}"'$(get_vcs_prompt_info)'" %{$reset_color%}%?
 %#%_ "
 fi
 
-unset __CURRENT_GIT_BRANCH
-unset __CURRENT_GIT_VARS_INVALID
+unset __CURRENT_VCS_INFO
+unset __CURRENT_VCS_VARS_INVALID
