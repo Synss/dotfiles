@@ -60,6 +60,7 @@ in
         yq-go
         neovim
         neovim-remote
+        nixfmt-tree
         nodejs
         pnpm
         pre-commit
