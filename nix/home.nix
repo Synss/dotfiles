@@ -171,6 +171,7 @@ in
           email = "Mathias.Laurin+github.com@gmail.com";
         };
         aliases.l = [ "log" ];
+        "revset-aliases"."t" = "trunk()";
         core.watchman.register_snapshot_trigger = true; # requires watchman daemon
       };
     };
