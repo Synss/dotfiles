@@ -104,6 +104,8 @@ in
           close-buffers-vim
           fzf-lua
           gruvbox-nvim
+          lazygit-nvim
+          lazyjj-nvim
           lualine-nvim
           nerdy-nvim
           nvim-lspconfig
