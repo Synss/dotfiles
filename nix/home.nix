@@ -55,6 +55,8 @@ in
         graphviz
         jq
         just
+        lazygit
+        lazyjj
         yq-go
         neovim
         neovim-remote
