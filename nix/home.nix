@@ -179,6 +179,10 @@ in
           ];
         };
         "revset-aliases"."t" = "trunk()";
+        ui = {
+          paginate = "never";
+          color = "always";
+        };
         core.watchman.register_snapshot_trigger = true; # requires watchman daemon
       };
     };
