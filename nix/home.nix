@@ -177,8 +177,16 @@ in
             "-r"
             "all()"
           ];
+          tug = [
+            "bookmark"
+            "advance"
+          ];
         };
-        "revset-aliases"."t" = "trunk()";
+        revsets.bookmark-advance-to = "closest_pushable(@)";
+        revset-aliases = {
+          "closest_pushable(to)" =
+            ''heads(::to & mutable() & ~description(exact:" ") & (~empty() | merges()))'';
+        };
         ui.pager = "less -FRX";
         core.watchman.register_snapshot_trigger = true; # requires watchman daemon
       };
