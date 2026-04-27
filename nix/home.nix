@@ -167,8 +167,8 @@ in
       enable = true;
       settings = {
         user = {
-          name = "Mathias Laurin";
-          email = "Mathias.Laurin+github.com@gmail.com";
+          name = pkgs.lib.mkDefault "Mathias Laurin";
+          email = pkgs.lib.mkDefault "Mathias.Laurin+github.com@gmail.com";
         };
         aliases = {
           l = [ "log" ];
@@ -234,8 +234,8 @@ in
           unstage = "reset HEAD --";
         };
         user = {
-          name = "Mathias Laurin";
-          email = "Mathias.Laurin+github.com@gmail.com";
+          name = pkgs.lib.mkDefault "Mathias Laurin";
+          email = pkgs.lib.mkDefault "Mathias.Laurin+github.com@gmail.com";
         };
         branch.sort = "-committerdate";
         commit.verbose = true;
