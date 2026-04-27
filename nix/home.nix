@@ -143,7 +143,6 @@ in
     delta = {
       enable = true;
       enableGitIntegration = true;
-      enableJujutsuIntegration = true;
       options.navigate = true;
     };
 
@@ -180,10 +179,7 @@ in
           ];
         };
         "revset-aliases"."t" = "trunk()";
-        ui = {
-          paginate = "never";
-          color = "always";
-        };
+        ui.pager = "less -FRX";
         core.watchman.register_snapshot_trigger = true; # requires watchman daemon
       };
     };
