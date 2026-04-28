@@ -203,6 +203,7 @@ in
         revset-aliases = {
           "closest_pushable(to)" =
             ''heads(::to & mutable() & ~description(exact:" ") & (~empty() | merges()))'';
+          "immutable_heads()" = "trunk() | tags()";
         };
         ui.pager = "less -FRX";
         core.watchman.register_snapshot_trigger = true; # requires watchman daemon
