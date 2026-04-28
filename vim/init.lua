@@ -123,14 +123,7 @@ end
 vim.keymap.set("n", "<Leader>q", function()
 	save(); vim.cmd("Bdelete! this")
 end, { desc = "Delete buffer" })
-vim.keymap.set("i", "<C-q>", function()
-	save(); vim.cmd("Bdelete! this")
-end, { desc = "Delete buffer" })
-
 vim.keymap.set("n", "Q", function()
-	save(); vim.cmd("Bwipeout! this")
-end, { desc = "Wipeout buffer" })
-vim.keymap.set("i", "<C-q><C-q>", function()
 	save(); vim.cmd("Bwipeout! this")
 end, { desc = "Wipeout buffer" })
 
