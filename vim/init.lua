@@ -23,6 +23,7 @@ vim.opt.smartcase = true
 
 vim.opt.wrap = false
 vim.opt.swapfile = false
+vim.opt.exrc = true
 vim.opt.timeoutlen = 200 -- ms to wait for mapped sequence to complete
 
 vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
