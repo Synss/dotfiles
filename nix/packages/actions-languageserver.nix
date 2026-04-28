@@ -7,11 +7,11 @@
 }:
 stdenv.mkDerivation rec {
   pname = "actions-languageserver";
-  version = "0.3.53";
+  version = "0.3.54";
 
   src = fetchurl {
     url = "https://registry.npmjs.org/@actions/languageserver/-/languageserver-${version}.tgz";
-    hash = "sha256-lW/3N3zymeRRYmwSisoYO6j9XrPXEcnJjo5UNNDNNnY=";
+    hash = "sha256-te+c4Kz9jsYew9PtBHtA8/I+S/qkOiXbk2cXzxoT8uI=";
   };
 
   nativeBuildInputs = [ makeWrapper ];
