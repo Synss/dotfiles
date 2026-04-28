@@ -124,3 +124,12 @@ vim.lsp.config("pyright", {
 vim.lsp.config("starlark_rust", {
 	filetypes = { "bzl" },
 })
+
+vim.lsp.config("yamlls", {
+	settings = {
+		-- Disable formatting by default, prefer yamlfmt
+		yaml = {
+			format = { enable = false }
+		}
+	},
+})
