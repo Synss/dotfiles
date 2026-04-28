@@ -181,6 +181,23 @@ in
             "bookmark"
             "advance"
           ];
+
+          # House keeping
+          pending = [
+            "log"
+            "-r"
+            "mine() & ~::trunk() & bookmarks()"
+          ];
+          submitted = [
+            "log"
+            "-r"
+            "mine() & ~::trunk() & bookmarks() & ~remote_bookmarks()"
+          ];
+          wip = [
+            "log"
+            "-r"
+            "mine() & ~::trunk() & ~bookmarks()"
+          ];
         };
         revsets.bookmark-advance-to = "closest_pushable(@)";
         revset-aliases = {
