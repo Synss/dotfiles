@@ -1,4 +1,7 @@
 {
+  nixConfig = {
+    warn-dirty = false;
+  };
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     home-manager = {
