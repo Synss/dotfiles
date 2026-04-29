@@ -1,7 +1,8 @@
 local M = {}
 
 M.defaults = {
-	ratio = 5 / 4
+	ratio = 5 / 4,
+	exclude_buftypes = { "quickfix" },
 }
 
 M.options = vim.deepcopy(M.defaults)

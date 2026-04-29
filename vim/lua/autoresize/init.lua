@@ -34,7 +34,7 @@ end
 
 function M.resize_handler()
 	if vim.api.nvim_win_get_config(0).relative ~= "" then return end
-	if vim.bo.buftype == "quickfix" then return end
+	if vim.tbl_contains(config.get().exclude_buftypes, vim.bo.buftype) then return end
 	local tpwins = vim.api.nvim_tabpage_list_wins(0)
 	local all_wins, widths = equalize_heights(tpwins)
 	local cur = vim.api.nvim_get_current_win()
