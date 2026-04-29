@@ -205,6 +205,15 @@ in
             ''heads(::to & mutable() & ~description(exact:" ") & (~empty() | merges()))'';
           "immutable_heads()" = "trunk() | tags()";
         };
+        templates = {
+          draft_commit_description = ''
+            concat(
+            builtin_draft_commit_description,
+            "\nJJ: ignore-rest\n",
+            diff.git(),
+            )
+          '';
+        };
         ui.pager = "less -FRX";
         core.watchman.register_snapshot_trigger = true; # requires watchman daemon
       };
