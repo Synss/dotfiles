@@ -117,7 +117,10 @@ vim.keymap.set("n", "q/", "<Nop>", { desc = "Disable command-line search window 
 vim.keymap.set("n", "q?", "<Nop>", { desc = "Disable command-line search window (backward)" })
 
 local function save()
-	if vim.bo.modified and vim.bo.modifiable and not vim.bo.readonly then vim.cmd.write() end
+	if vim.bo.modified and vim.bo.modifiable and not vim.bo.readonly
+			and vim.api.nvim_buf_get_name(0) ~= "" then
+		vim.cmd.write()
+	end
 end
 
 vim.keymap.set("n", "<Leader>q", function()
