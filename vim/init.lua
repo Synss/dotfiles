@@ -95,6 +95,11 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { silent = true, desc = "Move selec
 vim.keymap.set("v", "<", "<gv", { desc = "Dedent selection" })
 vim.keymap.set("v", ">", ">gv", { desc = "Indent selection" })
 
+vim.keymap.set("n", "<Leader>W", function()
+	local view = vim.fn.winsaveview()
+	vim.cmd([[%s/\s\+$//e]])
+	vim.fn.winrestview(view)
+end, { desc = "Remove trailing whitespace" })
 vim.keymap.set("v", "<Leader>W", function()
 	local view = vim.fn.winsaveview()
 	vim.cmd([['<,'>s/\s\+$//e]])
