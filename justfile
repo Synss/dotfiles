@@ -1,6 +1,6 @@
 # Login shell so /etc/profile.d/nix.sh is sourced and ~/.nix-profile/bin is on PATH.
 
-set positional-arguments := true
+set positional-arguments
 set shell := ["sh", "-l", "-c"]
 
 hostname := `hostname -s`
@@ -25,11 +25,12 @@ check-nix:
     fi
 
 update:
+    [ "$(jj log -r @ --no-graph -T 'empty')" = "false" ] && jj new || true
     nix flake update
     just build
     just switch
     just update-linters
-    git add --update && git commit -m "nix: update flake and tools"
+    jj commit -m "nix: update flake and tools"
 
 build:
     nix flake check
