@@ -31,5 +31,7 @@
       "Read(./.env)"
     ],
     "defaultMode": "default"
-  }
+  },
+  "theme": "light",
+  "editorMode": "vim"
 }
