@@ -18,6 +18,7 @@ vim.opt.scrolloff = 4
 vim.opt.incsearch = true
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
+vim.keymap.set("n", "<Leader>/", "<Cmd>nohlsearch<CR>", { desc = "Clear search highlight" })
 
 vim.opt.wrap = false
 vim.opt.swapfile = false
