@@ -67,6 +67,7 @@ map_nav("<C-l>", "l", "Go to right window")
 vim.api.nvim_create_autocmd({ "WinEnter", "BufWinEnter" }, {
 	callback = function()
 		if vim.bo.buftype == "" then
+			vim.wo.number = true
 			vim.wo.relativenumber = true
 			vim.wo.cursorline = true
 			vim.wo.cursorlineopt = "number"
@@ -76,11 +77,13 @@ vim.api.nvim_create_autocmd({ "WinEnter", "BufWinEnter" }, {
 
 vim.api.nvim_create_autocmd("WinLeave", {
 	callback = function()
+		vim.wo.number = false
 		vim.wo.relativenumber = false
 		vim.wo.cursorline = false
 	end,
 })
 
+vim.wo.number = true
 vim.wo.relativenumber = true
 vim.wo.cursorline = true
 vim.wo.cursorlineopt = "number"
