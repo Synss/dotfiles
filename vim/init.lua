@@ -4,8 +4,6 @@ vim.g.mapleader = " "
 
 -- Options
 
-vim.opt.clipboard = "unnamedplus"
-
 vim.opt.list = true
 vim.opt.listchars = { nbsp = "␣", tab = "⇥ ", trail = "·" }
 
@@ -136,3 +134,9 @@ vim.keymap.set("n", "Q", function()
 end, { desc = "Wipeout buffer" })
 
 vim.keymap.set("n", "gQ", "gqip", { desc = "Reformat paragraph" })
+
+-- Clipboard
+
+vim.keymap.set({ "n", "v" }, "<Leader>y", '"+y', { desc = "Yank to clipboard" })
+vim.keymap.set({ "n", "v" }, "<Leader>p", '"+p', { desc = "Paste from clipboard" })
+vim.keymap.set({ "n", "v" }, "<Leader>P", '"+P', { desc = "Paste before from clipboard" })
