@@ -2,6 +2,8 @@ local config = require("autoresize.config")
 
 local M = {}
 
+---@param tpwins integer[]
+---@return table<integer, integer>
 local function equalize_heights(tpwins)
 	local widths = {}
 	for _, w in ipairs(tpwins) do
@@ -13,6 +15,9 @@ local function equalize_heights(tpwins)
 	return widths
 end
 
+---@param tpwins integer[]
+---@param col integer
+---@return integer[]
 local function column_wins(tpwins, col)
 	return vim.tbl_filter(function(w)
 		return vim.api.nvim_win_get_position(w)[2] == col
@@ -21,6 +26,8 @@ local function column_wins(tpwins, col)
 	end, tpwins)
 end
 
+---@param cwins integer[]
+---@param cur integer
 local function resize(cwins, cur)
 	local fair = vim.api.nvim_win_get_height(cur)
 	local focused_h = math.floor(fair * config.get().ratio)
@@ -32,6 +39,7 @@ local function resize(cwins, cur)
 	end
 end
 
+---@return nil
 function M.resize_handler()
 	if vim.api.nvim_win_get_config(0).relative ~= "" then return end
 	if vim.tbl_contains(config.get().exclude_buftypes, vim.bo.buftype) then return end
@@ -45,6 +53,7 @@ function M.resize_handler()
 	end
 end
 
+---@param user_config? autoresize.Config
 function M.setup(user_config)
 	config.setup(user_config or {})
 end
