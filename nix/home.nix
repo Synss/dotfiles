@@ -36,12 +36,12 @@ in
         # LSP servers | nvim
         actions-languageserver # -     gh_action_ls
         ansible-language-server # -    ansiblels
+        basedpyright # -               basedpyright
         clang-tools # -                clangd
         groovy-language-server # -     groovyls
         lua-language-server # -        lua_ls
         marksman # -                   marksman
         nil # -                        nil_ls
-        pyright # -                    pyright
         starlark-rust # -              starlark_rust
         vscode-langservers-extracted # cssls eslint html jsonls
         yaml-language-server # -       yaml-language-server

@@ -4,6 +4,7 @@ vim.lsp.log.set_level("error")
 
 local servers = {
 	"ansiblels",    -- ansible-language-server
+	"basedpyright", -- basedpyright
 	"clangd",       -- clang-tools
 	"groovyls",     -- groovy-language-server
 	"cssls",        -- vscode-langservers-extracted
@@ -14,7 +15,6 @@ local servers = {
 	"lua_ls",       -- lua-language-server
 	"marksman",     -- marksman
 	"nil_ls",       -- nil_ls
-	"pyright",      -- pyright
 	"ruff",         -- ruff
 	"starlark_rust", -- starlark-rust
 	"typos_lsp",    -- typos-lsp
@@ -90,6 +90,17 @@ vim.lsp.config("ansiblels", {
 	filetypes = { "yaml.ansible" },
 })
 
+vim.lsp.config("basedpyright", {
+	settings = {
+		basedpyright = {
+			analysis = {
+				venvPath = ".",
+				venv = ".venv",
+			},
+		},
+	},
+})
+
 vim.lsp.config("gh_actions_ls", {
 	cmd = { "actions-languageserver", "--stdio" },
 	filetypes = { "yaml.github" },
@@ -119,16 +130,6 @@ vim.lsp.config("nil_ls", {
 	settings = {
 		["nil"] = {
 			formatting = { command = { "nixfmt" } },
-		},
-	},
-})
-
-vim.lsp.config("pyright", {
-	settings = {
-		python = {
-			-- Point pyright at the uv-managed venv (.venv in project root).
-			venvPath = ".",
-			venv = ".venv",
 		},
 	},
 })
