@@ -17,6 +17,7 @@ local servers = {
 	"pyright",      -- pyright
 	"ruff",         -- ruff
 	"starlark_rust", -- starlark-rust
+	"typos_lsp",    -- typos-lsp
 	"yamlls",       -- yaml-language-server
 }
 
