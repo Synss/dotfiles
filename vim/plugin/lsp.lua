@@ -100,6 +100,9 @@ vim.lsp.config("lua_ls", {
 				library = vim.api.nvim_get_runtime_file("", true),
 				checkThirdParty = false,
 			},
+			diagnostics = {
+				unusedLocalExclude = { "_*" },
+			},
 		},
 	},
 })
