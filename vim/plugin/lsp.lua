@@ -44,7 +44,15 @@ local on_attach = function(_client, bufnr)
 	end
 	map("gD", vim.lsp.buf.declaration, "Go to declaration")
 	map("gd", vim.lsp.buf.definition, "Go to definition")
-	map("K", vim.lsp.buf.hover, "Hover")
+	map("K", function()
+		local diagnostics =
+				vim.diagnostic.get(0, { lnum = vim.api.nvim_win_get_cursor(0)[1] - 1 })
+		if #diagnostics > 0 then
+			vim.diagnostic.open_float()
+		else
+			vim.lsp.buf.hover()
+		end
+	end, "Diagnostic / hover")
 	map("gi", vim.lsp.buf.implementation, "Go to implementation")
 	map("gr", vim.lsp.buf.references, "References")
 	map("<Leader>lD", vim.lsp.buf.type_definition, "Type definition")
