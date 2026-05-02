@@ -67,6 +67,7 @@ in
         ripgrep
         ruff
         shellcheck
+        typos-lsp
         typst
         typstyle
         uv
