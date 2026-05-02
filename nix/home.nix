@@ -46,7 +46,7 @@ in
         vscode-langservers-extracted # cssls eslint html jsonls
         yaml-language-server # -       yaml-language-server
 
-        # terminal tools
+        # tools
         bazelisk
         buildifier
         delta
@@ -67,6 +67,8 @@ in
         ripgrep
         ruff
         shellcheck
+        typst
+        typstyle
         uv
         vivid
         zsh
