@@ -83,7 +83,6 @@ in
     file = {
       ".config/nvim" = mkLink "vim";
       ".vim" = mkLink "vim";
-      ".claude/settings.json" = mkLink "claude/settings.json";
       ".claude/CLAUDE.md" = mkLink "claude/CLAUDE.md";
     };
 
