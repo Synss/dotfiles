@@ -46,6 +46,10 @@ news:
 
 switch:
     home-manager switch --flake ".#{{ hostname }}"
+    cp claude/settings.json ~/.claude/settings.json
+
+sync-claude:
+    cp ~/.claude/settings.json claude/settings.json
 
 check-lsp:
     nvim --headless -c "checkhealth vim.lsp" -c "qa!"
