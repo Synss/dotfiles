@@ -43,6 +43,8 @@ vim.keymap.set("n", "<Leader>fr", fzf.oldfiles, { desc = "Recent files" })
 vim.keymap.set("n", "<Leader>fs", fzf.lsp_document_symbols, { desc = "Document symbols" })
 vim.keymap.set("n", "<Leader>fw", fzf.grep_cword, { desc = "Find word under cursor" })
 
+fzf.register_ui_select()
+
 fzf.setup({
 	files = { fd_opts = "--color=never --type f --hidden --follow --exclude .git" },
 	grep = {
