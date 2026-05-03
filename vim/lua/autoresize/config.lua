@@ -1,8 +1,6 @@
 local M = {}
 
 ---@class autoresize.Config
----@field ratio number Height ratio for the focused window (default: 1.25)
----@field exclude_buftypes string[] Buffer types excluded from resizing
 M.defaults = {
 	ratio = 5 / 4,
 	exclude_buftypes = { "quickfix" },
