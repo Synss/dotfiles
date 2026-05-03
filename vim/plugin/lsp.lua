@@ -21,7 +21,7 @@ local servers = {
 	"yamlls",       -- yaml-language-server
 }
 
-for _, lsp in pairs(servers) do
+for _, lsp in ipairs(servers) do
 	vim.lsp.enable(lsp)
 end
 
