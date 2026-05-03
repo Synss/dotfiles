@@ -137,8 +137,6 @@ vim.keymap.set("n", "Q", function()
 	save(); vim.cmd("Bwipeout! this")
 end, { desc = "Wipeout buffer" })
 
-vim.keymap.set("n", "gQ", "gqip", { desc = "Reformat paragraph" })
-
 -- Clipboard
 
 vim.keymap.set({ "n", "v" }, "<Leader>y", '"+y', { desc = "Yank to clipboard" })
