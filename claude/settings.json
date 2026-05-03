@@ -33,5 +33,6 @@
     "defaultMode": "default"
   },
   "theme": "light",
-  "editorMode": "vim"
+  "editorMode": "vim",
+  "promptSuggestionEnabled": false
 }
