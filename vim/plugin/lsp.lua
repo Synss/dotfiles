@@ -38,6 +38,7 @@ vim.keymap.set("n", "<Leader>lq", vim.diagnostic.setloclist, { silent = true, de
 
 local on_attach = function(_client, bufnr)
 	vim.api.nvim_set_option_value("omnifunc", "v:lua.vim.lsp.omnifunc", { buf = bufnr })
+	local fzf_lua = require("fzf-lua")
 
 	local map = function(key, fn, desc)
 		vim.keymap.set("n", key, fn, { buffer = bufnr, silent = true, desc = desc })
@@ -53,11 +54,21 @@ local on_attach = function(_client, bufnr)
 			vim.lsp.buf.hover()
 		end
 	end, "Diagnostic / hover")
-	map("gi", vim.lsp.buf.implementation, "Go to implementation")
-	map("gr", vim.lsp.buf.references, "References")
+	map("gi", fzf_lua.lsp_implementations, "Go to implementation")
+	map("gr", fzf_lua.lsp_references, "References")
 	map("<Leader>lD", vim.lsp.buf.type_definition, "Type definition")
 	map("<Leader>lr", vim.lsp.buf.rename, "Rename")
-	map("<Leader>la", vim.lsp.buf.code_action, "Code action")
+	map("<Leader>la", function()
+		fzf_lua.lsp_code_actions {
+			winopts = {
+				relative = "cursor",
+				width = 0.5,
+				height = 0.6,
+				row = 1, -- bottom
+				preview = { vertical = "up:65%" },
+			}
+		}
+	end, "Code action")
 	map("<Leader>lf", function()
 		vim.lsp.buf.format({ async = true })
 	end, "Format")
