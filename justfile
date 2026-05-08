@@ -26,11 +26,43 @@ check-nix:
 
 update:
     [ "$(jj log -r @ --no-graph -T 'empty')" = "false" ] && jj new || true
+    just update-overlays
     nix flake update
     just build
     just switch
     just update-linters
     jj commit -m "nix: update flake and tools"
+
+update-overlays:
+    #!/usr/bin/env bash
+    set -euo pipefail
+
+    update_pkg() {
+        local nix_file="$1"
+        local npm_pkg="$2"
+
+        local current
+        current=$(perl -ne 'print "$1\n" and exit if /version = "(.*)";/' "$nix_file")
+
+        local latest
+        latest=$(pnpm view "$npm_pkg" version 2>/dev/null)
+
+        [ "$current" = "$latest" ] && return
+
+        local url
+        url=$(pnpm view "$npm_pkg" dist.tarball 2>/dev/null)
+
+        local new_hash
+        new_hash=$(nix store prefetch-file --hash-type sha256 --json "$url" | jq -r '.hash')
+
+        perl -i -pe "s/version = \"$current\"/version = \"$latest\"/;
+                     s|hash = \"sha256-[^\"]*\"|hash = \"$new_hash\"|" "$nix_file"
+
+        echo "bumped $npm_pkg $current → $latest"
+    }
+
+    update_pkg nix/packages/actions-languageserver.nix   "@actions/languageserver"
+    update_pkg nix/packages/ansible-language-server.nix  "@ansible/ansible-language-server"
 
 build:
     nix flake check
