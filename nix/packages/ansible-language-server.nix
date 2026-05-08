@@ -7,11 +7,11 @@
 }:
 stdenv.mkDerivation rec {
   pname = "ansible-language-server";
-  version = "26.4.5";
+  version = "26.4.6";
 
   src = fetchurl {
     url = "https://registry.npmjs.org/@ansible/ansible-language-server/-/ansible-language-server-${version}.tgz";
-    hash = "sha256-f/PFw7INTwKFIZ9bBt7Zb9GyvJo9vGrBfnpLwpcFjhU=";
+    hash = "sha256-/tRYT8D8Soq9irsDrl/t0P6T9YjJB1HGK54CmyRRwk0=";
   };
 
   nativeBuildInputs = [ makeWrapper ];
