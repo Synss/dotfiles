@@ -51,6 +51,7 @@ in
         buildifier
         delta
         fd
+        gh
         glow
         graphviz
         jq
