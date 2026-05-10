@@ -33,19 +33,14 @@ end
 
 -- Splits
 
-local function map_split(key, cmd, label)
-	local split = "<Cmd>" .. cmd .. "<CR>"
-	vim.keymap.set("n", "<Leader>s" .. key, split, { desc = "Split " .. label })
-end
-
-map_split("h", "leftabove vnew", "left")
-map_split("j", "rightbelow new", "below")
-map_split("k", "leftabove new", "above")
-map_split("l", "rightbelow vnew", "right")
-map_split("H", "topleft vnew", "far left")
-map_split("J", "botright new", "far bottom")
-map_split("K", "topleft new", "far top")
-map_split("L", "botright vnew", "far right")
+vim.keymap.set("n", "<Leader>sh", "<Cmd>leftabove vnew<CR>", { desc = "Split left" })
+vim.keymap.set("n", "<Leader>sj", "<Cmd>rightbelow new<CR>", { desc = "Split below" })
+vim.keymap.set("n", "<Leader>sk", "<Cmd>leftabove new<CR>", { desc = "Split above" })
+vim.keymap.set("n", "<Leader>sl", "<Cmd>rightbelow vnew<CR>", { desc = "Split right" })
+vim.keymap.set("n", "<Leader>sH", "<Cmd>topleft vnew<CR>", { desc = "Split far left" })
+vim.keymap.set("n", "<Leader>sJ", "<Cmd>botright new<CR>", { desc = "Split far bottom" })
+vim.keymap.set("n", "<Leader>sK", "<Cmd>topleft new<CR>", { desc = "Split far top" })
+vim.keymap.set("n", "<Leader>sL", "<Cmd>botright vnew<CR>", { desc = "Split far right" })
 
 local function map_nav(key, dir, desc)
 	vim.keymap.set("n", key, function()
