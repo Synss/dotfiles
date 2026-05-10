@@ -33,22 +33,19 @@ end
 
 -- Splits
 
-local function map_split(key, cmd, label, terminal)
+local function map_split(key, cmd, label)
 	local split = "<Cmd>" .. cmd .. "<CR>"
 	vim.keymap.set("n", "<Leader>s" .. key, split, { desc = "Split " .. label })
-	if terminal then
-		vim.keymap.set("n", "<Leader>t" .. key, split .. "<Cmd>term<CR>", { desc = "Terminal " .. label })
-	end
 end
 
-map_split("h", "leftabove vnew", "left", true)
-map_split("j", "rightbelow new", "below", true)
-map_split("k", "leftabove new", "above", true)
-map_split("l", "rightbelow vnew", "right", true)
-map_split("H", "topleft vnew", "far left", true)
+map_split("h", "leftabove vnew", "left")
+map_split("j", "rightbelow new", "below")
+map_split("k", "leftabove new", "above")
+map_split("l", "rightbelow vnew", "right")
+map_split("H", "topleft vnew", "far left")
 map_split("J", "botright new", "far bottom")
 map_split("K", "topleft new", "far top")
-map_split("L", "botright vnew", "far right", true)
+map_split("L", "botright vnew", "far right")
 
 local function map_nav(key, dir, desc)
 	vim.keymap.set("n", key, function()
@@ -109,6 +106,8 @@ vim.keymap.set("v", "<Leader>W", function()
 end, { desc = "Remove trailing whitespace" })
 
 -- Terminal
+
+vim.keymap.set("n", "<Leader>t", "<Cmd>terminal<CR>", { desc = "Terminal" })
 
 vim.api.nvim_create_autocmd("TermOpen", {
 	callback = function() vim.wo.scrolloff = 0 end,
