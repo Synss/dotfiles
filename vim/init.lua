@@ -15,11 +15,6 @@ vim.opt.expandtab = true
 
 vim.opt.scrolloff = 4
 
-vim.opt.incsearch = true
-vim.opt.ignorecase = true
-vim.opt.smartcase = true
-vim.keymap.set("n", "<Leader>/", "<Cmd>nohlsearch<CR>", { desc = "Clear search highlight" })
-
 vim.opt.wrap = false
 vim.opt.swapfile = false
 vim.opt.exrc = true
@@ -30,6 +25,13 @@ vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,
 if vim.env.COLORTERM == "truecolor" or vim.env.COLORTERM == "24bit" then
 	vim.opt.termguicolors = true
 end
+
+-- Search
+
+vim.opt.incsearch = true
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+vim.keymap.set("n", "<Leader>/", "<Cmd>nohlsearch<CR>", { desc = "Clear search highlight" })
 
 -- Splits
 
