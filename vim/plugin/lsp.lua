@@ -43,8 +43,8 @@ local on_attach = function(_client, bufnr)
 	local map = function(key, fn, desc)
 		vim.keymap.set("n", key, fn, { buffer = bufnr, silent = true, desc = desc })
 	end
-	map("gD", vim.lsp.buf.declaration, "Go to declaration")
-	map("gd", vim.lsp.buf.definition, "Go to definition")
+	map("gd", vim.lsp.buf.declaration, "Go to declaration")
+	map("gD", vim.lsp.buf.definition, "Go to definition")
 	map("K", function()
 		local diagnostics =
 				vim.diagnostic.get(0, { lnum = vim.api.nvim_win_get_cursor(0)[1] - 1 })
