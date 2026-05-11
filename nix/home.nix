@@ -47,6 +47,7 @@ in
         yaml-language-server # -       yaml-language-server
 
         # tools
+        ansible-lint
         bazelisk
         buildifier
         delta
