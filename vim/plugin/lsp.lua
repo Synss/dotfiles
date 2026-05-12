@@ -16,7 +16,7 @@ local servers = {
 	"marksman",     -- marksman
 	"nil_ls",       -- nil_ls
 	"ruff",         -- ruff
-	"starlark_rust", -- starlark-rust
+	"starpls",      -- starpls
 	"typos_lsp",    -- typos-lsp
 	"yamlls",       -- yaml-language-server
 }
@@ -146,9 +146,6 @@ vim.lsp.config("nil_ls", {
 	},
 })
 
-vim.lsp.config("starlark_rust", {
-	filetypes = { "bzl" },
-})
 
 vim.lsp.config("yamlls", {
 	settings = {
