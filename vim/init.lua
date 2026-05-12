@@ -96,11 +96,7 @@ vim.keymap.set("n", "<Leader>W", function()
 	vim.cmd([[%s/\s\+$//e]])
 	vim.fn.winrestview(view)
 end, { desc = "Remove trailing whitespace" })
-vim.keymap.set("v", "<Leader>W", function()
-	local view = vim.fn.winsaveview()
-	vim.cmd([['<,'>s/\s\+$//e]])
-	vim.fn.winrestview(view)
-end, { desc = "Remove trailing whitespace" })
+vim.keymap.set("v", "<Leader>W", [[:s/\s\+$//e<CR>]], { silent = true, desc = "Remove trailing whitespace" })
 
 -- Terminal
 
