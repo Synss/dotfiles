@@ -134,3 +134,35 @@ end, { desc = "Wipeout buffer" })
 vim.keymap.set({ "n", "v" }, "<Leader>y", '"+y', { desc = "Yank to clipboard" })
 vim.keymap.set({ "n", "v" }, "<Leader>p", '"+p', { desc = "Paste from clipboard" })
 vim.keymap.set({ "n", "v" }, "<Leader>P", '"+P', { desc = "Paste before from clipboard" })
+
+if vim.fn.exists("##TextPutPost") == 1 then
+	-- Requires https://github.com/neovim/neovim/pull/39741
+	---@diagnostic disable-next-line: param-type-mismatch
+	vim.api.nvim_create_autocmd("TextPutPost", {
+		callback = function()
+			local first = vim.fn.line("'[")
+			local last = vim.fn.line("']")
+			vim.schedule(function()
+				local view = vim.fn.winsaveview()
+				vim.cmd(first .. "," .. last .. [[s/\s\+$//e]])
+				vim.fn.winrestview(view)
+				vim.cmd("nohlsearch")
+			end)
+		end,
+		desc = "Remove trailing whitespace after paste",
+	})
+else
+	local function paste_and_trim(cmd)
+		return function()
+			local count = vim.v.count1 -- support `3p` for example
+			vim.cmd("normal! " .. count .. cmd)
+			if not vim.bo.modifiable then return end
+			local view = vim.fn.winsaveview()
+			vim.cmd(vim.fn.line("'[") .. "," .. vim.fn.line("']") .. [[s/\s\+$//e]])
+			vim.fn.winrestview(view)
+			vim.cmd("nohlsearch")
+		end
+	end
+	vim.keymap.set("n", "p", paste_and_trim("p"), { desc = "Paste" })
+	vim.keymap.set("n", "P", paste_and_trim("P"), { desc = "Paste before" })
+end
