@@ -111,6 +111,7 @@ in
           lazygit-nvim
           lazyjj-nvim
           lualine-nvim
+          mini-icons
           nerdy-nvim
           nvim-lspconfig
           nvim-web-devicons
