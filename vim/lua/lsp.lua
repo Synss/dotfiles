@@ -13,8 +13,14 @@ M.on_attach = function(_client, bufnr)
 	local map = function(key, fn, desc)
 		vim.keymap.set("n", key, fn, { buffer = bufnr, silent = true, desc = desc })
 	end
+
+	-- Navigation
 	map("gd", vim.lsp.buf.declaration, "Go to declaration")
 	map("gD", vim.lsp.buf.definition, "Go to definition")
+	map("gi", fzf_lua.lsp_implementations, "Go to implementation")
+	map("gr", fzf_lua.lsp_references, "References")
+
+	-- Information
 	map("K", function()
 		local diagnostics =
 				vim.diagnostic.get(0, { lnum = vim.api.nvim_win_get_cursor(0)[1] - 1 })
@@ -24,9 +30,9 @@ M.on_attach = function(_client, bufnr)
 			vim.lsp.buf.hover()
 		end
 	end, "Diagnostic / hover")
-	map("gi", fzf_lua.lsp_implementations, "Go to implementation")
-	map("gr", fzf_lua.lsp_references, "References")
 	map("<Leader>lD", vim.lsp.buf.type_definition, "Type definition")
+
+	-- Actions
 	map("<Leader>lr", vim.lsp.buf.rename, "Rename")
 	map("<Leader>la", function()
 		fzf_lua.lsp_code_actions {
@@ -42,6 +48,8 @@ M.on_attach = function(_client, bufnr)
 	map("<Leader>lf", function()
 		vim.lsp.buf.format({ async = true })
 	end, "Format")
+
+	-- Workspace
 	map("<Leader>lW", fzf_lua.lsp_workspace_diagnostics, "Workspace diagnostics")
 	map("<Leader>lwa", vim.lsp.buf.add_workspace_folder, "Add workspace folder")
 	map("<Leader>lwr", vim.lsp.buf.remove_workspace_folder, "Remove workspace folder")
