@@ -22,7 +22,7 @@ M.on_attach = function(_client, bufnr)
 	map("grr", fzf_lua.lsp_references, "References")
 
 	-- Information
-	map("<Leader>lD", fzf_lua.lsp_typedefs, "Type definition")
+	map("grt", fzf_lua.lsp_typedefs, "Type definition")
 
 	-- Actions
 	map("gra", fzf_lua.lsp_code_actions, "Code action")

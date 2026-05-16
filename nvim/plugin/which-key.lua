@@ -28,6 +28,8 @@ wk.add({
 	{ "<Leader>sK", icon = { icon = nerdy.get("cod-split_vertical"), color = "blue" } },
 	-- Text
 	{ "<Leader>W",  icon = { icon = nerdy.get("cod-whitespace"), color = "grey" } },
+	-- LSP navigation
+	{ "grt", icon = { icon = nerdy.get("cod-symbol_class"), color = "blue" } },
 	-- Diagnostic
 	{ "[d",         icon = { icon = nerdy.get("md-stethoscope"), color = "orange" } },
 	{ "]d",         icon = { icon = nerdy.get("md-stethoscope"), color = "orange" } },
