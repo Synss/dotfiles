@@ -42,6 +42,7 @@ in
         lua-language-server # -        lua_ls
         marksman # -                   marksman
         nil # -                        nil_ls
+        nixd # -                       nixd
         starpls # -                    starpls
         vscode-langservers-extracted # cssls eslint html jsonls
         yaml-language-server # -       yaml-language-server

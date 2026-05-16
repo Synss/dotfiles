@@ -14,7 +14,8 @@ local servers = {
 	"jsonls",       -- vscode-langservers-extracted
 	"lua_ls",       -- lua-language-server
 	"marksman",     -- marksman
-	"nil_ls",       -- nil_ls
+	"nil_ls",       -- nil
+	"nixd",         -- nixd
 	"ruff",         -- ruff
 	"starpls",      -- starpls
 	"typos_lsp",    -- typos-lsp
