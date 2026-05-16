@@ -16,17 +16,16 @@ M.on_attach = function(_client, bufnr)
 	end
 
 	-- Navigation
-	map("gd", vim.lsp.buf.declaration, "Go to declaration")
-	map("gD", vim.lsp.buf.definition, "Go to definition")
-	map("gi", fzf_lua.lsp_implementations, "Go to implementation")
-	map("gr", fzf_lua.lsp_references, "References")
+	map("gd", vim.lsp.buf.definition, "Go to definition")
+	map("gD", vim.lsp.buf.declaration, "Go to declaration")
+	map("gri", fzf_lua.lsp_implementations, "Go to implementation")
+	map("grr", fzf_lua.lsp_references, "References")
 
 	-- Information
 	map("<Leader>lD", vim.lsp.buf.type_definition, "Type definition")
 
 	-- Actions
-	map("<Leader>lr", vim.lsp.buf.rename, "Rename")
-	map("<Leader>la", fzf_lua.lsp_code_actions, "Code action")
+	map("gra", fzf_lua.lsp_code_actions, "Code action")
 	map("<Leader>lf", function()
 		vim.lsp.buf.format({ async = true })
 	end, "Format")
