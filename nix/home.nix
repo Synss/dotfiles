@@ -119,6 +119,7 @@ in
           oil-nvim
           vim-fugitive
           vim-nix
+          tiny-inline-diagnostic-nvim
           which-key-nvim
           zoxide-vim
         ]
