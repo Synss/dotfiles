@@ -1,5 +1,7 @@
 local fzf = require("fzf-lua")
 local fzf_config = require("fzf-lua.config")
+local nerdy = require("nerdy.fetcher")
+local wk = require("which-key")
 
 local function in_current_win(picker)
 	return function()
@@ -61,4 +63,9 @@ fzf.setup({
 			},
 		},
 	},
+})
+
+wk.add({
+	{ "<Leader>fs", icon = { icon = nerdy.get("cod-symbol_class"), color = "green" } },
+	{ "<Leader>fg", icon = { icon = nerdy.get("md-magnify_scan"), color = "green" } },
 })
