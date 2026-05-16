@@ -1,6 +1,9 @@
+local blink_cmp = require("blink.cmp")
+local fzf_lua = require("fzf-lua")
+
 local M = {}
 
-M.capabilities = require("blink.cmp").get_lsp_capabilities({
+M.capabilities = blink_cmp.get_lsp_capabilities({
 	general = {
 		positionEncodings = { "utf-8" },
 	},
@@ -8,8 +11,6 @@ M.capabilities = require("blink.cmp").get_lsp_capabilities({
 
 M.on_attach = function(_client, bufnr)
 	vim.api.nvim_set_option_value("omnifunc", "v:lua.vim.lsp.omnifunc", { buf = bufnr })
-	local fzf_lua = require("fzf-lua")
-
 	local map = function(key, fn, desc)
 		vim.keymap.set("n", key, fn, { buffer = bufnr, silent = true, desc = desc })
 	end
