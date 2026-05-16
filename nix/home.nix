@@ -86,8 +86,7 @@ in
       ++ lib.optionals stdenv.isDarwin [ ];
 
     file = {
-      ".config/nvim" = mkLink "vim";
-      ".vim" = mkLink "vim";
+      ".config/nvim" = mkLink "nvim";
       ".claude/CLAUDE.md" = mkLink "claude/CLAUDE.md";
     };
 
