@@ -22,15 +22,6 @@ M.on_attach = function(_client, bufnr)
 	map("gr", fzf_lua.lsp_references, "References")
 
 	-- Information
-	map("K", function()
-		local diagnostics =
-				vim.diagnostic.get(0, { lnum = vim.api.nvim_win_get_cursor(0)[1] - 1 })
-		if #diagnostics > 0 then
-			vim.diagnostic.open_float()
-		else
-			vim.lsp.buf.hover()
-		end
-	end, "Diagnostic / hover")
 	map("<Leader>lD", vim.lsp.buf.type_definition, "Type definition")
 
 	-- Actions
