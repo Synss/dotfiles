@@ -15,6 +15,10 @@ vim.opt.expandtab = true
 
 vim.opt.scrolloff = 4
 
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "v:lua.vim.lsp.foldexpr()"
+vim.opt.foldlevel = 99
+
 vim.opt.wrap = false
 vim.opt.swapfile = false
 vim.opt.exrc = true
