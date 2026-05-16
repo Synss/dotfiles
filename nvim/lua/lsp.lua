@@ -35,17 +35,7 @@ M.on_attach = function(_client, bufnr)
 
 	-- Actions
 	map("<Leader>lr", vim.lsp.buf.rename, "Rename")
-	map("<Leader>la", function()
-		fzf_lua.lsp_code_actions {
-			winopts = {
-				relative = "cursor",
-				width = 0.5,
-				height = 0.6,
-				row = 1, -- bottom
-				preview = { vertical = "up:65%" },
-			}
-		}
-	end, "Code action")
+	map("<Leader>la", fzf_lua.lsp_code_actions, "Code action")
 	map("<Leader>lf", function()
 		vim.lsp.buf.format({ async = true })
 	end, "Format")
