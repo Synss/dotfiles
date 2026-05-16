@@ -16,13 +16,13 @@ M.on_attach = function(_client, bufnr)
 	end
 
 	-- Navigation
-	map("gd", vim.lsp.buf.definition, "Go to definition")
-	map("gD", vim.lsp.buf.declaration, "Go to declaration")
+	map("gd", fzf_lua.lsp_definitions, "Go to definition")
+	map("gD", fzf_lua.lsp_declarations, "Go to declaration")
 	map("gri", fzf_lua.lsp_implementations, "Go to implementation")
 	map("grr", fzf_lua.lsp_references, "References")
 
 	-- Information
-	map("<Leader>lD", vim.lsp.buf.type_definition, "Type definition")
+	map("<Leader>lD", fzf_lua.lsp_typedefs, "Type definition")
 
 	-- Actions
 	map("gra", fzf_lua.lsp_code_actions, "Code action")
