@@ -50,4 +50,15 @@ fzf.setup({
 	grep = {
 		rg_opts = "--hidden --glob '!.git' --glob '!.gitmodules' --line-number --column",
 	},
+	lsp = {
+		code_actions = {
+			winopts = {
+				relative = "cursor",
+				width = 0.5,
+				height = 0.6,
+				row = 1,
+				preview = { vertical = "up:65%" },
+			},
+		},
+	},
 })
