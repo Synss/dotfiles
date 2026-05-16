@@ -89,11 +89,11 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 
 vim.lsp.config("*", {
 	on_attach = on_attach,
-	capabilities = {
+	capabilities = require("blink.cmp").get_lsp_capabilities({
 		general = {
 			positionEncodings = { "utf-8" },
 		},
-	},
+	}),
 })
 
 -- Config overrides
