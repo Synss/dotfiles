@@ -1,3 +1,5 @@
+local lsp = require("lsp")
+
 vim.lsp.log.set_level("error")
 
 -- Enable LSPs
@@ -46,8 +48,6 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 	end,
 	desc = "Format on write",
 })
-
-local lsp = require("lsp")
 
 vim.lsp.config("*", {
 	on_attach = lsp.on_attach,
