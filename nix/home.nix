@@ -105,12 +105,12 @@ in
         with pkgs.vimPlugins;
         [
           auto-session
-          close-buffers-vim
           fzf-lua
           gruvbox-nvim
           lazygit-nvim
           lazyjj-nvim
           lualine-nvim
+          mini-bufremove
           mini-icons
           nerdy-nvim
           nvim-lspconfig
