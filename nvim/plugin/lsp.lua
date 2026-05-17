@@ -38,7 +38,9 @@ vim.keymap.set("n", "<Leader>lq", vim.diagnostic.setloclist, { silent = true, de
 
 -- Codelens
 
-vim.lsp.codelens.enable()
+vim.keymap.set("n", "<Leader>lc", function()
+	vim.lsp.codelens.enable(not vim.lsp.codelens.is_enabled())
+end, { silent = true, desc = "Toggle codelens" })
 
 -- Config
 
