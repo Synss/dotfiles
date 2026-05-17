@@ -15,6 +15,9 @@ vim.opt.expandtab = true
 
 vim.opt.scrolloff = 4
 
+vim.opt.completeopt = { "fuzzy", "menuone", "noselect", "popup" }
+vim.opt.complete = ".,b,o" -- current buffer, other buffers, omni (LSP)
+
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "v:lua.vim.lsp.foldexpr()"
 vim.opt.foldlevel = 99
