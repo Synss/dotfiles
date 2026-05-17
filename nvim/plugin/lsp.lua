@@ -1,30 +1,27 @@
 vim.lsp.log.set_level("error")
 
--- Enable language servers
+-- Enable LSPs
 
-local servers = {
-	"ansiblels",    -- ansible-language-server
-	"basedpyright", -- basedpyright
-	"clangd",       -- clang-tools
-	"groovyls",     -- groovy-language-server
-	"cssls",        -- vscode-langservers-extracted
-	"eslint",       -- vscode-langservers-extracted
-	"gh_actions_ls", -- actions-languageserver
-	"html",         -- vscode-langservers-extracted
-	"jsonls",       -- vscode-langservers-extracted
-	"lua_ls",       -- lua-language-server
-	"marksman",     -- marksman
-	"nil_ls",       -- nil
-	"nixd",         -- nixd
-	"ruff",         -- ruff
-	"starpls",      -- starpls
-	"typos_lsp",    -- typos-lsp
-	"yamlls",       -- yaml-language-server
-}
-
-for _, lsp in ipairs(servers) do
-	vim.lsp.enable(lsp)
-end
+vim.lsp.enable(
+	{
+		"ansiblels",   -- ansible-language-server
+		"basedpyright", -- basedpyright
+		"clangd",      -- clang-tools
+		"groovyls",    -- groovy-language-server
+		"cssls",       -- vscode-langservers-extracted
+		"eslint",      -- vscode-langservers-extracted
+		"gh_actions_ls", -- actions-languageserver
+		"html",        -- vscode-langservers-extracted
+		"jsonls",      -- vscode-langservers-extracted
+		"lua_ls",      -- lua-language-server
+		"marksman",    -- marksman
+		"nil_ls",      -- nil
+		"nixd",        -- nixd
+		"ruff",        -- ruff
+		"starpls",     -- starpls
+		"typos_lsp",   -- typos-lsp
+		"yamlls",      -- yaml-language-server
+	})
 
 -- Diagnostics
 
