@@ -110,6 +110,7 @@ in
           lazygit-nvim
           lazyjj-nvim
           lualine-nvim
+          mini-ai
           mini-bufremove
           mini-icons
           nerdy-nvim
