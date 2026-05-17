@@ -105,7 +105,6 @@ in
         with pkgs.vimPlugins;
         [
           auto-session
-          blink-cmp
           close-buffers-vim
           fzf-lua
           gruvbox-nvim

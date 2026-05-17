@@ -1,19 +1,17 @@
-local blink_cmp = require("blink.cmp")
 local fzf_lua = require("fzf-lua")
 
 local M = {}
 
-M.capabilities = blink_cmp.get_lsp_capabilities({
-	general = {
-		positionEncodings = { "utf-8" },
-	},
-})
+M.capabilities = vim.lsp.protocol.make_client_capabilities()
+M.capabilities.general = { positionEncodings = { "utf-8" } }
 
-M.on_attach = function(_client, bufnr)
-	vim.api.nvim_set_option_value("omnifunc", "v:lua.vim.lsp.omnifunc", { buf = bufnr })
+M.on_attach = function(client, bufnr)
 	local map = function(key, fn, desc)
 		vim.keymap.set("n", key, fn, { buffer = bufnr, silent = true, desc = desc })
 	end
+
+	-- Autocompletion
+	vim.lsp.completion.enable(true, client.id, bufnr, { autotrigger = true })
 
 	-- Navigation
 	map("gd", fzf_lua.lsp_definitions, "Go to definition")
