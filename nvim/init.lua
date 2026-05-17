@@ -18,6 +18,9 @@ vim.opt.scrolloff = 4
 vim.opt.completeopt = { "fuzzy", "menuone", "noselect", "popup" }
 vim.opt.complete = ".,b,o" -- current buffer, other buffers, omni (LSP)
 
+vim.opt.pumborder = "rounded"
+vim.opt.pumheight = 15
+
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "v:lua.vim.lsp.foldexpr()"
 vim.opt.foldlevel = 99
