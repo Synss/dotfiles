@@ -1,5 +1,3 @@
--- Memo: `set` -> `vim.opt`, `let` -> `vim.g`
-
 vim.g.mapleader = " "
 
 -- Options
