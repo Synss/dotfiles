@@ -36,19 +36,7 @@ vim.keymap.set("n", "<Leader>lq", vim.diagnostic.setloclist, { silent = true, de
 
 -- Codelens
 
-vim.api.nvim_create_autocmd("LspAttach", {
-	callback = function(args)
-		local client = vim.lsp.get_client_by_id(args.data.client_id)
-		if client and client:supports_method("textDocument/codeLens") then
-			vim.lsp.codelens.refresh()
-			vim.api.nvim_create_autocmd({ "BufWritePost", "InsertLeave" }, {
-				buffer = args.buf,
-				callback = function() vim.lsp.codelens.refresh() end,
-			})
-		end
-	end,
-	desc = "Refresh codelens on attach",
-})
+vim.lsp.codelens.enable()
 
 -- Config
 
