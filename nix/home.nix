@@ -113,6 +113,7 @@ in
           mini-ai
           mini-bufremove
           mini-icons
+          mini-surround
           nerdy-nvim
           nvim-lspconfig
           nvim-web-devicons
