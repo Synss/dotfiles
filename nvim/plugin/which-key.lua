@@ -1,80 +1,123 @@
 local nerdy = require("nerdy.fetcher")
 local wk = require("which-key")
 
+local function icon(name, color)
+	return { icon = nerdy.get(name), color = color }
+end
+
 -- Do not underline icons
 vim.api.nvim_set_hl(0, "WhichKeyIcon", { link = "WhichKeyIconGrey" })
 
 wk.setup()
 wk.add({
-	-- Clipboard
-	{ "<Leader>p", icon = { icon = nerdy.get("md-content_paste"), color = "cyan" } },
-	{ "<Leader>P", icon = { icon = nerdy.get("md-content_paste"), color = "cyan" } },
-	{ "<Leader>y", icon = { icon = nerdy.get("md-content_copy"), color = "cyan" } },
-	-- Search
-	{ "<Leader>/", icon = { icon = nerdy.get("md-magnify_close"), color = "green" } },
-	-- Splits
 	{
-		"<Leader>s",
-		group = "Splits",
-		icon = { icon = nerdy.get("cod-split_horizontal"), color = "red" },
+		-- Clipboard
+		{ "<Leader>p", icon = icon("md-content_paste", "cyan") },
+		{ "<Leader>P", icon = icon("md-content_paste", "cyan") },
+		{ "<Leader>y", icon = icon("md-content_copy", "cyan") },
 	},
-	{ "<Leader>sh", icon = { icon = nerdy.get("cod-split_horizontal"), color = "blue" } },
-	{ "<Leader>sl", icon = { icon = nerdy.get("cod-split_horizontal"), color = "blue" } },
-	{ "<Leader>sj", icon = { icon = nerdy.get("cod-split_vertical"), color = "blue" } },
-	{ "<Leader>sk", icon = { icon = nerdy.get("cod-split_vertical"), color = "blue" } },
-	{ "<Leader>sH", icon = { icon = nerdy.get("cod-layout_sidebar_left_off"), color = "blue" } },
-	{ "<Leader>sL", icon = { icon = nerdy.get("cod-layout_sidebar_right_off"), color = "blue" } },
-	{ "<Leader>sJ", icon = { icon = nerdy.get("cod-layout_panel_off"), color = "blue" } },
-	{ "<Leader>sK", icon = { icon = nerdy.get("cod-split_vertical"), color = "blue" } },
-	-- Text
-	{ "<Leader>W",  icon = { icon = nerdy.get("cod-whitespace"), color = "grey" } },
-	-- LSP
-	{ "<Leader>lc", icon = { icon = nerdy.get("cod-eye"), color = "cyan" } },
-	{ "grt",        icon = { icon = nerdy.get("cod-symbol_class"), color = "blue" } },
-	-- Diagnostic
-	{ "[d",         icon = { icon = nerdy.get("md-stethoscope"), color = "orange" } },
-	{ "]d",         icon = { icon = nerdy.get("md-stethoscope"), color = "orange" } },
-	{ "[D",         icon = { icon = nerdy.get("md-stethoscope"), color = "orange" } },
-	{ "]D",         icon = { icon = nerdy.get("md-stethoscope"), color = "orange" } },
-	-- Quickfix
-	{ "[q",         icon = { icon = nerdy.get("cod-checklist"), color = "yellow" } },
-	{ "]q",         icon = { icon = nerdy.get("cod-checklist"), color = "yellow" } },
-	{ "[Q",         icon = { icon = nerdy.get("cod-checklist"), color = "yellow" } },
-	{ "]Q",         icon = { icon = nerdy.get("cod-checklist"), color = "yellow" } },
-	-- Location list
-	{ "[l",         icon = { icon = nerdy.get("md-format_list_bulleted"), color = "yellow" } },
-	{ "]l",         icon = { icon = nerdy.get("md-format_list_bulleted"), color = "yellow" } },
-	{ "[L",         icon = { icon = nerdy.get("md-format_list_bulleted"), color = "yellow" } },
-	{ "]L",         icon = { icon = nerdy.get("md-format_list_bulleted"), color = "yellow" } },
-	-- Buffers
-	{ "[b",         icon = { icon = nerdy.get("md-file_multiple"), color = "cyan" } },
-	{ "]b",         icon = { icon = nerdy.get("md-file_multiple"), color = "cyan" } },
-	{ "[B",         icon = { icon = nerdy.get("md-file_multiple"), color = "cyan" } },
-	{ "]B",         icon = { icon = nerdy.get("md-file_multiple"), color = "cyan" } },
-	-- Tabs
-	{ "[t",         icon = { icon = nerdy.get("md-tab"), color = "purple" } },
-	{ "]t",         icon = { icon = nerdy.get("md-tab"), color = "purple" } },
-	{ "[T",         icon = { icon = nerdy.get("md-tab"), color = "purple" } },
-	{ "]T",         icon = { icon = nerdy.get("md-tab"), color = "purple" } },
-	-- Shell prompts (OSC 133)
-	{ "[[",         icon = { icon = nerdy.get("md-console_line"), color = "green" } },
-	{ "]]",         icon = { icon = nerdy.get("md-console_line"), color = "green" } },
-	-- Blank lines
-	{ "[<Space>",   icon = { icon = nerdy.get("md-format_line_spacing"), color = "grey" } },
-	{ "]<Space>",   icon = { icon = nerdy.get("md-format_line_spacing"), color = "grey" } },
-	-- Methods
-	{ "[m",         icon = { icon = nerdy.get("md-function"), color = "blue" } },
-	{ "]m",         icon = { icon = nerdy.get("md-function"), color = "blue" } },
-	{ "[M",         icon = { icon = nerdy.get("md-function"), color = "blue" } },
-	{ "]M",         icon = { icon = nerdy.get("md-function"), color = "blue" } },
-	-- Spelling
-	{ "[s",         icon = { icon = nerdy.get("md-spellcheck"), color = "red" } },
-	{ "]s",         icon = { icon = nerdy.get("md-spellcheck"), color = "red" } },
-	-- Brackets
-	{ "[(",         icon = { icon = nerdy.get("md-code_parentheses"), color = "grey" } },
-	{ "](",         icon = { icon = nerdy.get("md-code_parentheses"), color = "grey" } },
-	{ "[{",         icon = { icon = nerdy.get("md-code_brackets"), color = "grey" } },
-	{ "]{",         icon = { icon = nerdy.get("md-code_brackets"), color = "grey" } },
-	{ "[%",         icon = { icon = nerdy.get("md-code_brackets"), color = "grey" } },
-	{ "]%",         icon = { icon = nerdy.get("md-code_brackets"), color = "grey" } },
+	{
+		-- Search
+		{ "<Leader>/", icon = icon("md-magnify_close", "green") },
+	},
+	{
+		-- Splits
+		{
+			"<Leader>s",
+			group = "Splits",
+			icon = icon("cod-split_horizontal", "red"),
+		},
+		{ "<Leader>sh", icon = icon("cod-split_horizontal", "blue") },
+		{ "<Leader>sl", icon = icon("cod-split_horizontal", "blue") },
+		{ "<Leader>sj", icon = icon("cod-split_vertical", "blue") },
+		{ "<Leader>sk", icon = icon("cod-split_vertical", "blue") },
+		{ "<Leader>sH", icon = icon("cod-layout_sidebar_left_off", "blue") },
+		{ "<Leader>sL", icon = icon("cod-layout_sidebar_right_off", "blue") },
+		{ "<Leader>sJ", icon = icon("cod-layout_panel_off", "blue") },
+		{ "<Leader>sK", icon = icon("cod-split_vertical", "blue") },
+	},
+	{
+		-- Text
+		{ "<Leader>W", icon = icon("cod-whitespace", "grey") },
+	},
+	{
+		-- LSP
+		{ "<Leader>lc", icon = icon("cod-eye", "cyan") },
+		{ "grt",        icon = icon("cod-symbol_class", "blue") },
+	},
+	{
+		-- Diagnostic
+		icon = icon("md-stethoscope", "orange"),
+		{ "[d", },
+		{ "]d", },
+		{ "[D", },
+		{ "]D", }
+	},
+	{
+		-- Quickfix
+		icon = icon("cod-checklist", "yellow"),
+		{ "[q" },
+		{ "]q" },
+		{ "[Q" },
+		{ "]Q" },
+	},
+	{
+		-- Location list
+		icon = icon("md-format_list_bulleted", "yellow"),
+		{ "[l" },
+		{ "]l" },
+		{ "[L" },
+		{ "]L" },
+	},
+	{
+		-- Buffers
+		icon = icon("md-file_multiple", "cyan"),
+		{ "[b" },
+		{ "]b" },
+		{ "[B" },
+		{ "]B" },
+	},
+	{
+		-- Tabs
+		icon = icon("md-tab", "purple"),
+		{ "[t" },
+		{ "]t" },
+		{ "[T" },
+		{ "]T" },
+	},
+	{
+		-- Shell prompts (OSC 133)
+		icon = icon("md-console_line", "green"),
+		{ "[[" },
+		{ "]]" },
+	},
+	{
+		-- Blank lines
+		icon = icon("md-format_line_spacing", "grey"),
+		{ "[<Space>" },
+		{ "]<Space>" },
+	},
+	{
+		-- Methods
+		icon = icon("md-function", "blue"),
+		{ "[m" },
+		{ "]m" },
+		{ "[M" },
+		{ "]M" },
+	},
+	{
+		-- Spelling
+		icon = icon("md-spellcheck", "red"),
+		{ "[s" },
+		{ "]s" },
+	},
+	{
+		-- Brackets
+		{ "[(", icon = icon("md-code_parentheses", "grey") },
+		{ "](", icon = icon("md-code_parentheses", "grey") },
+		{ "[{", icon = icon("md-code_brackets", "grey") },
+		{ "]{", icon = icon("md-code_brackets", "grey") },
+		{ "[%", icon = icon("md-code_brackets", "grey") },
+		{ "]%", icon = icon("md-code_brackets", "grey") },
+	},
 })
