@@ -69,24 +69,6 @@ local function write_async(path, content)
 	end)
 end
 
----@param path string
----@param done_file string
----@param attempts integer
-local function check_and_clean(path, done_file, attempts)
-	if attempts > 100 then
-		log("check_and_clean timed out for " .. path)
-		return
-	end
-	vim.uv.fs_stat(done_file, function(err)
-		if not err then
-			vim.uv.fs_unlink(path, function() end)
-			vim.uv.fs_unlink(done_file, function() end)
-		else
-			vim.defer_fn(function() check_and_clean(path, done_file, attempts + 1) end, 50)
-		end
-	end)
-end
-
 local banner = "\\n\\n\\033[0;33m--- Restored Layout ---\\033[0m\\n\\n"
 
 ---@param buf integer
@@ -96,17 +78,16 @@ local function send_restore(buf, path)
 	local chan = vim.bo[buf].channel
 	if chan <= 0 then return end
 
-	local done_file = path .. ".done"
+	local esc_path = vim.fn.fnameescape(path)
 	local cmd = string.format(
-		" unset HISTFILE && cat %s && printf \"%%b\" \"%s\" && touch %s && exec %s\n",
-		vim.fn.fnameescape(path),
+		" unset HISTFILE && cat %s && rm %s && printf \"%%b\" \"%s\" && exec %s\n",
+		esc_path,
+		esc_path,
 		banner,
-		vim.fn.fnameescape(done_file),
 		vim.o.shell
 	)
 
 	vim.fn.chansend(chan, cmd)
-	vim.defer_fn(function() check_and_clean(path, done_file, 0) end, 50)
 end
 
 function M.save()
@@ -132,7 +113,7 @@ function M.restore()
 
 	vim.uv.fs_stat(path, function(err)
 		if err then
-			log("restore file not readable: " .. path)
+			log("restore file not found: " .. path)
 			return
 		end
 		vim.schedule(function() send_restore(buf, path) end)
