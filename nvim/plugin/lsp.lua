@@ -44,8 +44,11 @@ end, { silent = true, desc = "Toggle codelens" })
 
 -- Config
 
+-- Disable per buffer with: lua vim.b.format_on_save = false
+-- Re-enable with:          lua vim.b.format_on_save = nil
 vim.api.nvim_create_autocmd("BufWritePre", {
 	callback = function()
+		if vim.b.format_on_save == false then return end
 		vim.lsp.buf.format({ async = false }) -- must complete before the write
 	end,
 	desc = "Format on write",
