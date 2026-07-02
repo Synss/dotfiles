@@ -32,7 +32,8 @@
     ],
     "defaultMode": "default"
   },
+  "promptSuggestionEnabled": false,
+  "tui": "default",
   "theme": "light",
-  "editorMode": "vim",
-  "promptSuggestionEnabled": false
+  "editorMode": "vim"
 }
