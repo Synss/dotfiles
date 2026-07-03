@@ -88,6 +88,7 @@ in
 
     file = {
       ".config/nvim" = mkLink "nvim";
+      ".config/dotfiles" = mkLink "shared";
       ".claude/CLAUDE.md" = mkLink "claude/CLAUDE.md";
     };
 

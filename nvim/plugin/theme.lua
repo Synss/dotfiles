@@ -1,4 +1,4 @@
-local config_dir = vim.fn.stdpath("config")
+local xdg_config_home = os.getenv("XDG_CONFIG_HOME") or (os.getenv("HOME") .. "/.config")
 local pref_path = os.getenv("HOME") .. "/.theme-preference"
 
 local function read_theme_config(path)
@@ -44,7 +44,7 @@ local function write_instance_theme(bg)
 	end
 end
 
-local config = read_theme_config(config_dir .. "/theme-config.json")
+local config = read_theme_config(xdg_config_home .. "/dotfiles/theme-config.json")
 local bg = read_bg_preference(pref_path)
 
 apply_theme(bg, colorscheme_for(config, bg))
