@@ -27,7 +27,6 @@
       "WebFetch(domain:mynixos.com)"
     ],
     "deny": [
-      "Bash(curl *)",
       "Read(./.env)"
     ],
     "defaultMode": "default"
