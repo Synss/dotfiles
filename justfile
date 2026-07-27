@@ -33,6 +33,7 @@ update:
     just update-linters
     jj commit -m "nix: update flake and tools"
 
+[private]
 update-overlays:
     #!/usr/bin/env bash
     set -euo pipefail
@@ -64,6 +65,7 @@ update-overlays:
     update_pkg nix/packages/actions-languageserver.nix   "@actions/languageserver"
     update_pkg nix/packages/ansible-language-server.nix  "@ansible/ansible-language-server"
 
+[private]
 build:
     nix flake check
 
@@ -92,5 +94,6 @@ lint:
 lint-all:
     pre-commit run --all-files
 
+[private]
 update-linters:
     pre-commit autoupdate
