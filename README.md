@@ -9,15 +9,22 @@ Configuration for
 - tmux
 - zsh
 
+git and jj are configured in `nix/home.nix`.
+
 ## Installation
 
-Nix flake + Home Manager in `nix/`. See [`nix/README.md`](nix/README.md).
-
 Run
-```
+
+```sh
 ./bootstrap-just.sh bootstrap
 ```
-to setup a new machine.
 
-See [`nix/README.md`](nix/README.md) for more information on the Nix flake and
-Home Manager setup.
+to setup a new machine. `justfile` has the targets for everything else.
+
+## Layout
+
+- `nix/` — flake modules and package list. See [`nix/README.md`](nix/README.md).
+- `nvim/` — see [`nvim/README.md`](nvim/README.md).
+- `zsh/` — see [`zsh/README.md`](zsh/README.md).
+- `shared/theme-config.json` — the colorscheme, read by nvim, zsh and glow.
+- `scripts/` — lists the apt packages of a host. Not deployed.
