@@ -3,6 +3,8 @@
   "permissions": {
     "allow": [
       "Bash(git:*)",
+      "Bash(jj st:*)",
+      "Bash(jj log:*)",
       "Bash(just:*)",
       "Bash(nix:*)",
       "Bash(bat *)",

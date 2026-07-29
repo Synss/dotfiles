@@ -1,9 +1,15 @@
 # Global Instructions
 
 - When resolving relative file paths provided by the user, always interpret them relative to the current working directory first.
-- Never run `git push` or any command that pushes to a remote repository.
+- Never run any command that pushes to a remote repository.
   Do not ask about pushing. Do not suggest pushing. Treat pushing as out of
   scope entirely.
+
+## Version control
+
+Check for a `.jj` directory before assuming a repo's VCS is git. If one exists,
+jj is in use — even when `.git` is also present (colocated), jj is the source
+of truth, not git.
 
 ## Commit messages
 
