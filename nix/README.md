@@ -1,28 +1,20 @@
 # nix
 
 Nix flake + Home Manager (standalone) managing terminal tools and configs.
+The flake is at the repository root. This directory holds the modules it
+imports, `home.nix` and one module per platform.
 
-## Usage
+Every target resolves the configuration from `hostname -s`, which must be a key
+in `machines` in `../flake.nix`.
 
-```sh
-just update        # flake update + build + switch (full upgrade)
-just build         # nix flake check — evaluates all outputs without building
-just switch        # home-manager switch
-```
+## Notes
 
-First run (before `just` is on `$PATH`):
-
-```sh
-nix run nixpkgs#just -- switch
-```
-
-## Layout
-
-```
-flake.nix     # inputs, machines registry, homeConfigurations, devShell
-flake.lock    # pinned nixpkgs + home-manager
-home.nix      # packages and config (all platforms)
-dev.nix       # devShell for pre-commit and the CI
-linux.nix     # platform-specific config
-darwin.nix    # platform-specific config
-```
+- The repository must be cloned to `~/src/dotfiles.git`. `dotfilesDir` in
+  `../flake.nix` hardcodes it.
+- `bootstrap` installs Nix if it is missing. Restart the shell and run it again.
+- Configs are symlinked out of the store back into the repository, so edits
+  apply without a rebuild. `~/.claude/settings.json` is copied instead, because
+  Claude Code rewrites it in place. `sync-claude` copies it back.
+- `packages/` holds derivations for packages that are not in nixpkgs. `update`
+  bumps their version and hash against the npm registry.
+- `scripts/` are installed as git subcommands.
