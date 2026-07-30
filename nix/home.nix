@@ -11,6 +11,9 @@
 let
   mkLink = path: { source = config.lib.file.mkOutOfStoreSymlink "${dotfilesDir}/${path}"; };
 
+  colocate = pkgs.writers.writePython3 "git-colocate" { } (
+    builtins.readFile ./scripts/git-colocate.py
+  );
   retop = pkgs.writeShellScript "git-retop" (builtins.readFile ./scripts/git-retop.sh);
   sweep = pkgs.writeShellScript "git-sweep" (builtins.readFile ./scripts/git-sweep.sh);
 in
@@ -265,6 +268,7 @@ in
           branch-name = "rev-parse --abbrev-ref HEAD";
           cane = "commit --amend --no-edit";
           ci = "commit";
+          colocate = "!${colocate}";
           co = "checkout";
           fixup = "commit --fixup";
           logline = "log --graph --oneline --decorate --color";
