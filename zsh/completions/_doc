@@ -1,0 +1,23 @@
+#compdef doc
+
+local -a pages
+local state page name title line
+local docdir="${DOTFILES_DOC:-${DOTFILES_ZSH:h}/docs}"
+
+for page in ${docdir}/**/*.md(N.); do
+  name="${${page#$docdir/}%.md}"
+  title=''
+  while IFS= read -r line; do
+    [[ "$line" == '# '* ]] && { title="${line#\# }"; break }
+  done < "$page"
+  pages+=("${name}:${${title//:/\\:}:-markdown reference}")
+done
+
+_arguments -C \
+  '(- *)-l[list available references]' \
+  '(- *)-k[search all references for a pattern]:pattern: ' \
+  '1: :->page' && return 0
+
+case "$state" in
+  page) _describe 'reference' pages ;;
+esac
