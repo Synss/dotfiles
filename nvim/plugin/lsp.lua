@@ -52,9 +52,10 @@ end, { silent = true, desc = "Toggle codelens" })
 -- Disable per buffer with: lua vim.b.format_on_save = false
 -- Re-enable with:          lua vim.b.format_on_save = nil
 vim.api.nvim_create_autocmd("BufWritePre", {
-	callback = function()
+	callback = function(args)
 		if vim.b.format_on_save == false then return end
-		vim.lsp.buf.format({ async = false }) -- must complete before the write
+		-- Synchronous: must complete before the write
+		require("conform").format({ bufnr = args.buf })
 	end,
 	desc = "Format on write",
 })

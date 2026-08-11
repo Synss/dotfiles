@@ -70,6 +70,7 @@ in
         nodejs
         pnpm
         pre-commit
+        prettier
         ripgrep
         ruff
         shellcheck
@@ -109,6 +110,7 @@ in
         with pkgs.vimPlugins;
         [
           auto-session
+          conform-nvim
           fzf-lua
           gruvbox-nvim
           lazygit-nvim
