@@ -15,6 +15,23 @@ Check for a `.jj` directory before assuming a repo's VCS is git. If one exists,
 jj is in use — even when `.git` is also present (colocated), jj is the source
 of truth, not git.
 
+### Commit messages
+
+A project convention overrides this one where it exists.
+
+Subject: a capitalized imperative sentence answering "what", short enough to
+scan in a log, no trailing period.
+
+Body: optional, answers "why". Skip it when the subject and the diff already
+make the change clear. Two or three sentences is the usual size. Wrap at 72
+columns.
+
+No trailing metadata (no Co-Authored-By, no issue refs) unless I ask.
+
+Longer bodies are legitimate where a future reader lands on the commit and
+needs it: a non-obvious root cause, a revert, a performance claim that needs
+numbers. That is the exception, not the default.
+
 ## Working style
 
 ### Planning and implementation
@@ -43,3 +60,19 @@ Before starting non-trivial work, state what "done" looks like as a check — a
 test, a repro case, a before/after comparison — not just "make it work". For
 multi-step work, state a short plan as numbered steps, each with its own
 verify step.
+
+## Comments
+
+Default to short. One line is usually enough, and a comment that only restates
+the code should be deleted rather than shortened.
+
+Comment what a future editor could break without knowing: a non-obvious
+external constraint, an invariant, a footgun, a usage hint. How the code came
+to be written this way is history, and history goes in the commit message.
+
+Interface documentation is a separate category. Docstrings and public API
+comments describe a contract and run as long as the contract needs.
+
+A longer comment is occasionally right: a subtle algorithm, a workaround for an
+external bug, a warning against an obvious-looking edit. That is the exception,
+not the default.
