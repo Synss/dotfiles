@@ -4,6 +4,11 @@ vim.lsp.log.set_level("error")
 
 -- Enable LSPs
 
+-- Otherwise nvim-lspconfig's `lsp/*.lua` win on runtimepath order.
+for _, path in ipairs(vim.fn.glob(vim.fn.stdpath("config") .. "/lsp/*.lua", false, true)) do
+	vim.lsp.config(vim.fn.fnamemodify(path, ":t:r"), dofile(path))
+end
+
 vim.lsp.enable(
 	{
 		"ansiblels",   -- ansible-language-server
