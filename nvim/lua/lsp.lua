@@ -24,9 +24,6 @@ M.on_attach = function(client, bufnr)
 
 	-- Actions
 	map("gra", fzf_lua.lsp_code_actions, "Code action")
-	map("<Leader>lf", function()
-		vim.lsp.buf.format({ async = true })
-	end, "Format")
 
 	-- Workspace
 	map("<Leader>lW", fzf_lua.lsp_workspace_diagnostics, "Workspace diagnostics")
