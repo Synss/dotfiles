@@ -3,8 +3,12 @@
   "permissions": {
     "allow": [
       "Bash(git:*)",
-      "Bash(jj st:*)",
+      "Bash(jj describe:*)",
+      "Bash(jj edit:*)",
+      "Bash(jj file:*)",
       "Bash(jj log:*)",
+      "Bash(jj new:*)",
+      "Bash(jj st:*)",
       "Bash(just:*)",
       "Bash(nix:*)",
       "Bash(bat *)",
@@ -33,7 +37,6 @@
     ],
     "defaultMode": "default"
   },
-  "model": "opus[1m]",
   "promptSuggestionEnabled": false,
   "tui": "default",
   "theme": "light",
