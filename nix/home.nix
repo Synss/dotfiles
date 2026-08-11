@@ -188,6 +188,11 @@ in
             "-r"
             "all()"
           ];
+          ld = [
+            "log"
+            "-T"
+            "d"
+          ];
           tug = [
             "bookmark"
             "advance"
@@ -212,9 +217,15 @@ in
         };
         revsets.bookmark-advance-to = "closest_pushable(@)";
         revset-aliases = {
+          # `jj l -r by("Alice")` to filter by author.
+          "by(x)" = "author(substring:x)";
           "closest_pushable(to)" =
             ''heads(::to & mutable() & ~description(exact:" ") & (~empty() | merges()))'';
           "immutable_heads()" = "trunk() | tags()";
+        };
+        template-aliases = {
+          # `jj ... -T d`
+          d = "builtin_log_detailed";
         };
         templates = {
           draft_commit_description = ''
