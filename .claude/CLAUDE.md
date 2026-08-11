@@ -23,12 +23,14 @@ derivations). Mason has been removed.
 `vim.lsp.config()` on load. Removing it leaves `vim.lsp.enable()` with no config and no clients
 start.
 
-`gh_actions_ls` has a `cmd` override in `vim/plugin/lsp.lua` because the Nix package installs
-the binary as `actions-languageserver`, not `gh-actions-language-server`.
+Per-server overrides live in `nvim/lsp/<name>.lua`, but a file there is not enough on its own.
+Neovim merges every `lsp/<name>.lua` on the runtimepath in runtimepath order, then lets any
+`vim.lsp.config()` call override the result. nvim-lspconfig ships its own copies and sits after
+`~/.config/nvim` on the runtimepath, so it wins. `nvim/plugin/lsp.lua` re-applies our files
+through `vim.lsp.config()` to put them back on top.
 
-`groovyls` has a `cmd` override in `vim/plugin/lsp.lua` because the default expects
-`java -jar groovy-language-server-all.jar` but the Nix package installs a wrapper script
-named `groovy-language-server`.
+`gh_actions_ls` overrides `cmd` because the Nix package installs the binary as
+`actions-languageserver`, not `gh-actions-language-server`.
 
 ## Nix overlay
 
