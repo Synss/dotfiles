@@ -27,9 +27,9 @@ A project convention overrides this one where it exists.
 Subject: a capitalized imperative sentence answering "what", short enough to
 scan in a log, no trailing period.
 
-Body: optional, answers "why". Skip it when the subject and the diff already
-make the change clear. Two or three sentences is the usual size. Wrap at 72
-columns.
+Body: optional, answers "why". One idea per sentence, one sentence per idea.
+Skip it when the subject and the diff already make the change clear. Two or
+three sentences is the usual size. Wrap at 72 columns.
 
 No trailing metadata (no Co-Authored-By, no issue refs) unless I ask.
 
