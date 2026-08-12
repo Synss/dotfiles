@@ -2,16 +2,9 @@
 
 ## Commit messages
 
-Subject line: prefixed with a lowercase component matching the area touched
-(e.g. `vim:`, `nix:`, `claude:`, `zsh:`, `git:`; use `*:` if it spans several),
-followed by a capitalized imperative sentence answering "what". Required.
-
-Body: optional, answers "why". Max 3 sentences, optimal 2 — one idea per
-sentence, one sentence per idea. Skip it entirely if the subject line plus the
-diff already make the change clear; don't add a body that would just
-paraphrase the code.
-
-No trailing metadata (no Co-Authored-By, no issue refs) unless I ask.
+Subject: prefixed with a lowercase component matching the area touched (e.g.
+`vim:`, `nix:`, `claude:`, `zsh:`, `git:`; use `*:` if it spans several).
+Otherwise, follow the global commit message policy.
 
 ## Neovim LSP
 
