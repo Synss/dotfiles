@@ -48,7 +48,11 @@
 
       mkHome =
         _:
-        { system, username }:
+        {
+          system,
+          username,
+          dotfilesSubpath ? "src/dotfiles.git",
+        }:
         let
           pkgs = import nixpkgs {
             inherit system;
@@ -71,7 +75,7 @@
               nix-index-database
               nixgl
               ;
-            dotfilesDir = "${homeDirectory}/src/dotfiles.git";
+            dotfilesDir = "${homeDirectory}/${dotfilesSubpath}";
           };
         };
     in
