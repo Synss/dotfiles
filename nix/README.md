@@ -9,8 +9,9 @@ in `machines` in `../flake.nix`.
 
 ## Notes
 
-- The repository must be cloned to `~/src/dotfiles.git`. `dotfilesDir` in
-  `../flake.nix` hardcodes it.
+- The repository is expected at `~/src/dotfiles.git` by default. Override
+  `dotfilesSubpath` on a machine in `machines` (`../flake.nix`) if its clone
+  lives somewhere else.
 - `bootstrap` installs Nix if it is missing. Restart the shell and run it again.
 - Configs are symlinked out of the store back into the repository, so edits
   apply without a rebuild. `~/.claude/settings.json` is copied instead, because
