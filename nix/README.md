@@ -5,13 +5,13 @@ The flake is at the repository root. This directory holds the modules it
 imports, `home.nix` and one module per platform.
 
 Every target resolves the configuration from `hostname -s`, which must be a key
-in `machines` in `../flake.nix`.
+in `hosts.nix`.
 
 ## Notes
 
 - The repository is expected at `~/src/dotfiles.git` by default. Override
-  `dotfilesSubpath` on a machine in `machines` (`../flake.nix`) if its clone
-  lives somewhere else.
+  `dotfilesSubpath` on a machine in `hosts.nix` if its clone lives somewhere
+  else.
 - `bootstrap` installs Nix if it is missing. Restart the shell and run it again.
 - Configs are symlinked out of the store back into the repository, so edits
   apply without a rebuild. `~/.claude/settings.json` is copied instead, because
