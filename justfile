@@ -80,10 +80,13 @@ news:
 
 switch:
     home-manager switch --flake ".#{{ hostname }}"
-    cp claude/settings.json ~/.claude/settings.json
 
 sync-claude:
-    cp ~/.claude/settings.json claude/settings.json
+    #!/usr/bin/env bash
+    set -euo pipefail
+    tmp=$(mktemp)
+    jq -s '.[0] * .[1]' ~/.claude/settings.json claude/settings.json > "$tmp"
+    mv "$tmp" ~/.claude/settings.json
 
 check-lsp:
     nvim --headless -c "checkhealth vim.lsp" -c "qa!"

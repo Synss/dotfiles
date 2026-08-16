@@ -26,7 +26,6 @@
       "Bash(stylua *)",
       "Bash(wc *)",
       "Bash(which *)",
-      "Bash(zsh *)",
       "WebSearch",
       "WebFetch(domain:github.com)",
       "WebFetch(domain:nix-community.github.io)",
@@ -35,10 +34,9 @@
     "deny": [
       "Read(./.env)"
     ],
-    "defaultMode": "default"
+    "defaultMode": "auto"
   },
   "promptSuggestionEnabled": false,
   "tui": "default",
-  "theme": "light",
   "editorMode": "vim"
 }
