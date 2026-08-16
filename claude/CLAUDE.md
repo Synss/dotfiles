@@ -28,8 +28,10 @@ Subject: a capitalized imperative sentence answering "what", short enough to
 scan in a log, no trailing period.
 
 Body: optional, answers "why". One idea per sentence, one sentence per idea.
-Skip it when the subject and the diff already make the change clear. Two or
-three sentences is the usual size. Wrap at 72 columns.
+Test each sentence against the subject, the diff, and the sentences before
+it; drop it if any of those already cover its fact. When every sentence
+fails that test, drop the body entirely. Two sentences is the usual size;
+a third has to earn its place. Wrap at 72 columns.
 
 No trailing metadata (no Co-Authored-By, no issue refs) unless I ask.
 
