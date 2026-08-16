@@ -32,10 +32,12 @@
         "aarch64-darwin"
       ];
       machines = import ./nix/hosts.nix;
-      overlay = _: prev: {
-        actions-languageserver = prev.callPackage ./nix/packages/actions-languageserver.nix { };
-        ansible-language-server = prev.callPackage ./nix/packages/ansible-language-server.nix { };
-      };
+      overlay =
+        _: prev:
+        nixpkgs.lib.mapAttrs' (
+          name: _:
+          nixpkgs.lib.nameValuePair name (prev.callPackage (./nix/packages + "/${name}/package.nix") { })
+        ) (nixpkgs.lib.filterAttrs (_: type: type == "directory") (builtins.readDir ./nix/packages));
 
       mkHome =
         _:
