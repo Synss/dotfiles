@@ -16,9 +16,9 @@ Check for a `.jj` directory before assuming a repo's VCS is git. If one exists,
 jj is in use — even when `.git` is also present (colocated), jj is the source
 of truth, not git.
 
-In a colocated repo, do not run mutating git commands (`add`, `rm`, `commit`,
-`checkout`, `reset`, `stash`) — use the jj equivalent. Read-only git commands
-(`status`, `diff`, `log`) are fine.
+- In a colocated repo, do not run mutating git commands (`add`, `rm`,
+  `commit`, `checkout`, `reset`, `stash`) — use the jj equivalent.
+- Read-only git commands (`status`, `diff`, `log`) are fine.
 
 ### Commit messages
 
@@ -45,9 +45,10 @@ numbers. That is the exception, not the default.
 When presenting or updating a plan, stop and wait for an explicit go-ahead
 before implementing. A question or plan update is not a green light.
 
-If multiple reasonable interpretations of a request exist, present them
-instead of picking one silently. If a simpler approach exists than the one
-requested, say so before implementing.
+- If multiple reasonable interpretations of a request exist, present them
+  instead of picking one silently.
+- If a simpler approach exists than the one requested, say so before
+  implementing.
 
 ### When you get stuck
 
@@ -63,10 +64,10 @@ already know the answer.
 
 ### Verification
 
-Before starting non-trivial work, state what "done" looks like as a check — a
-test, a repro case, a before/after comparison — not just "make it work". For
-multi-step work, state a short plan as numbered steps, each with its own
-verify step.
+- Before starting non-trivial work, state what "done" looks like as a check —
+  a test, a repro case, a before/after comparison — not just "make it work".
+- For multi-step work, state a short plan as numbered steps, each with its
+  own verify step.
 
 ## Code comments
 
