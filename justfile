@@ -62,8 +62,8 @@ update-overlays:
         echo "bumped $npm_pkg $current → $latest"
     }
 
-    update_pkg nix/packages/actions-languageserver.nix   "@actions/languageserver"
-    update_pkg nix/packages/ansible-language-server.nix  "@ansible/ansible-language-server"
+    update_pkg nix/packages/actions-languageserver/package.nix   "@actions/languageserver"
+    update_pkg nix/packages/ansible-language-server/package.nix  "@ansible/ansible-language-server"
 
 [private]
 build:
