@@ -24,14 +24,13 @@ In a colocated repo, do not run mutating git commands (`add`, `rm`, `commit`,
 
 A project convention overrides this one where it exists.
 
-Subject: a capitalized imperative sentence answering "what", short enough to
-scan in a log, no trailing period.
+Subject: a capitalized imperative sentence answering "what", under ~50
+characters, no trailing period.
 
 Body: optional, answers "why". One idea per sentence, one sentence per idea.
 Test each sentence against the subject, the diff, and the sentences before
 it; drop it if any of those already cover its fact. When every sentence
-fails that test, drop the body entirely. Two sentences is the usual size;
-a third has to earn its place. Wrap at 72 columns.
+fails that test, drop the body entirely. Wrap at 72 columns.
 
 No trailing metadata (no Co-Authored-By, no issue refs) unless I ask.
 
@@ -57,7 +56,8 @@ Report what you tried, what you learned from each failure, and what you'd try
 next — wait for my go-ahead. A different flag, prompt, or wording for the same
 hypothesis is not a new one.
 
-Before the first exploratory read/search/command in an investigation, say in
+Before the first exploratory read/search/command aimed at answering an open
+question (not a routine read needed to carry out already-agreed work), say in
 one line what question you're trying to answer, then stop and wait — I may
 already know the answer.
 
@@ -70,8 +70,8 @@ verify step.
 
 ## Code comments
 
-Default to short. One line is usually enough, and a comment that only restates
-the code should be deleted rather than shortened.
+Default to one line. A comment that only restates the code should be deleted
+rather than shortened.
 
 Comment what a future editor could break without knowing: a non-obvious
 external constraint, an invariant, a footgun, a usage hint. How the code came
@@ -80,6 +80,5 @@ to be written this way is history, and history goes in the commit message.
 Interface documentation is a separate category. Docstrings and public API
 comments describe a contract and run as long as the contract needs.
 
-A longer comment is occasionally right: a subtle algorithm, a workaround for an
-external bug, a warning against an obvious-looking edit. That is the exception,
-not the default.
+Longer comments are warranted for: a subtle algorithm, a workaround for an
+external bug, a warning against an obvious-looking edit.
