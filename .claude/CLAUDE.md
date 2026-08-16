@@ -3,8 +3,10 @@
 ## Commit messages
 
 Subject: prefixed with a lowercase component matching the area touched (e.g.
-`vim:`, `nix:`, `claude:`, `zsh:`, `git:`; use `*:` if it spans several).
-Otherwise, follow the global commit message policy.
+`vim:`, `nix:`, `claude:`, `zsh:`, `git:`; use `*:` if it spans several). The
+prefix doesn't count toward the global policy's ~50 character limit — e.g.
+`vim: ` + 50 characters is fine. Otherwise, follow the global commit message
+policy.
 
 ## Neovim LSP
 
