@@ -29,14 +29,12 @@ characters, no trailing period.
 
 Body: optional, answers "why". One idea per sentence, one sentence per idea.
 Test each sentence against the subject, the diff, and the sentences before
-it; drop it if any of those already cover its fact. When every sentence
-fails that test, drop the body entirely. Wrap at 72 columns.
+it. Drop it if any of those already state its fact. A bug's root cause, a
+revert's rationale, and a performance claim's numbers are the kind of fact
+this test keeps. When every sentence fails, drop the body entirely. Wrap at
+72 columns.
 
 No trailing metadata (no Co-Authored-By, no issue refs) unless I ask.
-
-Longer bodies are legitimate where a future reader lands on the commit and
-needs it: a non-obvious root cause, a revert, a performance claim that needs
-numbers. That is the exception, not the default.
 
 ## Working style
 
@@ -45,8 +43,8 @@ numbers. That is the exception, not the default.
 When presenting or updating a plan, stop and wait for an explicit go-ahead
 before implementing. A question or plan update is not a green light.
 
-- If multiple reasonable interpretations of a request exist, present them
-  instead of picking one silently.
+- If multiple interpretations of a request exist, present them instead of
+  picking one silently.
 - If a simpler approach exists than the one requested, say so before
   implementing.
 
@@ -64,8 +62,8 @@ already know the answer.
 
 ### Verification
 
-- Before starting non-trivial work, state what "done" looks like as a check —
-  a test, a repro case, a before/after comparison — not just "make it work".
+- Before starting work, state what "done" looks like as a check — a test, a
+  repro case, a before/after comparison — not just "make it work".
 - For multi-step work, state a short plan as numbered steps, each with its
   own verify step.
 
@@ -78,8 +76,8 @@ Comment what a future editor could break without knowing: a non-obvious
 external constraint, an invariant, a footgun, a usage hint. How the code came
 to be written this way is history, and history goes in the commit message.
 
-Interface documentation is a separate category. Docstrings and public API
-comments describe a contract and run as long as the contract needs.
+Interface documentation is a separate category, exempt from the one-line
+default. Docstrings and public API comments describe a contract in full.
 
 Longer comments are warranted for: a subtle algorithm, a workaround for an
 external bug, a warning against an obvious-looking edit.
