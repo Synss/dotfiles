@@ -4,7 +4,7 @@ description: Review a change to any CLAUDE.md in this repo against its style che
 ---
 
 Apply this checklist to the target file, or to the diff if reviewing a
-pending change. Content first, structure second; check in order.
+pending change. Check content before structure.
 
 ## Content
 
@@ -19,10 +19,10 @@ pending change. Content first, structure second; check in order.
 
 4. Bullet a paragraph only if it's independent, parallel rules chained by
    "and"/"also". Keep prose for conditional or sequential logic (if X, then
-   Y) — bulleting a procedure strips the if/then flow.
+   Y). Bulleting a procedure strips the if/then flow.
 
 Note: treat XML/schema tagging (`<constraints>`, `<instructions>`,
-`<document>`) as optional polish, not a default — it targets prompts
+`<document>`) as optional polish, not a default. It targets prompts
 assembled once per API call, not a file reread and edited by topic. Reach
 for it only if the Content checks above don't fix the actual problem.
 
