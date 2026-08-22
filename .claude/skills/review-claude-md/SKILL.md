@@ -14,10 +14,14 @@ pending change. Check content before structure.
 3. Check whether a project convention interacts with a global rule (e.g. a
    commit subject prefix vs. a character limit) and state the interaction
    explicitly rather than leaving it implicit.
+4. Check "the user"/"you" usage against the file's convention: the human
+   author is "the user", the agent is "you". Flag any sentence that uses
+   "I"/"me"/"my" for the author, or "you" for the author instead of the
+   agent.
 
 ## Structure
 
-4. Bullet a paragraph only if it's independent, parallel rules chained by
+5. Bullet a paragraph only if it's independent, parallel rules chained by
    "and"/"also". Keep prose for conditional or sequential logic (if X, then
    Y). Bulleting a procedure strips the if/then flow.
 
