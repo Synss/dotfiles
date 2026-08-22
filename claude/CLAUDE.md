@@ -2,8 +2,8 @@
 
 ## Repo mechanics
 
-- When resolving relative file paths I give you, interpret them relative to
-  the current working directory.
+- When resolving relative file paths the user gives you, interpret them
+  relative to the current working directory.
 - Never push commits to a remote — via `git push`, `jj git push`,
   `gh pr create`, or any command with that effect — unless explicitly asked to
   in that message. Do not ask whether to push after making changes. Treat
@@ -36,7 +36,7 @@ are the kind of fact this test keeps. No body is the default outcome, not
 a fallback: don't add a sentence just to fill the field. Wrap at 72
 columns.
 
-No trailing metadata (no Co-Authored-By, no issue refs) unless I ask.
+No trailing metadata (no Co-Authored-By, no issue refs) unless the user asks.
 
 ## Working style
 
@@ -54,13 +54,13 @@ before implementing. A question or plan update is not a green light.
 
 Two failed hypotheses about the same problem: stop before trying a third.
 Report what you tried, what you learned from each failure, and what you'd try
-next — wait for my go-ahead. A different flag, prompt, or wording for the same
-hypothesis is not a new one.
+next — wait for the user's go-ahead. A different flag, prompt, or wording for
+the same hypothesis is not a new one.
 
 Before the first exploratory read/search/command aimed at answering an open
 question (not a routine read needed to carry out already-agreed work), say in
-one line what question you're trying to answer, then stop and wait. I may
-already know the answer.
+one line what question you're trying to answer, then stop and wait. The user
+may already know the answer.
 
 ### Verification
 
@@ -72,7 +72,8 @@ already know the answer.
 ## Writing
 
 One idea per sentence, one sentence per idea. Applies to everything you write
-for me — commit messages, code comments, documentation, and chat responses.
+for the user — commit messages, code comments, documentation, and chat
+responses.
 
 ## Code comments
 
