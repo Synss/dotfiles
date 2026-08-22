@@ -3,10 +3,10 @@
 ## Commit messages
 
 Subject: prefixed with a lowercase component matching the area touched (e.g.
-`vim:`, `nix:`, `claude:`, `zsh:`, `git:`; use `*:` if it spans several). The
-prefix doesn't count toward the global policy's ~50 character limit — e.g.
-`vim: ` + 50 characters is fine. Otherwise, follow the global commit message
-policy.
+`vim:`, `nix:`, `claude:`, `zsh:`, `git:`). Use `*:` if the change spans
+several areas. The prefix doesn't count toward the global policy's ~50
+character limit — e.g. `vim: ` + 50 characters is fine. Otherwise, follow the
+global commit message policy.
 
 ## Neovim LSP
 
@@ -18,7 +18,7 @@ derivations). Mason has been removed.
 `vim.lsp.config()` on load. Removing it leaves `vim.lsp.enable()` with no config and no clients
 start.
 
-Per-server overrides live in `nvim/lsp/<name>.lua`, but a file there is not enough on its own.
+Per-server overrides live in `nvim/lsp/<name>.lua`. A file there is not enough on its own.
 Neovim merges every `lsp/<name>.lua` on the runtimepath in runtimepath order, then lets any
 `vim.lsp.config()` call override the result. nvim-lspconfig ships its own copies and sits after
 `~/.config/nvim` on the runtimepath, so it wins. `nvim/plugin/lsp.lua` re-applies our files

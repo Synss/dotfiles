@@ -6,18 +6,18 @@
   the current working directory.
 - Never push commits to a remote — via `git push`, `jj git push`,
   `gh pr create`, or any command with that effect — unless explicitly asked to
-  in that message. Do not ask whether to push after making changes — treat
+  in that message. Do not ask whether to push after making changes. Treat
   pushing as out of scope unless requested. When explicitly asked, push
   without further confirmation.
 
 ### Version control
 
 Check for a `.jj` directory before assuming a repo's VCS is git. If one exists,
-jj is in use — even when `.git` is also present (colocated), jj is the source
-of truth, not git.
+jj — not git — is the source of truth, even when `.git` is also present
+(colocated).
 
 - In a colocated repo, do not run mutating git commands (`add`, `rm`,
-  `commit`, `checkout`, `reset`, `stash`) — use the jj equivalent.
+  `commit`, `checkout`, `reset`, `stash`). Use the jj equivalent instead.
 - Read-only git commands (`status`, `diff`, `log`) are fine.
 
 ### Commit messages
@@ -56,7 +56,7 @@ hypothesis is not a new one.
 
 Before the first exploratory read/search/command aimed at answering an open
 question (not a routine read needed to carry out already-agreed work), say in
-one line what question you're trying to answer, then stop and wait — I may
+one line what question you're trying to answer, then stop and wait. I may
 already know the answer.
 
 ### Verification
@@ -78,7 +78,8 @@ rather than shortened.
 
 Comment what a future editor could break without knowing: a non-obvious
 external constraint, an invariant, a footgun, a usage hint. How the code came
-to be written this way is history, and history goes in the commit message.
+to be written this way is history. It belongs in the commit message, not the
+comment.
 
 Interface documentation is a separate category, exempt from the one-line
 default. Docstrings and public API comments describe a contract in full.
