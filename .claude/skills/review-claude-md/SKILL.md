@@ -25,10 +25,9 @@ pending change. Check content before structure.
    "and"/"also". Keep prose for conditional or sequential logic (if X, then
    Y). Bulleting a procedure strips the if/then flow.
 
-Note: treat XML/schema tagging (`<constraints>`, `<instructions>`,
-`<document>`) as optional polish, not a default. It targets prompts
-assembled once per API call, not a file reread and edited by topic. Reach
-for it only if the Content checks above don't fix the actual problem.
+Note: reach for XML/schema tagging (`<constraints>`, `<instructions>`,
+`<document>`) where it adds clarity. Skip it otherwise, and prefer
+fixing the underlying problem with the Content checks above first.
 
 <output_format>
 For each candidate sentence, report which item it triggers and a proposed
