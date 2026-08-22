@@ -27,12 +27,11 @@ A project convention overrides this one where it exists.
 Subject: a capitalized imperative sentence answering "what", under ~50
 characters, no trailing period.
 
-Body: optional, answers "why". One idea per sentence, one sentence per idea.
-Test each sentence against the subject, the diff, and the sentences before
-it. Drop it if any of those already state its fact. A bug's root cause, a
-revert's rationale, and a performance claim's numbers are the kind of fact
-this test keeps. When every sentence fails, drop the body entirely. Wrap at
-72 columns.
+Body: optional, answers "why". Test each sentence against the subject, the
+diff, and the sentences before it. Drop it if any of those already state its
+fact. A bug's root cause, a revert's rationale, and a performance claim's
+numbers are the kind of fact this test keeps. When every sentence fails,
+drop the body entirely. Wrap at 72 columns.
 
 No trailing metadata (no Co-Authored-By, no issue refs) unless I ask.
 
@@ -66,6 +65,11 @@ already know the answer.
   repro case, a before/after comparison — not just "make it work".
 - For multi-step work, state a short plan as numbered steps, each with its
   own verify step.
+
+## Writing
+
+One idea per sentence, one sentence per idea. Applies to everything you write
+for me — commit messages, code comments, documentation, and chat responses.
 
 ## Code comments
 
