@@ -23,6 +23,7 @@ to setup a new machine. `justfile` has the targets for everything else.
 
 ## Layout
 
+- `claude/` — see [`claude/README.md`](claude/README.md).
 - `nix/` — flake modules and package list. See [`nix/README.md`](nix/README.md).
 - `nvim/` — see [`nvim/README.md`](nvim/README.md).
 - `zsh/` — see [`zsh/README.md`](zsh/README.md).

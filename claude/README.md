@@ -7,4 +7,5 @@ sync-claude`, since Claude Code rewrites that file in place.
 ## Notes
 
 - Edits to `CLAUDE.md` (here or `.claude/CLAUDE.md` at the repo root) are
-  checked against the `review-claude-md` skill before committing.
+  checked against the [`review-claude-md`](../.claude/skills/review-claude-md/SKILL.md)
+  skill before committing.
