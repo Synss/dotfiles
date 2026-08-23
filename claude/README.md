@@ -20,5 +20,5 @@ It self-activates via a `SessionStart` hook; re-trigger manually with
 ## Notes
 
 - Edits to `CLAUDE.md` (here or `.claude/CLAUDE.md` at the repo root) are
-  checked against the [`review-claude-md`](../.claude/skills/review-claude-md/SKILL.md)
+  checked against the [`reviewing-claude-md`](../.claude/skills/reviewing-claude-md/SKILL.md)
   skill before committing.
