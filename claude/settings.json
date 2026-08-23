@@ -34,6 +34,19 @@
     "deny": ["Read(./.env)"],
     "defaultMode": "auto"
   },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "$HOME/.claude/hooks/deny-git-if-colocated.pl"
+          }
+        ]
+      }
+    ]
+  },
   "promptSuggestionEnabled": false,
   "tui": "default",
   "editorMode": "vim"

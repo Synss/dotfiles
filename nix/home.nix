@@ -94,6 +94,7 @@ in
       ".config/nvim" = mkLink "nvim";
       ".config/dotfiles" = mkLink "shared";
       ".claude/CLAUDE.md" = mkLink "claude/CLAUDE.md";
+      ".claude/hooks" = mkLink "claude/hooks";
     };
 
   };
