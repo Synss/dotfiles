@@ -1,8 +1,11 @@
 # claude
 
-Global Claude Code config. `CLAUDE.md` is symlinked to `~/.claude/CLAUDE.md`.
-`settings.json` is merged into `~/.claude/settings.json` by `just
-sync-claude`, since Claude Code rewrites that file in place.
+Global Claude Code config.
+
+- `CLAUDE.md` is symlinked to `~/.claude/CLAUDE.md`.
+- `hooks/` is symlinked to `~/.claude/hooks/`.
+- `settings.json` is merged into `~/.claude/settings.json` by `just
+  sync-claude`, since Claude Code rewrites that file in place.
 
 ## Plugins
 
