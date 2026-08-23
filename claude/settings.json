@@ -31,9 +31,7 @@
       "WebFetch(domain:nix-community.github.io)",
       "WebFetch(domain:mynixos.com)"
     ],
-    "deny": [
-      "Read(./.env)"
-    ],
+    "deny": ["Read(./.env)"],
     "defaultMode": "auto"
   },
   "promptSuggestionEnabled": false,
