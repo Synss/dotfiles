@@ -13,9 +13,10 @@ skill's wording changes:
 1. Dispatch a fresh subagent with no prior context, pointed at the skill and
    the fixture: "Use the `reviewing-claude-md` skill to review
    `fixtures/seeded-violations.md`."
-2. Compare its findings against `expected-findings.md`: all 6 rules cited
-   correctly, with the specific interaction/fix described, and nothing in
-   "Not a defect" flagged.
+2. Compare its findings against `expected-findings.md`: exactly 6 entries,
+   one per rule in rule order, each `triggered` with numbered instances
+   matching the quote/detail/fix there (rule 3 has two; every other rule
+   has one), and none of the distractors mis-cited under rule 3.
 3. If something's missed or mis-cited, tighten the rule's wording in
    SKILL.md and re-run. Don't tune the skill to force a match on an
    incidental artifact of this one fixture — check that a wording change
