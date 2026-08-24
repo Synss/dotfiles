@@ -9,10 +9,12 @@ use strict;
 use warnings;
 use JSON::PP qw(decode_json);
 
-my $input = do { local $/; <STDIN> };
-my $command = decode_json($input)->{tool_input}{command} // '';
+my $input = do { local $/; <STDIN> } // '';
+my $data = eval { decode_json($input) };
+exit 0 unless ref($data) eq 'HASH';
+my $command = $data->{tool_input}{command} // '';
 
-exit 0 unless $command =~ /(?:^|[;&|]|\s)git\s+(?:add|rm|commit|checkout|reset|stash)(?:\s|$)/m;
+exit 0 unless $command =~ /(?:^|[;&|]|\s)git\s+(?:add|rm|commit|checkout|reset|stash)(?:[;&|\s]|$)/m;
 
 my $repo_root = `git rev-parse --show-toplevel 2>/dev/null`;
 chomp $repo_root;
