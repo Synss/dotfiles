@@ -13,7 +13,7 @@ skill's wording changes:
 1. Dispatch a fresh subagent with no prior context, pointed at the skill and
    the fixture: "Use the `reviewing-claude-md` skill to review
    `fixtures/seeded-violations.md`."
-2. Compare its findings against `expected-findings.md`: exactly 6 entries,
+2. Compare its findings against `expected-findings.md`: exactly 7 entries,
    one per rule in rule order, each `triggered` with numbered instances
    matching the quote/detail/fix there (rule 3 has two; every other rule
    has one), and none of the distractors mis-cited under rule 3.

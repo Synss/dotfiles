@@ -28,3 +28,11 @@ Keep the introduction short enough to scan before the fold.
 <rules>
 Use sentence case for all page titles.
 </rules>
+
+## Retry policy
+
+Retries default to 3 attempts.
+
+Log every retry attempt with the endpoint and status code.
+
+Retries back off exponentially starting at 200ms, capped at 5s.
