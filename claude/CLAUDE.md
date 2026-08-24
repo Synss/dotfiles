@@ -6,9 +6,8 @@
   relative to the current working directory.
 - Never push commits to a remote — via `git push`, `jj git push`,
   `gh pr create`, or any command with that effect — unless explicitly asked to
-  in that message. Do not ask whether to push after making changes. Treat
-  pushing as out of scope unless requested. When explicitly asked, push
-  without further confirmation.
+  in that message. Do not ask whether to push after making changes. When
+  explicitly asked, push without further confirmation.
 
 ### Version control
 
@@ -66,7 +65,7 @@ may already know the answer.
 
 - Before starting work, state what "done" looks like as a check — a test, a
   repro case, a before/after comparison — not just "make it work".
-- For multi-step work, state a short plan as numbered steps, each with its
+- For multi-step work, state the plan as numbered steps, each with its
   own verify step.
 
 ## Writing
