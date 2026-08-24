@@ -76,16 +76,15 @@ responses.
 
 ## Code comments
 
-Default to one line. A comment that only restates the code should be deleted
-rather than shortened.
-
 Comment what a future editor could break without knowing: a non-obvious
 external constraint, an invariant, a footgun, a usage hint. How the code came
 to be written this way is history. It belongs in the commit message, not the
 comment.
 
+Default to one line. A comment that only restates the code should be
+deleted rather than shortened. Longer comments are warranted for a subtle
+algorithm, a workaround for an external bug, or a warning against an
+obvious-looking edit.
+
 Interface documentation is a separate category, exempt from the one-line
 default. Docstrings and public API comments describe a contract in full.
-
-Longer comments are warranted for: a subtle algorithm, a workaround for an
-external bug, a warning against an obvious-looking edit.
