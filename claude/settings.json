@@ -30,7 +30,8 @@
       "WebSearch",
       "WebFetch(domain:github.com)",
       "WebFetch(domain:nix-community.github.io)",
-      "WebFetch(domain:mynixos.com)"
+      "WebFetch(domain:mynixos.com)",
+      "WebFetch(domain:docs.claude.com)"
     ],
     "deny": ["Read(./.env)"],
     "defaultMode": "auto"
