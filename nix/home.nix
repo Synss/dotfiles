@@ -79,6 +79,7 @@ in
         typstyle
         uv
         vivid
+        xxd
         zsh
 
         # programming languages

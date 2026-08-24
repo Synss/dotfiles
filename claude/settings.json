@@ -27,6 +27,7 @@
       "Bash(stylua *)",
       "Bash(wc *)",
       "Bash(which *)",
+      "Bash(xxd *)",
       "WebSearch",
       "WebFetch(domain:github.com)",
       "WebFetch(domain:nix-community.github.io)",
