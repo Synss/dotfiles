@@ -16,7 +16,9 @@ jj — not git — is the source of truth, even when `.git` is also present
 (colocated).
 
 - In a colocated repo, do not run mutating git commands (`add`, `rm`,
-  `commit`, `checkout`, `reset`, `stash`). Use the jj equivalent instead.
+  `commit`, `checkout`, `reset`, `stash`, `restore`, `clean`, `merge`,
+  `rebase`, `cherry-pick`, `revert`, `am`, `apply`, `update-ref`, `branch`,
+  `tag`). Use the jj equivalent instead.
 - Read-only git commands (`status`, `diff`, `log`) are fine.
 
 ### Commit messages
