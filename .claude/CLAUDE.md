@@ -6,8 +6,10 @@ Subject: prefixed with a lowercase component matching the area touched (e.g.
 `vim:`, `nix:`, `claude:`, `zsh:`, `git:`). Use `*:` if the change spans
 more than one area. The prefix doesn't count toward the global policy's ~50
 character limit — e.g. `vim: ` + 50 characters is fine. The first word after
-the lowercase prefix is capitalized. Otherwise, follow the global commit
-message policy.
+the lowercase prefix is capitalized: this satisfies the global rule's
+capitalized-subject requirement, since the prefix sits outside the
+sentence and capitalization starts at the first word after it. Otherwise,
+follow the global commit message policy.
 
 ## Neovim LSP
 
