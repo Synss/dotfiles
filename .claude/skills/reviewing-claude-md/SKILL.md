@@ -36,9 +36,11 @@ before structure rules.
 ## Output format
 
 <output_format>
-Report exactly one entry per rule, in rule order — seven entries, always.
-Each entry is a numbered list of instances; a rule with a single
-violation still gets a list of one:
+Report one entry per rule, in rule order, regardless of status. Check
+each rule independently against the whole file — a sentence that trips
+multiple rules must be cited under every rule it trips, not folded into
+the most salient one. Each entry is a numbered list of instances, even
+when there's only one:
 
 Rule N — <triggered|not_applicable|left_alone>
 1. quote: "<exact text>" (line L)
