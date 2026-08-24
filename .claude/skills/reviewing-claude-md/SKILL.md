@@ -3,17 +3,18 @@ name: reviewing-claude-md
 description: Use when editing or reviewing a change to any CLAUDE.md in this repo, or when asked to check/audit/review one.
 ---
 
-Check the target file (or diff) against each rule below. Report what rule
-it triggers and a proposed fix, or note that the rule doesn't apply. Check
-content rules before structure rules.
+Check the target file (or diff) against each rule below, content rules
+before structure rules.
 
 ## Content
 
 1. No sentence may only restate a nearby rule.
 2. No vague or unverifiable language (e.g. "short enough to scan", "usually
    enough"). Replace with a concrete threshold.
-3. Where a project convention interacts with a global rule (e.g. a commit
-   subject prefix vs. a character limit), state the interaction explicitly.
+3. Check every project requirement against every global constraint, not
+   only ones sharing an obvious keyword (e.g. a required signature block
+   vs. a line-count limit, not just a subject prefix vs. a character
+   limit). State any interaction explicitly.
 4. "The user" names the human author; "you" names the agent. Never use
    "I"/"me"/"my" for the author, or "you" for the author instead of the agent.
 
@@ -27,7 +28,26 @@ content rules before structure rules.
    if it adds clarity that a Content fix above can't. Otherwise leave the
    file untagged.
 
+## Output format
+
 <output_format>
-For each finding, report which rule it triggers and a proposed fix, or note
-that it's intentionally left alone.
+Report exactly one entry per rule, in rule order — six entries, always.
+Each entry is a numbered list of instances; a rule with a single
+violation still gets a list of one:
+
+Rule N — <triggered|not_applicable|left_alone>
+1. quote: "<exact text>" (line L)
+   detail: <why it triggers / what's missing / why it's left alone>
+   fix: <proposed fix>
+
+Fields present per instance, by status:
+- triggered: quote, detail, fix — all three. One numbered instance per
+  distinct sentence quoted. If two different sentences each trigger the
+  rule — even via the same global constraint — that is two instances,
+  never one instance whose detail narrates both.
+- not_applicable: detail only, exactly one instance, no quote/fix. Say
+  what's missing (e.g. no commit-message section to check rule 3
+  against).
+- left_alone: quote, detail — no fix. One instance per candidate left
+  alone; detail says why it's deliberately not flagged.
 </output_format>
