@@ -8,6 +8,7 @@
       "Bash(jj file:*)",
       "Bash(jj log:*)",
       "Bash(jj new:*)",
+      "Bash(jj show:*)",
       "Bash(jj st:*)",
       "Bash(just:*)",
       "Bash(nix:*)",
