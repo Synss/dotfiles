@@ -14,7 +14,9 @@ before structure rules.
 3. Check every project requirement against every global constraint, not
    only ones sharing an obvious keyword (e.g. a required signature block
    vs. a line-count limit, not just a subject prefix vs. a character
-   limit). State any interaction explicitly.
+   limit) or the same kind of constraint (e.g. an "always"/"never"
+   project requirement silently flipping a global rule's
+   optional/mandatory status). State any interaction explicitly.
 4. "The user" names the human author; "you" names the agent. Never use
    "I"/"me"/"my" for the author, or "you" for the author instead of the agent.
 
