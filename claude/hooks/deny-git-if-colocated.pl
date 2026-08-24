@@ -14,12 +14,13 @@ my $data = eval { decode_json($input) };
 exit 0 unless ref($data) eq 'HASH';
 my $command = $data->{tool_input}{command} // '';
 
-exit 0 unless $command =~ /(?:^|[;&|]|\s)git\s+(?:add|rm|commit|checkout|reset|stash)(?:[;&|\s]|$)/m;
+exit 0 unless $command =~ /(?:^|[;&|(`]|\s)git\s+(?:add|rm|commit|checkout|reset|stash)(?:[;&|)`\s]|$)/m;
 
 my $repo_root = `git rev-parse --show-toplevel 2>/dev/null`;
 chomp $repo_root;
-exit 0 if $repo_root eq '' || !-d "$repo_root/.jj";
+exit 0 if $? != 0 || $repo_root eq '' || !-d "$repo_root/.jj";
 
 print '{"hookSpecificOutput":{"hookEventName":"PreToolUse","permissionDecision":"deny",'
     . '"permissionDecisionReason":"Colocated jj/git repo (.jj next to .git) - jj is '
-    . 'authoritative. Use the jj equivalent instead of git add/rm/commit/checkout/reset/stash."}}';
+    . 'authoritative. Use the jj equivalent instead of git add/rm/commit/checkout/reset/stash."}}'
+    . "\n";
