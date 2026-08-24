@@ -20,18 +20,21 @@ before structure rules.
 
 ## Structure
 
-5. Use plain bullets only for independent, parallel items chained by
+5. Group a section's paragraphs by topic. Don't let a paragraph on a
+   different topic sit between two paragraphs on the same one — merge or
+   reorder so they're adjacent.
+6. Use plain bullets only for independent, parallel items chained by
    "and"/"also". A sequence or a conditional procedure needs a numbered list
    or prose — never plain bullets carrying order words like "then"/"finally"
    that the marker itself doesn't express.
-6. Add XML/schema tagging (`<constraints>`, `<instructions>`, `<document>`)
+7. Add XML/schema tagging (`<constraints>`, `<instructions>`, `<document>`)
    if it adds clarity that a Content fix above can't. Otherwise leave the
    file untagged.
 
 ## Output format
 
 <output_format>
-Report exactly one entry per rule, in rule order — six entries, always.
+Report exactly one entry per rule, in rule order — seven entries, always.
 Each entry is a numbered list of instances; a rule with a single
 violation still gets a list of one:
 

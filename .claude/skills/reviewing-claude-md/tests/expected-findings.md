@@ -1,7 +1,7 @@
 # Expected findings for `fixtures/seeded-violations.md`
 
 One seeded violation per rule in SKILL.md, so a correct review reports all
-six entries as `triggered` (this fixture has no `not_applicable` or
+seven entries as `triggered` (this fixture has no `not_applicable` or
 `left_alone` case). Rule 3 legitimately has two instances — the seeded
 table/wrap interaction, plus a second real interaction the same fixture
 happens to also contain (lines 12-13's "always" language quietly
@@ -40,6 +40,15 @@ Rule 4 — triggered
    fix: rewrite with "the user".
 
 Rule 5 — triggered
+1. quote: "Retries back off exponentially starting at 200ms, capped at 5s."
+   (line 38)
+   detail: this continues the retry-count/backoff topic opened at line 34
+   ("Retries default to 3 attempts."), but the logging paragraph (line 36)
+   sits between them, splitting the topic.
+   fix: move this paragraph directly after line 34's, ahead of the logging
+   paragraph.
+
+Rule 6 — triggered
 1. quote: the three-item bullet list (lines 22-24) mixing a conditional
    step with a strict sequence ("Then", "Finally") inside plain `-`
    bullets.
@@ -47,7 +56,7 @@ Rule 5 — triggered
    fix: a numbered list (dropping "Then"/"Finally") or prose — either is
    acceptable, plain unordered bullets are not.
 
-Rule 6 — triggered
+Rule 7 — triggered
 1. quote: the `<rules>` tag (lines 28-30) wrapping a single flat sentence
    ("Use sentence case for all page titles.").
    detail: the tag adds no clarity over the plain sentence.
