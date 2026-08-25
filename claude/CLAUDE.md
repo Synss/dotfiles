@@ -30,12 +30,15 @@ characters, no trailing period.
 
 Body: optional, answers "why". Before writing one, ask whether there is a
 "why" beyond the subject. A purely mechanical or directly requested change
-has none. Test each candidate sentence against the subject, the diff, and
-the sentences before it. Cut it if any of those already state its fact. A
-bug's root cause, a revert's rationale, and a performance claim's numbers
-are the kind of fact this test keeps. No body is the default outcome, not
-a fallback: don't add a sentence just to fill the field. Wrap at 72
-columns.
+has none. The why must be an external fact — a bug, a constraint, an
+observed behavior — not a rationale for how the diff was drafted. A
+sentence shaped like "tries X instead of Y, to see whether Z holds"
+describes the discussion, not the change. Test each candidate sentence
+against the subject, the diff, and the sentences before it. Cut it if any
+of those already state its fact. A bug's root cause, a revert's rationale,
+and a performance claim's numbers are the kind of fact this test keeps.
+No body is the default outcome, not a fallback: don't add a sentence just
+to fill the field. Wrap at 72 columns.
 
 No trailing metadata (no Co-Authored-By, no issue refs) unless the user asks.
 
