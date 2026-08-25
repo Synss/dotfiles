@@ -211,7 +211,7 @@ in
 
           # House keeping: `jj log -r pending()`, `-r submitted()`, `-r wip()`.
           "pending()" = "mine() & ~::trunk() & bookmarks()";
-          "submitted()" = "pending() & ~remote_bookmarks()";
+          "submitted()" = "pending() & remote_bookmarks()";
           "wip()" = "mine() & ~::trunk() & ~bookmarks()";
         };
         template-aliases = {
