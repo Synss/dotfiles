@@ -2,11 +2,12 @@
 
 One seeded violation per rule in SKILL.md, so a correct review reports all
 seven entries as `triggered` (this fixture has no `not_applicable` or
-`left_alone` case). Rule 3 legitimately has two instances — the seeded
-table/wrap interaction, plus a second real interaction the same fixture
-happens to also contain (lines 12-13's "always" language quietly
-overriding the global "optional" body). Every other rule's entry is a
-numbered list of exactly one instance:
+`left_alone` case). Rule 3 legitimately has three instances: the "always"
+sentence (lines 12-13) overriding the global "optional" body, and the
+table sentence (lines 15-16) triggering twice — once for that same
+optional/mandatory override, and once for interacting with the global
+"wrap at 72 columns" rule. Every other rule's entry is a numbered list of
+exactly one instance:
 
 Rule 1 — triggered
 1. quote: "Subject: prefixed with `docs:`. This means every docs commit
@@ -28,10 +29,18 @@ Rule 3 — triggered
    fix: state the override explicitly.
 2. quote: "Docs commit bodies include a rendered table listing every page
    the change touches." (lines 15-16)
+   detail: requiring a body to "include" a table implies a body always
+   exists, silently overriding the global "Body: optional" (line 5) —
+   the same interaction as instance 1, but a distinct sentence.
+   fix: state the override explicitly, or scope the table requirement to
+   commits that already have a body.
+3. quote: "Docs commit bodies include a rendered table listing every page
+   the change touches." (lines 15-16)
    detail: interacts with the global rule "Wrap at 72 columns" (line 5):
    a page table will often exceed 72 columns per row, and the file never
    says whether the table is exempt.
-   fix: state the interaction explicitly.
+   fix: state the interaction explicitly, or exempt the table from the
+   wrap limit.
 
 Rule 4 — triggered
 1. quote: "My commit messages always explain why I changed the page, not
@@ -66,6 +75,6 @@ Rule 7 — triggered
 answers "why". Wrap at 72 columns." (line 5) on its own, and the `docs:`
 prefix rule (lines 9-10) in isolation — there is no character-limit rule
 in this fixture for the prefix to interact with, so neither sentence is
-itself a rule 3 violation. Rule 3's entry must have exactly the two
-instances above, quoting lines 12-13 and 15-16 — not these, and not a
-third.
+itself a rule 3 violation. Rule 3's entry must have exactly the three
+instances above, quoting lines 12-13 once and lines 15-16 twice — not
+these, and not a fourth.

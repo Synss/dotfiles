@@ -6,6 +6,11 @@
 # structured parsing, no ground-truth JSON, no second judge call. Costs a
 # real API call per run, so it isn't wired into a hook -- run it by hand
 # after changing SKILL.md.
+#
+# No total-instance-count check: rule 3's table sentence trips two global
+# constraints, and across live runs the model reliably cites each one
+# individually but not always both together in the same run -- a recall
+# gap, not a format bug (see tests/README.md).
 set -euo pipefail
 cd "$(dirname "$0")"
 

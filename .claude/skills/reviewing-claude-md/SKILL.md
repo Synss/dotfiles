@@ -36,11 +36,22 @@ before structure rules.
 ## Output format
 
 <output_format>
-Report one entry per rule, in rule order, regardless of status. Check
-each rule independently against the whole file — a sentence that trips
-multiple rules must be cited under every rule it trips, not folded into
-the most salient one. Each entry is a numbered list of instances, even
-when there's only one:
+Report one entry per rule, in rule order, regardless of status:
+
+- Check each rule independently against the whole file. A sentence that
+  trips multiple rules is cited under every rule it trips, never folded
+  into the most salient one.
+- Each entry is a numbered list of instances, even when there's only
+  one. One instance per distinct sentence-and-interaction: two different
+  sentences tripping a rule — even via the same global constraint — are
+  two instances, and one sentence tripping a rule via more than one
+  distinct interaction is also multiple instances, one per interaction —
+  never one instance whose detail/fix narrates more than one.
+- A rule's entry has exactly one header status, and every instance in it
+  uses that status alone — never mix a triggered instance with a
+  left-alone aside under one header. A candidate that doesn't rise to a
+  triggered instance in an otherwise-triggered rule is left out of that
+  rule's entry entirely, not appended as an aside.
 
 Rule N — <triggered|not_applicable|left_alone>
 1. quote: "<exact text>" (line L)
@@ -48,10 +59,7 @@ Rule N — <triggered|not_applicable|left_alone>
    fix: <proposed fix>
 
 Fields present per instance, by status:
-- triggered: quote, detail, fix — all three. One numbered instance per
-  distinct sentence quoted. If two different sentences each trigger the
-  rule — even via the same global constraint — that is two instances,
-  never one instance whose detail narrates both.
+- triggered: quote, detail, fix — all three.
 - not_applicable: detail only, exactly one instance, no quote/fix. Say
   what's missing (e.g. no commit-message section to check rule 3
   against).
