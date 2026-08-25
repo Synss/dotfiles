@@ -90,3 +90,15 @@ obvious-looking edit.
 
 Interface documentation is a separate category, exempt from the one-line
 default. Docstrings and public API comments describe a contract in full.
+
+## Code style
+
+Structure code as a functional core, imperative shell: keep the core logic
+pure, and push I/O, printing, and other side effects to the entry point
+that calls into it.
+
+Prefer immutable data and avoid mutating shared state. For example, build
+a new collection with a comprehension rather than mutating an accumulator.
+
+These are defaults for code written from scratch, not license to rewrite,
+restyle, or refactor existing code that wasn't part of the task.
