@@ -7,10 +7,10 @@
 # real API call per run, so it isn't wired into a hook -- run it by hand
 # after changing SKILL.md.
 #
-# No total-instance-count check: rule 3's table sentence trips two global
-# constraints, and across live runs the model reliably cites each one
-# individually but not always both together in the same run -- a recall
-# gap, not a format bug (see tests/README.md).
+# No total-instance-count check: global-interaction's table sentence trips
+# two global constraints, and across live runs the model reliably cites
+# each one individually but not always both together in the same run -- a
+# recall gap, not a format bug (see tests/README.md).
 set -euo pipefail
 cd "$(dirname "$0")"
 
@@ -41,14 +41,15 @@ output=$(timeout "$TIMEOUT" claude -p "Use the reviewing-claude-md skill to revi
   --allowedTools Skill Read)
 
 echo "==> Checking output"
-for n in 1 2 3 4 5 6 7; do
-  assert_contains "Rule $n —.*triggered" "Rule $n triggered"
+RULES=(no-restatement concrete-thresholds global-interaction pronoun-convention topic-grouping bullet-vs-sequence xml-tagging-justified)
+for slug in "${RULES[@]}"; do
+  assert_contains "Rule $slug —.*triggered" "Rule $slug triggered"
 done
 
 # Confirms the right violation was found, not just any triggered status.
-assert_contains "always explain why I changed the page" "Rule 3/4 instance quotes the seeded sentence"
-assert_contains "rendered table listing every page" "Rule 3's second instance quotes the table sentence"
-assert_contains "Retries back off exponentially" "Rule 5 instance quotes the seeded backoff sentence"
+assert_contains "always explain why I changed the page" "global-interaction/pronoun-convention instance quotes the seeded sentence"
+assert_contains "rendered table listing every page" "global-interaction's second instance quotes the table sentence"
+assert_contains "Retries back off exponentially" "topic-grouping instance quotes the seeded backoff sentence"
 
 echo ""
 if [ "$failures" -gt 0 ]; then

@@ -18,5 +18,5 @@ already catches unprompted.
 rule's status and a few seeded quotes — no structured parsing, no judge
 call. Costs a real API call; run by hand after changing `SKILL.md`.
 
-No total-instance-count assertion: rule 3's dual-interaction citation is
-flaky across runs, not a format bug.
+No total-instance-count assertion: `global-interaction`'s dual-interaction
+citation is flaky across runs, not a format bug.
