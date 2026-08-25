@@ -225,7 +225,6 @@ in
           "by(x)" = "author(substring:x)";
           "closest_pushable(to)" =
             ''heads(::to & mutable() & ~description(exact:" ") & (~empty() | merges()))'';
-          "immutable_heads()" = "trunk() | tags()";
         };
         template-aliases = {
           # `jj ... -T d`
