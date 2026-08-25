@@ -201,23 +201,6 @@ in
             "bookmark"
             "advance"
           ];
-
-          # House keeping
-          pending = [
-            "log"
-            "-r"
-            "mine() & ~::trunk() & bookmarks()"
-          ];
-          submitted = [
-            "log"
-            "-r"
-            "mine() & ~::trunk() & bookmarks() & ~remote_bookmarks()"
-          ];
-          wip = [
-            "log"
-            "-r"
-            "mine() & ~::trunk() & ~bookmarks()"
-          ];
         };
         revsets.bookmark-advance-to = "closest_pushable(@)";
         revset-aliases = {
@@ -225,6 +208,11 @@ in
           "by(x)" = "author(substring:x)";
           "closest_pushable(to)" =
             ''heads(::to & mutable() & ~description(exact:" ") & (~empty() | merges()))'';
+
+          # House keeping: `jj log -r pending()`, `-r submitted()`, `-r wip()`.
+          "pending()" = "mine() & ~::trunk() & bookmarks()";
+          "submitted()" = "pending() & ~remote_bookmarks()";
+          "wip()" = "mine() & ~::trunk() & ~bookmarks()";
         };
         template-aliases = {
           # `jj ... -T d`
