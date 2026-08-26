@@ -210,9 +210,9 @@ in
             ''heads(::to & mutable() & ~description(exact:" ") & (~empty() | merges()))'';
 
           # House keeping: `jj log -r pending()`, `-r submitted()`, `-r wip()`.
-          "pending()" = "mine() & ~::trunk() & bookmarks()";
+          "pending()" = "mine() & mutable() & bookmarks()";
           "submitted()" = "pending() & remote_bookmarks()";
-          "wip()" = "mine() & ~::trunk() & ~bookmarks()";
+          "wip()" = "mine() & mutable() & ~bookmarks()";
         };
         template-aliases = {
           # `jj ... -T d`
