@@ -3,6 +3,7 @@
   "permissions": {
     "allow": [
       "Bash(git:*)",
+      "Bash(jj commit:*)",
       "Bash(jj describe:*)",
       "Bash(jj edit:*)",
       "Bash(jj file:*)",
