@@ -30,7 +30,9 @@ characters, no trailing period.
 
 Body: optional, answers "why". No body is the default, not a fallback:
 skip it for a purely mechanical or directly requested change, and don't
-add a sentence merely to fill the field.
+add a sentence merely to fill the field. A commit bundling several
+independent fixes from one review pass has no single external fact
+either: don't summarize the set of fixes as if it were one.
 
 The reason must be an external fact: a bug, a constraint, or an observed
 behavior, not a rationale for how the diff was drafted or a summary of the
