@@ -18,6 +18,7 @@
       "Bash(file:*)",
       "Bash(find:*)",
       "Bash(grep:*)",
+      "Bash(jq:*)",
       "Bash(ls:*)",
       "Bash(nixfmt:*)",
       "Bash(pre-commit:*)",
