@@ -2,7 +2,7 @@
 
 This fixture is the precision counterpart to `seeded-violations.md`: every
 rule has one sentence that superficially resembles its violation but is a
-legitimate judgment call. A correct review reports all seven entries as
+legitimate judgment call. A correct review reports all eight entries as
 `left_alone` — none may be `triggered`, and each entry has exactly one
 instance.
 
@@ -36,6 +36,14 @@ Rule pronoun-convention — left_alone
    off-by-one in retry counter` instead." (lines 24-25)
    detail: "I" appears inside a backtick-quoted example of a bad commit
    subject, not as the document's own voice describing the author.
+
+Rule agent-as-subject — left_alone
+1. quote: "Linting is run automatically on every commit through a
+   pre-commit hook." (line 33)
+   detail: passive voice, but the actor isn't dropped: "a pre-commit hook"
+   is named. Fronting it as subject ("A pre-commit hook runs linting on
+   every commit") would shift the emphasis from the check to the tool
+   running it, which isn't the sentence's point.
 
 Rule topic-grouping — left_alone
 1. quote: "This backoff timing was tuned against the payments API's rate

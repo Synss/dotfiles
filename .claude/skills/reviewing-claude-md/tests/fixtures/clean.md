@@ -30,6 +30,8 @@ retry counter` instead.
 - Also run `ruff` for linting.
 - Also run `mypy` for type-checking.
 
+Linting is run automatically on every commit through a pre-commit hook.
+
 ## Retry policy
 
 Retries default to 3 attempts, with exponential backoff starting at
