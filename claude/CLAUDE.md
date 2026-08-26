@@ -2,18 +2,18 @@
 
 ## Repo mechanics
 
-- When resolving relative file paths the user gives you, interpret them
-  relative to the current working directory.
-- Never push commits to a remote — via `git push`, `jj git push`,
-  `gh pr create`, or any command with that effect — unless explicitly asked to
-  in that message. Do not ask whether to push after making changes. When
-  explicitly asked, push without further confirmation.
+- Resolve relative file paths the user gives you against the current
+  working directory.
+- Never push commits to a remote (`git push`, `jj git push`, `gh pr create`,
+  or any command with that effect) unless explicitly asked to in that
+  message. Don't ask whether to push, and don't seek confirmation again
+  once asked.
 
 ### Version control
 
-Check for a `.jj` directory before assuming a repo's VCS is git. If one exists,
-jj — not git — is the source of truth, even when `.git` is also present
-(colocated).
+Check for a `.jj` directory before assuming a repo's VCS is git. If one
+exists, jj is the source of truth, not git, even when `.git` is also
+present (colocated).
 
 - In a colocated repo, do not run mutating git commands (`add`, `rm`,
   `commit`, `checkout`, `reset`, `stash`, `restore`, `clean`, `merge`,
@@ -28,17 +28,19 @@ A project convention overrides this one where it exists.
 Subject: a capitalized imperative sentence answering "what", under ~50
 characters, no trailing period.
 
-Body: optional, answers "why". Before writing one, ask whether there is a
-"why" beyond the subject. A purely mechanical or directly requested change
-has none. The why must be an external fact — a bug, a constraint, an
-observed behavior — not a rationale for how the diff was drafted. A
-sentence shaped like "tries X instead of Y, to see whether Z holds"
-describes the discussion, not the change. Test each candidate sentence
-against the subject, the diff, and the sentences before it. Cut it if any
-of those already state its fact. A bug's root cause, a revert's rationale,
-and a performance claim's numbers are the kind of fact this test keeps.
-No body is the default outcome, not a fallback: don't add a sentence just
-to fill the field. Wrap at 72 columns.
+Body: optional, answers "why". No body is the default, not a fallback:
+skip it for a purely mechanical or directly requested change, and don't
+add a sentence merely to fill the field.
+
+The reason must be an external fact: a bug, a constraint, or an observed
+behavior, not a rationale for how the diff was drafted or a summary of the
+discussion. For example, "tries X instead of Y, to see whether Z holds"
+describes the discussion, not the change. A bug's root cause, a revert's
+rationale, and a performance claim's numbers qualify.
+
+Test each candidate sentence against the subject, the diff, and the
+sentences before it, and drop it if any already states its fact. Wrap at
+72 columns.
 
 No trailing metadata (no Co-Authored-By, no issue refs) unless the user asks.
 
@@ -58,8 +60,8 @@ before implementing. A question or plan update is not a green light.
 
 Two failed hypotheses about the same problem: stop before trying a third.
 Report what you tried, what you learned from each failure, and what you'd try
-next — wait for the user's go-ahead. A different flag, prompt, or wording for
-the same hypothesis is not a new one.
+next, then wait for the user's go-ahead. A different flag, prompt, or wording
+for the same hypothesis is not a new one.
 
 Before the first exploratory read/search/command aimed at answering an open
 question (not a routine read needed to carry out already-agreed work), say in
@@ -68,16 +70,22 @@ may already know the answer.
 
 ### Verification
 
-- Before starting work, state what "done" looks like as a check — a test, a
-  repro case, a before/after comparison — not just "make it work".
+- Before starting work, state what "done" looks like: a test, a repro case,
+  a before/after comparison, not just "make it work".
 - For multi-step work, state the plan as numbered steps, each with its
   own verify step.
 
-## Writing
+## Writing prose
 
-One idea per sentence, one sentence per idea. Applies to everything you write
-for the user — commit messages, code comments, documentation, and chat
-responses.
+One idea per sentence. Use short, direct sentences. Prefer plain language
+over formal or legalistic phrasing: avoid repetition, nested clauses, and
+em dashes or semicolons.
+
+Terse means concise, not compressed: cut words by removing redundancy and
+simplifying wording, not by packing more logic into each sentence.
+
+Applies everywhere you write for the user: commit messages, code comments,
+documentation, and chat responses.
 
 ## Code comments
 
