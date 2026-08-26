@@ -88,8 +88,8 @@ in
         # Dependencies
         watchman # for jj
       ]
-      ++ lib.optionals stdenv.isLinux [ ]
-      ++ lib.optionals stdenv.isDarwin [ ];
+      ++ lib.optionals stdenv.hostPlatform.isLinux [ ]
+      ++ lib.optionals stdenv.hostPlatform.isDarwin [ ];
 
     file = {
       ".config/nvim" = mkLink "nvim";
