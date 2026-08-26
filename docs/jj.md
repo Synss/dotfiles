@@ -10,11 +10,6 @@
 - `tug`: `jj bookmark advance`, moving the closest bookmark to
   `revsets.bookmark-advance-to` (`closest_pushable(@)`).
 
-### See Also
-
-- `jj log --help`
-
-
 ## Revset aliases
 
 - `by(x)`: Commits authored by a substring of `x`. For example,
@@ -25,6 +20,7 @@
 - `wip()`: The current user's commits not yet merged to trunk, not
   under a bookmark.
 
-### See Also
+## See Also
 
-`jj help -k revsets | glow`, especially the Functions section.
+- `jj log --help`
+- `jj help -k revsets | glow`, especially the Functions section.
