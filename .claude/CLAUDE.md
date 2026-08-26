@@ -19,7 +19,7 @@ Otherwise, follow the global commit message policy.
 ## Neovim LSP
 
 LSP servers are installed by Nix (see `nix/home.nix` packages,
-`nix/packages/` for overlay derivations). Mason has been removed.
+`nix/packages/` for overlay derivations). This repo no longer uses Mason.
 
 **`nvim-lspconfig` is required** even though it is never explicitly
 `require`'d. nvim-lspconfig 2.x auto-registers `cmd`, `filetypes`, and
@@ -32,7 +32,8 @@ enough on its own. Neovim merges every `lsp/<name>.lua` on the
 runtimepath in runtimepath order, then lets any `vim.lsp.config()` call
 override the result. nvim-lspconfig ships its own copies and sits after
 `~/.config/nvim` on the runtimepath, so it wins. `nvim/plugin/lsp.lua`
-re-applies our files through `vim.lsp.config()` to put them back on top.
+re-applies the per-server override files through `vim.lsp.config()` to
+put them back on top.
 
 `gh_actions_ls` overrides `cmd` because the Nix package installs the
 binary as `actions-languageserver`, not `gh-actions-language-server`.
@@ -40,7 +41,6 @@ binary as `actions-languageserver`, not `gh-actions-language-server`.
 ## Nix overlay
 
 `ansible-language-server` and `actions-languageserver` are not in
-nixpkgs. They are packaged as local overlay derivations in
-`nix/packages/` using `stdenv.mkDerivation` + `fetchurl` from the npm
-registry. The packages ship pre-compiled `dist/` bundles, so no build
-step is needed.
+nixpkgs. Local overlay derivations in `nix/packages/` package them using
+`stdenv.mkDerivation` and `fetchurl` from the npm registry. The packages
+ship pre-compiled `dist/` bundles, so no build step is needed.

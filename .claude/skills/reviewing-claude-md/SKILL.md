@@ -13,7 +13,7 @@ before structure rules.
    enough to scan", "usually enough"). Replace with a concrete threshold.
 3. `global-interaction` — Check every project requirement against every
    global constraint, not only ones sharing an obvious keyword or
-   constraint type. State any interaction explicitly: a required signature
+   constraint type. State explicitly how they interact: a required signature
    block can interact with a line-count limit, and an "always"/"never"
    project requirement can flip whether a global rule is optional or
    mandatory.
@@ -51,7 +51,7 @@ Report one entry per rule, in rule order, regardless of status:
 - Count instances separately:
   - Different sentences count as different instances.
   - One sentence triggering a rule in distinct ways also creates multiple
-    instances, never folded into the most salient one.
+    instances. Don't fold them into the most salient one.
   - If the same sentence violates multiple rules, report it under each relevant
     rule.
 - Give each rule a single status. Do not mix triggered items with items that
@@ -64,13 +64,13 @@ Rule <slug> — <triggered|not_applicable|left_alone>
    detail: <why it triggers / what's missing / why it's left alone>
    fix: <proposed fix>
 
-Reference rules by slug, never by list position: a rule's position shifts
-when one is added or reordered, but its slug doesn't.
-
 Fields present per instance, by status:
 - triggered: quote, detail, and fix.
 - not_applicable: detail only, exactly one instance. Say what's missing
   (e.g. no commit-message section to check `global-interaction` against).
 - left_alone: quote and detail, no fix. One instance per candidate left
   alone. Detail says why it's deliberately not flagged.
+
+Reference rules by slug, never by list position: a rule's position shifts
+when one is added or reordered, but its slug doesn't.
 </output_format>
