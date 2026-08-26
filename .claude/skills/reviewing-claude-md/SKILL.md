@@ -20,17 +20,24 @@ before structure rules.
 4. `pronoun-convention` — "The user" names the human author, and "you"
    names the agent. Never use "I"/"me"/"my" for the author, or "you" for
    the author instead of the agent.
+5. `agent-as-subject` — The subject of a sentence should be the entity
+   doing the action, and the verb should express that action. Flag
+   nominalizations (a verb turned into an abstract noun, e.g.
+   "interaction" for "interact") and passive voice that drops the actor.
+   Leave alone a passive whose actor genuinely varies or isn't knowable
+   (e.g. a diff drafted by either the user or the agent): don't credit
+   it to an invented actor.
 
 ## Structure
 
-5. `topic-grouping` — Group a section's paragraphs by topic. Don't leave a
+6. `topic-grouping` — Group a section's paragraphs by topic. Don't leave a
    paragraph on a different topic between two paragraphs on the same one:
    merge or reorder so they're adjacent.
-6. `bullet-vs-sequence` — Use plain bullets only for independent, parallel
+7. `bullet-vs-sequence` — Use plain bullets only for independent, parallel
    items chained by "and"/"also". Give a sequence or a conditional
    procedure a numbered list or prose instead, never plain bullets carrying
    order words like "then"/"finally" that the marker doesn't express.
-7. `xml-tagging-justified` — Add XML/schema tagging (`<constraints>`,
+8. `xml-tagging-justified` — Add XML/schema tagging (`<constraints>`,
    `<instructions>`, `<document>`) if it adds clarity that a Content fix
    above can't. Otherwise leave the file untagged.
 

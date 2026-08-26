@@ -23,6 +23,8 @@ Keep the introduction short enough to scan before the fold.
 - Then run the link checker.
 - Finally, request review from the docs team.
 
+Approval of the edit happens before merge, not after.
+
 ## Style guide
 
 <rules>

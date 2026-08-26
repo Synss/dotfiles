@@ -16,7 +16,7 @@ cd "$(dirname "$0")"
 
 TIMEOUT="${TIMEOUT:-180}"
 failures=0
-RULES=(no-restatement concrete-thresholds global-interaction pronoun-convention topic-grouping bullet-vs-sequence xml-tagging-justified)
+RULES=(no-restatement concrete-thresholds global-interaction pronoun-convention agent-as-subject topic-grouping bullet-vs-sequence xml-tagging-justified)
 
 dump_output() {
   echo "    Output:"
@@ -67,6 +67,7 @@ done
 # Confirms the right violation was found, not just any triggered status.
 assert_contains "always explain why I changed the page" "global-interaction/pronoun-convention instance quotes the seeded sentence"
 assert_contains "rendered table listing every page" "global-interaction's second instance quotes the table sentence"
+assert_contains "Approval of the edit happens before merge" "agent-as-subject instance quotes the seeded sentence"
 assert_contains "Retries back off exponentially" "topic-grouping instance quotes the seeded backoff sentence"
 
 # Precision: fixtures/clean.md has one near-miss per rule that must NOT

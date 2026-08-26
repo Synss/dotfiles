@@ -81,6 +81,12 @@ One idea per sentence, and one topic per paragraph. Use short, direct
 sentences. Prefer plain language over formal or legalistic phrasing:
 avoid repetition, nested clauses, and em dashes or semicolons.
 
+Make the subject of a sentence the entity doing the action, and the verb
+the action itself. Avoid nominalizations, a verb turned into an abstract
+noun such as "implementation" for "implement". Avoid passive voice that
+drops the actor. Passive stays fine when no single actor fits: don't
+invent one just to satisfy this rule.
+
 Terse means concise, not compressed: cut words by removing redundancy and
 simplifying wording, not by packing more logic into each sentence.
 

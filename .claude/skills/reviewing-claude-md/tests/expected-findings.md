@@ -1,7 +1,7 @@
 # Expected findings for `fixtures/seeded-violations.md`
 
 One seeded violation per rule in SKILL.md, so a correct review reports all
-seven entries as `triggered` (this fixture has no `not_applicable` or
+eight entries as `triggered` (this fixture has no `not_applicable` or
 `left_alone` case). `global-interaction` legitimately has three instances:
 the "always" sentence (lines 12-13) overriding the global "optional" body,
 and the table sentence (lines 15-16) triggering twice — once for that same
@@ -47,6 +47,12 @@ Rule pronoun-convention — triggered
    just what changed." (lines 12-13)
    detail: uses "My"/"I" for the human author.
    fix: rewrite with "the user".
+
+Rule agent-as-subject — triggered
+1. quote: "Approval of the edit happens before merge, not after." (line 26)
+   detail: "Approval" nominalizes "approve", and the sentence names no
+   actor, so it's unclear who approves.
+   fix: "An owner approves the edit before merge, not after."
 
 Rule topic-grouping — triggered
 1. quote: "Retries back off exponentially starting at 200ms, capped at 5s."
