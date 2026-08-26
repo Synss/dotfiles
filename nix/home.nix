@@ -46,6 +46,7 @@ in
         marksman # -                   marksman
         nil # -                        nil_ls
         nixd # -                       nixd
+        ruff # -                       ruff
         starpls # -                    starpls
         vscode-langservers-extracted # cssls eslint html jsonls
         yaml-language-server # -       yaml-language-server
@@ -72,18 +73,15 @@ in
         pre-commit
         prettier
         ripgrep
-        ruff
         shellcheck
         typos-lsp
-        typst
-        typstyle
-        uv
         vivid
         xxd
         zsh
 
         # programming languages
         rustup
+        uv
 
         # Dependencies
         watchman # for jj
