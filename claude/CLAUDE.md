@@ -77,9 +77,9 @@ may already know the answer.
 
 ## Writing prose
 
-One idea per sentence. Use short, direct sentences. Prefer plain language
-over formal or legalistic phrasing: avoid repetition, nested clauses, and
-em dashes or semicolons.
+One idea per sentence, and one topic per paragraph. Use short, direct
+sentences. Prefer plain language over formal or legalistic phrasing:
+avoid repetition, nested clauses, and em dashes or semicolons.
 
 Terse means concise, not compressed: cut words by removing redundancy and
 simplifying wording, not by packing more logic into each sentence.
