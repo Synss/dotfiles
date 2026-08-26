@@ -24,8 +24,9 @@ to setup a new machine. `justfile` has the targets for everything else.
 ## Layout
 
 - `claude/` — see [`claude/README.md`](claude/README.md).
+- `docs/` — cheat-sheets, call with `doc` on the commandline.
 - `nix/` — flake modules and package list. See [`nix/README.md`](nix/README.md).
-- `nvim/` — see [`nvim/README.md`](nvim/README.md).
+- `nvim/` — Neovim configuration.
 - `zsh/` — see [`zsh/README.md`](zsh/README.md).
 - `shared/theme-config.json` — the colorscheme, read by nvim, zsh and glow.
 - `scripts/` — lists the apt packages of a host. Not deployed.

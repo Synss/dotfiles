@@ -27,6 +27,6 @@ Host ci
 ```
 SSH into the host with `ssh ci`.
 
-### Reference
+## See Also
 
 `man 5 ssh_config`
