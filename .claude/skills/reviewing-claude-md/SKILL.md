@@ -12,24 +12,24 @@ before structure rules.
 2. `concrete-thresholds` — No vague or unverifiable language (e.g. "short
    enough to scan", "usually enough"). Replace with a concrete threshold.
 3. `global-interaction` — Check every project requirement against every
-   global constraint, not only ones sharing an obvious keyword (e.g. a
-   required signature block vs. a line-count limit, not just a subject
-   prefix vs. a character limit) or the same kind of constraint (e.g. an
-   "always"/"never" project requirement silently flipping a global rule's
-   optional/mandatory status). State any interaction explicitly.
-4. `pronoun-convention` — "The user" names the human author; "you" names
-   the agent. Never use "I"/"me"/"my" for the author, or "you" for the
-   author instead of the agent.
+   global constraint, not only ones sharing an obvious keyword or
+   constraint type. State any interaction explicitly: a required signature
+   block can interact with a line-count limit, and an "always"/"never"
+   project requirement can flip whether a global rule is optional or
+   mandatory.
+4. `pronoun-convention` — "The user" names the human author, and "you"
+   names the agent. Never use "I"/"me"/"my" for the author, or "you" for
+   the author instead of the agent.
 
 ## Structure
 
-5. `topic-grouping` — Group a section's paragraphs by topic. Don't let a
-   paragraph on a different topic sit between two paragraphs on the same
-   one — merge or reorder so they're adjacent.
+5. `topic-grouping` — Group a section's paragraphs by topic. Don't leave a
+   paragraph on a different topic between two paragraphs on the same one:
+   merge or reorder so they're adjacent.
 6. `bullet-vs-sequence` — Use plain bullets only for independent, parallel
-   items chained by "and"/"also". A sequence or a conditional procedure
-   needs a numbered list or prose — never plain bullets carrying order
-   words like "then"/"finally" that the marker itself doesn't express.
+   items chained by "and"/"also". Give a sequence or a conditional
+   procedure a numbered list or prose instead, never plain bullets carrying
+   order words like "then"/"finally" that the marker doesn't express.
 7. `xml-tagging-justified` — Add XML/schema tagging (`<constraints>`,
    `<instructions>`, `<document>`) if it adds clarity that a Content fix
    above can't. Otherwise leave the file untagged.
@@ -39,34 +39,31 @@ before structure rules.
 <output_format>
 Report one entry per rule, in rule order, regardless of status:
 
-- Check each rule independently against the whole file. A sentence that
-  trips multiple rules is cited under every rule it trips, never folded
-  into the most salient one.
-- Each entry is a numbered list of instances, even when there's only
-  one. One instance per distinct sentence-and-interaction: two different
-  sentences tripping a rule — even via the same global constraint — are
-  two instances, and one sentence tripping a rule via more than one
-  distinct interaction is also multiple instances, one per interaction —
-  never one instance whose detail/fix narrates more than one.
-- A rule's entry has exactly one header status, and every instance in it
-  uses that status alone — never mix a triggered instance with a
-  left-alone aside under one header. A candidate that doesn't rise to a
-  triggered instance in an otherwise-triggered rule is left out of that
-  rule's entry entirely, not appended as an aside.
+- Check each rule against the whole file, independently of the other rules.
+- Number each rule's instances, including when there is only one.
+- Count instances separately:
+  - Different sentences count as different instances.
+  - One sentence triggering a rule in distinct ways also creates multiple
+    instances, never folded into the most salient one.
+  - If the same sentence violates multiple rules, report it under each relevant
+    rule.
+- Give each rule a single status. Do not mix triggered items with items that
+  were left alone.
+- If a candidate doesn't qualify as a triggered instance, leave it out entirely
+  rather than mentioning it as an aside.
 
 Rule <slug> — <triggered|not_applicable|left_alone>
 1. quote: "<exact text>" (line L)
    detail: <why it triggers / what's missing / why it's left alone>
    fix: <proposed fix>
 
-Reference rules by slug, never by list position — a rule's position
-shifts whenever one is added or reordered, its slug doesn't.
+Reference rules by slug, never by list position: a rule's position shifts
+when one is added or reordered, but its slug doesn't.
 
 Fields present per instance, by status:
-- triggered: quote, detail, fix — all three.
-- not_applicable: detail only, exactly one instance, no quote/fix. Say
-  what's missing (e.g. no commit-message section to check
-  `global-interaction` against).
-- left_alone: quote, detail — no fix. One instance per candidate left
-  alone; detail says why it's deliberately not flagged.
+- triggered: quote, detail, and fix.
+- not_applicable: detail only, exactly one instance. Say what's missing
+  (e.g. no commit-message section to check `global-interaction` against).
+- left_alone: quote and detail, no fix. One instance per candidate left
+  alone. Detail says why it's deliberately not flagged.
 </output_format>
