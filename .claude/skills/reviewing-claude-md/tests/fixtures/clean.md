@@ -3,7 +3,9 @@
 ## General conventions (assume this is the global convention)
 
 Subject: capitalized, imperative, under 50 characters, no trailing
-period. Body: optional, answers "why", wrapped at 72 columns.
+period.
+
+Body: optional, answers "why", wrapped at 72 columns.
 
 Interface documentation is exempt from the one-line comment default.
 Docstrings describe their contract in full, including edge cases the
@@ -15,11 +17,11 @@ Keep pull request diffs small enough to review in one sitting, as
 enforced by the diff-size linter in CI.
 
 Database-migration commits require a body describing the rollback
-plan, overriding the optional-body convention above; the body is
+plan, overriding the optional-body convention above. The body is
 exempt from the 72-column wrap so the rollback SQL can be pasted
 verbatim.
 
-A subject like `I fixed the bug` is too vague — use `Fix off-by-one in
+A subject like `I fixed the bug` is too vague. Use `Fix off-by-one in
 retry counter` instead.
 
 ## Linting
