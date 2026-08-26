@@ -59,8 +59,8 @@
           modules = [
             ./nix/home.nix
           ]
-          ++ nixpkgs.lib.optional pkgs.stdenv.isLinux ./nix/linux.nix
-          ++ nixpkgs.lib.optional pkgs.stdenv.isDarwin ./nix/darwin.nix;
+          ++ nixpkgs.lib.optional pkgs.stdenv.hostPlatform.isLinux ./nix/linux.nix
+          ++ nixpkgs.lib.optional pkgs.stdenv.hostPlatform.isDarwin ./nix/darwin.nix;
           extraSpecialArgs = {
             inherit
               username
