@@ -9,14 +9,14 @@ instance.
 Rule no-restatement — left_alone
 1. quote: "Interface documentation is exempt from the one-line comment
    default. Docstrings describe their contract in full, including edge
-   cases the one-liner style can't capture." (lines 8-10)
+   cases the one-liner style can't capture." (lines 10-12)
    detail: the second sentence justifies the exemption with new
    information (the edge cases a one-liner can't capture) rather than
    re-saying the first sentence's claim, so it isn't a restatement.
 
 Rule concrete-thresholds — left_alone
 1. quote: "Keep pull request diffs small enough to review in one sitting,
-   as enforced by the diff-size linter in CI." (lines 14-15)
+   as enforced by the diff-size linter in CI." (lines 16-17)
    detail: "small enough to review in one sitting" echoes the rule's own
    vague-language example, but "enforced by the diff-size linter in CI"
    anchors it to a mechanical, verifiable check, unlike an unenforced
@@ -24,36 +24,36 @@ Rule concrete-thresholds — left_alone
 
 Rule global-interaction — left_alone
 1. quote: "Database-migration commits require a body describing the
-   rollback plan, overriding the optional-body convention above; the body
+   rollback plan, overriding the optional-body convention above. The body
    is exempt from the 72-column wrap so the rollback SQL can be pasted
-   verbatim." (lines 17-20)
+   verbatim." (lines 19-22)
    detail: this project rule flips both the global optional-body and
    72-column-wrap constraints, but states both overrides explicitly, so
    the interaction is surfaced rather than silent.
 
 Rule pronoun-convention — left_alone
-1. quote: "A subject like `I fixed the bug` is too vague — use `Fix
-   off-by-one in retry counter` instead." (lines 22-23)
+1. quote: "A subject like `I fixed the bug` is too vague. Use `Fix
+   off-by-one in retry counter` instead." (lines 24-25)
    detail: "I" appears inside a backtick-quoted example of a bad commit
    subject, not as the document's own voice describing the author.
 
 Rule topic-grouping — left_alone
 1. quote: "This backoff timing was tuned against the payments API's rate
-   limits, not a general guideline." (lines 36-37)
-   detail: sits between the attempt-count/backoff paragraph (lines 33-34)
-   and the cap/logging paragraph (lines 39-40), but it continues the same
+   limits, not a general guideline." (lines 38-39)
+   detail: sits between the attempt-count/backoff paragraph (lines 35-36)
+   and the cap/logging paragraph (lines 41-42), but it continues the same
    backoff topic rather than introducing a different one, so it doesn't
    split anything.
 
 Rule bullet-vs-sequence — left_alone
-1. quote: the three-item bullet list (lines 27-29) running `black`,
+1. quote: the three-item bullet list (lines 29-31) running `black`,
    `ruff`, and `mypy`.
    detail: chained with "Also" and no order words ("then"/"finally"); the
    three checks are independent and can run in any order, matching the
    rule's own allowed pattern for plain bullets.
 
 Rule xml-tagging-justified — left_alone
-1. quote: the `<constraints>` tag (lines 44-48) wrapping three distinct
+1. quote: the `<constraints>` tag (lines 46-50) wrapping three distinct
    enumerated limits (line length, import order, docstring style).
    detail: demarcates a short, machine-checkable ruleset from the
    surrounding prose sections; unlike wrapping one flat sentence, this
