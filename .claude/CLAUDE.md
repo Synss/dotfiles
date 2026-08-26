@@ -6,13 +6,13 @@ Subject: prefixed with a lowercase component matching the area touched
 (e.g. `vim:`, `nix:`, `claude:`, `zsh:`, `git:`). Use `*:` if the change
 spans more than one area.
 
-The prefix doesn't count toward the global policy's ~50 character
-limit — e.g. `vim: ` + 50 characters is fine.
+The prefix doesn't count toward the global policy's ~50 character limit.
+For example, `vim: ` plus 50 characters is fine.
 
-The first word after the lowercase prefix is capitalized: this
-satisfies the global rule's capitalized-subject requirement, since the
-prefix sits outside the sentence and capitalization starts at the first
-word after it.
+The first word after the lowercase prefix is capitalized. This
+satisfies the global rule's capitalized-subject requirement: the prefix
+sits outside the sentence, so capitalization starts at the first word
+after it.
 
 Otherwise, follow the global commit message policy.
 
@@ -42,5 +42,5 @@ binary as `actions-languageserver`, not `gh-actions-language-server`.
 `ansible-language-server` and `actions-languageserver` are not in
 nixpkgs. They are packaged as local overlay derivations in
 `nix/packages/` using `stdenv.mkDerivation` + `fetchurl` from the npm
-registry (packages ship pre-compiled `dist/` bundles, so no build step
-is needed).
+registry. The packages ship pre-compiled `dist/` bundles, so no build
+step is needed.
