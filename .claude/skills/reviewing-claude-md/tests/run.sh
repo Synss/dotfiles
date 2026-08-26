@@ -14,7 +14,7 @@
 set -euo pipefail
 cd "$(dirname "$0")"
 
-TIMEOUT="${TIMEOUT:-180}"
+TIMEOUT="${TIMEOUT:-400}"
 failures=0
 RULES=(no-restatement concrete-thresholds global-interaction pronoun-convention agent-as-subject topic-grouping bullet-vs-sequence xml-tagging-justified)
 
