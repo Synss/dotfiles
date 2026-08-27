@@ -30,4 +30,7 @@ after changing `SKILL.md`.
 
 No total-instance-count assertion on the recall fixture:
 `global-interaction`'s dual-interaction citation is flaky across runs,
-not a format bug.
+not a format bug. Likewise, `topic-grouping`'s quoted instance varies
+across runs: the model sometimes quotes the paragraph that's split
+apart, sometimes the interloping paragraph that splits it. Both
+describe the same real defect.
