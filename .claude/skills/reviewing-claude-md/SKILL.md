@@ -23,12 +23,15 @@ before structure rules.
    names the agent. Never use "I"/"me"/"my" for the author, or "you" for
    the author instead of the agent.
 5. `agent-as-subject` — The subject of a sentence should be the entity
-   doing the action, and the verb should express that action. Flag
-   nominalizations (a verb turned into an abstract noun, e.g.
-   "interaction" for "interact") and passive voice that drops the actor.
-   Leave alone a passive whose actor genuinely varies or isn't knowable
-   (e.g. a diff drafted by either the user or the agent): don't credit
-   it to an invented actor.
+   doing the action, and the verb should express that action. Flag a
+   sentence whose actor isn't named anywhere within it — whether hidden
+   behind a nominalization (a verb turned into an abstract noun, e.g.
+   "interaction" for "interact") as the subject, or dropped by passive
+   voice. An actor named only in a different sentence doesn't count.
+   Leave a sentence alone if it already names its actor (even via a
+   passive "by"/"through" phrase, not as the subject), or if the actor
+   genuinely varies or isn't knowable at all: don't credit it to an
+   invented or borrowed actor.
 
 ### Structure
 
@@ -55,9 +58,9 @@ Each rule reports exactly one of the statuses below.
 - `left_alone` — a genuine near-miss: the instance actually creates the
   tension the rule addresses (not merely shares its topic, sits near a
   violation, or resembles one by proximity alone), and the text resolves
-  that tension through an explicit feature (an override, a named actor, a
-  cited mechanism, a genuine topical continuation, a deliberate
-  structural choice, and so on). If a candidate doesn't clear this bar,
+  that tension through an explicit feature (an override, a cited
+  mechanism, a genuine topical continuation, a deliberate structural
+  choice, and so on). If a candidate doesn't clear this bar,
   leave it out entirely rather than mentioning it as an aside. Fields:
   quote, detail.
 - `not_applicable` — the file has nothing shaped like this rule's concern

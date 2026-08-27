@@ -38,12 +38,21 @@ Rule pronoun-convention — left_alone
    subject, not as the document's own voice describing the author.
 
 Rule agent-as-subject — left_alone
-1. quote: "Linting is run automatically on every commit through a
-   pre-commit hook." (line 33)
-   detail: passive voice, but the actor isn't dropped: "a pre-commit hook"
-   is named. Fronting it as subject ("A pre-commit hook runs linting on
-   every commit") would shift the emphasis from the check to the tool
-   running it, which isn't the sentence's point.
+1. quote: "This backoff timing was tuned against the payments API's rate
+   limits, not a general guideline." (lines 38-39)
+   detail: passive voice ("was tuned") with no actor named anywhere in
+   the sentence, but who performed the tuning genuinely isn't knowable
+   and isn't the sentence's point — it exists to record that the number
+   is API-specific, not arbitrary. Inventing an actor would add nothing.
+   Same sentence as the topic-grouping instance below; a sentence can
+   trip more than one rule.
+
+**Not a candidate for `agent-as-subject`:** "Linting is run automatically
+on every commit through a pre-commit hook." (line 33) used to be this
+rule's documented instance, but under the current rule 5 wording its
+actor ("a pre-commit hook") is named in the sentence itself, so the
+sentence doesn't match the rule's definition at all — don't cite it as
+an aside alongside the backoff-timing instance above.
 
 Rule topic-grouping — left_alone
 1. quote: "This backoff timing was tuned against the payments API's rate
