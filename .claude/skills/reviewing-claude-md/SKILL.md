@@ -6,7 +6,9 @@ description: Use when editing or reviewing a change to any CLAUDE.md in this rep
 Check the target file (or diff) against each rule below, content rules
 before structure rules.
 
-## Content
+## Rules
+
+### Content
 
 1. `no-restatement` — No sentence may only restate a nearby rule.
 2. `concrete-thresholds` — No vague or unverifiable language (e.g. "short
@@ -28,7 +30,7 @@ before structure rules.
    (e.g. a diff drafted by either the user or the agent): don't credit
    it to an invented actor.
 
-## Structure
+### Structure
 
 6. `topic-grouping` — Group a section's paragraphs by topic. Don't leave a
    paragraph on a different topic between two paragraphs on the same one:
@@ -43,8 +45,31 @@ before structure rules.
 
 ## Output format
 
+### Statuses
+
+Each rule reports exactly one of the statuses below.
+
+- `triggered` — an instance matches the rule's definition and has a fix
+  that clears the trigger while staying faithful to the text. Fields:
+  quote, detail, fix.
+- `left_alone` — a genuine near-miss: the instance actually creates the
+  tension the rule addresses (not merely shares its topic, sits near a
+  violation, or resembles one by proximity alone), and the text resolves
+  that tension through an explicit feature (an override, a named actor, a
+  cited mechanism, a genuine topical continuation, a deliberate
+  structural choice, and so on). If a candidate doesn't clear this bar,
+  leave it out entirely rather than mentioning it as an aside. Fields:
+  quote, detail.
+- `not_applicable` — the file has nothing shaped like this rule's concern
+  at all. Fields: detail only, exactly one instance, saying what's
+  missing (e.g. no commit-message section to check `global-interaction`
+  against).
+
+### Template
+
 <output_format>
-Report one entry per rule, in rule order, regardless of status:
+Report one entry per rule, in rule order, regardless of status. See
+"Statuses" above for what each status means and which fields it takes.
 
 - Check each rule against the whole file, independently of the other rules.
 - Number each rule's instances, including when there is only one.
@@ -54,22 +79,11 @@ Report one entry per rule, in rule order, regardless of status:
     instances. Don't fold them into the most salient one.
   - If the same sentence violates multiple rules, report it under each relevant
     rule.
-- Give each rule a single status. Do not mix triggered items with items that
-  were left alone.
-- If a candidate doesn't qualify as a triggered instance, leave it out entirely
-  rather than mentioning it as an aside.
 
 Rule <slug> — <triggered|not_applicable|left_alone>
 1. quote: "<exact text>" (line L)
    detail: <why it triggers / what's missing / why it's left alone>
    fix: <proposed fix>
-
-Fields present per instance, by status:
-- triggered: quote, detail, and fix.
-- not_applicable: detail only, exactly one instance. Say what's missing
-  (e.g. no commit-message section to check `global-interaction` against).
-- left_alone: quote and detail, no fix. One instance per candidate left
-  alone. Detail says why it's deliberately not flagged.
 
 Reference rules by slug, never by list position: a rule's position shifts
 when one is added or reordered, but its slug doesn't.
