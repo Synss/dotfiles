@@ -1,6 +1,6 @@
 ---
 name: reviewing-claude-md
-description: Use when editing or reviewing a change to any CLAUDE.md in this repo, or when asked to check/audit/review one.
+description: Use when editing or reviewing a change to any CLAUDE.md in this repo, or when the user asks to check/audit/review one.
 ---
 
 Check the target file (or diff) against each rule below, content rules
@@ -43,8 +43,10 @@ before structure rules.
    procedure a numbered list or prose instead, never plain bullets carrying
    order words like "then"/"finally" that the marker doesn't express.
 8. `xml-tagging-justified` — Add XML/schema tagging (`<constraints>`,
-   `<instructions>`, `<document>`) if it adds clarity that a Content fix
-   above can't. Otherwise leave the file untagged.
+   `<instructions>`, `<document>`) if the content must be reproduced or
+   parsed literally — a template, an enum, a machine-checked block —
+   and no heading or prose could mark that boundary as clearly.
+   Otherwise leave the file untagged.
 
 ## Output format
 
@@ -58,11 +60,10 @@ Each rule reports exactly one of the statuses below.
 - `left_alone` — a genuine near-miss: the instance actually creates the
   tension the rule addresses (not merely shares its topic, sits near a
   violation, or resembles one by proximity alone), and the text resolves
-  that tension through an explicit feature (an override, a cited
-  mechanism, a genuine topical continuation, a deliberate structural
-  choice, and so on). If a candidate doesn't clear this bar,
-  leave it out entirely rather than mentioning it as an aside. Fields:
-  quote, detail.
+  that tension through an explicit feature (e.g. an override, a cited
+  mechanism, a genuine topical continuation, or a deliberate structural
+  choice). If a candidate doesn't clear this bar, leave it out entirely
+  rather than mentioning it as an aside. Fields: quote, detail.
 - `not_applicable` — the file has nothing shaped like this rule's concern
   at all. Fields: detail only, exactly one instance, saying what's
   missing (e.g. no commit-message section to check `global-interaction`
@@ -70,24 +71,22 @@ Each rule reports exactly one of the statuses below.
 
 ### Template
 
-<output_format>
 Report one entry per rule, in rule order, regardless of status. See
 "Statuses" above for what each status means and which fields it takes.
 
 - Check each rule against the whole file, independently of the other rules.
 - Number each rule's instances, including when there is only one.
-- Count instances separately:
-  - Different sentences count as different instances.
-  - One sentence triggering a rule in distinct ways also creates multiple
-    instances. Don't fold them into the most salient one.
-  - If the same sentence violates multiple rules, report it under each relevant
-    rule.
+- Count instances separately: different sentences count as different
+  instances, and one sentence triggering a rule in distinct ways also
+  creates multiple instances — don't fold them into the most salient
+  one. If the same sentence violates multiple rules, report it under
+  each relevant rule.
+- Reference rules by slug, never by list position: a rule's position
+  shifts when one is added or reordered, but its slug doesn't.
 
+<output_format>
 Rule <slug> — <triggered|not_applicable|left_alone>
 1. quote: "<exact text>" (line L)
    detail: <why it triggers / what's missing / why it's left alone>
    fix: <proposed fix>
-
-Reference rules by slug, never by list position: a rule's position shifts
-when one is added or reordered, but its slug doesn't.
 </output_format>
