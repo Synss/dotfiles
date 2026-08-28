@@ -19,9 +19,3 @@ It self-activates via a `SessionStart` hook; re-trigger manually with
 ```
 /using-superpowers
 ```
-
-## Notes
-
-- Edits to `CLAUDE.md` (here or `.claude/CLAUDE.md` at the repo root) are
-  checked against the [`reviewing-claude-md`](../.claude/skills/reviewing-claude-md/SKILL.md)
-  skill before committing.
