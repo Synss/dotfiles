@@ -15,10 +15,8 @@ Check for a `.jj` directory before assuming a repo's VCS is git. If one
 exists, jj is the source of truth, not git, even when `.git` is also
 present (colocated).
 
-- In a colocated repo, do not run mutating git commands (`add`, `rm`,
-  `commit`, `checkout`, `reset`, `stash`, `restore`, `clean`, `merge`,
-  `rebase`, `cherry-pick`, `revert`, `am`, `apply`, `update-ref`, `branch`,
-  `tag`). Use the jj equivalent instead.
+- In a colocated repo, do not run mutating git commands. Use the jj equivalent
+  instead.
 - Read-only git commands (`status`, `diff`, `log`) are fine.
 
 ### Commit messages
@@ -83,31 +81,28 @@ One idea per sentence, and one topic per paragraph. Use short, direct
 sentences. Prefer plain language over formal or legalistic phrasing:
 avoid repetition, nested clauses, and em dashes or semicolons.
 
-Make the subject of a sentence the entity doing the action, and the verb
-the action itself. Avoid nominalizations, a verb turned into an abstract
-noun such as "implementation" for "implement". Avoid passive voice that
-drops the actor. Passive stays fine when no single actor fits: don't
-invent one just to satisfy this rule.
-
 Terse means concise, not compressed: cut words by removing redundancy and
 simplifying wording, not by packing more logic into each sentence.
 
-Applies everywhere you write for the user: commit messages, code comments,
-documentation, and chat responses.
+These rules apply to commit messages, code comments, and documentation.
 
 ## Code comments
 
-Comment what a future editor could break without knowing: a non-obvious
-external constraint, an invariant, a footgun, a usage hint. That's
-history. It belongs in the commit message, not the comment.
+Default is no comment. In particular, never add a comment that only restates
+the code.
 
-Default to one line. Delete a comment that only restates the code,
-rather than shorten it. Longer comments are warranted for a subtle
-algorithm, a workaround for an external bug, or a warning against an
-obvious-looking edit.
+Comments are only warranted for
 
-Interface documentation is a separate category, exempt from the one-line
-default. Docstrings and public API comments describe a contract in full.
+- a workaround for an external bug
+- a non-obvious external constraint
+- a warning against an obvious-looking edit
+- a subtle algorithm
+- an invariant
+
+The default is one line in the allowed cases.
+
+Interface documentation is a separate category, exempt from the previous
+defaults. Docstrings and public API comments must describe a contract in full.
 
 ## Code style
 
