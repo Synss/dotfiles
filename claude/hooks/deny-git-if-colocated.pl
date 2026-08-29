@@ -33,25 +33,34 @@ my $input = do { local $/; <STDIN> } // '';
 my $data = eval { decode_json($input) };
 exit 0 unless ref($data) eq 'HASH';
 
-my $command         = $data->{tool_input}{command} // '';
-my $git_commands    = join '|', map { quotemeta } GIT_MUTATING_COMMANDS;
-my $git_commands_re = qr{
+my $tool_input = $data->{tool_input};
+exit 0 unless ref($tool_input) eq 'HASH';
+
+my $command = $tool_input->{command} // '';
+exit 0 unless length $command;
+
+my $git_commands = join '|', map { quotemeta } GIT_MUTATING_COMMANDS;
+my $mutating_git_commands = qr{
     (?: ^ | [;&|(`] | \s)
     git\s+
     (?: $git_commands )
     (?: [;&|)`\s] | $)
 }mx;
 
-exit 0 unless $command =~ $git_commands_re;
+exit 0 unless $command =~ $mutating_git_commands;
 
 my $repo_root = `git rev-parse --show-toplevel 2>/dev/null`;
 chomp $repo_root;
-exit 0 if $? != 0 || $repo_root eq '' || !-d "$repo_root/.jj";
+
+exit 0 unless $? == 0;
+exit 0 unless length $repo_root;
+exit 0 unless -d "$repo_root/.jj";
 
 my $reason =
     'Colocated jj/git repo (.jj next to .git) - jj is authoritative. '
   . 'Use the jj equivalent instead of a mutating git command ('
-  . join( '/', GIT_MUTATING_COMMANDS ) . ').';
+  . join( '/', GIT_MUTATING_COMMANDS )
+  . ').';
 
 print encode_json({
     hookSpecificOutput => {
@@ -59,4 +68,4 @@ print encode_json({
         permissionDecision       => 'deny',
         permissionDecisionReason => $reason,
     },
-}) . "\n";
+}), "\n";
