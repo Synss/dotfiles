@@ -29,4 +29,24 @@ else
 	echo "PASS bad case: git add denied"
 fi
 
+# Bad case: a mutating git command behind a -C global option is still denied.
+out=$(payload 'git -C /some/repo add asdf' | "$hook")
+decision=$(jq -r '.hookSpecificOutput.permissionDecision // empty' <<<"$out")
+if [ "$decision" != "deny" ]; then
+	echo "FAIL -C case: expected permissionDecision=deny, got: $out"
+	fail=1
+else
+	echo "PASS -C case: git -C ... add denied"
+fi
+
+# Bad case: a mutating git command behind a -c global option is still denied.
+out=$(payload 'git -c user.name=x commit' | "$hook")
+decision=$(jq -r '.hookSpecificOutput.permissionDecision // empty' <<<"$out")
+if [ "$decision" != "deny" ]; then
+	echo "FAIL -c case: expected permissionDecision=deny, got: $out"
+	fail=1
+else
+	echo "PASS -c case: git -c ... commit denied"
+fi
+
 exit $fail

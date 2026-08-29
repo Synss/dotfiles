@@ -43,6 +43,7 @@ my $git_commands = join '|', map { quotemeta } GIT_MUTATING_COMMANDS;
 my $mutating_git_commands = qr{
     (?: ^ | [;&|(`] | \s)
     git\s+
+    (?: (?:-C|-c) \s+ \S+ \s+ | --?\S+ \s+ )*
     (?: $git_commands )
     (?: [;&|)`\s] | $)
 }mx;
