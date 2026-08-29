@@ -23,6 +23,9 @@ present (colocated).
 
 A project convention overrides this one where it exists.
 
+Base the message, subject and body alike, on the full diff being
+committed, not on the latest addition to the diff.
+
 Subject: a capitalized imperative sentence answering "what", under ~50
 characters, no trailing period.
 
