@@ -24,6 +24,7 @@ vim.lsp.enable(
 		"marksman",    -- marksman
 		"nil_ls",      -- nil
 		"nixd",        -- nixd
+		"perlnavigator", -- perlnavigator
 		"ruff",        -- ruff
 		"starpls",     -- starpls
 		"typos_lsp",   -- typos-lsp
