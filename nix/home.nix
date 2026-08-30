@@ -46,6 +46,7 @@ in
         marksman # -                   marksman
         nil # -                        nil_ls
         nixd # -                       nixd
+        perlnavigator # -              perlnavigator
         ruff # -                       ruff
         starpls # -                    starpls
         vscode-langservers-extracted # cssls eslint html jsonls
