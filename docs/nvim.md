@@ -2,6 +2,15 @@
 
 ## LSP
 
+### Namespace
+
+- `g` and `gr`
+- `<Leader>lw`
+
+### Format on save
+
+Toggle with `:lua vim.b.format_on_save = {nil,false}`
+
 ### Per-repo overrides
 
 Per-repo LSP config is supported via `vim.opt.exrc`, which loads `.vim.lua`
@@ -26,24 +35,10 @@ vim.lsp.config("yamlls", {
 })
 ```
 
-### Namespace
-
-- `g` and `gr`
-- `<Leader>lw`
-
-### Format on save
-
-Toggle with `:lua vim.b.format_on_save = {nil,false}`
-
-## Splits
-
-### Namespace
-
-`<Leader>s`
-
 ## Clipboard
 
-- N/V + `<Leader>{y,p,P}`: Yank, paste, and paste before from clipboard.
+- Normal/Visual + `<Leader>{y,p,P}`: Yank, paste, and paste before from
+  clipboard.
 
 ## Misc. shortcuts (abridged)
 
