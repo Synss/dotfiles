@@ -29,4 +29,3 @@ to setup a new machine. `justfile` has the targets for everything else.
 - `nvim/` — Neovim configuration.
 - `zsh/` — see [`zsh/README.md`](zsh/README.md).
 - `shared/theme-config.json` — the colorscheme, read by nvim, zsh and glow.
-- `scripts/` — lists the apt packages of a host. Not deployed.
