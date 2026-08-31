@@ -56,7 +56,6 @@ in
         ansible-lint
         bazelisk
         buildifier
-        delta
         fd
         gh
         glow
@@ -152,12 +151,6 @@ in
     bat = {
       enable = true;
       config.style = "header-filename,header-filesize,rule";
-    };
-
-    delta = {
-      enable = true;
-      enableGitIntegration = true;
-      options.navigate = true;
     };
 
     direnv = {
