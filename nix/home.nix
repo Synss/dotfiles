@@ -15,7 +15,7 @@ let
     builtins.readFile ./scripts/git-colocate.py
   );
 
-  vimPlugins =
+  mkDataFiles =
     prefix: plugins:
     builtins.listToAttrs (
       map (plugin: {
@@ -107,7 +107,7 @@ in
 
   xdg.dataFile =
     with pkgs.vimPlugins;
-    vimPlugins "nvim/site/pack/nix/start" [
+    mkDataFiles "nvim/site/pack/nix/start" [
       auto-session
       conform-nvim
       fzf-lua
