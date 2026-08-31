@@ -14,6 +14,15 @@ let
   colocate = pkgs.writers.writePython3 "git-colocate" { } (
     builtins.readFile ./scripts/git-colocate.py
   );
+
+  vimPlugins =
+    prefix: plugins:
+    builtins.listToAttrs (
+      map (plugin: {
+        name = "${prefix}/${plugin.pname}";
+        value.source = plugin;
+      }) plugins
+    );
 in
 {
   imports = [ nix-index-database.homeModules.nix-index ];
@@ -96,40 +105,30 @@ in
 
   };
 
-  xdg.dataFile = builtins.listToAttrs (
-    map
-      (p: {
-        name = "nvim/site/pack/nix/start/${p.pname}";
-        value = {
-          source = p;
-        };
-      })
-      (
-        with pkgs.vimPlugins;
-        [
-          auto-session
-          conform-nvim
-          fzf-lua
-          gruvbox-nvim
-          lazygit-nvim
-          lazyjj-nvim
-          lualine-nvim
-          mini-ai
-          mini-bufremove
-          mini-icons
-          mini-surround
-          nerdy-nvim
-          nvim-lspconfig
-          nvim-web-devicons
-          oil-nvim
-          vim-fugitive
-          vim-nix
-          tiny-inline-diagnostic-nvim
-          which-key-nvim
-          zoxide-vim
-        ]
-      )
-  );
+  xdg.dataFile =
+    with pkgs.vimPlugins;
+    vimPlugins "nvim/site/pack/nix/start" [
+      auto-session
+      conform-nvim
+      fzf-lua
+      gruvbox-nvim
+      lazygit-nvim
+      lazyjj-nvim
+      lualine-nvim
+      mini-ai
+      mini-bufremove
+      mini-icons
+      mini-surround
+      nerdy-nvim
+      nvim-lspconfig
+      nvim-web-devicons
+      oil-nvim
+      vim-fugitive
+      vim-nix
+      tiny-inline-diagnostic-nvim
+      which-key-nvim
+      zoxide-vim
+    ];
 
   programs = {
     alacritty = {
