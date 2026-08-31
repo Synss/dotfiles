@@ -14,8 +14,6 @@ let
   colocate = pkgs.writers.writePython3 "git-colocate" { } (
     builtins.readFile ./scripts/git-colocate.py
   );
-  retop = pkgs.writeShellScript "git-retop" (builtins.readFile ./scripts/git-retop.sh);
-  sweep = pkgs.writeShellScript "git-sweep" (builtins.readFile ./scripts/git-sweep.sh);
 in
 {
   imports = [ nix-index-database.homeModules.nix-index ];
@@ -269,9 +267,7 @@ in
           logall = "log --graph --oneline --decorate --color --exclude='refs/notes/*' --all";
           logfull = "log --graph --pretty=format:'%C(yellow)%h%Creset %d%s %C(green)(%cr)%Creset %C(bold blue)<%an>%Creset'";
           names = "diff --name-only";
-          retop = "!${retop}";
           ri = "rebase -i";
-          sweep = "!${sweep}";
           unstage = "reset HEAD --";
         };
         user = {
