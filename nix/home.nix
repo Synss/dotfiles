@@ -105,7 +105,6 @@ in
   xdg.dataFile =
     with pkgs.vimPlugins;
     mkDataFiles "nvim/site/pack/nix/start" [
-      auto-session
       conform-nvim
       fzf-lua
       gruvbox-nvim
