@@ -54,5 +54,6 @@
   },
   "promptSuggestionEnabled": false,
   "tui": "default",
-  "editorMode": "vim"
+  "editorMode": "vim",
+  "outputStyle": "Concise"
 }
