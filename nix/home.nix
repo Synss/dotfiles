@@ -69,7 +69,6 @@ in
         graphviz
         jq
         just
-        lazygit
         lazyjj
         yq-go
         neovim
@@ -112,7 +111,6 @@ in
       conform-nvim
       fzf-lua
       gruvbox-nvim
-      lazygit-nvim
       lazyjj-nvim
       lualine-nvim
       mini-ai
@@ -123,7 +121,6 @@ in
       nvim-lspconfig
       nvim-web-devicons
       oil-nvim
-      vim-fugitive
       vim-nix
       tiny-inline-diagnostic-nvim
       which-key-nvim
