@@ -36,8 +36,25 @@ in
     packages =
       with pkgs;
       [
-        # nix tooling
+        # nix tools
         home-manager
+
+        # terminal tools
+        fd
+        gh
+        glow
+        graphviz
+        jq
+        just
+        lazyjj
+        yq-go
+        neovim
+        neovim-remote
+        pre-commit
+        ripgrep
+        vivid
+        xxd
+        zsh
 
         # fonts
         nerd-fonts.hack
@@ -56,40 +73,25 @@ in
         perlnavigator # -              perlnavigator
         ruff # -                       ruff
         starpls # -                    starpls
+        typos-lsp # -                  typos_lsp
         vscode-langservers-extracted # cssls eslint html jsonls
         yaml-language-server # -       yaml-language-server
 
-        # tools
-        ansible-lint
+        # programming languages
         bazelisk
-        buildifier
-        fd
-        gh
-        glow
-        graphviz
-        jq
-        just
-        lazyjj
-        yq-go
-        neovim
-        neovim-remote
-        nixfmt-tree
         nodejs
         pnpm
-        pre-commit
-        prettier
-        ripgrep
-        shellcheck
-        typos-lsp
-        vivid
-        xxd
-        zsh
-
-        # programming languages
         rustup
         uv
 
-        # Dependencies
+        # linters
+        ansible-lint
+        buildifier
+        nixfmt-tree
+        prettier
+        shellcheck
+
+        # dependencies
         watchman # for jj
       ]
       ++ lib.optionals stdenv.hostPlatform.isLinux [ ]
