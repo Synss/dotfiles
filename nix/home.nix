@@ -2,6 +2,7 @@
   pkgs,
   lib,
   config,
+  stateVersion,
   username,
   homeDirectory,
   nix-index-database,
@@ -28,8 +29,7 @@ in
   imports = [ nix-index-database.homeModules.nix-index ];
   fonts.fontconfig.enable = true;
   home = {
-    inherit username homeDirectory;
-    stateVersion = "25.11";
+    inherit stateVersion username homeDirectory;
 
     sessionVariables.SHELL = "${pkgs.zsh}/bin/zsh";
 

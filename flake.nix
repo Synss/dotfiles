@@ -42,6 +42,7 @@
         _:
         {
           system,
+          stateVersion,
           username,
           dotfilesSubpath ? "src/dotfiles.git",
         }:
@@ -62,6 +63,7 @@
           ++ nixpkgs.lib.optional pkgs.stdenv.hostPlatform.isDarwin ./nix/darwin.nix;
           extraSpecialArgs = {
             inherit
+              stateVersion
               username
               homeDirectory
               nix-index-database
