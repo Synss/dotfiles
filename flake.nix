@@ -27,11 +27,10 @@
       ...
     }:
     let
-      forAllSystems = nixpkgs.lib.genAttrs [
-        "x86_64-linux"
-        "aarch64-darwin"
-      ];
       machines = import ./nix/hosts.nix;
+      forAllSystems = nixpkgs.lib.genAttrs (
+        nixpkgs.lib.unique (map (host: host.system) (nixpkgs.lib.attrValues machines))
+      );
       overlay =
         _: prev:
         nixpkgs.lib.mapAttrs' (
