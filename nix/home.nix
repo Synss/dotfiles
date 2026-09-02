@@ -223,7 +223,7 @@ in
     zsh = {
       enable = true;
       autosuggestion.enable = true;
-      syntaxHighlighting.enable = true;
+      fastSyntaxHighlighting.enable = true;
       history = {
         path = "${config.home.homeDirectory}/.zsh_history";
         size = 50000;
