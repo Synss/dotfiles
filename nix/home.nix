@@ -16,12 +16,12 @@ let
   );
 
   mkDataFiles =
-    prefix: plugins:
+    path: files:
     builtins.listToAttrs (
-      map (plugin: {
-        name = "${prefix}/${plugin.pname}";
-        value.source = plugin;
-      }) plugins
+      map (file: {
+        name = "${path}/${file.pname}";
+        value.source = file;
+      }) files
     );
 in
 {
