@@ -19,34 +19,6 @@ present (colocated).
   instead.
 - Read-only git commands (`status`, `diff`, `log`) are fine.
 
-### Commit messages
-
-A project convention overrides this one where it exists.
-
-Base the message, subject and body alike, on the full diff being
-committed, not on the latest addition to the diff.
-
-Subject: a capitalized imperative sentence answering "what", under ~50
-characters, no trailing period.
-
-Body: optional, answers "why". No body is the default, not a fallback:
-skip it for a purely mechanical or directly requested change, and don't
-add a sentence merely to fill the field. A commit bundling several
-independent fixes from one review pass has no single external fact
-either: don't summarize the set of fixes as if it were one.
-
-The reason must be an external fact: a bug, a constraint, or an observed
-behavior, not a rationale for how the diff was drafted or a summary of the
-discussion. For example, "tries X instead of Y, to see whether Z holds"
-describes the discussion, not the change. A bug's root cause, a revert's
-rationale, and a performance claim's numbers qualify.
-
-Test each candidate sentence against the subject, the diff, and the
-sentences before it, and drop it if any already states its fact. Wrap at
-72 columns.
-
-No trailing metadata (no Co-Authored-By, no issue refs) unless the user asks.
-
 ## Working style
 
 ### Planning and implementation
@@ -78,7 +50,7 @@ may already know the answer.
 - For multi-step work, state the plan as numbered steps, each with its
   own verify step.
 
-## Writing prose
+## Prose
 
 One idea per sentence, and one topic per paragraph. Use short, direct
 sentences. Prefer plain language over formal or legalistic phrasing:
@@ -87,9 +59,38 @@ avoid repetition, nested clauses, and em dashes or semicolons.
 Terse means concise, not compressed: cut words by removing redundancy and
 simplifying wording, not by packing more logic into each sentence.
 
-These rules apply to commit messages, code comments, and documentation.
+These rules apply throughout, including commit messages, code comments,
+and documentation.
 
-## Code comments
+### Commit messages
+
+A project convention overrides this one where it exists.
+
+Base the message, subject and body alike, on the full diff being
+committed, not on the latest addition to the diff.
+
+Subject: a capitalized imperative sentence answering "what", under ~50
+characters, no trailing period.
+
+Body: optional, answers "why". No body is the default, not a fallback:
+skip it for a purely mechanical or directly requested change, and don't
+add a sentence merely to fill the field. A commit bundling several
+independent fixes from one review pass has no single external fact
+either: don't summarize the set of fixes as if it were one.
+
+The reason must be an external fact: a bug, a constraint, or an observed
+behavior, not a rationale for how the diff was drafted or a summary of the
+discussion. For example, "tries X instead of Y, to see whether Z holds"
+describes the discussion, not the change. A bug's root cause, a revert's
+rationale, and a performance claim's numbers qualify.
+
+Test each candidate sentence against the subject, the diff, and the
+sentences before it, and drop it if any already states its fact. Wrap at
+72 columns.
+
+No trailing metadata (no Co-Authored-By, no issue refs) unless the user asks.
+
+### Code comments
 
 Default is no comment. In particular, never add a comment that only restates
 the code.
