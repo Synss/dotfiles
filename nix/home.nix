@@ -63,6 +63,7 @@ in
         # LSP servers | nvim
         actions-languageserver # -     gh_action_ls
         ansible-language-server # -    ansiblels
+        bash-language-server # -       bashls
         basedpyright # -               basedpyright
         clang-tools # -                clangd
         groovy-language-server # -     groovyls
@@ -88,6 +89,7 @@ in
         ansible-lint # ansible-language-server
         prettier # conform.lua
         nixfmt # nil_ls
+        shellcheck # bashls
         watchman # jj
       ]
       ++ lib.optionals stdenv.hostPlatform.isLinux [ ]
