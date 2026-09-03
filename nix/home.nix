@@ -87,7 +87,6 @@ in
 
         # dependencies
         prettier # conform.lua
-        watchman # jj
       ]
       ++ lib.optionals stdenv.hostPlatform.isLinux [ ]
       ++ lib.optionals stdenv.hostPlatform.isDarwin [ ];

@@ -39,6 +39,7 @@
           selfOverrideArgs = {
             nil = { inherit (prev) nil; };
             bash-language-server = { inherit (prev) bash-language-server; };
+            jujutsu = { inherit (prev) jujutsu; };
           };
         in
         nixpkgs.lib.mapAttrs' (
