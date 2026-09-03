@@ -40,7 +40,14 @@ binary as `actions-languageserver`, not `gh-actions-language-server`.
 
 ## Nix overlay
 
-`ansible-language-server` and `actions-languageserver` are not in
-nixpkgs. Local overlay derivations in `nix/packages/` package them using
-`stdenv.mkDerivation` and `fetchurl` from the npm registry. The packages
-ship pre-compiled `dist/` bundles, so no build step is needed.
+`nix/packages/` holds local overlay derivations, auto-discovered by
+`flake.nix` from directory name. Two kinds:
+
+- built from source, for a package missing from nixpkgs (e.g.
+  `ansible-language-server/`)
+- a wrapper around an existing nixpkgs derivation, to bake in a runtime
+  dependency via `makeWrapper` (e.g. `nil/`)
+
+A wrapper that reuses its own attribute name must take that attribute as
+an explicit `callPackage` argument, not an auto-arg. See
+`selfOverrideArgs` in `flake.nix` for why.

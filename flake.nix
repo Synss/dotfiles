@@ -33,9 +33,19 @@
       );
       overlay =
         _: prev:
+        let
+          # Self-named overrides (nil, bash-language-server) need prev's attribute
+          # passed explicitly, or callPackage recurses into its own override.
+          selfOverrideArgs = {
+            nil = { inherit (prev) nil; };
+            bash-language-server = { inherit (prev) bash-language-server; };
+          };
+        in
         nixpkgs.lib.mapAttrs' (
           name: _:
-          nixpkgs.lib.nameValuePair name (prev.callPackage (./nix/packages + "/${name}/package.nix") { })
+          nixpkgs.lib.nameValuePair name (
+            prev.callPackage (./nix/packages + "/${name}/package.nix") (selfOverrideArgs.${name} or { })
+          )
         ) (nixpkgs.lib.filterAttrs (_: type: type == "directory") (builtins.readDir ./nix/packages));
 
       mkHome =

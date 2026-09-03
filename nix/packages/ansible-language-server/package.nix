@@ -4,6 +4,7 @@
   fetchurl,
   nodejs,
   makeWrapper,
+  ansible-lint,
 }:
 stdenv.mkDerivation rec {
   pname = "ansible-language-server";
@@ -22,7 +23,8 @@ stdenv.mkDerivation rec {
     cp -r . $out/lib/node_modules/@ansible/ansible-language-server/
     mkdir -p $out/bin
     makeWrapper ${nodejs}/bin/node $out/bin/ansible-language-server \
-      --add-flags "$out/lib/node_modules/@ansible/ansible-language-server/dist/cli.cjs"
+      --add-flags "$out/lib/node_modules/@ansible/ansible-language-server/dist/cli.cjs" \
+      --prefix PATH : ${lib.makeBinPath [ ansible-lint ]}
     runHook postInstall
   '';
 

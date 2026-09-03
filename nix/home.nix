@@ -86,10 +86,7 @@ in
         uv
 
         # dependencies
-        ansible-lint # ansible-language-server
         prettier # conform.lua
-        nixfmt # nil_ls
-        shellcheck # bashls
         watchman # jj
       ]
       ++ lib.optionals stdenv.hostPlatform.isLinux [ ]
