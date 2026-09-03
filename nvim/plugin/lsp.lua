@@ -12,6 +12,7 @@ end
 vim.lsp.enable(
 	{
 		"ansiblels",   -- ansible-language-server
+		"bashls",      -- bash-language-server
 		"basedpyright", -- basedpyright
 		"clangd",      -- clang-tools
 		"groovyls",    -- groovy-language-server
