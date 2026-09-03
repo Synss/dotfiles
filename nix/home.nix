@@ -51,6 +51,7 @@ in
         neovim
         neovim-remote
         pre-commit
+        prettier
         ripgrep
         vivid
         xxd
@@ -84,9 +85,6 @@ in
         pnpm
         rustup
         uv
-
-        # dependencies
-        prettier # conform.lua
       ]
       ++ lib.optionals stdenv.hostPlatform.isLinux [ ]
       ++ lib.optionals stdenv.hostPlatform.isDarwin [ ];
