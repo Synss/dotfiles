@@ -84,15 +84,11 @@ in
         rustup
         uv
 
-        # linters
-        ansible-lint
-        buildifier
-        nixfmt-tree
-        prettier
-        shellcheck
-
         # dependencies
-        watchman # for jj
+        ansible-lint # ansible-language-server
+        prettier # conform.lua
+        nixfmt # nil_ls
+        watchman # jj
       ]
       ++ lib.optionals stdenv.hostPlatform.isLinux [ ]
       ++ lib.optionals stdenv.hostPlatform.isDarwin [ ];
