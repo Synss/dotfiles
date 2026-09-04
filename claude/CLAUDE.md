@@ -103,7 +103,7 @@ Comments are only warranted for
 - a subtle algorithm
 - an invariant
 
-The default is one line in the allowed cases.
+The default is one sentence in the allowed cases.
 
 Interface documentation is a separate category, exempt from the previous
 defaults. Docstrings and public API comments must describe a contract in full.
