@@ -92,8 +92,23 @@ No trailing metadata (no Co-Authored-By, no issue refs) unless the user asks.
 
 ### Code comments
 
-Default is no comment. Never add a comment that only restates the code.
-Full rules and an on-demand check: `check-comments` skill.
+Default is no comment. In particular, never add a comment that only restates
+the code.
+
+Comments are only warranted for
+
+- a workaround for an external bug
+- a non-obvious external constraint
+- a warning against an obvious-looking edit
+- a subtle algorithm
+- an invariant
+
+The default is one sentence in the allowed cases.
+
+Interface documentation is a separate category, exempt from the previous
+defaults. Docstrings and public API comments must describe a contract in full.
+
+For an on-demand check of an existing diff, see the `check-comments` skill.
 
 ## Code style
 
