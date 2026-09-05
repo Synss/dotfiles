@@ -33,61 +33,57 @@ in
 
     sessionVariables.SHELL = "${pkgs.zsh}/bin/zsh";
 
-    packages =
-      with pkgs;
-      [
-        # nix tools
-        home-manager
+    packages = with pkgs; [
+      # nix tools
+      home-manager
 
-        # terminal tools
-        fd
-        gh
-        glow
-        graphviz
-        jq
-        just
-        lazyjj
-        yq-go
-        neovim
-        neovim-remote
-        pre-commit
-        prettier
-        ripgrep
-        vivid
-        xxd
-        zsh
+      # terminal tools
+      fd
+      gh
+      glow
+      graphviz
+      jq
+      just
+      lazyjj
+      yq-go
+      neovim
+      neovim-remote
+      pre-commit
+      prettier
+      ripgrep
+      vivid
+      xxd
+      zsh
 
-        # fonts
-        nerd-fonts.hack
-        nerd-fonts.jetbrains-mono
+      # fonts
+      nerd-fonts.hack
+      nerd-fonts.jetbrains-mono
 
-        # LSP servers | nvim
-        actions-languageserver # -     gh_action_ls
-        ansible-language-server # -    ansiblels
-        bash-language-server # -       bashls
-        basedpyright # -               basedpyright
-        clang-tools # -                clangd
-        groovy-language-server # -     groovyls
-        lua-language-server # -        lua_ls
-        marksman # -                   marksman
-        nil # -                        nil_ls
-        nixd # -                       nixd
-        perlnavigator # -              perlnavigator
-        ruff # -                       ruff
-        starpls # -                    starpls
-        typos-lsp # -                  typos_lsp
-        vscode-langservers-extracted # cssls eslint html jsonls
-        yaml-language-server # -       yaml-language-server
+      # LSP servers | nvim
+      actions-languageserver # -     gh_action_ls
+      ansible-language-server # -    ansiblels
+      bash-language-server # -       bashls
+      basedpyright # -               basedpyright
+      clang-tools # -                clangd
+      groovy-language-server # -     groovyls
+      lua-language-server # -        lua_ls
+      marksman # -                   marksman
+      nil # -                        nil_ls
+      nixd # -                       nixd
+      perlnavigator # -              perlnavigator
+      ruff # -                       ruff
+      starpls # -                    starpls
+      typos-lsp # -                  typos_lsp
+      vscode-langservers-extracted # cssls eslint html jsonls
+      yaml-language-server # -       yaml-language-server
 
-        # programming languages
-        bazelisk
-        nodejs
-        pnpm
-        rustup
-        uv
-      ]
-      ++ lib.optionals stdenv.hostPlatform.isLinux [ ]
-      ++ lib.optionals stdenv.hostPlatform.isDarwin [ ];
+      # programming languages
+      bazelisk
+      nodejs
+      pnpm
+      rustup
+      uv
+    ];
 
     file = {
       ".config/nvim" = mkLink "nvim";
