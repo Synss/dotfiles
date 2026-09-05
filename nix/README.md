@@ -9,6 +9,8 @@ in `hosts.nix`.
 
 ## Notes
 
+- `hosts/<hostname>.nix` is included automatically when present, for config
+  specific to one host.
 - The repository is expected at `~/src/dotfiles.git` by default. Override
   `dotfilesSubpath` on a machine in `hosts.nix` if its clone lives somewhere
   else.
