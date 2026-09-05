@@ -94,6 +94,7 @@ in
       ".config/dotfiles" = mkLink "shared";
       ".claude/CLAUDE.md" = mkLink "claude/CLAUDE.md";
       ".claude/hooks" = mkLink "claude/hooks";
+      ".claude/skills" = mkLink "claude/skills";
     };
 
   };
