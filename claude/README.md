@@ -4,6 +4,7 @@ Global Claude Code config.
 
 - `CLAUDE.md` is symlinked to `~/.claude/CLAUDE.md`.
 - `hooks/` is symlinked to `~/.claude/hooks/`.
+- `skills/` is symlinked to `~/.claude/skills/`.
 - `settings.json` is merged into `~/.claude/settings.json` by `just
   sync-claude`, since Claude Code rewrites that file in place.
 
