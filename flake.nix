@@ -50,7 +50,7 @@
         ) (nixpkgs.lib.filterAttrs (_: type: type == "directory") (builtins.readDir ./nix/packages));
 
       mkHome =
-        _:
+        name:
         {
           system,
           stateVersion,
@@ -64,6 +64,7 @@
           };
           homeDirectory =
             if pkgs.stdenv.hostPlatform.isDarwin then "/Users/${username}" else "/home/${username}";
+          hostModule = ./nix/hosts + "/${name}.nix";
         in
         home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
@@ -71,7 +72,8 @@
             ./nix/home.nix
           ]
           ++ nixpkgs.lib.optional pkgs.stdenv.hostPlatform.isLinux ./nix/linux.nix
-          ++ nixpkgs.lib.optional pkgs.stdenv.hostPlatform.isDarwin ./nix/darwin.nix;
+          ++ nixpkgs.lib.optional pkgs.stdenv.hostPlatform.isDarwin ./nix/darwin.nix
+          ++ nixpkgs.lib.optional (builtins.pathExists hostModule) hostModule;
           extraSpecialArgs = {
             inherit
               stateVersion
