@@ -9,6 +9,9 @@ in `hosts.nix`.
 
 ## Notes
 
+- `home.nix` only wires up `modules/*.nix`; each module owns one topic
+  (packages, neovim, shell, git, jujutsu, terminal, claude) plus a small
+  shared `modules/lib.nix` helper.
 - `hosts/<hostname>.nix` is included automatically when present, for config
   specific to one host.
 - The repository is expected at `~/src/dotfiles.git` by default. Override
