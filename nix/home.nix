@@ -16,17 +16,12 @@ let
     builtins.readFile ./scripts/git-colocate.py
   );
 
-  mkDataFiles =
-    path: files:
-    builtins.listToAttrs (
-      map (file: {
-        name = "${path}/${file.pname}";
-        value.source = file;
-      }) files
-    );
 in
 {
-  imports = [ nix-index-database.homeModules.nix-index ];
+  imports = [
+    nix-index-database.homeModules.nix-index
+    ./modules/neovim.nix
+  ];
   fonts.fontconfig.enable = true;
   home = {
     inherit stateVersion username homeDirectory;
@@ -46,8 +41,6 @@ in
       just
       lazyjj
       yq-go
-      neovim
-      neovim-remote
       pre-commit
       prettier
       ripgrep
@@ -59,24 +52,6 @@ in
       nerd-fonts.hack
       nerd-fonts.jetbrains-mono
 
-      # LSP servers | nvim
-      actions-languageserver # -     gh_action_ls
-      ansible-language-server # -    ansiblels
-      bash-language-server # -       bashls
-      basedpyright # -               basedpyright
-      clang-tools # -                clangd
-      groovy-language-server # -     groovyls
-      lua-language-server # -        lua_ls
-      marksman # -                   marksman
-      nil # -                        nil_ls
-      nixd # -                       nixd
-      perlnavigator # -              perlnavigator
-      ruff # -                       ruff
-      starpls # -                    starpls
-      typos-lsp # -                  typos_lsp
-      vscode-langservers-extracted # cssls eslint html jsonls
-      yaml-language-server # -       yaml-language-server
-
       # programming languages
       bazelisk
       nodejs
@@ -86,7 +61,6 @@ in
     ];
 
     file = {
-      ".config/nvim" = mkLink "nvim";
       ".config/dotfiles" = mkLink "shared";
       ".claude/CLAUDE.md" = mkLink "claude/CLAUDE.md";
       ".claude/hooks" = mkLink "claude/hooks";
@@ -94,28 +68,6 @@ in
     };
 
   };
-
-  xdg.dataFile =
-    with pkgs.vimPlugins;
-    mkDataFiles "nvim/site/pack/nix/start" [
-      conform-nvim
-      fzf-lua
-      gruvbox-nvim
-      lazyjj-nvim
-      lualine-nvim
-      mini-ai
-      mini-bufremove
-      mini-icons
-      mini-surround
-      nerdy-nvim
-      nvim-lspconfig
-      nvim-web-devicons
-      oil-nvim
-      vim-nix
-      tiny-inline-diagnostic-nvim
-      which-key-nvim
-      zoxide-vim
-    ];
 
   programs = {
     alacritty = {
