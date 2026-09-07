@@ -32,11 +32,6 @@ in
       };
     };
 
-    bat = {
-      enable = true;
-      config.style = "header-filename,header-filesize,rule";
-    };
-
     tmux = {
       enable = true;
       prefix = "C-Space";

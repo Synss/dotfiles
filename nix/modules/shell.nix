@@ -11,6 +11,14 @@
 
   home.sessionVariables.SHELL = "${pkgs.zsh}/bin/zsh";
 
+  home.packages = with pkgs; [
+    fd
+    glow
+    ripgrep
+    vivid
+    zsh
+  ];
+
   programs = {
     zsh = {
       enable = true;
@@ -40,6 +48,11 @@
             () { for f; do source "$f"; done } ${dotfilesDir}/zsh/conf.d/*.local(N)
           ''
         ];
+    };
+
+    bat = {
+      enable = true;
+      config.style = "header-filename,header-filesize,rule";
     };
 
     direnv = {
