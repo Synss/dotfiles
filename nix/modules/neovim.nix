@@ -1,4 +1,9 @@
-{ pkgs, config, dotfilesDir, ... }:
+{
+  pkgs,
+  config,
+  dotfilesDir,
+  ...
+}:
 let
   inherit (import ./lib.nix { inherit config dotfilesDir; }) mkLink;
 
