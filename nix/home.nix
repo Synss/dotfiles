@@ -1,15 +1,10 @@
 {
   pkgs,
-  config,
   stateVersion,
   username,
   homeDirectory,
-  dotfilesDir,
   ...
 }:
-let
-  mkLink = path: { source = config.lib.file.mkOutOfStoreSymlink "${dotfilesDir}/${path}"; };
-in
 {
   imports = [
     ./modules/neovim.nix
@@ -17,6 +12,7 @@ in
     ./modules/jujutsu.nix
     ./modules/shell.nix
     ./modules/terminal.nix
+    ./modules/claude.nix
   ];
   home = {
     inherit stateVersion username homeDirectory;
@@ -46,12 +42,6 @@ in
       rustup
       uv
     ];
-
-    file = {
-      ".claude/CLAUDE.md" = mkLink "claude/CLAUDE.md";
-      ".claude/hooks" = mkLink "claude/hooks";
-      ".claude/skills" = mkLink "claude/skills";
-    };
 
   };
 }
