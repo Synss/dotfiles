@@ -19,7 +19,7 @@
         ld = [
           "log"
           "-T"
-          "d"
+          "builtin_log_detailed"
         ];
         tug = [
           "bookmark"
@@ -37,10 +37,6 @@
         "pending()" = "mine() & mutable() & bookmarks()";
         "submitted()" = "pending() & remote_bookmarks()";
         "wip()" = "mine() & mutable() & ~bookmarks()";
-      };
-      template-aliases = {
-        # `jj ... -T d`
-        d = "builtin_log_detailed";
       };
       templates = {
         draft_commit_description = ''
