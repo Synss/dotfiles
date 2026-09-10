@@ -5,8 +5,8 @@
 - `l`: Shorthand for `jj log`.
 - `la`: `jj log -r all()`, showing every visible commit instead of
   `revsets.log`'s filtered default.
-- `ld`: `jj log -T d`, using the `d` template alias for
-  `builtin_log_detailed`.
+- `ld`: `jj log -T builtin_log_detailed`, same level of details as
+   `jj show` but defaults to multiple commits.
 - `tug`: `jj bookmark advance`, moving the closest bookmark to
   `revsets.bookmark-advance-to` (`closest_pushable(@)`).
 
