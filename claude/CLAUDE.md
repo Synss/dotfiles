@@ -59,6 +59,10 @@ avoid repetition, nested clauses, and em dashes or semicolons.
 Terse means concise, not compressed: cut words by removing redundancy and
 simplifying wording, not by packing more logic into each sentence.
 
+Avoid jargon used as a verbal tic, such as "shape," "load-bearing," or
+"blast radius" outside DevOps and infra topics. Use plain, precise words
+instead.
+
 These rules apply throughout, including commit messages, code comments,
 and documentation.
 
