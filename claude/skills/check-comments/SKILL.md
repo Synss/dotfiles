@@ -1,16 +1,29 @@
 ---
 name: check-comments
-description: Check the current diff against the code-comment rules below and fix violations
+description: Check the current diff's implementation comments against the comment rules. Skip docstrings, API doc blocks, and interface definitions.
 disable-model-invocation: true
 allowed-tools: Bash(jj:*), Bash(git:*), Read, Edit
 ---
 
+## Scope and exclusions
+
+This skill covers only implementation and block comments inside function
+bodies.
+
+The following are out of scope. Do not review, flag, or comment on them:
+
+- language-native docstrings (e.g., Python `"""docstrings"""`)
+- API documentation blocks (e.g., Rust `///`, Doxygen `/** ... */`, etc.)
+- class, module, or function-level interface definitions
+
+If a file's changes are only docstrings, skip it and report "No
+implementation comments found."
+
 ## Code comment rules
 
-Default is no comment. In particular, a comment must never only restate
-the code.
+Default is no comment. A comment must never only restate the code.
 
-Comments are only warranted for
+Comments are warranted only for:
 
 - a workaround for an external bug
 - a non-obvious external constraint
@@ -18,10 +31,7 @@ Comments are only warranted for
 - a subtle algorithm
 - an invariant
 
-A comment in one of these cases defaults to one sentence.
-
-Interface documentation is a separate category, exempt from the previous
-defaults. Docstrings and public API comments must describe a contract in full.
+Each of these defaults to one concise sentence.
 
 ## Current change
 
@@ -31,10 +41,10 @@ defaults. Docstrings and public API comments must describe a contract in full.
 
 Check any new or changed comments in the diff against the rules above.
 
-1. List each violation found, quoting the offending comment and the rule it
-   breaks. If there are none, say so and stop.
-2. Fix each violation directly in the source file: delete a comment that
-   only restates the code; otherwise trim or rewrite it to satisfy the
-   rule it breaks.
-3. Re-run the diff check above. Confirm none of the listed violations
-   remain.
+1. List each violation. Quote the offending comment and the rule it breaks.
+   If there are none, say so and stop.
+2. Fix each violation in the source file. Delete a comment that only
+   restates the code. Otherwise, trim or rewrite it to satisfy the rule
+   it breaks.
+3. Re-run the diff check above. Confirm that none of the listed
+   violations remain.
