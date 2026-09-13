@@ -11,6 +11,5 @@ NF {
   if (length(effective) > limit) print "  SUBJECT_TOOLONG(" length(effective) "): " subject
   for (i = 1; i <= n; i++) {
     if (length(lines[i]) > 72) print "  LINE" i "_TOOLONG(" length(lines[i]) "): " lines[i]
-    if (lines[i] ~ /—|;/) print "  LINE" i "_PUNCT: " lines[i]
   }
 }
