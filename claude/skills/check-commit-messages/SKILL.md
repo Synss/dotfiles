@@ -60,8 +60,11 @@ Do not modify the code. Only amend the commit messages in place.
    `<path-to-check.awk>` is the literal absolute path to
    `scripts/check.awk`, alongside this file. Omit
    `-v prefix_re='<regex>'` when the project has no prefix exemption.
-5. List each violation from step 4, quoting the offending part and
-   naming the rule it breaks. Fix a subject violation with `jj describe
-   -r <rev>`, changing only what the rule requires. Leave a compliant
-   subject as is. Fix a body violation by rewrapping the line.
-6. Re-run the check from step 4. Confirm no violations remain.
+5. List each hit from step 4, quoting the offending part and naming
+   the rule. Fix a body line by rewrapping it. Fix a subject with `jj
+   describe -r <rev>`, changing only what the rule requires, and leave
+   a compliant subject as is. The subject limit is approximate: a
+   subject a few characters over stays if every shorter phrasing is
+   less specific. Say so in the report.
+6. Re-run the check from step 4. Confirm nothing remains but the
+   subjects kept on purpose.
