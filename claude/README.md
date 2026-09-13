@@ -11,10 +11,10 @@ Global Claude Code config.
 ## Tests
 
 `hooks/*.test.sh` test the hooks. `tests/skills/run.sh` tests the
-`plain-review` and `check-commit-messages` skills against fixtures in a
-scratch directory. `run.sh setup` prints the slash commands to run by
-hand, `run.sh check` asserts the outcome, and `run.sh run` does both
-through `claude -p`.
+`plain-review`, `check-commit-messages`, and `diataxis-review` skills
+against fixtures in a scratch directory. `run.sh setup` prints the
+slash commands to run by hand, `run.sh check` asserts the outcome, and
+`run.sh run` does both through `claude -p`.
 
 ## Plugins
 

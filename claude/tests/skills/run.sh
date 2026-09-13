@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-# Tests for the plain-review and check-commit-messages skills.
+# Tests for the plain-review, check-commit-messages, and diataxis-review
+# skills.
 #
 # The skills are user-invoked only, so the review step needs a Claude
 # Code session. Two ways to run:
@@ -10,10 +11,17 @@
 #
 #   run.sh run     setup, review through `claude -p`, then check
 #
-# What the fixtures test: a justified em dash must survive, a semicolon
-# joining two ideas must go, and nominalized passive sentences must be
-# rewritten. Sentence-level checks are loose on purpose: the skills are
-# judged on outcome, not on exact wording.
+# What the plain-review/check-commit-messages fixtures test: a
+# justified em dash must survive, a semicolon joining two ideas must
+# go, and nominalized passive sentences must be rewritten.
+# Sentence-level checks are loose on purpose: the skills are judged on
+# outcome, not on exact wording.
+#
+# What the diataxis-review fixtures test: a stray how-to sentence in a
+# reference doc moves into its own labeled section; a ticket mixing
+# explanation and how-to content gets reorganized into labeled
+# sections, one how-to per goal; a doc that contradicts itself and a
+# doc of unsortable fragments are both left untouched.
 set -euo pipefail
 
 here="$(cd "$(dirname "$0")" && pwd)"
@@ -102,6 +110,10 @@ exited." >/dev/null 2>&1
 	echo "In Claude Code, run:"
 	echo "  /plain-review $dir/prose/install.md"
 	echo "  /plain-review $dir/prose/safety.md"
+	echo "  /diataxis-review $dir/prose/diataxis-reference.md"
+	echo "  /diataxis-review $dir/prose/diataxis-ticket.md"
+	echo "  /diataxis-review $dir/prose/diataxis-chaos.md"
+	echo "  /diataxis-review $dir/prose/diataxis-notes.md"
 	echo "and from $repo:"
 	echo "  /check-commit-messages $revset"
 	echo
@@ -128,6 +140,37 @@ assert_no_grep() {
 	fi
 }
 
+assert_grep_re() {
+	local label=$1 pattern=$2 file=$3
+	if grep -qiE -- "$pattern" "$file"; then
+		echo "PASS $label"
+	else
+		echo "FAIL $label: /$pattern/i missing from $file"
+		fail=1
+	fi
+}
+
+assert_count() {
+	local label=$1 pattern=$2 want=$3 file=$4 got
+	got=$(grep -cF -- "$pattern" "$file" || true)
+	if [ "$got" -eq "$want" ]; then
+		echo "PASS $label"
+	else
+		echo "FAIL $label: '$pattern' occurs $got times in $file, want $want"
+		fail=1
+	fi
+}
+
+assert_unchanged() {
+	local label=$1 orig=$2 file=$3
+	if diff -q "$orig" "$file" >/dev/null; then
+		echo "PASS $label"
+	else
+		echo "FAIL $label: $file was edited but should have been left alone"
+		fail=1
+	fi
+}
+
 check() {
 	[ -d "$dir" ] || {
 		echo "no scratch dir at $dir, run '$0 setup' first"
@@ -138,6 +181,15 @@ check() {
 	assert_no_grep "nominalization rewritten (safety)" "Utilization" "$dir/prose/safety.md"
 	assert_no_grep "nominalization rewritten (install)" "Installation of" "$dir/prose/install.md"
 	assert_no_grep "two-idea semicolon split (install)" ";" "$dir/prose/install.md"
+
+	assert_grep_re "reference doc: how-to section labeled" '^#+ .*how-to' "$dir/prose/diataxis-reference.md"
+	assert_count "reference doc: stray moved, not copied or deleted" "tool --verbose --debug" 1 "$dir/prose/diataxis-reference.md"
+	assert_count "ticket: one how-to section per goal" "How-to" 2 "$dir/prose/diataxis-ticket.md"
+	assert_grep_re "ticket: explanation section labeled" '^#+ .*explanation' "$dir/prose/diataxis-ticket.md"
+	assert_grep "ticket: root-cause content kept" "read side of" "$dir/prose/diataxis-ticket.md"
+	assert_grep "ticket: workaround content kept" "byte on the read side" "$dir/prose/diataxis-ticket.md"
+	assert_unchanged "chaos doc: left unedited" "$here/fixtures/diataxis-chaos.md" "$dir/prose/diataxis-chaos.md"
+	assert_unchanged "notes doc: left unedited" "$here/fixtures/diataxis-notes.md" "$dir/prose/diataxis-notes.md"
 
 	local revset desc
 	revset=$(revset)
@@ -170,6 +222,9 @@ run() {
 	revset=$(revset)
 	for f in install.md safety.md; do
 		(cd "$dir" && claude -p "/plain-review prose/$f" --permission-mode acceptEdits >/dev/null </dev/null)
+	done
+	for f in diataxis-reference.md diataxis-ticket.md diataxis-chaos.md diataxis-notes.md; do
+		(cd "$dir" && claude -p "/diataxis-review prose/$f" --permission-mode acceptEdits >/dev/null </dev/null)
 	done
 	(cd "$repo" && claude -p "/check-commit-messages $revset" --permission-mode acceptEdits >/dev/null </dev/null)
 	check
