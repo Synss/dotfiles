@@ -52,15 +52,33 @@ may already know the answer.
 
 ## Prose
 
-One idea per sentence, and one topic per paragraph. Use short, direct
-sentences. Prefer plain language over formal or legalistic phrasing:
-avoid repetition, nested clauses, and em dashes or semicolons.
+Write plain language in the sense of ISO 24495-1: the intended reader
+can find what they need, understand it, and use it. Four defaults
+follow, each with its exception. Judge an edit by whether it serves the
+reader, not by whether the text matches a pattern.
+
+**Relevance.** Start from who reads the text and what they will do with
+it. Keep what serves that use, and put the most important part first.
+
+**Structure.** One topic per paragraph. Parallel items go in a list. Detail
+that most readers skip moves to its own section or gets cut.
+
+**Sentences.** One idea per sentence, usually under 20 words, with a
+concrete subject doing the verb. Prefer the active voice unless the
+actor is unknown or irrelevant. A dash or semicolon often joins two
+ideas in one sentence: split the sentence when it does, keep the
+punctuation when it does not.
+
+**Words.** Prefer the plain word over the formal one, and the verb over its
+noun form ("decide", not "make a decision"). Keep terms the reader
+already knows. Explain or drop the rest.
 
 Terse means concise, not compressed: cut words by removing redundancy and
 simplifying wording, not by packing more logic into each sentence.
 
-These rules apply throughout, including commit messages, code comments,
-and documentation.
+These defaults apply throughout, including commit messages, code
+comments, and documentation. For an on-demand review of existing text,
+see the `plain-review` skill.
 
 ### Commit messages
 
