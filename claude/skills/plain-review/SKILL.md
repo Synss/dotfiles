@@ -38,6 +38,16 @@ early step is rarely fixed by a later one.
 5. **Words.** Is there a plainer word? A verb hiding in a noun? A term
    the reader does not know, left unexplained?
 
+## Process
+
+1. Resolve the target and read it in full.
+2. Walk the checklist above, top to bottom.
+3. Apply the fixes: edit the file, `jj describe` the commit, or write
+   the rewritten text in the reply.
+4. Report one line per class of change, for example "split three
+   two-idea sentences" or "moved the caveat below the steps". Do not
+   list what stayed unchanged.
+
 ## What not to do
 
 - Do not edit for punctuation alone. A dash or semicolon is a prompt to
@@ -49,13 +59,3 @@ early step is rarely fixed by a later one.
 - Do not change meaning. When plainer wording would lose a distinction,
   keep the distinction and say so in the report.
 - Do not touch text outside the target.
-
-## Process
-
-1. Resolve the target and read it in full.
-2. Walk the checklist above, top to bottom.
-3. Apply the fixes: edit the file, `jj describe` the commit, or write
-   the rewritten text in the reply.
-4. Report one line per class of change, for example "split three
-   two-idea sentences" or "moved the caveat below the steps". Do not
-   list what stayed unchanged.

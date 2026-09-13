@@ -29,7 +29,7 @@ to the wording of any comment that stays.
 
 !`jj diff 2>/dev/null || git diff`
 
-## Instructions
+## Process
 
 Read each new or changed comment in the diff as its reader: the next
 person editing this code, with the code in front of them and none of
@@ -39,8 +39,13 @@ today's context. Then check it against the rules above.
    rule. If there are none, say so and stop.
 2. Fix each one in the source file. Delete a comment that only restates
    the code. Otherwise, trim or rewrite it to satisfy the rule it
-   breaks. A comment that fits none of the listed cases but that the
-   reader would miss is a gap in the list, not a violation: keep it and
-   say so in the report.
+   breaks.
 3. Re-run the diff check above. Confirm that none of the listed
    comments remain unfixed.
+
+## What not to do
+
+- Do not remove a comment that fits none of the listed cases but that
+  the reader would miss. It is a gap in the list, not a violation:
+  keep it and say so in the report.
+- Do not touch text outside the diff.

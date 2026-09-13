@@ -78,7 +78,8 @@ simplifying wording, not by packing more logic into each sentence.
 
 These defaults apply throughout, including commit messages, code
 comments, and documentation. For an on-demand review of existing text,
-see the `plain-review` skill.
+see the `plain-review` skill. For a review of a document's Diataxis
+mode, see the `diataxis-review` skill.
 
 ### Commit messages
 
@@ -107,6 +108,9 @@ sentences before it, and drop it if any already states its fact. Wrap at
 72 columns.
 
 No trailing metadata (no Co-Authored-By, no issue refs) unless the user asks.
+
+For an on-demand check of existing commits, see the
+`check-commit-messages` skill.
 
 ### Code comments
 
