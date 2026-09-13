@@ -16,6 +16,17 @@ after it.
 
 Otherwise, follow the global commit message policy.
 
+## Documentation
+
+READMEs in this repo are reference only, in the Diataxis sense: no
+tutorials, no examples, no rationale. The code is readable and works.
+
+Keep them DRY with respect to the code. Never restate what one file
+already says. Document only what spans files or exists in no file.
+
+The reader is one expert who already uses these tools. Write plain
+declarative sentences, one fact each.
+
 ## Neovim LSP
 
 LSP servers are installed by Nix (see `nix/home.nix` packages,
