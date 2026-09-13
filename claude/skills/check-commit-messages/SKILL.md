@@ -1,6 +1,6 @@
 ---
 name: check-commit-messages
-description: Rewrite commit message bodies from their diffs and fix subject-line violations against the prose rules
+description: Rewrite commit messages from their diffs, then check subject length and line wrap
 disable-model-invocation: true
 allowed-tools: Bash(jj:*), Bash(awk:*), Bash(printf:*), Read
 argument-hint: [revset]
@@ -40,16 +40,18 @@ Do not modify the code. Only amend the commit messages in place.
 3. For every commit in the revset:
    - If the subject does not accurately and specifically describe the
      diff, rewrite it.
-   - Rewrite the body from scratch against the diff from step 2. Do not
-     patch the existing body; base it on the full diff, not the
-     commit's current text. Follow the body rules in the "Commit
-     message rules" section in full.
+   - Rewrite the body from scratch against the diff from step 2, not
+     against the commit's current text. Follow the body rules in the
+     "Commit message rules" section in full.
+   - Read the result as its reader: someone running `git log` or
+     `git blame` months from now, with the diff in front of them and
+     none of today's discussion. Apply the "Prose" section to that
+     reading, exceptions included.
 
    Apply each rewrite with `jj describe -r <rev>`.
 4. Run the check below over the same `<revset>`, with the `limit` and
-   `prefix_re` from step 1, to catch subject length, line-wrap,
-   em-dash, and semicolon violations, including in the rewrites just
-   made:
+   `prefix_re` from step 1, to catch subject length and line-wrap
+   violations, including in the rewrites just made:
 
    ```
    jj log -r '<revset>' --no-graph -T 'commit_id.short() ++ "\x01" ++ description ++ "\x02"' | awk -v limit=<N> -v prefix_re='<regex>' -f <path-to-check.awk>
@@ -61,6 +63,5 @@ Do not modify the code. Only amend the commit messages in place.
 5. List each violation from step 4, quoting the offending part and
    naming the rule it breaks. Fix a subject violation with `jj describe
    -r <rev>`, changing only what the rule requires. Leave a compliant
-   subject as is. Fix a body violation by redoing its rewrite from
-   step 3.
+   subject as is. Fix a body violation by rewrapping the line.
 6. Re-run the check from step 4. Confirm no violations remain.
