@@ -8,6 +8,14 @@ Global Claude Code config.
 - `settings.json` is merged into `~/.claude/settings.json` by `just
   sync-claude`, since Claude Code rewrites that file in place.
 
+## Tests
+
+`hooks/*.test.sh` test the hooks. `tests/skills/run.sh` tests the
+`plain-review` and `check-commit-messages` skills against fixtures in a
+scratch directory. `run.sh setup` prints the slash commands to run by
+hand, `run.sh check` asserts the outcome, and `run.sh run` does both
+through `claude -p`.
+
 ## Plugins
 
 Add [superpowers](https://claude.com/plugins/superpowers) from the official
