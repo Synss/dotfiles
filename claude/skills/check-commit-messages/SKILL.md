@@ -24,9 +24,7 @@ If the line above is empty, the revset is `@`.
 See `references/shell-constraints.md`, alongside this file, before
 running any command below.
 
-## Instructions
-
-Do not modify the code. Only amend the commit messages in place.
+## Process
 
 1. Determine the check parameters from the two CLAUDE.md files above:
    the effective subject-length limit (50 unless the project overrides
@@ -62,9 +60,13 @@ Do not modify the code. Only amend the commit messages in place.
    `-v prefix_re='<regex>'` when the project has no prefix exemption.
 5. List each hit from step 4, quoting the offending part and naming
    the rule. Fix a body line by rewrapping it. Fix a subject with `jj
-   describe -r <rev>`, changing only what the rule requires, and leave
-   a compliant subject as is. The subject limit is approximate: a
+   describe -r <rev>`. The subject limit is approximate: a
    subject a few characters over stays if every shorter phrasing is
    less specific. Say so in the report.
 6. Re-run the check from step 4. Confirm nothing remains but the
    subjects kept on purpose.
+
+## What not to do
+
+- Do not modify the code. Only amend the commit messages in place.
+- Do not shorten a compliant subject. Change only what a rule requires.
