@@ -53,7 +53,7 @@ may already know the answer.
 ## Prose
 
 Write plain language in the sense of ISO 24495-1: the intended reader
-can find what they need, understand it, and use it. Four defaults
+can find what they need, understand it, and use it. Five defaults
 follow, each with its exception. Judge an edit by whether it serves the
 reader, not by whether the text matches a pattern.
 
@@ -73,8 +73,9 @@ punctuation when it does not.
 noun form ("decide", not "make a decision"). Keep terms the reader
 already knows. Explain or drop the rest.
 
-Terse means concise, not compressed: cut words by removing redundancy and
-simplifying wording, not by packing more logic into each sentence.
+**Concision.** Be concise without being cryptic, actively remove redundancy,
+qualifiers and unnecessary details. Prefer shorter, simpler wording, but
+stop before the text becomes unclear or incomplete.
 
 These defaults apply throughout, including commit messages, code
 comments, and documentation. For an on-demand review of existing text,
