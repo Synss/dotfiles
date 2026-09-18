@@ -38,10 +38,10 @@ Report what you tried, what you learned from each failure, and what you'd try
 next, then wait for the user's go-ahead. A different flag, prompt, or wording
 for the same hypothesis is not a new one.
 
-Before the first exploratory read/search/command aimed at answering an open
-question (not a routine read needed to carry out already-agreed work), say in
-one line what question you're trying to answer, then stop and wait. The user
-may already know the answer.
+Before the first exploratory read, search, or command aimed at answering an
+open question, say in one line what question you're trying to answer, then
+stop and wait. This doesn't apply to a routine read needed to carry out
+already-agreed work. The user may already know the answer.
 
 ### Verification
 
