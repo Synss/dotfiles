@@ -57,7 +57,7 @@ run() {
 }
 
 main() {
-	check_deps
+	check_deps claude grep
 
 	case "${1:-run}" in
 	setup)
