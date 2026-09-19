@@ -46,7 +46,7 @@ _vcs_chpwd_update() {
 preexec_functions+='_vcs_preexec_update'
 _vcs_preexec_update() {
 	case "$(history $HISTCMD)" in
-		*git*|*jj*) __CURRENT_VCS_VARS_INVALID=1 ;;
+	*git* | *jj*) __CURRENT_VCS_VARS_INVALID=1 ;;
 	esac
 }
 

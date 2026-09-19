@@ -1,6 +1,6 @@
 if command -v eza >/dev/null; then
-    # Note: There's already an `lt` alias.
-    alias tree="eza -T"
+	# Note: There's already an `lt` alias.
+	alias tree="eza -T"
 fi
 
 if command -v photoflare >/dev/null; then
@@ -10,7 +10,7 @@ elif command -v pinta >/dev/null; then
 fi
 
 if command -v rg >/dev/null; then
-    alias ack=rg
+	alias ack=rg
 fi
 
 if command -v xdg-open >/dev/null; then

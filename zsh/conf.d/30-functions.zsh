@@ -1,1 +1,1 @@
-function s { [ $# = 0 ] && sudo -s || sudo "$@" }
+function s { [ $# = 0 ] && sudo -s || sudo "$@"; }
