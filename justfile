@@ -13,9 +13,7 @@ bootstrap: check-nix
 
 [private]
 check-nix:
-    #!/usr/bin/env bash
-    set -euo pipefail
-
+    #!/usr/bin/env -S bash -euo pipefail
     if ! command -v nix >/dev/null 2>&1; then
         echo "--- Installing Nix via Determinate Systems..."
         curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
@@ -33,9 +31,7 @@ update:
 
 [private]
 update-overlays:
-    #!/usr/bin/env bash
-    set -euo pipefail
-
+    #!/usr/bin/env -S bash -euo pipefail
     update_pkg() {
         local nix_file="$1"
         local npm_pkg="$2"
@@ -80,8 +76,7 @@ switch:
     home-manager switch --flake ".#{{ hostname }}"
 
 sync-claude:
-    #!/usr/bin/env bash
-    set -euo pipefail
+    #!/usr/bin/env -S bash -euo pipefail
     tmp=$(mktemp)
     jq -s '.[0] * .[1]' ~/.claude/settings.json claude/settings.json > "$tmp"
     mv "$tmp" ~/.claude/settings.json
