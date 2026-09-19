@@ -10,7 +10,7 @@ Global Claude Code config.
 
 ## Tests
 
-`hooks/*.test.sh` test the hooks. `tests/skills/run.sh` runs one
+`tests/hooks/*.sh` test the hooks. `tests/skills/run.sh` runs one
 suite per skill against fixtures in a scratch directory; see
 [`tests/skills/README.md`](tests/skills/README.md) for the suite
 layout and commands.

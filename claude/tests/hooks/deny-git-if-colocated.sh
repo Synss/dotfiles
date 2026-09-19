@@ -3,7 +3,7 @@
 # this colocated jj/git repo for the bad-case tests to trigger.
 set -euo pipefail
 
-hook="$(dirname "$0")/deny-git-if-colocated.pl"
+hook="$(cd "$(dirname "$0")" && jj root)/claude/hooks/deny-git-if-colocated.pl"
 fail=0
 
 payload() {
