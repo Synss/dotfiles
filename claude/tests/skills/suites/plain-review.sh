@@ -25,6 +25,13 @@ setup() {
 	cp "$fixtures"/*.md "$SCRATCH_DIR/"
 }
 
+invoke_claude() {
+	for f in install.md safety.md; do
+		printf "TEST %s [%s]\n" "$(basename "${0%.sh}")" "$f"
+		run_claude_cmd "$SCRATCH_DIR" "/plain-review $f" "$SCRATCH_DIR/logs/$f.log"
+	done
+}
+
 check() {
 	printf "CHECK %s\n" "$(basename "${0%.sh}")"
 	[ -d "$SCRATCH_DIR" ] || {
@@ -42,9 +49,7 @@ check() {
 
 run() {
 	setup
-	for f in install.md safety.md; do
-		run_claude_cmd "$SCRATCH_DIR" "/plain-review $f" "$SCRATCH_DIR/logs/$f.log"
-	done
+	invoke_claude
 	local status=0
 	check || status=$?
 	scratch_cleanup "$SCRATCH_DIR"
