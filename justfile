@@ -112,3 +112,4 @@ lint-nix:
 lint-shell:
     #!/usr/bin/env -S nix develop --command bash -euo pipefail
     shellcheck -- $(git ls-files '*.sh')
+    shfmt -w .
