@@ -1,5 +1,5 @@
 bindkey -v
-KEYTIMEOUT=5	# 50ms to complete a key sequence; reduces Esc lag in vi mode
+KEYTIMEOUT=5 # 50ms to complete a key sequence; reduces Esc lag in vi mode
 
 # History navigation
 bindkey "^P" history-incremental-search-backward

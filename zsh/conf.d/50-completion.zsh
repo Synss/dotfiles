@@ -1,12 +1,11 @@
 # Ref https://thevaluable.dev/zsh-completion-guide-examples/
 
 if [[ $OSTYPE == darwin* ]]; then
-    __CACHE_DIR="$HOME/Library/Caches/zsh"
+	__CACHE_DIR="$HOME/Library/Caches/zsh"
 else
-    __CACHE_DIR="${XDG_CACHE_HOME:-$HOME/.cache}/zsh"
+	__CACHE_DIR="${XDG_CACHE_HOME:-$HOME/.cache}/zsh"
 fi
 [[ -d "$__CACHE_DIR" ]] || mkdir "$__CACHE_DIR"
-
 
 # --- options ---
 
@@ -30,6 +29,5 @@ zstyle ':completion:*' cache-path "${__CACHE_DIR}/.zcompcache"
 
 # Menu after <Tab><Tab>
 zstyle ':completion:*' menu select
-
 
 unset __CACHE_DIR

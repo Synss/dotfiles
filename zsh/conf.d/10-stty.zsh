@@ -2,6 +2,6 @@
 # start (XON) - ^Q - resume terminal
 # rprnt -       ^R
 stty \
-    stop undef \
-    start undef \
-    rprnt undef
+	stop undef \
+	start undef \
+	rprnt undef
