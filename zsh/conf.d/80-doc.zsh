@@ -8,7 +8,7 @@ doc() {
   case "$1" in
     ''|-l)
       local -a listing
-      local -i width=0
+      local -i width=0 i
       for page in ${DOTFILES_DOC}/**/*.md(N.); do
         name="${${page#$DOTFILES_DOC/}%.md}"
         (( ${#name} > width )) && width=${#name}
@@ -18,8 +18,8 @@ doc() {
         done < "$page"
         listing+=("$name" "$title")
       done
-      for name title in "${listing[@]}"; do
-        printf "%-${width}s  %s\n" "$name" "$title"
+      for ((i = 1; i <= $#listing; i += 2)); do
+        printf "%-${width}s  %s\n" "$listing[i]" "$listing[i + 1]"
       done
       ;;
     -k)
