@@ -47,16 +47,6 @@ setup() {
 		jj log -r '@-' --no-graph -T 'change_id.short()' >"$SCRATCH_DIR/retry-rev"
 		jj log -r '@--' --no-graph -T 'change_id.short()' >"$SCRATCH_DIR/config-rev"
 	)
-
-	local revset
-	revset=$(revset)
-	printf '%s\n' \
-		"Scratch dir: $SCRATCH_DIR" \
-		"" \
-		"In Claude Code, from $repo, run:" \
-		"  /check-commit-messages $revset" \
-		"" \
-		"Then: $0 check"
 }
 
 check() {
@@ -97,7 +87,7 @@ check() {
 }
 
 run() {
-	setup >/dev/null
+	setup
 	local revset
 	revset=$(revset)
 	run_claude_cmd "$repo" "/check-commit-messages $revset" "$SCRATCH_DIR/logs/check-commit-messages.log"
@@ -111,7 +101,19 @@ main() {
 	check_deps
 
 	case "${1:-run}" in
-	setup | check | run) "$1" ;;
+	setup)
+		setup
+		local revset
+		revset=$(revset)
+		printf '%s\n' \
+			"Scratch dir: $SCRATCH_DIR" \
+			"" \
+			"In Claude Code, from $repo, run:" \
+			"  /check-commit-messages $revset" \
+			"" \
+			"Then: $0 check"
+		;;
+	check | run) "$1" ;;
 	*)
 		echo "usage: $0 setup|check|run"
 		exit 2

@@ -22,15 +22,6 @@ fixtures="$here/fixtures/$SUITE_NAME"
 setup() {
 	scratch_reset "$SCRATCH_DIR"
 	cp "$fixtures"/*.md "$SCRATCH_DIR/"
-
-	printf '%s\n' \
-		"Scratch dir: $SCRATCH_DIR" \
-		"" \
-		"In Claude Code, run:" \
-		"  /plain-review $SCRATCH_DIR/install.md" \
-		"  /plain-review $SCRATCH_DIR/safety.md" \
-		"" \
-		"Then: $0 check"
 }
 
 check() {
@@ -48,7 +39,7 @@ check() {
 }
 
 run() {
-	setup >/dev/null
+	setup
 	for f in install.md safety.md; do
 		run_claude_cmd "$SCRATCH_DIR" "/plain-review $f" "$SCRATCH_DIR/logs/$f.log"
 	done
@@ -62,7 +53,18 @@ main() {
 	check_deps
 
 	case "${1:-run}" in
-	setup | check | run) "$1" ;;
+	setup)
+		setup
+		printf '%s\n' \
+			"Scratch dir: $SCRATCH_DIR" \
+			"" \
+			"In Claude Code, run:" \
+			"  /plain-review $SCRATCH_DIR/install.md" \
+			"  /plain-review $SCRATCH_DIR/safety.md" \
+			"" \
+			"Then: $0 check"
+		;;
+	check | run) "$1" ;;
 	*)
 		echo "usage: $0 setup|check|run"
 		exit 2
