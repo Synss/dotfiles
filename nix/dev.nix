@@ -6,6 +6,7 @@ pkgs.mkShell {
     lua-language-server
     nixfmt-tree
     shellcheck
+    shfmt
     statix
   ];
 }
