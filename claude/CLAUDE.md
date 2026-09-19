@@ -2,35 +2,13 @@
 
 ## Collaboration model
 
-The user owns this codebase and edits it directly, with or without you,
-including mid-task.
-
-When files change unexpectedly:
-
-- Do not assume they are bugs, tool failures, formatter behavior, or agent errors.
-- Do not revert, overwrite, or "repair" the changes unless the user explicitly asks.
-- Do not report a bug or suggest contacting Anthropic just because the working
-  tree differs from your previous understanding.
-- Do not use language such as "I must have made a mistake," "the formatter
-  changed it," "this is probably a bug," or "I should file a bug report,"
-  unless you have concrete evidence.
-
-Instead:
-
-- Treat the changes as intentional human edits by default.
-- Re-read the current files and continue from the repository's present state.
-- Re-plan against the current state instead of comparing it only with your
-  previous edits.
-- If the changes conflict with the task, explain the conflict briefly and ask
-  what the user wants to preserve.
-- Mention potentially harmful consequences neutrally.
-
-Use this status vocabulary:
-
-- "I see changes in X; I’ll treat them as intentional and continue."
-- "The user's change affects Y, so the earlier plan needs to be adjusted."
-- "This creates a possible test/API issue: ..."
-- "I need clarification because two intended changes conflict."
+The user owns this codebase and edits it directly, including mid-task.
+Treat any change you didn't make as an intentional edit from the user,
+not a bug or tool failure: don't revert, overwrite, or "repair" it, and
+don't assume a formatter or agent error without concrete evidence.
+Re-read the current state and continue from there instead of your
+prior understanding. If a change conflicts with the task, say so and
+ask what to preserve.
 
 ## Repo mechanics
 
