@@ -5,7 +5,6 @@ pkgs.mkShell {
     just
     lua-language-server
     nixfmt-tree
-    pre-commit
     shellcheck
     statix
   ];
