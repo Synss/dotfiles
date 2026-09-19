@@ -10,7 +10,6 @@ default:
 
 bootstrap: check-nix
     nix run home-manager -- switch --flake ".#{{ hostname }}"
-    pre-commit install
 
 [private]
 check-nix:
@@ -30,7 +29,6 @@ update:
     nix flake update
     just build
     just switch
-    just update-linters
     jj commit -m "nix: update flake and tools"
 
 [private]
@@ -91,12 +89,27 @@ sync-claude:
 check-lsp:
     nvim --headless -c "checkhealth vim.lsp" -c "qa!"
 
-lint:
-    pre-commit run
-
-lint-all:
-    pre-commit run --all-files
+[private]
+lint-just:
+    nix develop --command just --fmt --unstable
 
 [private]
-update-linters:
-    pre-commit autoupdate
+lint-lua:
+    nix develop --command lua-language-server --check .
+
+[private]
+lint-nix:
+    nix develop --command treefmt flake.nix nix/
+    nix develop --command statix check --ignore 'vim/**' .
+    nix develop --command deadnix --fail flake.nix nix/
+    nix flake check
+
+[private]
+lint-shell:
+    nix develop --command shellcheck -- $(jj file list | grep '\.sh$')
+
+lint-all:
+    @just lint-just
+    @just lint-lua
+    @just lint-nix
+    @just lint-shell
