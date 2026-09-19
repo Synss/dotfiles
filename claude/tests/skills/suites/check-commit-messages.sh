@@ -27,6 +27,7 @@ revset() {
 }
 
 setup() {
+	printf "SETUP %s\n" "$(basename "${0%.sh}")"
 	scratch_reset "$SCRATCH_DIR"
 	mkdir -p "$repo/.claude"
 	cp "$fixtures/CLAUDE.md" "$repo/.claude/CLAUDE.md"
@@ -50,6 +51,7 @@ setup() {
 }
 
 check() {
+	printf "CHECK %s\n" "$(basename "${0%.sh}")"
 	[ -d "$SCRATCH_DIR" ] || {
 		echo "no scratch dir at $SCRATCH_DIR, run '$0 setup' first"
 		exit 1

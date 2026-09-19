@@ -24,11 +24,13 @@ SCRATCH_DIR="$(scratch_dir "$SUITE_NAME")"
 fixtures="$here/fixtures/$SUITE_NAME"
 
 setup() {
+	printf "SETUP %s\n" "$(basename "${0%.sh}")"
 	scratch_reset "$SCRATCH_DIR"
 	cp "$fixtures"/*.md "$SCRATCH_DIR/"
 }
 
 check() {
+	printf "CHECK %s\n" "$(basename "${0%.sh}")"
 	[ -d "$SCRATCH_DIR" ] || {
 		echo "no scratch dir at $SCRATCH_DIR, run '$0 setup' first"
 		exit 1
