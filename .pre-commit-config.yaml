@@ -46,7 +46,7 @@ repos:
 
       - id: shellcheck
         name: shellcheck
-        entry: nix develop --command shellcheck
+        entry: nix develop --command shellcheck -x
         language: system
         files: \.sh$
 
