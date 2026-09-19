@@ -24,6 +24,17 @@ assert_grep() {
 	fi
 }
 
+assert_grep_re() {
+	local label=$1 pattern=$2 file=$3
+	if grep -qiE -- "$pattern" "$file"; then
+		echo "PASS $label"
+	else
+		echo "FAIL $label: /$pattern/i missing from $file"
+		fail_context
+		fail=1
+	fi
+}
+
 assert_no_grep() {
 	local label=$1 pattern=$2 file=$3
 	if grep -qF -- "$pattern" "$file"; then
@@ -35,14 +46,15 @@ assert_no_grep() {
 	fi
 }
 
-assert_grep_re() {
-	local label=$1 pattern=$2 file=$3
-	if grep -qiE -- "$pattern" "$file"; then
-		echo "PASS $label"
-	else
-		echo "FAIL $label: /$pattern/i missing from $file"
+# String analog of assert_no_grep, for a captured value rather than a file.
+assert_no_grep_str() {
+	local label=$1 pattern=$2 value=$3
+	if grep -qF -- "$pattern" <<<"$value"; then
+		echo "FAIL $label: '$pattern' found in: $value"
 		fail_context
 		fail=1
+	else
+		echo "PASS $label"
 	fi
 }
 
@@ -64,6 +76,18 @@ assert_unchanged() {
 		echo "PASS $label"
 	else
 		echo "FAIL $label: $file was edited but should have been left alone"
+		fail_context
+		fail=1
+	fi
+}
+
+# Fails if $2 is non-empty; used to assert a command produced no output.
+assert_empty() {
+	local label=$1 value=$2
+	if [ -z "$value" ]; then
+		echo "PASS $label"
+	else
+		echo "FAIL $label: $value"
 		fail_context
 		fail=1
 	fi
