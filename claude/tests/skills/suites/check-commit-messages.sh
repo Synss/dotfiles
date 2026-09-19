@@ -50,6 +50,13 @@ setup() {
 	)
 }
 
+invoke_claude() {
+	local revset
+	revset=$(revset)
+	printf "TEST %s\n" "$(basename "${0%.sh}")"
+	run_claude_cmd "$repo" "/check-commit-messages $revset" "$SCRATCH_DIR/logs/check-commit-messages.log"
+}
+
 check() {
 	printf "CHECK %s\n" "$(basename "${0%.sh}")"
 	[ -d "$SCRATCH_DIR" ] || {
@@ -78,9 +85,7 @@ check() {
 
 run() {
 	setup
-	local revset
-	revset=$(revset)
-	run_claude_cmd "$repo" "/check-commit-messages $revset" "$SCRATCH_DIR/logs/check-commit-messages.log"
+	invoke_claude
 	local status=0
 	check || status=$?
 	scratch_cleanup "$SCRATCH_DIR"
