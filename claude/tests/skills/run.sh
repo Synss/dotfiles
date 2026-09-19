@@ -3,8 +3,6 @@
 set -euo pipefail
 
 here="$(cd "$(dirname "$0")" && pwd)"
-# shellcheck source=claude/tests/skills/lib/deps.sh
-source "$here/lib/deps.sh"
 
 suites=(plain-review diataxis-review check-commit-messages)
 
@@ -24,8 +22,6 @@ is_suite() {
 }
 
 main() {
-	check_deps
-
 	case "${1:-}" in
 	setup | check | run)
 		local action=$1 fail=0 s

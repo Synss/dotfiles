@@ -93,7 +93,7 @@ run() {
 }
 
 main() {
-	check_deps
+	check_deps claude jj grep awk
 
 	case "${1:-run}" in
 	setup)
