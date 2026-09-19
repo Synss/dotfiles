@@ -1,0 +1,4 @@
+tool: Read config from /etc first
+
+The user-level file shadowed the system one — the reverse of what every
+other tool on the box does.
