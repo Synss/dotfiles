@@ -65,25 +65,13 @@ check() {
 
 	revset=$(revset)
 	desc=$(cd "$repo" && jj log -r "$retry_rev" --no-graph -T description)
-	if grep -qF ';' <<<"$desc"; then
-		echo "FAIL two-idea semicolon split (commit): $desc"
-		fail_context
-		fail=1
-	else
-		echo "PASS two-idea semicolon split (commit)"
-	fi
+	assert_no_grep_str "two-idea semicolon split (commit)" ";" "$desc"
 
 	out=$(cd "$repo" && jj log -r "$revset" --no-graph \
 		-T 'commit_id.short() ++ "\x01" ++ description ++ "\x02"' |
 		awk -v limit=50 -v prefix_re='^[a-z*]+: ' -f "$awk_check" |
 		grep -v '^COMMIT ' || true)
-	if [ -n "$out" ]; then
-		echo "FAIL awk check clean: $out"
-		fail_context
-		fail=1
-	else
-		echo "PASS awk check clean"
-	fi
+	assert_empty "awk check clean" "$out"
 
 	return "$fail"
 }
