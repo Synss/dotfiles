@@ -1,0 +1,4 @@
+tool: Retry the connect on EAGAIN
+
+The kernel returns EAGAIN under load; the daemon treated it as fatal and
+exited.

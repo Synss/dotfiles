@@ -10,11 +10,10 @@ Global Claude Code config.
 
 ## Tests
 
-`hooks/*.test.sh` test the hooks. `tests/skills/run.sh` tests the
-`plain-review`, `check-commit-messages`, and `diataxis-review` skills
-against fixtures in a scratch directory. `run.sh setup` prints the
-slash commands to run by hand, `run.sh check` asserts the outcome, and
-`run.sh run` does both through `claude -p`.
+`hooks/*.test.sh` test the hooks. `tests/skills/run.sh` runs one
+suite per skill against fixtures in a scratch directory; see
+[`tests/skills/README.md`](tests/skills/README.md) for the suite
+layout and commands.
 
 ## Plugins
 
