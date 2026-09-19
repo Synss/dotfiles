@@ -1,5 +1,5 @@
 ---
-name: pre-commit
+name: lint-all
 
 on:
   pull_request:
@@ -7,7 +7,7 @@ on:
     branches: [main]
 
 jobs:
-  pre-commit:
+  lint-all:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
@@ -15,5 +15,5 @@ jobs:
       - uses: DeterminateSystems/magic-nix-cache-action@main
         with:
           use-flakehub: false
-      - name: Run pre-commit
-        run: nix develop --command pre-commit run --all-files
+      - name: Run QA
+        run: nix develop --command just lint-all
