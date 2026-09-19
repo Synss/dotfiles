@@ -17,4 +17,5 @@
   home = {
     inherit stateVersion username homeDirectory;
   };
+  xdg.configFile."nix/nix.conf".text = "accept-flake-config = true\n";
 }
