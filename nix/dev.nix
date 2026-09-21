@@ -28,6 +28,7 @@ pkgs.mkShell {
     just
     lua-language-server
     nixfmt-tree
+    perl
     ripgrep # for tests/doc.bats
     shellcheck
     shfmt

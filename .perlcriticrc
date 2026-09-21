@@ -1,0 +1,2 @@
+# PPI lexes sub signatures (use v5.36) as prototypes; this policy can't tell them apart.
+[-Subroutines::ProhibitSubroutinePrototypes]

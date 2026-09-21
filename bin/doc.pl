@@ -4,12 +4,9 @@
 # Invoked by the doc() launcher in zsh/conf.d/80-doc.zsh, which passes
 # the docs directory as the first argument and GLOW_STYLE as an
 # environment variable.
-use v5.20;
-use warnings;
+use v5.36;
 use utf8;
 use autodie;
-use feature 'signatures';
-no warnings 'experimental::signatures';
 
 use File::Basename qw(basename);
 use File::Find;
