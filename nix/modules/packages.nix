@@ -16,6 +16,7 @@
     # programming languages
     bazelisk
     nodejs
+    perl
     pnpm
     rustup
     uv

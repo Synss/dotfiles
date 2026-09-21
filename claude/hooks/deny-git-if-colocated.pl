@@ -5,7 +5,7 @@
 # where jj and git are colocated (.jj next to .git), jj is the source of
 # truth and Claude must use the jj equivalent instead of mutating git
 # commands.
-use strict;
+use v5.36;
 use warnings;
 use JSON::PP qw(decode_json encode_json);
 
@@ -51,8 +51,7 @@ sub main {
     print encode_json($response), "\n";
 }
 
-sub parse_command {
-    my ($input) = @_;
+sub parse_command ($input) {
     my $data = eval { decode_json($input) };
     return unless ref($data) eq 'HASH';
 
@@ -65,8 +64,7 @@ sub parse_command {
     return $command;
 }
 
-sub build_mutating_git_command_regex {
-    my @commands     = @_;
+sub build_mutating_git_command_regex (@commands) {
     my $git_commands = join '|', map { quotemeta } @commands;
 
     return qr{
@@ -78,12 +76,11 @@ sub build_mutating_git_command_regex {
     }mx;
 }
 
-sub is_mutating_git_command {
-    my ( $command, $mutating_git_commands ) = @_;
+sub is_mutating_git_command ( $command, $mutating_git_commands ) {
     return $command =~ $mutating_git_commands;
 }
 
-sub find_repo_root {
+sub find_repo_root() {
     my $repo_root = `git rev-parse --show-toplevel 2>/dev/null`;
     chomp $repo_root;
     return unless $? == 0;
@@ -92,13 +89,11 @@ sub find_repo_root {
     return $repo_root;
 }
 
-sub is_colocated_repo {
-    my ($repo_root) = @_;
+sub is_colocated_repo ($repo_root) {
     return -d "$repo_root/.jj";
 }
 
-sub build_denial_response {
-    my @commands = @_;
+sub build_denial_response (@commands) {
     my $reason =
         'Colocated jj/git repo (.jj next to .git) - jj is authoritative. '
       . 'Use the jj equivalent instead of a mutating git command ('
