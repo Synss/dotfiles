@@ -25,6 +25,8 @@ pkgs.mkShell {
   packages = with pkgs; [
     bats
     deadnix
+    jujutsu # for deny-git-if-colocated.bats
+    jq # for deny-git-if-colocated.bats
     just
     lua-language-server
     nixfmt-tree
