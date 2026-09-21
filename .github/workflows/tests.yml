@@ -17,3 +17,5 @@ jobs:
           use-flakehub: false
       - name: Test 'bin/doc.pl'
         run: nix develop --command bats ./tests/doc.bats
+      - name: Test 'deny-git-if-colocated.pl'
+        run: nix develop --command bats ./claude/tests/hooks/deny-git-if-colocated.bats
