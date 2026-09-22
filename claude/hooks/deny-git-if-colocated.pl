@@ -6,7 +6,6 @@
 # truth and Claude must use the jj equivalent instead of mutating git
 # commands.
 use v5.36;
-use warnings;
 use JSON::PP qw(decode_json encode_json);
 
 use constant GIT_MUTATING_COMMANDS => qw(
