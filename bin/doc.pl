@@ -24,8 +24,11 @@ sub main() {
     Getopt::Long::Configure(qw(pass_through));
     my ( $list, $pattern, $help );
     return 2
-      unless GetOptions( 'l' => \$list, 'k=s' => \$pattern,
-        'h|help' => \$help );
+      unless GetOptions(
+        'l'      => \$list,
+        'k=s'    => \$pattern,
+        'h|help' => \$help
+      );
 
     my %dispatch = (
         help => sub {
