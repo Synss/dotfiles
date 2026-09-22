@@ -7,7 +7,7 @@ setup() {
 	bats_load_library 'bats-file'
 	bats_load_library 'bats-support'
 
-	DIR="$( cd "$BATS_TEST_DIRNAME" >/dev/null 2>&1 && pwd )"
+	DIR="$(cd "$BATS_TEST_DIRNAME" >/dev/null 2>&1 && pwd)"
 	PATH="$DIR/..:$PATH"
 	DOC="./bin/doc.pl $DIR/../docs/"
 }
@@ -23,11 +23,11 @@ assert_same_output() {
 _mock_glow() {
 	local tmp_bin="$BATS_TEST_TMPDIR/bin"
 	mkdir -p "$tmp_bin"
-	cat >"$tmp_bin/glow" <<- 'EOF'
-	#!/usr/bin/env bash
-	#
-	# Glow requires a TTY.
-	cat "${@: -1}"
+	cat >"$tmp_bin/glow" <<-'EOF'
+		#!/usr/bin/env bash
+		#
+		# Glow requires a TTY.
+		cat "${@: -1}"
 	EOF
 	chmod +x "$tmp_bin/glow"
 	PATH="$tmp_bin:$PATH"
