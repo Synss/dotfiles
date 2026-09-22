@@ -54,7 +54,10 @@ sub main() {
         show => sub {
             my $path = resolve_doc( $docdir, $ARGV[0] );
             return 1 unless defined $path;
-            show_doc($path);
+            show_doc( $path,
+                defined $ENV{GLOW_STYLE}
+                ? ( '--style', $ENV{GLOW_STYLE} )
+                : () );
             return 0;
         },
     }->{ mode( $list, $pattern, $help, @ARGV ) }->();
@@ -116,9 +119,7 @@ sub resolve_doc ( $docdir, $name ) {
     return $found[0];
 }
 
-sub show_doc ($path) {
-    my @style =
-      defined $ENV{GLOW_STYLE} ? ( '--style', $ENV{GLOW_STYLE} ) : ();
+sub show_doc ( $path, @style ) {
     exec 'glow', @style, '--pager', $path;
 }
 
