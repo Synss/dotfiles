@@ -6,7 +6,7 @@
 # environment variable.
 use v5.36;
 use utf8;
-use autodie;
+use autodie qw(:default exec);
 
 use File::Basename qw(basename);
 use File::Find;
@@ -97,7 +97,6 @@ sub search_docs ( $docdir, $pattern, @extra_args ) {
     chdir $docdir;
     exec 'rg', '--smart-case', '--heading', '--line-number',
       $pattern, @extra_args, '--glob', '*.md', '.';
-    die "doc: failed to exec rg: $!\n";
 }
 
 sub resolve_doc ( $docdir, $name ) {
@@ -123,7 +122,6 @@ sub show_doc ($path) {
     my @style =
       defined $ENV{GLOW_STYLE} ? ( '--style', $ENV{GLOW_STYLE} ) : ();
     exec 'glow', @style, '--pager', $path;
-    die "doc: failed to exec glow: $!\n";
 }
 
 sub find_markdown_files ($dir) {
