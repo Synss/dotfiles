@@ -127,10 +127,13 @@ sub show_doc ($path) {
 sub find_markdown_files ($dir) {
     my @files;
     find(
-        sub {
-            if ( -f && !-l && /\.md$/ ) {
+        {
+            wanted => sub {
+                return unless -f;
+                return unless /\.md$/;
                 push @files, $File::Find::name;
-            }
+            },
+            no_chdir => 1,
         },
         $dir
     );
