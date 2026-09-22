@@ -147,12 +147,20 @@ sub doc_name ( $docdir, $path ) {
 sub doc_title ($path) {
     ## no critic (InputOutput::RequireBriefOpen)
     # $fh is lexical: it closes on scope exit.
+    my @title;
     open my $fh, '<', $path;
     while ( my $line = <$fh> ) {
         chomp $line;
-        return substr( $line, 2 ) if $line =~ /^\# /;
+        if ( !@title ) {
+            push @title, substr( $line, 2 ) if $line =~ /^\# /;
+        }
+        elsif (@title) {
+            push @title, substr( $line, 3 )
+              if $line =~ /^\#{2} /
+              && substr( $line, 3 ) ne 'See Also';
+        }
     }
-    return '';
+    return join " - ", @title;
 }
 
 exit main();
