@@ -6,6 +6,7 @@
 }:
 {
   imports = [
+    ./modules/gui-apps.nix
     ./modules/packages.nix
     ./modules/neovim.nix
     ./modules/git.nix
