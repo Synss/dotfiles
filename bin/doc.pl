@@ -30,7 +30,7 @@ sub main() {
         'h|help' => \$help
       );
 
-    my %dispatch = (
+    return {
         help => sub {
             print_usage();
             return 0;
@@ -57,12 +57,10 @@ sub main() {
             show_doc($path);
             return 0;
         },
-    );
-
-    return $dispatch{ dispatch_mode( $list, $pattern, $help, @ARGV ) }->();
+    }->{ mode( $list, $pattern, $help, @ARGV ) }->();
 }
 
-sub dispatch_mode ( $list, $pattern, $help, @args ) {
+sub mode ( $list, $pattern, $help, @args ) {
     return 'help'            if $help;
     return 'search'          if defined $pattern;
     return 'list'            if $list || !@args;
