@@ -59,15 +59,15 @@ sub main() {
         },
     );
 
-    return $dispatch{ dispatch_mode( $list, $pattern, $help ) }->();
+    return $dispatch{ dispatch_mode( $list, $pattern, $help, @ARGV ) }->();
 }
 
-sub dispatch_mode ( $list, $pattern, $help ) {
+sub dispatch_mode ( $list, $pattern, $help, @args ) {
     return 'help'            if $help;
     return 'search'          if defined $pattern;
-    return 'list'            if $list || !@ARGV;
-    return 'missing_pattern' if $ARGV[0] eq '-k';
-    return 'unknown_option'  if $ARGV[0] =~ /^-/;
+    return 'list'            if $list || !@args;
+    return 'missing_pattern' if $args[0] eq '-k';
+    return 'unknown_option'  if $args[0] =~ /^-/;
     return 'show';
 }
 
