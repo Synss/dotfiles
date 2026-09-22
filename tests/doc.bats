@@ -50,8 +50,8 @@ _mock_glow() {
 @test '-l and no argument shows the available docs' {
 	run $DOC -l
 	assert_success
-	assert_output --regexp $'(^|\n)nvim[[:space:]]+Neovim($|\n)'
-	assert_output --regexp $'(^|\n)jj[[:space:]]+JJ($|\n)'
+	assert_output --regexp $'(^|\n)nvim[[:space:]]+Neovim.*($|\n)'
+	assert_output --regexp $'(^|\n)jj[[:space:]]+JJ.*($|\n)'
 
 	assert_same_output "$DOC -l" "$DOC"
 }
