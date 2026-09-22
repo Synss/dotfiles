@@ -50,7 +50,7 @@ update-overlays:
         local new_hash
         new_hash=$(nix store prefetch-file --hash-type sha256 --json "$url" | jq -r '.hash')
 
-        perl -i -pe "s/version = \"$current\"/version = \"$latest\"/;
+        perl -i -pe "s/version = \"\Q$current\E\"/version = \"$latest\"/;
                      s|hash = \"sha256-[^\"]*\"|hash = \"$new_hash\"|" "$nix_file"
 
         echo "bumped $npm_pkg $current → $latest"
