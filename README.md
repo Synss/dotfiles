@@ -16,13 +16,14 @@ git and jj are configured in `nix/home.nix`.
 Run
 
 ```sh
-./bootstrap-just.sh bootstrap
+./bin/bootstrap-just.sh bootstrap
 ```
 
 to setup a new machine. `justfile` has the targets for everything else.
 
 ## Layout
 
+- `bin/` — executables used in this repo.
 - `claude/` — see [`claude/README.md`](claude/README.md).
 - `docs/` — cheat-sheets, call with `doc` on the commandline.
 - `nix/` — flake modules and package list. See [`nix/README.md`](nix/README.md).
