@@ -97,15 +97,16 @@ sub list_docs ($docdir) {
 sub search_docs ( $docdir, $pattern, @extra_args ) {
     chdir $docdir;
     exec 'rg', '--smart-case', '--heading', '--line-number',
-      $pattern, @extra_args, '--glob', '*.md', '.';
+      $pattern, @extra_args, '--iglob', '*.md', '.';
 }
 
 sub resolve_doc ( $docdir, $name ) {
     my $exact = "$docdir/$name.md";
     return $exact if -f $exact;
 
-    my $basename = basename($name) . '.md';
-    my @found = grep { basename($_) eq $basename } find_markdown_files($docdir);
+    my $basename = basename($name);
+    my @found    = grep { basename($_) =~ s{\.md\z}{}ir eq $basename }
+      find_markdown_files($docdir);
 
     if ( @found == 0 ) {
         say STDERR "doc: no reference for '$name'";
@@ -129,7 +130,7 @@ sub find_markdown_files ($dir) {
         {
             wanted => sub {
                 return unless -f;
-                return unless /\.md$/;
+                return unless /\.md\z/i;
                 push @files, $File::Find::name;
             },
             no_chdir => 1,
@@ -141,7 +142,7 @@ sub find_markdown_files ($dir) {
 
 sub doc_name ( $docdir, $path ) {
     my $name = File::Spec->abs2rel( $path, $docdir );
-    $name =~ s{\.md$}{};
+    $name =~ s{\.md\z}{}i;
     return $name;
 }
 
