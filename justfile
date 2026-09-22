@@ -88,6 +88,7 @@ lint-all:
     @just lint-just
     @just lint-lua
     @just lint-nix
+    @just lint-perl
     @just lint-shell
 
 [private]
@@ -107,6 +108,12 @@ lint-nix:
     statix check --ignore 'vim/**' .
     deadnix --fail flake.nix nix/
     nix flake check
+
+[private]
+lint-perl:
+    #!/usr/bin/env -S nix develop --command bash -euo pipefail
+    perlcritic .
+    git ls-files '*.pl' | xargs -n1 perltidy --assert-tidy -st -se >/dev/null
 
 [private]
 lint-shell:
