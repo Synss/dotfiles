@@ -8,8 +8,8 @@ hostname := `hostname -s`
 default:
     @just --list
 
-bootstrap: check-nix
-    nix run home-manager -- switch --flake ".#{{ hostname }}"
+bootstrap host=hostname: check-nix
+    nix run home-manager -- switch --flake ".#{{ host }}"
 
 [private]
 check-nix:
@@ -17,7 +17,8 @@ check-nix:
     command -v nix >/dev/null 2>&1 && exit 0
 
     echo "--- Instareturnlling Nix via Determinate Systems..."
-    curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
+    curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix\
+            | sh -s -- install ${CI:+--no-confirm}
     echo '--- Nix installed.  Restart your shell with "exec $SHELL -l".'
     exit 1
 
