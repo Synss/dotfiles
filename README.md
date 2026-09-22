@@ -13,13 +13,12 @@ git and jj are configured in `nix/home.nix`.
 
 ## Installation
 
-Run
+To set up a new machine, add an entry to [`nix/hosts.nix`](nix/hosts.nix),
+then run:
 
 ```sh
-./bin/bootstrap-just.sh bootstrap
+./bin/bootstrap.sh
 ```
-
-to setup a new machine. `justfile` has the targets for everything else.
 
 ## Layout
 

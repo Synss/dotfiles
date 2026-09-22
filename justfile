@@ -8,20 +8,6 @@ hostname := `hostname -s`
 default:
     @just --list
 
-bootstrap host=hostname: check-nix
-    nix run home-manager -- switch --flake ".#{{ host }}"
-
-[private]
-check-nix:
-    #!/usr/bin/env -S bash -euo pipefail
-    command -v nix >/dev/null 2>&1 && exit 0
-
-    echo "--- Instareturnlling Nix via Determinate Systems..."
-    curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix\
-            | sh -s -- install ${CI:+--no-confirm}
-    echo '--- Nix installed.  Restart your shell with "exec $SHELL -l".'
-    exit 1
-
 update:
     [ "$(jj log -r @ --no-graph -T 'empty')" = "false" ] && jj new || true
     just update-overlays

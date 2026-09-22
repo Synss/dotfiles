@@ -1,6 +1,11 @@
 name: bootstrap
 
 on:
+  pull_request:
+    branches: [main]
+    paths:
+      - bin/bootstrap.sh
+      - .github/workflows/bootstrap.yml
   schedule:
     # First day of every month at 2:00 AM UTC.
     - cron: '0 2 1 * *'
@@ -21,11 +26,11 @@ jobs:
       contents: read
     steps:
       - uses: actions/checkout@v7
-      - name: Test bootstrapping
+      - name: Bootstrap
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          ./bin/bootstrap-just.sh bootstrap ${{ matrix.host }} | tee bootstrap.log || true
+          ./bin/bootstrap.sh ${{ matrix.host }} | tee bootstrap.log || true
           grep -q 'Nix was installed successfully!' bootstrap.log
       - uses: DeterminateSystems/magic-nix-cache-action@main
         with:
