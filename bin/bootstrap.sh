@@ -2,6 +2,28 @@
 
 set -euo pipefail
 
+main() {
+	local host
+	host=${1:-$(hostname -s)}
+
+	log info bootstrap_start platform="$(uname -s)"
+
+	local restart=0
+	if ! command -v nix &>/dev/null; then
+		install_nix
+		switch "$host"
+		restart=1
+	fi
+
+	log info bootstrap_ok
+
+	if [ "$restart" -ne 0 ]; then
+		# shellcheck disable=SC2016
+		echo 'Bootstrapping done.  Restart your shell with "exec $SHELL -l".'
+	fi
+	exit "$restart"
+}
+
 log() {
 	# logfmt (github.com/kr/logfmt)
 	local level=$1
@@ -12,29 +34,19 @@ log() {
 		"$(date -u +%FT%TZ)" "$level" "$event" "${*:+ $*}"
 }
 
-main() {
-	command -v nix &>/dev/null && return 0
-
-	local host
-	host=${1:-$(hostname -s)}
-
-	log info bootstrap_start platform="$(uname -s)"
-
+install_nix() {
 	log info step_start step=install_nix
 	curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install ${CI:+--no-confirm}
 	# shellcheck disable=SC1091
 	. /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
 	log info step_ok step=install_nix
+}
 
+switch() {
+	local host="$1"
 	log info step_start step=switch_home_manager
 	nix run home-manager -- switch --flake ".#${host}"
 	log info step_ok step=switch_home_manager
-
-	log info bootstrap_ok
-
-	# shellcheck disable=SC2016
-	echo 'Bootstrapping done.  Restart your shell with "exec $SHELL -l".'
-	exit 1
 }
 
 main "$@"
