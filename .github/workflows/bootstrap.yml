@@ -31,10 +31,14 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           ./bin/bootstrap.sh ${{ matrix.host }} 2> bootstrap.err | tee bootstrap.log || true
-          grep -q 'Nix was installed successfully!' bootstrap.log || {
-              cat bootstrap.err
-              exit 1
-          }
+          grep -q 'Nix was installed successfully!' bootstrap.log || exit 1
+      - uses: actions/upload-artifact@v7
+        if: '!cancelled()'
+        with:
+          name: Upload bootstrap.err
+          path: bootstrap.err
+          if-no-files-found: error
+          retention-days: 8
       - uses: DeterminateSystems/magic-nix-cache-action@main
         with:
           use-flakehub: false
