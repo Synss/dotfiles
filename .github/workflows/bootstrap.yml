@@ -42,7 +42,9 @@ jobs:
       - uses: DeterminateSystems/magic-nix-cache-action@main
         with:
           use-flakehub: false
-      - name: Smoke test
+      - name: Smoke test for nix
         run: nix --version
+      - name: Smake test for jj
+        run: jj status
       - name: Test bootstrap idempotency
         run: ./bin/bootstrap.sh ${{ matrix.host }}
