@@ -30,8 +30,11 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          ./bin/bootstrap.sh ${{ matrix.host }} | tee bootstrap.log || true
-          grep -q 'Nix was installed successfully!' bootstrap.log
+          ./bin/bootstrap.sh ${{ matrix.host }} 2> bootstrap.err | tee bootstrap.log || true
+          grep -q 'Nix was installed successfully!' bootstrap.log || {
+              cat bootstrap.err
+              exit 1
+          }
       - uses: DeterminateSystems/magic-nix-cache-action@main
         with:
           use-flakehub: false
