@@ -26,24 +26,27 @@ jobs:
       contents: read
     steps:
       - uses: actions/checkout@v7
-      - name: Bootstrap
+      - name: Run bootstrapping
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           ./bin/bootstrap.sh ${{ matrix.host }} 2> ${{ runner.temp }}/bootstrap.err \
           | tee ${{ runner.temp }}/bootstrap.log || true
           grep -q 'Nix was installed successfully!' ${{ runner.temp}}/bootstrap.log || exit 1
+      - name: Setup nix PATH
+        run: echo "$HOME/.nix-profile/bin" >> "$GITHUB_PATH"
       - uses: actions/upload-artifact@v7
         if: '!cancelled()'
         with:
-          name: Upload bootstrap.err
           path: ${{ runner.temp }}/bootstrap.err
           if-no-files-found: error
           retention-days: 8
       - uses: DeterminateSystems/magic-nix-cache-action@main
         with:
           use-flakehub: false
-      - name: Smoke test
+      - name: Smoke test nix
         run: nix --version
+      - name: Smoke test jj
+        run: jj --version && jj status
       - name: Test bootstrap idempotency
         run: ./bin/bootstrap.sh ${{ matrix.host }}
