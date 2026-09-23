@@ -10,8 +10,15 @@ setopt glob_dots         # * matches dotfiles too
 setopt multios           # redirect to multiple targets without explicit tee
 
 # History
-setopt hist_no_store # don't save the `history` command itself
-alias h="fc -RI"     # manual cross-session import; use instead of share_history
+setopt append_history       # append upon exit
+setopt extended_history     # timestamp history
+setopt hist_find_no_dups    # do not report dups
+setopt hist_ignore_all_dups # no dups saved
+setopt hist_ignore_space    # ignore lines starting with spaces
+setopt hist_no_store        # don't save the `history` command itself
+
+unsetopt share_history # share hist between ttys
+alias h="fc -RI"       # manual cross-session import; use instead of share_history
 
 # Input/Output
 setopt interactive_comments # allow # comments in interactive shell

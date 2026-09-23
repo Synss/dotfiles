@@ -1,7 +1,6 @@
 {
   pkgs,
   lib,
-  config,
   dotfilesDir,
   nix-index-database,
   ...
@@ -24,16 +23,6 @@
       enable = true;
       autosuggestion.enable = true;
       fastSyntaxHighlighting.enable = true;
-      history = {
-        path = "${config.home.homeDirectory}/.zsh_history";
-        size = 50000;
-        save = 50000;
-        extended = true;
-        ignoreAllDups = true;
-        ignoreSpace = true;
-        share = false;
-        append = true;
-      };
       initContent =
         with lib;
         mkMerge [

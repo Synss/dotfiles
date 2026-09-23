@@ -1,0 +1,6 @@
+HISTFILE=${HOME}/.zsh_history
+
+HISTSIZE=50000
+SAVEHIST=50000
+
+HISTORY_IGNORE='(exit|h|which)'
