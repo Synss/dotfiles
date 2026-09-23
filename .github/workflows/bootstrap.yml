@@ -30,13 +30,14 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          ./bin/bootstrap.sh ${{ matrix.host }} 2> bootstrap.err | tee bootstrap.log || true
-          grep -q 'Nix was installed successfully!' bootstrap.log || exit 1
+          ./bin/bootstrap.sh ${{ matrix.host }} 2> ${{ runner.temp }}/bootstrap.err \
+          | tee ${{ runner.temp }}/bootstrap.log || true
+          grep -q 'Nix was installed successfully!' ${{ runner.temp}}/bootstrap.log || exit 1
       - uses: actions/upload-artifact@v7
         if: '!cancelled()'
         with:
           name: Upload bootstrap.err
-          path: bootstrap.err
+          path: ${{ runner.temp }}/bootstrap.err
           if-no-files-found: error
           retention-days: 8
       - uses: DeterminateSystems/magic-nix-cache-action@main
