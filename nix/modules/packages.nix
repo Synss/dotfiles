@@ -18,6 +18,7 @@
     nodejs
     perl
     pnpm
+    ruby
     rustup
     uv
   ];

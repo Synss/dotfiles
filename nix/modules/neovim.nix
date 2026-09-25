@@ -33,6 +33,7 @@ in
     nil # -                        nil_ls
     nixd # -                       nixd
     perlnavigator # -              perlnavigator
+    ruby-lsp # -                   ruby_lsp
     ruff # -                       ruff
     starpls # -                    starpls
     typos-lsp # -                  typos_lsp

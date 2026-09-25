@@ -103,6 +103,11 @@ lint-perl:
     git ls-files '*.pl' | xargs -n1 perltidy --assert-tidy -st -se >/dev/null
 
 [private]
+lint-ruby:
+    #!/usr/bin/env -S nix develop --command bash -euo pipefail
+    rubocop
+
+[private]
 lint-shell:
     #!/usr/bin/env -S nix develop --command bash -euo pipefail
     shellcheck -- $(git ls-files '*.sh')

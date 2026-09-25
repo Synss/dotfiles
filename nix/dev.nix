@@ -34,6 +34,8 @@ pkgs.mkShell {
     perlcritic
     perl5Packages.PerlTidy
     ripgrep # for tests/doc.bats
+    rubocop
+    ruby
     shellcheck
     shfmt
     statix
