@@ -26,6 +26,7 @@ vim.lsp.enable(
 		"nil_ls",      -- nil
 		"nixd",        -- nixd
 		"perlnavigator", -- perlnavigator
+		"ruby_lsp",    -- ruby-lsp
 		"ruff",        -- ruff
 		"starpls",     -- starpls
 		"typos_lsp",   -- typos-lsp
