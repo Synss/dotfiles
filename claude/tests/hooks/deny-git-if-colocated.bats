@@ -41,7 +41,7 @@ setup() {
 	bats_load_library 'bats-support'
 
 	DIR="$(cd "$BATS_TEST_DIRNAME" >/dev/null 2>&1 && pwd)"
-	hook="$DIR/../../hooks/deny-git-if-colocated.pl"
+	hook="$DIR/../../hooks/deny-git-if-colocated.rb"
 }
 
 run_hook() {

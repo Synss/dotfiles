@@ -46,7 +46,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "$HOME/.claude/hooks/deny-git-if-colocated.pl"
+            "command": "$HOME/.claude/hooks/deny-git-if-colocated.rb"
           }
         ]
       }
