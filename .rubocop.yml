@@ -4,3 +4,13 @@ AllCops:
   NewCops: enable
   Exclude:
     - _untracked/**/*
+
+Layout/LineLength:
+  Max: 80
+
+Metrics/MethodLength:
+  CountAsOne:
+    - array
+    - hash
+    - heredoc
+    - method_call
