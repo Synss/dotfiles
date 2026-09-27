@@ -9,7 +9,8 @@ setup() {
 
 	DIR="$(cd "$BATS_TEST_DIRNAME" >/dev/null 2>&1 && pwd)"
 	PATH="$DIR/..:$PATH"
-	DOC="./bin/doc.pl $DIR/../docs/"
+	doc="./bin/doc.rb"
+	docdir="$DIR/../docs/"
 }
 
 assert_same_output() {
@@ -33,60 +34,125 @@ _mock_glow() {
 	PATH="$tmp_bin:$PATH"
 }
 
-@test 'doc.pl is executable' {
-	assert_file_executable ./bin/doc.pl
+_make_docdir() {
+	tmp_docdir="$BATS_TEST_TMPDIR/docs"
+	mkdir -p "$tmp_docdir/sub dir"
+	printf '# Top\nneedle here\n' >"$tmp_docdir/top.md"
+	printf '## Early\n# Nested\n## Section\nneedle here\n' \
+		>"$tmp_docdir/sub dir/nested.md"
+}
+
+@test 'doc.rb is executable' {
+	assert_file_executable ./bin/doc.rb
 }
 
 @test '-h and --help show the help' {
-	run $DOC --help
+	run $doc --help
 	assert_success
-	assert_output --partial 'usage: '
+	assert_output --partial 'Usage: '
 
-	run $DOC -h
+	run $doc -h
 	assert_success
-	assert_same_output "$DOC --help" "$DOC -h"
+	assert_same_output "$doc --help" "$doc -h"
+
+	run $doc "$docdir" --help
+	assert_success
+	assert_same_output "$doc --help" "$doc $docdir --help"
 }
 
 @test '-l and no argument shows the available docs' {
-	run $DOC -l
+	run $doc "$docdir" -l
 	assert_success
 	assert_output --regexp $'(^|\n)nvim[[:space:]]+Neovim.*($|\n)'
 	assert_output --regexp $'(^|\n)jj[[:space:]]+JJ.*($|\n)'
 
-	assert_same_output "$DOC -l" "$DOC"
+	assert_same_output "$doc $docdir -l" "$doc $docdir"
 }
 
 @test 'show doc' {
 	_mock_glow
-	run $DOC jj
+	run $doc "$docdir" jj
 	assert_success
 	assert_output --partial 'JJ'
 }
 
-@test '-k requires a pattern arg' {
-	run $DOC -k
+@test 'show non-existing doc' {
+	run $doc "$docdir" asdf
+	assert_failure 1
+	assert_output --partial "no reference for 'asdf'"
+}
+
+@test 'show doc matches the whole basename' {
+	run $doc "$docdir" md
+	assert_failure 1
+	assert_output --partial "no reference for 'md'"
+}
+
+@test 'show doc with regex characters in the name' {
+	run $doc "$docdir" 'a('
+	assert_failure 1
+	assert_output --partial "no reference for 'a('"
+}
+
+@test 'show doc in a subdirectory by basename' {
+	_mock_glow
+	_make_docdir
+	run $doc "$tmp_docdir" nested
+	assert_success
+	assert_output --partial 'Nested'
+}
+
+@test 'show ambiguous doc' {
+	_make_docdir
+	mkdir "$tmp_docdir/other"
+	printf '# Other\n' >"$tmp_docdir/other/nested.md"
+	run $doc "$tmp_docdir" nested
+	assert_failure 1
+	assert_output --partial "'nested' is ambiguous"
+}
+
+@test '-k missing argument' {
+	run $doc "$docdir" -k
 	assert_failure 2
-	assert_output --partial "-k requires a pattern"
+	assert_output --partial "Error: missing argument: -k"
 }
 
 @test '-k pattern no match' {
-	run $DOC -k asdf
+	run $doc "$docdir" -k asdf
 	assert_failure 1
+	refute_output
+}
+
+@test '-k pattern is invalid' {
+	run $doc "$docdir" -k '('
+	assert_failure 2
+	assert_output --partial 'regex parse error'
+}
+
+@test '-k searches every doc, including subdirectories' {
+	_make_docdir
+	run $doc "$tmp_docdir" -k 'needle here'
+	assert_success
+	assert_output --partial 'top.md'
+	assert_output --partial 'sub dir/nested.md'
+}
+
+@test '-l takes the title from the first # heading' {
+	_make_docdir
+	run $doc "$tmp_docdir" -l
+	assert_success
+	assert_output --regexp $'(^|\n)sub dir/nested[[:space:]]+Nested - Section($|\n)'
 }
 
 @test '-k pattern matches' {
-	run $DOC -k jj
+	run $doc "$docdir" -k jj
 	assert_success
 	assert_output --partial 'JJ'
 	assert_output --partial 'jj'
 }
 
-@test 'invalid arguments fails' {
-	run $DOC asdf
-	assert_failure 1
-}
-
 @test 'unknown option fails' {
-	run $DOC -x
+	run $doc -x
 	assert_failure 2
+	assert_output --partial 'Error: invalid option: -x'
 }

@@ -71,7 +71,7 @@ sync-claude:
 check-lsp:
     nvim --headless -c "checkhealth vim.lsp" -c "qa!"
 
-lint: lint-just lint-lua lint-nix lint-perl lint-ruby lint-shell
+lint: lint-just lint-lua lint-nix lint-ruby lint-shell
 
 [private]
 lint-just:
@@ -94,12 +94,6 @@ lint-nix:
     exit $rc
 
 [private]
-lint-perl:
-    #!/usr/bin/env -S nix develop --command bash -euxo pipefail
-    perlcritic .
-    git ls-files '*.pl' | xargs -n1 perltidy --assert-tidy -st -se >/dev/null
-
-[private]
 lint-ruby:
     #!/usr/bin/env -S nix develop --command bash -euxo pipefail
     rubocop
@@ -110,7 +104,7 @@ lint-shell:
     git ls-files -z '*.sh' | xargs -0 -r shellcheck --
     git ls-files -z | xargs -0 shfmt -f | xargs -r shfmt --diff
 
-fix: fix-just fix-nix fix-perl fix-ruby fix-shell lint
+fix: fix-just fix-nix fix-ruby fix-shell lint
 
 [private]
 fix-just:
@@ -123,11 +117,6 @@ fix-nix:
     git ls-files -z flake.nix 'nix/*.nix' | xargs -0 nixfmt
     statix fix --ignore 'vim/**' .
     deadnix --edit flake.nix nix/
-
-[private]
-fix-perl:
-    #!/usr/bin/env -S nix develop --command bash -euxo pipefail
-    git ls-files '*.pl' | xargs -n1 perltidy -b -bext='/' -se
 
 [private]
 fix-ruby:

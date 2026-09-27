@@ -7,5 +7,5 @@ doc() {
 	if [[ -n "${NVIM}" && -f "${NVIM}.theme" ]]; then
 		[[ "$(<"${NVIM}.theme")" == "light" ]] && theme="${LIGHT_THEME}"
 	fi
-	GLOW_STYLE="${DOTFILES_ZSH}/glow-styles/${theme}.json" "${DOTFILES_ZSH:h}/bin/doc.pl" "$DOTFILES_DOC" "$@"
+	GLOW_STYLE="${DOTFILES_ZSH}/glow-styles/${theme}.json" "${DOTFILES_ZSH:h}/bin/doc.rb" "$DOTFILES_DOC" "$@"
 }
