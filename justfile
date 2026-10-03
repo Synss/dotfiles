@@ -86,10 +86,12 @@ lint-lua:
 [private]
 lint-nix:
     #!/usr/bin/env -S nix develop --command bash -euxo pipefail
-    treefmt flake.nix nix/
-    statix check --ignore 'vim/**' .
-    deadnix --fail flake.nix nix/
-    nix flake check
+    rc=0
+    git ls-files -z flake.nix 'nix/*.nix' | xargs -0 nixfmt --check || rc=$?
+    statix check --ignore 'vim/**' . || rc=$?
+    deadnix --fail flake.nix nix/ || rc=$?
+    nix flake check || rc=$?
+    exit $rc
 
 [private]
 lint-perl:
@@ -105,5 +107,35 @@ lint-ruby:
 [private]
 lint-shell:
     #!/usr/bin/env -S nix develop --command bash -euxo pipefail
-    shellcheck -- $(git ls-files '*.sh')
-    shfmt -w .
+    git ls-files -z '*.sh' | xargs -0 -r shellcheck --
+    git ls-files -z | xargs -0 shfmt -f | xargs -r shfmt --diff
+
+fix: fix-just fix-nix fix-perl fix-ruby fix-shell lint
+
+[private]
+fix-just:
+    #!/usr/bin/env -S nix develop --command bash -euxo pipefail
+    just --fmt --unstable
+
+[private]
+fix-nix:
+    #!/usr/bin/env -S nix develop --command bash -euxo pipefail
+    git ls-files -z flake.nix 'nix/*.nix' | xargs -0 nixfmt
+    statix fix --ignore 'vim/**' .
+    deadnix --edit flake.nix nix/
+
+[private]
+fix-perl:
+    #!/usr/bin/env -S nix develop --command bash -euxo pipefail
+    git ls-files '*.pl' | xargs -n1 perltidy -b -bext='/' -se
+
+[private]
+fix-ruby:
+    #!/usr/bin/env -S nix develop --command bash -euxo pipefail
+    rubocop --autocorrect-all
+
+[private]
+fix-shell:
+    #!/usr/bin/env -S nix develop --command bash -euxo pipefail
+    { git ls-files -z '*.sh' | xargs -0 -r shellcheck -f diff -- || true; } | git apply --allow-empty
+    git ls-files -z | xargs -0 shfmt -f | xargs -r shfmt --write

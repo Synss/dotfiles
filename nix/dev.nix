@@ -29,6 +29,7 @@ pkgs.mkShell {
     jq # for deny-git-if-colocated.bats
     just
     lua-language-server
+    nixfmt
     nixfmt-tree
     perl
     perlcritic
