@@ -1,0 +1,2 @@
+[{"name":"main","commit":{"sha":"b1dc2b7cdeaec8faf6a6a9d0cf54ca2fde933b52","url":"https://api.github.com/repos/Synss/dotfiles/commits/b1dc2b7cdeaec8faf6a6a9d0cf54ca2fde933b52"},"protected":true,"protection":{"enabled":false,"required_status_checks":{"enforcement_level":"off","contexts":[],"checks":[]}},"protection_url":"https://api.github.com/repos/Synss/dotfiles/branches/main/protection"}]
+{"message":"Branch not protected","documentation_url":"https://docs.github.com/rest/branches/branch-protection#get-branch-protection","status":"404"}
