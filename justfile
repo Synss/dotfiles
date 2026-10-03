@@ -71,26 +71,21 @@ sync-claude:
 check-lsp:
     nvim --headless -c "checkhealth vim.lsp" -c "qa!"
 
-lint-all:
-    @just lint-just
-    @just lint-lua
-    @just lint-nix
-    @just lint-perl
-    @just lint-shell
+lint: lint-just lint-lua lint-nix lint-perl lint-ruby lint-shell
 
 [private]
 lint-just:
-    #!/usr/bin/env -S nix develop --command bash -euo pipefail
-    just --fmt --unstable
+    #!/usr/bin/env -S nix develop --command bash -euxo pipefail
+    just --fmt --check --unstable
 
 [private]
 lint-lua:
-    #!/usr/bin/env -S nix develop --command bash -euo pipefail
+    #!/usr/bin/env -S nix develop --command bash -euxo pipefail
     lua-language-server --check .
 
 [private]
 lint-nix:
-    #!/usr/bin/env -S nix develop --command bash -euo pipefail
+    #!/usr/bin/env -S nix develop --command bash -euxo pipefail
     treefmt flake.nix nix/
     statix check --ignore 'vim/**' .
     deadnix --fail flake.nix nix/
@@ -98,17 +93,17 @@ lint-nix:
 
 [private]
 lint-perl:
-    #!/usr/bin/env -S nix develop --command bash -euo pipefail
+    #!/usr/bin/env -S nix develop --command bash -euxo pipefail
     perlcritic .
     git ls-files '*.pl' | xargs -n1 perltidy --assert-tidy -st -se >/dev/null
 
 [private]
 lint-ruby:
-    #!/usr/bin/env -S nix develop --command bash -euo pipefail
+    #!/usr/bin/env -S nix develop --command bash -euxo pipefail
     rubocop
 
 [private]
 lint-shell:
-    #!/usr/bin/env -S nix develop --command bash -euo pipefail
+    #!/usr/bin/env -S nix develop --command bash -euxo pipefail
     shellcheck -- $(git ls-files '*.sh')
     shfmt -w .

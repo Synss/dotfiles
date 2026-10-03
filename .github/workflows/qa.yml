@@ -16,4 +16,4 @@ jobs:
         with:
           use-flakehub: false
       - name: Run QA
-        run: nix develop --command just lint-all
+        run: nix develop --command just lint
