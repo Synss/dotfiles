@@ -73,29 +73,46 @@ module CLI
   end
 end
 
-def doc_name(dir, path)
-  Pathname(path).relative_path_from(dir).sub_ext('').to_s
-end
+# A markdown document
+class Doc
+  attr_reader :path
 
-def doc_structure(path)
-  structure = []
-  File.foreach(path, chomp: true) do |line|
-    if structure.empty?
-      structure << line[2..] if line.start_with?('# ')
-    elsif line.start_with?('## ') && line[3..] != 'See Also'
-      structure << line[3..]
-    end
+  def initialize(path, dir:)
+    @path = path
+    @dir = dir
   end
-  structure
+
+  def name
+    Pathname(@path).relative_path_from(@dir).sub_ext('').to_s
+  end
+
+  def structure
+    structure = []
+    File.foreach(@path, chomp: true) do |line|
+      if structure.empty?
+        structure << line[2..] if line.start_with?('# ')
+      elsif line.start_with?('## ') && line[3..] != 'See Also'
+        structure << line[3..]
+      end
+    end
+    structure
+  end
+
+  def <=>(other)
+    @path <=> other
+  end
+
+  def to_s = @path.to_s
 end
 
 def find_markdown_files(dir)
   Dir.glob(File.join(dir, '**', '*'))
      .select { File.file?(it) && File.extname(it).casecmp?('.md') }
+     .map { Doc.new(it, dir:) }
 end
 
 def find_by_basename(dir, basename)
-  find_markdown_files(dir).select { File.basename(it, '.*') == basename }
+  find_markdown_files(dir).select { File.basename(it.path, '.*') == basename }
 end
 
 def resolve_doc(dir, name)
@@ -107,7 +124,7 @@ def resolve_doc(dir, name)
   when 0 then raise DocError, "no reference for '#{name}'"
   when 1 then found.first
   else
-    names = found.map { doc_name(dir, it) }
+    names = found.map(&:name)
     raise DocError, "'#{name}' is ambiguous: #{names.join(' ')}"
   end
 end
@@ -116,16 +133,16 @@ def list_docs(dir)
   files = find_markdown_files(dir).sort
   return if files.empty?
 
-  headers = files.map { doc_name(dir, it) }
+  headers = files.map(&:name)
   width = headers.map(&:length).max
   headers.zip(files).each do |header, f|
-    puts "#{header.ljust(width)}  #{doc_structure(f).join(' - ')}"
+    puts "#{header.ljust(width)}  #{f.structure.join(' - ')}"
   end
 end
 
 def show_doc(dir, name, style:)
   style_args = style.nil? ? [] : ['--style', style]
-  exec('glow', *style_args, '--pager', resolve_doc(dir, name))
+  exec('glow', *style_args, '--pager', resolve_doc(dir, name).to_s)
 end
 
 def search_docs(dir, pattern)
