@@ -140,12 +140,12 @@ def list_docs(dir)
   end
 end
 
-def show_doc(dir, name, style:)
+def show_doc!(dir, name, style:)
   style_args = style.nil? ? [] : ['--style', style]
   exec('glow', *style_args, '--pager', resolve_doc(dir, name).to_s)
 end
 
-def search_docs(dir, pattern)
+def search_docs!(dir, pattern)
   Dir.chdir(dir)
   exec('rg', '--smart-case', '--heading', '--line-number',
        '--iglob', '*.md', '--', pattern, '.')
@@ -155,9 +155,9 @@ def main(argv)
   dir, mode = CLI.parse!(argv)
   case mode
   in Mode::List then list_docs(dir)
-  in Mode::Name(name) then show_doc(dir, name,
-                                    style: ENV.fetch('GLOW_STYLE', nil))
-  in Mode::Search(pattern) then search_docs(dir, pattern)
+  in Mode::Name(name) then show_doc!(dir, name,
+                                     style: ENV.fetch('GLOW_STYLE', nil))
+  in Mode::Search(pattern) then search_docs!(dir, pattern)
   end
 rescue DocError, Errno::ENOENT => e
   warn "doc: #{e.message}"
