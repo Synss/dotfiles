@@ -148,15 +148,15 @@ class Docs
 
   private
 
-  def find(basename)
-    @docs.select { File.basename(it.path, '.*') == basename }
+  def find(name)
+    @docs.select { File.basename(it.path, '.*') == File.basename(name) }
   end
 
   def resolve(name)
     exact = "#{File.join(@dir, name)}.md"
     return exact if File.exist?(exact)
 
-    found = find(File.basename(name))
+    found = find(name)
     case found.size
     when 0 then raise DocError, "no reference for '#{name}'"
     when 1 then found.first
