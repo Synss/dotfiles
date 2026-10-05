@@ -75,7 +75,7 @@ end
 
 # A markdown document
 class Doc
-  attr_reader :path
+  attr_reader :dir, :path
 
   def initialize(path, dir:)
     @path = path
@@ -107,17 +107,15 @@ end
 
 # Collection of `Doc`s
 class Docs
-  def initialize(docs, dir:)
+  def initialize(docs)
     @docs = docs
-    @dir = dir
   end
 
   def self.from_dir(dir)
     new(
       Dir.glob(File.join(dir, '**', '*'))
       .select { File.file?(it) && File.extname(it).casecmp?('.md') }
-      .map { Doc.new(it, dir:) },
-      dir: dir
+      .map { Doc.new(it, dir:) }
     )
   end
 
@@ -137,7 +135,7 @@ class Docs
   end
 
   def search!(pattern)
-    Dir.chdir(@dir)
+    Dir.chdir(dir)
     exec('rg', '--smart-case', '--heading', '--line-number',
          '--iglob', '*.md', '--', pattern, '.')
   end
@@ -148,12 +146,22 @@ class Docs
 
   private
 
+  def dir
+    d, *dirs = @docs.map(&:dir).uniq
+    unless dirs.empty?
+      raise DocError,
+            "multiple dirs defined: #{dirs.join(' ')}"
+    end
+
+    d
+  end
+
   def find(name)
     @docs.select { File.basename(it.path, '.*') == File.basename(name) }
   end
 
   def resolve(name)
-    exact = "#{File.join(@dir, name)}.md"
+    exact = "#{File.join(dir, name)}.md"
     return exact if File.exist?(exact)
 
     found = find(name)
