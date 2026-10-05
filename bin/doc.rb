@@ -105,59 +105,76 @@ class Doc
   def to_s = @path.to_s
 end
 
-def find_markdown_files(dir)
-  Dir.glob(File.join(dir, '**', '*'))
-     .select { File.file?(it) && File.extname(it).casecmp?('.md') }
-     .map { Doc.new(it, dir:) }
-end
-
-def find_by_basename(dir, basename)
-  find_markdown_files(dir).select { File.basename(it.path, '.*') == basename }
-end
-
-def resolve_doc(dir, name)
-  exact = "#{File.join(dir, name)}.md"
-  return exact if File.exist?(exact)
-
-  found = find_by_basename(dir, File.basename(name))
-  case found.size
-  when 0 then raise DocError, "no reference for '#{name}'"
-  when 1 then found.first
-  else
-    names = found.map(&:name)
-    raise DocError, "'#{name}' is ambiguous: #{names.join(' ')}"
+# Collection of `Doc`s
+class Docs
+  def initialize(docs, dir:)
+    @docs = docs
+    @dir = dir
   end
-end
 
-def list_docs(dir)
-  files = find_markdown_files(dir).sort
-  return if files.empty?
-
-  headers = files.map(&:name)
-  width = headers.map(&:length).max
-  headers.zip(files).each do |header, f|
-    puts "#{header.ljust(width)}  #{f.structure.join(' - ')}"
+  def self.from_dir(dir)
+    new(
+      Dir.glob(File.join(dir, '**', '*'))
+      .select { File.file?(it) && File.extname(it).casecmp?('.md') }
+      .map { Doc.new(it, dir:) },
+      dir: dir
+    )
   end
-end
 
-def show_doc!(dir, name, style:)
-  style_args = style.nil? ? [] : ['--style', style]
-  exec('glow', *style_args, '--pager', resolve_doc(dir, name).to_s)
-end
+  def list
+    return unless @docs
 
-def search_docs!(dir, pattern)
-  Dir.chdir(dir)
-  exec('rg', '--smart-case', '--heading', '--line-number',
-       '--iglob', '*.md', '--', pattern, '.')
+    headers = @docs.map(&:name)
+    width = headers.map(&:length).max
+    headers.zip(@docs).each do |header, d|
+      puts "#{header.ljust(width)}  #{d.structure.join(' - ')}"
+    end
+  end
+
+  def show!(name, style:)
+    style_args = style.nil? ? [] : ['--style', style]
+    exec('glow', *style_args, '--pager', resolve(name).to_s)
+  end
+
+  def search!(pattern)
+    Dir.chdir(@dir)
+    exec('rg', '--smart-case', '--heading', '--line-number',
+         '--iglob', '*.md', '--', pattern, '.')
+  end
+
+  def to_s
+    puts @docs.map(&:name).join ' '
+  end
+
+  private
+
+  def find(basename)
+    @docs.select { File.basename(it.path, '.*') == basename }
+  end
+
+  def resolve(name)
+    exact = "#{File.join(@dir, name)}.md"
+    return exact if File.exist?(exact)
+
+    found = find(File.basename(name))
+    case found.size
+    when 0 then raise DocError, "no reference for '#{name}'"
+    when 1 then found.first
+    else
+      names = found.map(&:name)
+      raise DocError, "'#{name}' is ambiguous: #{names.join(' ')}"
+    end
+  end
 end
 
 def main(argv)
   dir, mode = CLI.parse!(argv)
+  docs = Docs.from_dir dir
   case mode
-  in Mode::List then list_docs(dir)
-  in Mode::Name(name) then show_doc!(dir, name,
-                                     style: ENV.fetch('GLOW_STYLE', nil))
-  in Mode::Search(pattern) then search_docs!(dir, pattern)
+  in Mode::List then docs.list
+  in Mode::Name(name) then docs.show!(name,
+                                      style: ENV.fetch('GLOW_STYLE', nil))
+  in Mode::Search(pattern) then docs.search! pattern
   end
 rescue DocError, Errno::ENOENT => e
   warn "doc: #{e.message}"
