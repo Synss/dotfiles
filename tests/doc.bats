@@ -2,25 +2,6 @@
 
 # Run with `nix develop --command bats ./tests/doc.bats`.
 
-setup() {
-	bats_load_library 'bats-assert'
-	bats_load_library 'bats-file'
-	bats_load_library 'bats-support'
-
-	DIR="$(cd "$BATS_TEST_DIRNAME" >/dev/null 2>&1 && pwd)"
-	PATH="$DIR/..:$PATH"
-	doc="./bin/doc.rb"
-	docdir="$DIR/../docs/"
-}
-
-assert_same_output() {
-	run $1
-	local first_output="$output"
-
-	run $2
-	assert_equal "$output" "$first_output"
-}
-
 _mock_glow() {
 	local tmp_bin="$BATS_TEST_TMPDIR/bin"
 	mkdir -p "$tmp_bin"
@@ -34,12 +15,68 @@ _mock_glow() {
 	PATH="$tmp_bin:$PATH"
 }
 
-_make_docdir() {
-	tmp_docdir="$BATS_TEST_TMPDIR/docs"
-	mkdir -p "$tmp_docdir/sub dir"
-	printf '# Top\nneedle here\n' >"$tmp_docdir/top.md"
-	printf '## Early\n# Nested\n## Section\nneedle here\n' \
-		>"$tmp_docdir/sub dir/nested.md"
+_setup_docdir() {
+	local docdir="$1"
+
+	cat <<-EOF >"$docdir/lorem ipsum.md"
+		# Lorem Ipsum
+
+		dolor sit amet, consectetur adipiscing elit,
+
+		## sed do
+
+		eiusmod tempor incididunt ut labore et dolore magna aliqua.
+
+		## Ut enim
+
+		ad minim veniam,
+	EOF
+
+	cat <<-EOF >"$docdir/quis nostrud.md"
+		# Quis Nostrud
+
+		exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+
+		## Duis aute
+
+		irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+	EOF
+}
+
+_make_nested() {
+	mkdir -p "$docdir/sub dir"
+	cat <<-EOF >"$docdir/sub dir/nested.md"
+		# Nested doc
+
+		something interesting in this subdirectory
+	EOF
+}
+
+_teardown_docdir() {
+	rm -rf "$1"
+}
+
+setup() {
+	bats_load_library 'bats-assert'
+	bats_load_library 'bats-file'
+	bats_load_library 'bats-support'
+
+	doc="./bin/doc.rb"
+
+	docdir=$(mktemp -d)
+	_setup_docdir "$docdir"
+}
+
+teardown() {
+	_teardown_docdir "$docdir"
+}
+
+assert_same_output() {
+	run $1
+	local first_output="$output"
+
+	run $2
+	assert_equal "$output" "$first_output"
 }
 
 @test 'doc.rb is executable' {
@@ -63,17 +100,19 @@ _make_docdir() {
 @test '-l and no argument shows the available docs' {
 	run $doc "$docdir" -l
 	assert_success
-	assert_output --regexp $'(^|\n)nvim[[:space:]]+Neovim.*($|\n)'
-	assert_output --regexp $'(^|\n)jj[[:space:]]+JJ.*($|\n)'
+	assert_output - <<-EOF
+		lorem ipsum   Lorem Ipsum - sed do - Ut enim
+		quis nostrud  Quis Nostrud - Duis aute
+	EOF
 
 	assert_same_output "$doc $docdir -l" "$doc $docdir"
 }
 
 @test 'show doc' {
 	_mock_glow
-	run $doc "$docdir" jj
+	run $doc "$docdir" 'lorem ipsum'
 	assert_success
-	assert_output --partial 'JJ'
+	assert_output - <"$docdir/lorem ipsum.md"
 }
 
 @test 'show non-existing doc' {
@@ -96,17 +135,17 @@ _make_docdir() {
 
 @test 'show doc in a subdirectory by basename' {
 	_mock_glow
-	_make_docdir
-	run $doc "$tmp_docdir" nested
+	_make_nested
+	run $doc "$docdir" 'nested'
 	assert_success
 	assert_output --partial 'Nested'
 }
 
 @test 'show ambiguous doc' {
-	_make_docdir
-	mkdir "$tmp_docdir/other"
-	printf '# Other\n' >"$tmp_docdir/other/nested.md"
-	run $doc "$tmp_docdir" nested
+	_make_nested
+	mkdir "$docdir/other"
+	cp "$docdir/sub dir/nested.md" "$docdir/other"
+	run $doc "$docdir" "nested"
 	assert_failure 1
 	assert_output --partial "'nested' is ambiguous"
 }
@@ -130,25 +169,28 @@ _make_docdir() {
 }
 
 @test '-k searches every doc, including subdirectories' {
-	_make_docdir
-	run $doc "$tmp_docdir" -k 'needle here'
+	_make_nested
+	run $doc "$docdir" -k ''
 	assert_success
-	assert_output --partial 'top.md'
+	assert_output --partial 'lorem ipsum.md'
 	assert_output --partial 'sub dir/nested.md'
 }
 
 @test '-l takes the title from the first # heading' {
-	_make_docdir
-	run $doc "$tmp_docdir" -l
+	mkdir -p "$docdir/nested"
+	printf "## Pre title section\n# Title\n## Section\n" >"$docdir/nested/pretitle.md"
+	run $doc "$docdir" -l
 	assert_success
-	assert_output --regexp $'(^|\n)sub dir/nested[[:space:]]+Nested - Section($|\n)'
+	assert_output --regexp $'(^|\n)nested/pretitle[[:space:]]+Title - Section($|\n)'
 }
 
 @test '-k pattern matches' {
-	run $doc "$docdir" -k jj
+	run $doc "$docdir" -k lorem
 	assert_success
-	assert_output --partial 'JJ'
-	assert_output --partial 'jj'
+	assert_output - <<-EOF
+		./lorem ipsum.md
+		1:# Lorem Ipsum
+	EOF
 }
 
 @test 'unknown option fails' {
