@@ -24,9 +24,20 @@ module CLI
 
   def parse!(argv = ARGV)
     options = {}
+    options.extend(Module.new do
+      def to_mode
+        case compact
+        in {} | { list: true, **nil } then Mode::List[]
+        in { search:, **nil } then Mode::Search[search]
+        in { name:, **nil } then Mode::Name[name]
+        else raise OptionParser::InvalidArgument,
+                   '-l, -k and NAME are mutually exclusive'
+        end
+      end
+    end)
     build_parser.parse!(argv, into: options)
     dir = handle_positional!(argv, into: options)
-    [dir, to_mode(options)]
+    [dir, options.to_mode]
   rescue OptionParser::ParseError => e
     warn "Error: #{e.message}"
     warn help
@@ -58,16 +69,6 @@ module CLI
 
       into[:name] = name
       dir
-    end
-
-    def to_mode(options)
-      case options.compact
-      in {} | { list: true, **nil } then Mode::List[]
-      in { search:, **nil } then Mode::Search[search]
-      in { name:, **nil } then Mode::Name[name]
-      else raise OptionParser::InvalidArgument,
-                 '-l, -k and NAME are mutually exclusive'
-      end
     end
   end
 end
