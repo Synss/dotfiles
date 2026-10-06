@@ -17,3 +17,6 @@ jobs:
           use-flakehub: false
       - name: Run QA
         run: nix develop --command just lint
+      - name: Run tests
+        if: success() || failure()
+        run: nix develop --command just test
