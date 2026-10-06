@@ -15,7 +15,11 @@ in
     nerd-fonts.jetbrains-mono
   ];
 
-  home.file.".config/dotfiles" = mkLink "shared";
+  home.file = {
+    ".config/dotfiles" = mkLink "shared";
+    ".local/bin/j2y" = mkLink "bin/j2y";
+    ".local/bin/y2j" = mkLink "bin/y2j";
+  };
 
   programs = {
     alacritty = {
