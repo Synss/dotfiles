@@ -128,3 +128,8 @@ fix-shell:
     #!/usr/bin/env -S nix develop --command bash -euxo pipefail
     { git ls-files -z '*.sh' | xargs -0 -r shellcheck -f diff -- || true; } | git apply --allow-empty
     git ls-files -z | xargs -0 shfmt -f | xargs -r shfmt --write
+
+test:
+    #!/usr/bin/env -S nix develop --command bash -euxo pipefail
+    bats ./claude/tests/hooks/deny-git-if-colocated.bats
+    bats ./tests/doc.bats
