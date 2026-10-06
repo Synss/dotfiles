@@ -1,0 +1,14 @@
+{
+  "String": "Hello world!",
+  "Number": 42,
+  "Float": 3.14,
+  "Array": [1, 2, 3],
+  "EmptyArray": [],
+  "EmptyObject": {},
+  "Nested": {
+    "Boolean": true,
+    "Null": null,
+    "NestedArray": [1, null, 3],
+    "NestedObject": {}
+  }
+}
