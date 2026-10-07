@@ -102,7 +102,7 @@ lint-ruby:
 lint-shell:
     #!/usr/bin/env -S nix develop --command bash -euxo pipefail
     git ls-files -z '*.sh' | xargs -0 -r shellcheck --
-    git ls-files -z | xargs -0 shfmt -f | xargs -r shfmt --diff
+    git ls-files -z | perl -0 -ne 'print if -f' | xargs -0 shfmt -f | xargs -r shfmt --diff
 
 fix: fix-just fix-nix fix-ruby fix-shell lint
 
@@ -127,7 +127,7 @@ fix-ruby:
 fix-shell:
     #!/usr/bin/env -S nix develop --command bash -euxo pipefail
     { git ls-files -z '*.sh' | xargs -0 -r shellcheck -f diff -- || true; } | git apply --allow-empty
-    git ls-files -z | xargs -0 shfmt -f | xargs -r shfmt --write
+    git ls-files -z | perl -0 -ne 'print if -f' | xargs -0 shfmt -f | xargs -r shfmt --write
 
 test:
     #!/usr/bin/env -S nix develop --command bash -euxo pipefail
