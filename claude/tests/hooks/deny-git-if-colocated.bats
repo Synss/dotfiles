@@ -6,6 +6,9 @@ setup_file() {
 	repos_root=$(mktemp -d)
 	export repos_root
 
+	export GIT_CONFIG_GLOBAL=/dev/null
+	export JJ_CONFIG=/dev/null
+
 	export gitroot="$repos_root/git"
 	mkdir -p "$gitroot"
 	pushd "$gitroot" || exit 1
