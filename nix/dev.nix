@@ -34,7 +34,6 @@ pkgs.mkShell {
     perl
     perlcritic
     perl5Packages.PerlTidy
-    python314
     ripgrep # for tests/doc.bats
     rubocop
     ruby

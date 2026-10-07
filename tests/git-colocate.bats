@@ -29,8 +29,8 @@ teardown() {
 _mk_colocate() {
 	local colocate=$1
 
-	echo '#!/usr/bin/env python3' >"$colocate"
-	cat "$DIR/../nix/scripts/git-colocate.py" >>"$colocate"
+	echo '#!/usr/bin/env ruby' >"$colocate"
+	cat "$DIR/../nix/scripts/git_colocate.rb" >>"$colocate"
 	chmod +x "$colocate"
 }
 
