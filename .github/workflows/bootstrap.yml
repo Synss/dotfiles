@@ -41,9 +41,6 @@ jobs:
           path: ${{ runner.temp }}/bootstrap.err
           if-no-files-found: error
           retention-days: 8
-      - uses: DeterminateSystems/magic-nix-cache-action@main
-        with:
-          use-flakehub: false
       - name: Smoke test nix
         run: nix --version
       - name: Smoke test jj
