@@ -25,15 +25,13 @@ pkgs.mkShell {
   packages = with pkgs; [
     bats
     deadnix
-    jujutsu # for deny-git-if-colocated.bats
-    jq # for deny-git-if-colocated.bats
+    jujutsu # for *.bats
+    jq # for *.bats
     just
     lua-language-server
     nixfmt
     nixfmt-tree
-    perl
-    perlcritic
-    perl5Packages.PerlTidy
+    perl # for justfile
     ripgrep # for tests/doc.bats
     rubocop
     ruby
