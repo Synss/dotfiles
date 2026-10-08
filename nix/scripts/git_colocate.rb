@@ -3,6 +3,8 @@
 require 'fileutils'
 require 'open3'
 
+GIT_INFO_EXCLUDE = File.join('.git', 'info', 'exclude').freeze
+
 def capture(*)
   out, status = Open3.capture2(*)
   exit 1 unless status.success?
@@ -40,7 +42,7 @@ def main
 
   untracked_dir = '_untracked'
   FileUtils.mkdir_p untracked_dir
-  ensure_line(File.join('.git', 'info', 'exclude'), untracked_dir)
+  ensure_line(GIT_INFO_EXCLUDE, untracked_dir)
   move_into(
     capture('git', 'ls-files', '-z', '--others', '--exclude-standard')
            .split("\0"),
