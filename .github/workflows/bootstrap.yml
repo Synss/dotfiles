@@ -30,9 +30,10 @@ jobs:
       - name: Run bootstrapping
         env:
           NIX_CONFIG: "access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}"
+        shell: bash
         run: |
           ./bin/bootstrap.sh ${{ matrix.host }} 2> ${{ runner.temp }}/bootstrap.err \
-          | tee ${{ runner.temp }}/bootstrap.log || true
+          | tee ${{ runner.temp }}/bootstrap.log || [ "$?" -eq 3 ]
           grep -q 'Nix was installed successfully!' ${{ runner.temp}}/bootstrap.log || exit 1
       - name: Setup nix PATH
         run: echo "$HOME/.nix-profile/bin" >> "$GITHUB_PATH"
@@ -49,4 +50,5 @@ jobs:
       - name: Test bootstrap idempotency
         env:
           NIX_CONFIG: "access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}"
+        shell: bash
         run: ./bin/bootstrap.sh ${{ matrix.host }}

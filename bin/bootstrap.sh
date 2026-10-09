@@ -12,7 +12,7 @@ main() {
 	if ! command -v nix &>/dev/null; then
 		install_nix
 		switch "$host"
-		restart=1
+		restart=3
 	fi
 
 	if [ ! -d .jj ]; then
