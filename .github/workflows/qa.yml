@@ -8,7 +8,11 @@ on:
 
 jobs:
   qa:
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    name: run QA on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
     permissions:
       checks: write
     steps:
