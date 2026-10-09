@@ -132,8 +132,9 @@ fix-shell:
 test *args:
     #!/usr/bin/env -S nix develop --command bash -euxo pipefail
     case "${1:-}" in
-    --with-junit) mkdir -p reports/bats && JUNIT=1 ;;
+    --with-junit) mkdir -p reports/bats reports/minitest && JUNIT=1 ;;
     '') ;;
     *) exit 2 ;;
     esac
     bats ${JUNIT:+--report-formatter junit --output reports/bats} -r tests
+    ruby ./tests/test_dump_github_settings.rb ${JUNIT:+--ci-report --ci-dir=reports/minitest}
