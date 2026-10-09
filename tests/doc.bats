@@ -64,12 +64,8 @@ setup() {
 
 	doc="./bin/doc.rb"
 
-	docdir=$(mktemp -d)
+	docdir=$(mktemp -p "$BATS_TEST_TMPDIR" -d)
 	_setup_docdir "$docdir"
-}
-
-teardown() {
-	_teardown_docdir "$docdir"
 }
 
 assert_same_output() {
