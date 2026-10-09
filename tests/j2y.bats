@@ -18,7 +18,7 @@ setup() {
 }
 
 @test 'j2y | y2j | ... is identity function' {
-	json_file="tests/assets/example.json"
+	json_file="tests/fixtures/example.json"
 
 	# Normalize with `jq -S` to make the round trip independent from formatting.
 	run bats_pipe j2y "$json_file" \| y2j \| j2y \| y2j \| jq -S .
