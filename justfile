@@ -135,3 +135,4 @@ test:
     bats ./tests/doc.bats
     bats ./tests/git-colocate.bats
     bats ./tests/j2y.bats
+    ruby ./tests/test_dump_github_settings.rb
