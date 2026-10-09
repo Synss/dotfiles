@@ -129,6 +129,14 @@ fix-shell:
     { git ls-files -z '*.sh' | xargs -0 -r shellcheck -f diff -- || true; } | git apply --allow-empty
     git ls-files -z | perl -0 -ne 'print if -f' | xargs -0 shfmt -f | xargs -r shfmt --write
 
-test:
+test *args:
     #!/usr/bin/env -S nix develop --command bash -euxo pipefail
-    bats -r tests
+    case "${1:-}" in
+    --with-junit)
+        mkdir -p reports/bats
+        bats_args='--report-formatter junit --output reports/bats'
+        ;;
+    '') ;;
+    *) exit 2 ;;
+    esac
+    bats ${bats_args:-} -r tests

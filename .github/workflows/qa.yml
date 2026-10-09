@@ -9,6 +9,8 @@ on:
 jobs:
   lint-all:
     runs-on: ubuntu-latest
+    permissions:
+      checks: write
     steps:
       - uses: actions/checkout@v7
       - uses: DeterminateSystems/nix-installer-action@main
@@ -16,4 +18,9 @@ jobs:
         run: nix develop --command just lint
       - name: Run tests
         if: success() || failure()
-        run: nix develop --command just test
+        run: nix develop --command just test --with-junit
+      - name: Publish test report
+        uses: mikepenz/action-junit-report@v6
+        if: success() || failure()
+        with:
+          report_paths: 'reports/**/*.xml'
