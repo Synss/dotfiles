@@ -44,8 +44,7 @@ setup() {
 	bats_load_library 'bats-support'
 	load 'bats/namespace'
 
-	DIR="$(cd "$BATS_TEST_DIRNAME" >/dev/null 2>&1 && pwd)"
-	hook="$DIR/../claude/hooks/deny-git-if-colocated.rb"
+	hook="$BATS_TEST_DIRNAME/../claude/hooks/deny-git-if-colocated.rb"
 }
 
 run_hook() {

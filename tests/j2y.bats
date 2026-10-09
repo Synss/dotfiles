@@ -6,8 +6,7 @@ setup() {
 	bats_load_library 'bats-support'
 	load 'bats/namespace'
 
-	DIR="$(cd "$(dirname "$BATS_TEST_FILENAME")" >/dev/null 2>&1 && pwd)"
-	PATH="$DIR/../bin:$PATH"
+	PATH="$BATS_TEST_DIRNAME/../bin:$PATH"
 }
 
 @test 'j2y is executable' {
