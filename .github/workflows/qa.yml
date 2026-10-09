@@ -1,5 +1,5 @@
 ---
-name: lint-all
+name: qa
 
 on:
   pull_request:
@@ -7,14 +7,14 @@ on:
     branches: [main]
 
 jobs:
-  lint-all:
+  qa:
     runs-on: ubuntu-latest
     permissions:
       checks: write
     steps:
       - uses: actions/checkout@v7
       - uses: DeterminateSystems/nix-installer-action@main
-      - name: Run QA
+      - name: Run linters
         run: nix develop --command just lint
       - name: Run tests
         if: success() || failure()
