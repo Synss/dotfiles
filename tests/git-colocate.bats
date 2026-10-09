@@ -6,6 +6,7 @@ setup() {
 	bats_load_library 'bats-assert'
 	bats_load_library 'bats-file'
 	bats_load_library 'bats-support'
+	load 'bats/namespace'
 
 	export GIT_CONFIG_GLOBAL=/dev/null
 	export JJ_CONFIG=/dev/null

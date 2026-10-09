@@ -4,6 +4,7 @@ setup() {
 	bats_load_library 'bats-assert'
 	bats_load_library 'bats-file'
 	bats_load_library 'bats-support'
+	load 'bats/namespace'
 
 	DIR="$(cd "$(dirname "$BATS_TEST_FILENAME")" >/dev/null 2>&1 && pwd)"
 	PATH="$DIR/../bin:$PATH"

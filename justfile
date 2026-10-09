@@ -131,7 +131,4 @@ fix-shell:
 
 test:
     #!/usr/bin/env -S nix develop --command bash -euxo pipefail
-    bats ./claude/tests/hooks/deny-git-if-colocated.bats
-    bats ./tests/doc.bats
-    bats ./tests/git-colocate.bats
-    bats ./tests/j2y.bats
+    bats -r tests
