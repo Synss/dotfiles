@@ -1,0 +1,2 @@
+BATS_TEST_NAME_PREFIX="$(basename "$BATS_TEST_FILENAME" .bats)::"
+export BATS_TEST_NAME_PREFIX
