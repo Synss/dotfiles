@@ -11,8 +11,6 @@ setup() {
 	export GIT_CONFIG_GLOBAL=/dev/null
 	export JJ_CONFIG=/dev/null
 
-	DIR="$(cd "$(dirname "$BATS_TEST_FILENAME")" >/dev/null 2>&1 && pwd)"
-
 	binroot="$(mktemp -d)"
 	colocate="$binroot/git-colocate"
 	_mk_colocate "$colocate"
@@ -31,7 +29,7 @@ _mk_colocate() {
 	local colocate=$1
 
 	echo '#!/usr/bin/env ruby' >"$colocate"
-	cat "$DIR/../nix/scripts/git_colocate.rb" >>"$colocate"
+	cat "$BATS_TEST_DIRNAME/../nix/scripts/git_colocate.rb" >>"$colocate"
 	chmod +x "$colocate"
 }
 
