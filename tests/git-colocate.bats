@@ -11,18 +11,13 @@ setup() {
 	export GIT_CONFIG_GLOBAL=/dev/null
 	export JJ_CONFIG=/dev/null
 
-	binroot="$(mktemp -d)"
+	binroot="$(mktemp -p "$BATS_TEST_TMPDIR" -d)"
 	colocate="$binroot/git-colocate"
 	_mk_colocate "$colocate"
 
-	gitroot="$(mktemp -d)"
+	gitroot="$(mktemp -p "$BATS_TEST_TMPDIR" -d)"
 	cd "$gitroot" || exit 1
 	_git_init "$colocate"
-}
-
-teardown() {
-	rm -rf "$binroot"
-	rm -rf "$gitroot"
 }
 
 _mk_colocate() {

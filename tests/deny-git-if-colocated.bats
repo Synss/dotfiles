@@ -3,7 +3,7 @@
 # Run with `nix develop --command bats deny-git-if-colocated.bats`.
 
 setup_file() {
-	repos_root=$(mktemp -d)
+	repos_root=$(mktemp -p "$BATS_FILE_TMPDIR" -d)
 	export repos_root
 
 	export GIT_CONFIG_GLOBAL=/dev/null
@@ -21,10 +21,6 @@ setup_file() {
 	_git_init
 	_jj_colocate
 	popd || exit 1
-}
-
-teardown_file() {
-	rm -rf "$repos_root"
 }
 
 _git_init() {
