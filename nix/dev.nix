@@ -20,6 +20,12 @@ let
       hash = "sha256-4N7XJS5XOKxMCXNC7ef9halhRpg79kUqDuRnKcrxoeo=";
     };
   };
+  minitest-ci = pkgs.buildRubyGem {
+    inherit (pkgs) ruby;
+    gemName = "minitest-ci";
+    version = "3.4.0";
+    source.sha256 = "sha256-nTJTmMRshnTWxGVIxs7+q46/Bp6zvabd8ZnOjK0BF8U=";
+  };
 in
 pkgs.mkShell {
   packages = with pkgs; [
@@ -34,7 +40,10 @@ pkgs.mkShell {
     perl # for justfile
     ripgrep # for tests/doc.bats
     rubocop
-    ruby
+    (ruby.withPackages (ps: [
+      minitest-ci
+      ps.minitest
+    ]))
     shellcheck
     shfmt
     statix
