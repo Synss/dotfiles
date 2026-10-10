@@ -132,11 +132,8 @@ fix-shell:
 test *args:
     #!/usr/bin/env -S nix develop --command bash -euxo pipefail
     case "${1:-}" in
-    --with-junit)
-        mkdir -p reports/bats
-        bats_args='--report-formatter junit --output reports/bats'
-        ;;
+    --with-junit) mkdir -p reports/bats && JUNIT=1 ;;
     '') ;;
     *) exit 2 ;;
     esac
-    bats ${bats_args:-} -r tests
+    bats ${JUNIT:+--report-formatter junit --output reports/bats} -r tests
