@@ -4,5 +4,5 @@ local -a bookmarks
 bookmarks=(${(fu)"$(jj bookmark list -T 'name ++ "\n"' 2>/dev/null)"})
 
 _arguments \
-  '1:bookmark:(($bookmarks))' \
+  '1:bookmark:($bookmarks)' \
   '*:gh pr create options:'

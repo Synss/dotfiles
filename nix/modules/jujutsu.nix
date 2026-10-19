@@ -1,6 +1,17 @@
 { pkgs, lib, ... }:
+let
+  jj-pr = pkgs.writers.writeDashBin "jj-pr" ''
+    # USAGE: jj-pr feature-x --fill
+    name=''${1:?bookmark name}
+    shift
+    jj git push --bookmark "$name" && gh pr create --head "$name" "$@"
+  '';
+in
 {
-  home.packages = [ pkgs.lazyjj ];
+  home.packages = [
+    pkgs.lazyjj
+    jj-pr
+  ];
 
   programs.jujutsu = {
     enable = true;
@@ -20,6 +31,12 @@
           "log"
           "-T"
           "d"
+        ];
+        pr = [
+          "util"
+          "exec"
+          "--"
+          "jj-pr"
         ];
         tug = [
           "bookmark"
