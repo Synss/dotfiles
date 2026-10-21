@@ -17,6 +17,7 @@
     bazelisk
     nodejs
     perl
+    perlPackages.Carton
     pnpm
     ruby
     rustup
