@@ -13,6 +13,7 @@
     ./modules/shell.nix
     ./modules/terminal.nix
     ./modules/claude.nix
+    ./modules/containers.nix
   ];
   home = {
     inherit stateVersion username homeDirectory;

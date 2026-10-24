@@ -5,6 +5,9 @@
     home-manager
 
     # misc.
+    colima # for docker
+    docker
+    docker-credential-helpers
     graphviz
     jq
     just
