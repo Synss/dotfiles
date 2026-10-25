@@ -1,17 +1,13 @@
 {
   pkgs,
-  config,
-  dotfilesDir,
+  mod,
   ...
 }:
-let
-  inherit (import ./lib.nix { inherit config dotfilesDir; }) mkLink;
-in
 {
   home.file = {
-    ".config/dotfiles" = mkLink "shared";
-    ".local/bin/j2y" = mkLink "bin/j2y";
-    ".local/bin/y2j" = mkLink "bin/y2j";
+    ".config/dotfiles" = mod.mkLink "shared";
+    ".local/bin/j2y" = mod.mkLink "bin/j2y";
+    ".local/bin/y2j" = mod.mkLink "bin/y2j";
   };
 
   programs = {
