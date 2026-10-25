@@ -62,8 +62,9 @@
             inherit system;
             overlays = [ overlay ];
           };
-          homeDirectory =
-            if pkgs.stdenv.hostPlatform.isDarwin then "/Users/${username}" else "/home/${username}";
+          inherit (nixpkgs) lib;
+          sys = import ./nix/lib { inherit lib pkgs; };
+          homeDirectory = if sys.isDarwin then "/Users/${username}" else "/home/${username}";
           hostModule = ./nix/hosts + "/${name}.nix";
         in
         home-manager.lib.homeManagerConfiguration {
@@ -79,6 +80,7 @@
               homeDirectory
               nix-index-database
               nixgl
+              sys
               ;
             dotfilesDir = "${homeDirectory}/${dotfilesSubpath}";
           };

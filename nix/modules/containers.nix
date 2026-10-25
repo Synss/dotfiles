@@ -1,14 +1,14 @@
-{ lib, pkgs, ... }:
-let
-  isDarwin = pkgs.stdenv.hostPlatform.isDarwin;
-in
+{
+  sys,
+  pkgs,
+  ...
+}:
 {
   home.packages =
-    (lib.optionals isDarwin [
-      pkgs.colima # lightweight Linux VM
-    ])
-    ++ (with pkgs; [
+    with pkgs;
+    [
       docker
       docker-credential-helpers
-    ]);
+    ]
+    ++ sys.onDarwin pkgs.colima; # lightweight Linux VM
 }
