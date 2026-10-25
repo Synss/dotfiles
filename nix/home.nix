@@ -9,6 +9,7 @@
     ./modules/alacritty.nix
     ./modules/claude.nix
     ./modules/containers.nix
+    ./modules/fonts.nix
     ./modules/git.nix
     ./modules/jujutsu.nix
     ./modules/neovim.nix
