@@ -6,6 +6,7 @@
 }:
 {
   imports = [
+    ./modules/alacritty.nix
     ./modules/claude.nix
     ./modules/containers.nix
     ./modules/git.nix
