@@ -10,13 +10,6 @@ let
   isLinux = pkgs.stdenv.hostPlatform.isLinux;
 in
 {
-  fonts.fontconfig.enable = true;
-
-  home.packages = with pkgs; [
-    nerd-fonts.hack
-    nerd-fonts.jetbrains-mono
-  ];
-
   programs.alacritty = {
     enable = true;
     package = lib.mkIf isLinux (config.lib.nixGL.wrap pkgs.alacritty);
