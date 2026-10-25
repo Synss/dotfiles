@@ -1,22 +1,18 @@
 {
   config,
-  lib,
+  sys,
   nixgl,
   pkgs,
   ...
 }:
-let
-  isDarwin = pkgs.stdenv.hostPlatform.isDarwin;
-  isLinux = pkgs.stdenv.hostPlatform.isLinux;
-in
 {
   programs.alacritty = {
     enable = true;
-    package = lib.mkIf isLinux (config.lib.nixGL.wrap pkgs.alacritty);
+    package = sys.ifLinux (config.lib.nixGL.wrap pkgs.alacritty);
 
     settings = {
       window = {
-        decorations = if isDarwin then "Transparent" else "None";
+        decorations = if sys.isDarwin then "Transparent" else "None";
         padding = {
           x = 1;
           y = 1;
@@ -36,7 +32,7 @@ in
     };
   };
 
-  targets.genericLinux.nixGL = lib.mkIf isLinux {
+  targets.genericLinux.nixGL = sys.ifLinux {
     packages = nixgl.packages.${pkgs.stdenv.hostPlatform.system};
     defaultWrapper = "mesa";
   };
