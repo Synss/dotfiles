@@ -1,11 +1,10 @@
 {
-  config,
   lib,
-  dotfilesDir,
+  mod,
   ...
 }:
 let
-  inherit (import ./lib.nix { inherit config dotfilesDir; }) mkLink;
+  inherit (mod) mkLink;
   skillNames = builtins.attrNames (
     lib.filterAttrs (_: type: type == "directory") (builtins.readDir ../../claude/skills)
   );

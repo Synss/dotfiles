@@ -1,12 +1,9 @@
 {
   pkgs,
-  config,
-  dotfilesDir,
+  mod,
   ...
 }:
 let
-  inherit (import ./lib.nix { inherit config dotfilesDir; }) mkLink;
-
   mkDataFiles =
     path: files:
     builtins.listToAttrs (
@@ -41,7 +38,7 @@ in
     yaml-language-server # -       yaml-language-server
   ];
 
-  home.file.".config/nvim" = mkLink "nvim";
+  home.file.".config/nvim" = mod.mkLink "nvim";
 
   xdg.dataFile =
     with pkgs.vimPlugins;

@@ -1,10 +1,18 @@
 {
+  config,
   stateVersion,
   username,
   homeDirectory,
+  dotfilesDir,
   ...
 }:
 {
+  _module.args.mod = import ./modules/lib.nix {
+    inherit
+      config
+      dotfilesDir
+      ;
+  };
   imports = [
     ./modules/alacritty.nix
     ./modules/claude.nix
