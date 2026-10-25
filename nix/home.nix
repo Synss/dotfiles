@@ -15,6 +15,7 @@
   };
   imports = [
     ./modules/alacritty.nix
+    ./modules/bin.nix
     ./modules/claude.nix
     ./modules/containers.nix
     ./modules/fonts.nix
@@ -23,7 +24,7 @@
     ./modules/neovim.nix
     ./modules/packages.nix
     ./modules/shell.nix
-    ./modules/terminal.nix
+    ./modules/tmux.nix
   ];
   home = {
     inherit stateVersion username homeDirectory;
