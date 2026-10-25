@@ -87,7 +87,7 @@ lint-lua:
 lint-nix:
     #!/usr/bin/env -S nix develop --command bash -euxo pipefail
     rc=0
-    git ls-files -z flake.nix 'nix/*.nix' | xargs -0 nixfmt --check || rc=$?
+    git ls-files -z '*.nix' | perl -0 -ne 'print if -f' | xargs -0 nixfmt --check || rc=$?
     statix check --ignore 'vim/**' . || rc=$?
     deadnix --fail flake.nix nix/ || rc=$?
     nix flake check || rc=$?
