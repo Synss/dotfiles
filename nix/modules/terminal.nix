@@ -8,13 +8,6 @@ let
   inherit (import ./lib.nix { inherit config dotfilesDir; }) mkLink;
 in
 {
-  fonts.fontconfig.enable = true;
-
-  home.packages = with pkgs; [
-    nerd-fonts.hack
-    nerd-fonts.jetbrains-mono
-  ];
-
   home.file = {
     ".config/dotfiles" = mkLink "shared";
     ".local/bin/j2y" = mkLink "bin/j2y";
@@ -22,20 +15,6 @@ in
   };
 
   programs = {
-    alacritty = {
-      enable = true;
-      settings = {
-        terminal.shell = {
-          program = "zsh";
-          args = [ "-l" ];
-        };
-        font = {
-          normal.family = "JetBrainsMono Nerd Font Mono";
-          size = 12.0;
-        };
-      };
-    };
-
     tmux = {
       enable = true;
       prefix = "C-Space";
