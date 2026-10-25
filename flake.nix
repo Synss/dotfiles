@@ -71,8 +71,6 @@
           modules = [
             ./nix/home.nix
           ]
-          ++ nixpkgs.lib.optional pkgs.stdenv.hostPlatform.isLinux ./nix/linux.nix
-          ++ nixpkgs.lib.optional pkgs.stdenv.hostPlatform.isDarwin ./nix/darwin.nix
           ++ nixpkgs.lib.optional (builtins.pathExists hostModule) hostModule;
           extraSpecialArgs = {
             inherit
