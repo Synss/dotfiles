@@ -1,8 +1,14 @@
-{ pkgs, ... }:
+{ lib, pkgs, ... }:
+let
+  isDarwin = pkgs.stdenv.hostPlatform.isDarwin;
+in
 {
-  home.packages = with pkgs; [
-    colima # VM
-    docker
-    docker-credential-helpers # for `credsStore`
-  ];
+  home.packages =
+    (lib.optionals isDarwin [
+      pkgs.colima # lightweight Linux VM
+    ])
+    ++ (with pkgs; [
+      docker
+      docker-credential-helpers
+    ]);
 }
