@@ -7,9 +7,19 @@
     dir = ../modules;
     modules = [
       "containers"
-      "perl"
-      "python"
-      "ruby"
     ];
+  };
+
+  languages = {
+    ansible.enable = true;
+    bash.enable = true;
+    github-actions.enable = true;
+    json.enable = true;
+    lua.enable = true;
+    nix.enable = true;
+    perl.enable = true;
+    python.enable = true;
+    ruby.enable = true;
+    yaml.enable = true;
   };
 }

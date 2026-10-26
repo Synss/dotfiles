@@ -19,23 +19,11 @@ in
     neovim-remote
 
     # LSP servers | nvim
-    actions-languageserver # -     gh_action_ls
-    ansible-language-server # -    ansiblels
-    bash-language-server # -       bashls
-    basedpyright # -               basedpyright
-    clang-tools # -                clangd
-    groovy-language-server # -     groovyls
-    lua-language-server # -        lua_ls
+    #
+    # See also `nix/modules/languages`
     marksman # -                   marksman
     nil # -                        nil_ls
-    nixd # -                       nixd
-    perlnavigator # -              perlnavigator
-    ruby-lsp # -                   ruby_lsp
-    ruff # -                       ruff
-    starpls # -                    starpls
     typos-lsp # -                  typos_lsp
-    vscode-langservers-extracted # cssls eslint html jsonls
-    yaml-language-server # -       yaml-language-server
   ];
 
   home.file.".config/nvim" = mod.mkLink "nvim";

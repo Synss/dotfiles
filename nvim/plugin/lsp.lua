@@ -9,29 +9,37 @@ for _, path in ipairs(vim.fn.glob(vim.fn.stdpath("config") .. "/lsp/*.lua", fals
 	vim.lsp.config(vim.fn.fnamemodify(path, ":t:r"), dofile(path))
 end
 
-vim.lsp.enable(
-	{
-		"ansiblels",   -- ansible-language-server
-		"bashls",      -- bash-language-server
-		"basedpyright", -- basedpyright
-		"clangd",      -- clang-tools
-		"groovyls",    -- groovy-language-server
-		"cssls",       -- vscode-langservers-extracted
-		"eslint",      -- vscode-langservers-extracted
-		"gh_actions_ls", -- actions-languageserver
-		"html",        -- vscode-langservers-extracted
-		"jsonls",      -- vscode-langservers-extracted
-		"lua_ls",      -- lua-language-server
-		"marksman",    -- marksman
-		"nil_ls",      -- nil
-		"nixd",        -- nixd
-		"perlnavigator", -- perlnavigator
-		"ruby_lsp",    -- ruby-lsp
-		"ruff",        -- ruff
-		"starpls",     -- starpls
-		"typos_lsp",   -- typos-lsp
-		"yamlls",      -- yaml-language-server
-	})
+local all_servers = {
+	ansiblels = "ansible-language-server",
+	bashls = "bash-language-server",
+	basedpyright = "basedpyright",
+	clangd = "clang-tools",
+	groovyls = "groovy-language-server",
+	cssls = "vscode-langservers-extracted",
+	eslint = "vscode-langservers-extracted",
+	gh_actions_ls = "actions-languageserver",
+	html = "vscode-langservers-extracted",
+	jsonls = "vscode-langservers-extracted",
+	lua_ls = "lua-language-server",
+	marksman = "marksman",
+	nil_ls = "nil",
+	nixd = "nixd",
+	perlnavigator = "perlnavigator",
+	ruby_lsp = "ruby-lsp",
+	ruff = "ruff",
+	starpls = "starpls",
+	typos_lsp = "typos-lsp",
+	yamlls = "yaml-language-server",
+}
+
+local servers = {}
+for server, bin in pairs(all_servers) do
+	if vim.fn.executable(bin) == 1 then
+		table.insert(servers, server)
+	end
+end
+
+vim.lsp.enable(servers)
 
 -- Diagnostics
 
