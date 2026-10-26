@@ -62,7 +62,7 @@ setup() {
 	bats_load_library 'bats-support'
 	load 'bats/namespace'
 
-	doc="./bin/doc.rb"
+	doc="./tools/doc.rb"
 
 	docdir=$(mktemp -p "$BATS_TEST_TMPDIR" -d)
 	_setup_docdir "$docdir"
@@ -77,7 +77,7 @@ assert_same_output() {
 }
 
 @test 'doc.rb is executable' {
-	assert_file_executable ./bin/doc.rb
+	assert_file_executable ./tools/doc.rb
 }
 
 @test '-h and --help show the help' {

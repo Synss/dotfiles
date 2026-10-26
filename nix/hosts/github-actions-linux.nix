@@ -3,7 +3,6 @@
     dir = ../modules;
     modules = [
       "alacritty"
-      "bin"
       "claude"
       "comma"
       "containers"
@@ -14,6 +13,7 @@
       "packages"
       "shell"
       "tmux"
+      "tools"
     ];
   };
 }

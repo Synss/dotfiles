@@ -17,12 +17,12 @@ To set up a new machine, add an entry to [`nix/hosts.nix`](nix/hosts.nix),
 then run:
 
 ```sh
-./bin/bootstrap.sh
+./tools/bootstrap.sh
 ```
 
 ## Layout
 
-- `bin/` — executables used in this repo.
+- `tools/` — executables used in this repo.
 - `claude/` — see [`claude/README.md`](claude/README.md).
 - `docs/` — cheat-sheets, call with `doc` on the commandline.
 - `nix/` — flake modules and package list. See [`nix/README.md`](nix/README.md).

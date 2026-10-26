@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative '../bin/dump-github-settings'
+require_relative '../tools/dump-github-settings'
 require 'json'
 require 'minitest/autorun'
 
