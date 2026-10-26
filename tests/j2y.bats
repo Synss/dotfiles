@@ -6,15 +6,15 @@ setup() {
 	bats_load_library 'bats-support'
 	load 'bats/namespace'
 
-	PATH="$BATS_TEST_DIRNAME/../bin:$PATH"
+	PATH="$BATS_TEST_DIRNAME/../tools:$PATH"
 }
 
 @test 'j2y is executable' {
-	assert_file_executable ./bin/j2y
+	assert_file_executable ./tools/j2y
 }
 
 @test 'y2j is executable' {
-	assert_file_executable ./bin/y2j
+	assert_file_executable ./tools/y2j
 }
 
 @test 'j2y | y2j | ... is identity function' {

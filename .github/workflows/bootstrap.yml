@@ -5,7 +5,7 @@ on:
   pull_request:
     branches: [main]
     paths:
-      - bin/bootstrap.sh
+      - tools/bootstrap.sh
       - .github/workflows/bootstrap.yml
   schedule:
     # First day of every month at 2:00 AM UTC.
@@ -32,7 +32,7 @@ jobs:
           NIX_CONFIG: "access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}"
         shell: bash
         run: |
-          ./bin/bootstrap.sh ${{ matrix.host }} 2> ${{ runner.temp }}/bootstrap.err \
+          ./tools/bootstrap.sh ${{ matrix.host }} 2> ${{ runner.temp }}/bootstrap.err \
           | tee ${{ runner.temp }}/bootstrap.log || [ "$?" -eq 3 ]
           grep -q 'Nix was installed successfully!' ${{ runner.temp}}/bootstrap.log || exit 1
       - name: Setup nix PATH
@@ -51,4 +51,4 @@ jobs:
         env:
           NIX_CONFIG: "access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}"
         shell: bash
-        run: ./bin/bootstrap.sh ${{ matrix.host }}
+        run: ./tools/bootstrap.sh ${{ matrix.host }}
