@@ -1,5 +1,7 @@
-{ lib, pkgs }:
+{ pkgs }:
 let
+  inherit (pkgs) lib;
+
   isDarwin = pkgs.stdenv.hostPlatform.isDarwin;
   isLinux = pkgs.stdenv.hostPlatform.isLinux;
 
