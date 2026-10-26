@@ -12,15 +12,5 @@
     pre-commit
     prettier
     xxd
-
-    # programming languages
-    bazelisk
-    nodejs
-    perl
-    perlPackages.Carton
-    pnpm
-    ruby
-    rustup
-    uv
   ];
 }

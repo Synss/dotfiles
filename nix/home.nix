@@ -17,6 +17,7 @@
     ./modules/alacritty.nix
     ./modules/bin.nix
     ./modules/claude.nix
+    ./modules/comma.nix
     ./modules/containers.nix
     ./modules/fonts.nix
     ./modules/git.nix
