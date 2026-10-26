@@ -8,6 +8,7 @@
       "jujutsu"
       "neovim"
       "packages"
+      "languages"
       "shell"
       "tools"
     ];
