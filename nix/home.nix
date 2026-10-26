@@ -7,7 +7,7 @@
   ...
 }:
 {
-  _module.args.mod = import ./modules/lib.nix {
+  _module.args.mod = import ./modules/lib {
     inherit
       config
       dotfilesDir
