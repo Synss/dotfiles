@@ -1,5 +1,5 @@
 { sys, ... }: {
-  imports = sys.importModules {
+  imports = sys.modules.imports {
     dir = ../modules;
     modules = [
       "alacritty"
