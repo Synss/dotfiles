@@ -2,12 +2,9 @@
   pkgs,
   lib,
   dotfilesDir,
-  nix-index-database,
   ...
 }:
 {
-  imports = [ nix-index-database.homeModules.nix-index ];
-
   home.sessionVariables.SHELL = "${pkgs.zsh}/bin/zsh";
 
   home.packages = with pkgs; [
@@ -65,8 +62,6 @@
       enable = true;
       enableZshIntegration = true;
     };
-
-    nix-index-database.comma.enable = true;
 
     zoxide = {
       enable = true;
