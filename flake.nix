@@ -62,8 +62,7 @@
             inherit system;
             overlays = [ overlay ];
           };
-          inherit (nixpkgs) lib;
-          sys = import ./nix/lib { inherit lib pkgs; };
+          sys = import ./nix/lib { inherit pkgs; };
           homeDirectory = if sys.isDarwin then "/Users/${username}" else "/home/${username}";
           hostModule = ./nix/hosts + "/${name}.nix";
         in

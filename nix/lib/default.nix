@@ -1,5 +1,5 @@
-{ lib, pkgs }:
-(import ./platform.nix { inherit lib pkgs; })
+{ pkgs }:
+(import ./platform.nix { inherit pkgs; })
 // {
   modules = import ./modules.nix { };
 }
