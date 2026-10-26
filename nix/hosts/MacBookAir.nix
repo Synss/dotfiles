@@ -1,7 +1,10 @@
-_: {
-  imports = [
-    ../modules/perl.nix
-    ../modules/python.nix
-    ../modules/ruby.nix
-  ];
+{ sys, ... }: {
+  imports = sys.importModules {
+    dir = ../modules;
+    modules = [
+      "perl"
+      "python"
+      "ruby"
+    ];
+  };
 }
