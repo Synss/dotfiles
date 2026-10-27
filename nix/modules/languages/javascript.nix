@@ -13,5 +13,6 @@ in
       nodejs
       pnpm
     ];
+    lspPackages = [ pkgs.vtsls ];
   };
 }

@@ -29,6 +29,7 @@ local all_servers = {
 	ruff = "ruff",
 	starpls = "starpls",
 	typos_lsp = "typos-lsp",
+	vtsls = "vtsls",
 	yamlls = "yaml-language-server",
 }
 
