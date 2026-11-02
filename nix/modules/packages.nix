@@ -5,6 +5,7 @@
     home-manager
 
     # misc.
+    go-task
     graphviz
     jq
     just
