@@ -7,6 +7,7 @@
     dir = ../modules;
     modules = [
       "bazel"
+      "claude"
       "containers"
     ];
   };
