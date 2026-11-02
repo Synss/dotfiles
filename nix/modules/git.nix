@@ -5,6 +5,7 @@ in
 {
   home.packages = [
     pkgs.gh
+    pkgs.git-lfs
     pkgs.glab
   ];
 
