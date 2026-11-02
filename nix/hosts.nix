@@ -1,4 +1,9 @@
 {
+  "Mathiass-MBP" = {
+    system = "aarch64-darwin";
+    stateVersion = "26.05";
+    username = "mlaurin";
+  };
   "MacBookAir" = {
     system = "aarch64-darwin";
     stateVersion = "25.11";
