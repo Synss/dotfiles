@@ -6,6 +6,7 @@
   ++ sys.modules.imports {
     dir = ../modules;
     modules = [
+      "bazel"
       "containers"
     ];
   };
