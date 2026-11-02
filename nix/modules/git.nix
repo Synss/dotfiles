@@ -3,7 +3,10 @@ let
   colocate = pkgs.writers.writeRuby "git-colocate" { } (builtins.readFile ../scripts/git_colocate.rb);
 in
 {
-  home.packages = [ pkgs.gh ];
+  home.packages = [
+    pkgs.gh
+    pkgs.glab
+  ];
 
   programs.git = {
     enable = true;
