@@ -9,6 +9,7 @@
       "bazel"
       "claude"
       "containers"
+      "gcloud"
     ];
   };
 
