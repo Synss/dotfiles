@@ -9,6 +9,7 @@
     graphviz
     jq
     just
+    scc
     yq-go
     pre-commit
     prettier
