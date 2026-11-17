@@ -32,6 +32,12 @@ in
           "-T"
           "d"
         ];
+        lf = [
+          "log"
+          "-r"
+          "mainline(50)"
+          "--no-graph"
+        ];
         pr = [
           "util"
           "exec"
@@ -49,6 +55,9 @@ in
         "by(x)" = "author(substring:x)";
         "closest_pushable(to)" =
           ''heads(::to & mutable() & ~description(exact:" ") & (~empty() | merges()))'';
+
+        # Linearize merge-based workflow
+        "mainline(n)" = "latest(::trunk() ~ merges(), n)";
 
         # House keeping: `jj log -r pending()`, `-r submitted()`, `-r wip()`.
         "pending()" = "mine() & mutable() & bookmarks()";
