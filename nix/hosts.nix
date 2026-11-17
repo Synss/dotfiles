@@ -1,5 +1,5 @@
 {
-  "Mathiass-MBP" = {
+  "Mathiass-MBP-Animore" = {
     system = "aarch64-darwin";
     stateVersion = "26.05";
     username = "mlaurin";
