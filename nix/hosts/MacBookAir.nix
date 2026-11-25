@@ -10,6 +10,11 @@
     ];
   };
 
+  services.colima.profiles = {
+    linux.settings.memory = 2;
+    linux-amd64.settings.memory = 2;
+  };
+
   languages = {
     ansible.enable = true;
     bash.enable = true;
