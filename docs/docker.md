@@ -2,20 +2,30 @@
 
 ## MacOS
 
-Start Colima (Linux VM):
+Colima runs two Linux VM profiles:
 
-```bash
-colima start
-[ -S "$HOME/.colima/default/docker.sock" ] \
-  && export DOCKER_HOST="unix://$HOME/.colima/default/docker.sock"
-```
+- `linux`: arm64. Starts at login. `DOCKER_HOST` points to its socket.
+- `linux-amd64`: arm64 with Rosetta, for x86_64 binaries. Starts on
+  demand.
 
-And setup the configuration `~/.docker/config.json` as
+Both mount `~/src` only.
 
-```json
-{
-  "auths": {},
-  "credsStore": "osxkeychain",
-  "currentContext": "colima"
-}
-```
+## Shortcuts
+
+Each profile name is a shell function that runs its arguments in that VM,
+in the current directory. It starts the VM first if it is stopped. For
+example, `linux bazel build //...`.
+
+Without arguments, it opens a shell in the VM.
+
+The current directory must be under `~/src`.
+
+## Rosetta
+
+Install with `softwareupdate --install-rosetta --agree-to-license`.
+Activation warns when it is missing.
+
+## See Also
+
+- `services.colima` in `man home-configuration.nix`
+- `colima template`
